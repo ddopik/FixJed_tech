@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
@@ -66,59 +65,70 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         drawer: navigationDrawer(),
-        body: Center(child: renderHomeView()));
+        body: Container(
+          color: Colors.white,
+          child: Container(
+              margin: EdgeInsets.only(top: 2.0),
+              decoration: BoxDecoration(
+                  color: kBackgroundWhite,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24.0),
+                      topRight: Radius.circular(24.0))),
+              alignment: Alignment.center,
+              child: renderHomeView()),
+        ));
   }
 
   renderHomeView() {
     return Padding(
         padding: const EdgeInsets.all(10.0),
-        child: GridView.count(crossAxisCount: 3,
-            childAspectRatio: .8,
+        child: GridView.count(
+            crossAxisCount: 3,
+            childAspectRatio: .7,
             padding: const EdgeInsets.all(4.0),
             mainAxisSpacing: 0.0,
-            crossAxisSpacing:0.0,
-            children: [ ...menuList.map((e) => getGridViewItem(e))])
-    );
+            crossAxisSpacing: 0.0,
+            children: [...menuList.map((e) => getGridViewItem(e))]));
   }
 
   getGridViewItem(_MenuItem _menuItem) {
     return Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
+        alignment: Alignment.center,
         child: InkWell(
-            onTap: () {},
-            child: Container(
-              child: Column(
-                children: [
-                  Container(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100.0)),
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Image(
-                          fit: BoxFit.scaleDown,
-                          width: 60,
-                          height: 60,
-                          image: AssetImage(_menuItem.imgPath),
-                        ),
-                      ),
+          onTap: () {},
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100.0)),
+                elevation: 5,
+                child: ClipOval(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Image(
+                      fit: BoxFit.contain,
+                      width: 80,
+                      height: 80,
+                      image: AssetImage(_menuItem.imgPath),
                     ),
                   ),
-                  Container(
-                    child: Text(
-                      _menuItem.title,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            )));
+              Container(
+                child: Text(
+                  _menuItem.title,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
-
 
 class _MenuItem {
   final String imgPath;
@@ -254,5 +264,4 @@ class navigationDrawer extends StatelessWidget {
       onTap: onTap,
     );
   }
-
 }
