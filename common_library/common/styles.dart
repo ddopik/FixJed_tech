@@ -4,8 +4,7 @@ import 'colors.dart';
 import 'fonts.dart';
 
 
-const kProductTitleStyleLarge =
-    TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+
 
 const kTextField = InputDecoration(
   hintText: 'Enter your value',

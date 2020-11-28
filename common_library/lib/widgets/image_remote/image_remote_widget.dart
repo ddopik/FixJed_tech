@@ -1,4 +1,4 @@
-import 'package:extended_image/extended_image.dart';
+ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../extensions/string_extension.dart';

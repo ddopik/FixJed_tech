@@ -11,10 +11,6 @@ class AppModel extends ChangeNotifier{
   bool darkTheme = false;
   String locale = AppDefaultConfig['DefaultLanguage'];
 
-  AppModel(){
-    notifyListeners();
-  }
-
 
    getConfig() async {
  //todo load app main configuration here

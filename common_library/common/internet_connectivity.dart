@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
-import 'package:logger/logger.dart';
+
 
 //**
 //use this class to listen for network change and state for critical request
@@ -30,11 +30,11 @@ class MyConnectivity {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         // ignore: lines_longer_than_80_chars
-        Logger(printer: SimplePrinter(colors: true)).v('[MyConnectivity] online');
+        print('[MyConnectivity] online');
          isOnline = true;
       } else {
         // ignore: lines_longer_than_80_chars
-        Logger(printer: SimplePrinter(colors: true)).v('[MyConnectivity] offline');
+        print('[MyConnectivity] offline');
         isOnline = false;
       }
     } on SocketException catch (_) {

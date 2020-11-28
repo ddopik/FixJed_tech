@@ -8,8 +8,8 @@ import 'package:flutter_base_app/flutter_main/common/config.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/storage/storage_model.dart';
-import 'package:flutter_base_app/generated/i18n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
+ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'app_init.dart';
@@ -33,7 +33,7 @@ class AppState extends State<App> {
   ThemeData getTheme(context) {
     Logger(printer: SimplePrinter(colors: true)).v("[AppState] build Theme");
 
-    AppModel appModel = Provider.of<AppModel>(context);
+    AppModel appModel = Provider.of<AppModel>(context,listen: false);
     bool isDarkTheme = appModel.darkTheme ?? false;
 
 
@@ -43,7 +43,7 @@ class AppState extends State<App> {
       );
     }
 
-
+    //
     return buildLightTheme(appModel.locale).copyWith(
       primaryColor: Colors.blueAccent,
     );
@@ -51,7 +51,7 @@ class AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    demo();
+
     return ChangeNotifierProvider<AppModel>.value(
       value: _app,
       child: Consumer<AppModel>(
@@ -84,27 +84,5 @@ class AppState extends State<App> {
         },
       ),
     );
-  }
-
-  var logger = Logger(
-    printer: PrettyPrinter(),
-  );
-  var loggerNoStack = Logger(
-    printer: PrettyPrinter(methodCount: 0),
-  );
-
-
-  void demo() {
-    logger.d('Log message with 2 methods');
-
-    loggerNoStack.i('Info message');
-
-    loggerNoStack.w('Just a warning!');
-
-    logger.e('Error! Something bad happened', 'Test Error');
-
-    loggerNoStack.v({'key': 5, 'value': 'something'});
-
-    Logger(printer: SimplePrinter(colors: true)).v('boom');
   }
 }

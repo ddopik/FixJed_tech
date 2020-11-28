@@ -7,18 +7,19 @@ import 'package:flutter_base_app/flutter_main/screens/signup_screen.dart';
 class Routes {
   static Map<String, WidgetBuilder> getAll() => _routes;
 
-
+  static final ONBOARDING = "/OnBoardingScreen";
+  static final SIGNUP = "/SignUpScreen";
+  static final LOGIN = "/loginScreen";
+  static final HOME = "/homeScreen";
 
   static final Map<String, WidgetBuilder> _routes = {
-    '/home': (context) => HomeScreen(),
-    '/signUp': (context) => SignUpScreen(),
-    '/login': (context) => LoginScreen(),
-    '/on_boarding': (context) => OnBoardingScreen(),
-   };
+    HOME: (context) => HomeScreen(),
+    SIGNUP: (context) => SignUpScreen(),
+    LOGIN: (context) => LoginScreen(),
+    ONBOARDING: (context) => OnBoardingScreen(),
+  };
 
-
-
-// todo add this attrubute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget
+// todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget
   // static Route getRouteGenerate(RouteSettings settings) =>
   //     _routeGenerate(settings);
   // // handle unNamed route here , or make some initialization for a specific route
@@ -33,8 +34,6 @@ class Routes {
   //       return _errorRoute();
   //   }
   // }
-
-
 
   static Route _errorRoute() {
     return MaterialPageRoute(builder: (_) {
@@ -55,6 +54,7 @@ class Routes {
       builder: (ctx) => builder,
     );
   }
+
   static PageRouteBuilder _buildRouteFade(
       RouteSettings settings, Widget builder) {
     return _FadedTransitionRoute(

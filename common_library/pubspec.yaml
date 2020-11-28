@@ -20,7 +20,18 @@ dependencies:
   ##PBrings functionality to execute code after the first layout of a widget has been performed,
   ## i.e. after the first frame has been displayed.
   after_layout: 1.0.7+2
+    ## auto slider
+    ##carousel_pro: ^1.0.0
+    ## expand/collapse header
+  ##configurable_expansion_tile: 1.0.0
+  ## Share content externally
 
+  url_launcher: 5.5.0
+  extended_image: 0.9.0
+
+  ##
+  app_settings: 4.0.1+1
+  connectivity: 0.4.9
 
 dev_dependencies:
   flutter_test:
@@ -35,8 +46,8 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+   assets:
+
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see

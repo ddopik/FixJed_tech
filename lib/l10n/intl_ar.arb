@@ -1,5 +1,7 @@
 {
 
-  "new_word": "new word",
-  "new_word2": "new word"
+  "signUp": "Sign Up",
+  "login": "Login",
+  "ForgotPassword": "Forgot Password",
+  "DoNotHaveAnAccount": "Don't have an account ?"
 }

@@ -35,21 +35,41 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `new word`
-  String get new_word {
+  /// `Sign Up`
+  String get signUp {
     return Intl.message(
-      'new word',
-      name: 'new_word',
+      'Sign Up',
+      name: 'signUp',
       desc: '',
       args: [],
     );
   }
 
-  /// `new word`
-  String get new_word2 {
+  /// `Login`
+  String get login {
     return Intl.message(
-      'new word',
-      name: 'new_word2',
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password`
+  String get ForgotPassword {
+    return Intl.message(
+      'Forgot Password',
+      name: 'ForgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account ?`
+  String get DoNotHaveAnAccount {
+    return Intl.message(
+      'Don\'t have an account ?',
+      name: 'DoNotHaveAnAccount',
       desc: '',
       args: [],
     );

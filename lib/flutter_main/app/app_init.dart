@@ -22,7 +22,7 @@ class _AppInitState extends State<AppInit> with AfterLayoutMixin {
   @override
   void initState() {
     super.initState();
-    Provider.of<StorageModel>(context,listen: false).isAppFirstTimeSeen();
+    // Provider.of<StorageModel>(context,listen: false).isAppFirstTimeSeen();
   }
 
   @override
@@ -32,11 +32,13 @@ class _AppInitState extends State<AppInit> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (_) => StorageModel(), child: getNextScreen());
+
+    return getNextScreen();
+
   }
 
   Widget getNextScreen() {
+
     if (Provider.of<StorageModel>(context, listen: false).userLoggedIn) {
       return Container(); // todo navigate to home Screen
     } else if (Provider.of<StorageModel>(context, listen: false).appIsFirstSeen) {
