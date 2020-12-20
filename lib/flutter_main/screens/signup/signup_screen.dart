@@ -4,7 +4,7 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 
-import '../../generated/l10n.dart';
+import '../../../generated/l10n.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    S.of(context).signUp;
+
     return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,

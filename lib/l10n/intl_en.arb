@@ -3,6 +3,7 @@
   "signUp": "Sign Up",
   "login": "Login",
   "ForgotPassword": "Forgot Password",
-  "DoNotHaveAnAccount": "Don't have an account ?"
+  "DoNotHaveAnAccount": "Don't have an account ?",
+  "close": "close"
 
 }

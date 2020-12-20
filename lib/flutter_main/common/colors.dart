@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-const kEmptyColor = 0x0D000000;
 
 /// basic colors
  const boring_green = const Color(0xff61ba66);
@@ -70,3 +69,4 @@ const kBackgroundAppBar = Color(0xffffffff);
 
 const kTeal50 = Color(0xFFE0F2F1);
 const kTeal100 = Colors.blueAccent;
+const kEmptyColor = Color(0x0D000000);

@@ -1,24 +1,76 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/screens/home/home_category_item.dart';
+
+import 'model/FixJidCategory.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/homePage';
 
-  List<_MenuItem> menuList = [
-    _MenuItem("assets/images/ic_menu_8.png", 'Plumber'),
-    _MenuItem("assets/images/ic_menu_2.png", 'Fridge'),
-    _MenuItem("assets/images/ic_menu_3.png", 'Window'),
-    _MenuItem("assets/images/ic_menu_4.png", 'Wash Machine'),
-    _MenuItem("assets/images/ic_menu_5.png", 'Carpenter'),
-    _MenuItem("assets/images/ic_menu_5.png", 'Electrician'),
-    _MenuItem("assets/images/ic_menu_7.png", 'Car'),
-    _MenuItem("assets/images/ic_menu_8.png", 'Clean'),
-    _MenuItem("assets/images/ic_menu_9.png", 'Construction'),
-    _MenuItem("assets/images/ic_menu_10.png", 'Desinfection'),
-    _MenuItem("assets/images/ic_menu_11.png", 'Desinfection'),
-    _MenuItem("assets/images/ic_menu_12.png", 'Desinfection'),
-    _MenuItem("assets/images/ic_menu_13.png", 'Desinfection'),
+  List<FixJidCategory> menuList = [
+    FixJidCategory(
+        id: "1",
+        imgPath: "assets/images/ic_menu_8.png",
+        name: 'Plumber',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "2",
+        imgPath: "assets/images/ic_menu_2.png",
+        name: 'Fridge',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "3",
+        imgPath: "assets/images/ic_menu_3.png",
+        name: 'Window',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "4",
+        imgPath: "assets/images/ic_menu_4.png",
+        name: 'Wash Machine',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "5",
+        imgPath: "assets/images/ic_menu_5.png",
+        name: 'Carpenter',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "6",
+        imgPath: "assets/images/ic_menu_5.png",
+        name: 'Electrician',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "7",
+        imgPath: "assets/images/ic_menu_7.png",
+        name: 'Car',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "8",
+        imgPath: "assets/images/ic_menu_8.png",
+        name: 'Clean',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "9",
+        imgPath: "assets/images/ic_menu_9.png",
+        name: 'Construction',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "10",
+        imgPath: "assets/images/ic_menu_10.png",
+        name: 'Desinfection',
+        desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "11",
+        imgPath: "assets/images/ic_menu_11.png",
+        name: 'Desinfection',desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "12",
+        imgPath: "assets/images/ic_menu_12.png",
+        name: 'Desinfection',desc: "desc desc desc desc desc"),
+    FixJidCategory(
+        id: "13",
+        imgPath: "assets/images/ic_menu_13.png",
+        name: 'Desinfection',desc: "desc desc desc desc desc"),
   ];
 
   @override
@@ -88,53 +140,8 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(4.0),
             mainAxisSpacing: 0.0,
             crossAxisSpacing: 0.0,
-            children: [...menuList.map((e) => getGridViewItem(e))]));
+            children: [...menuList.map((e) => HomeCategoryItem(e))]));
   }
-
-  getGridViewItem(_MenuItem _menuItem) {
-    return Container(
-        padding: const EdgeInsets.all(10.0),
-        alignment: Alignment.center,
-        child: InkWell(
-          onTap: () {},
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100.0)),
-                elevation: 5,
-                child: ClipOval(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Image(
-                      fit: BoxFit.contain,
-                      width: 80,
-                      height: 80,
-                      image: AssetImage(_menuItem.imgPath),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                child: Text(
-                  _menuItem.title,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(),
-                ),
-              ),
-            ],
-          ),
-        ));
-  }
-}
-
-class _MenuItem {
-  final String imgPath;
-  final String title;
-
-  _MenuItem(this.imgPath, this.title);
 }
 
 class navigationDrawer extends StatelessWidget {

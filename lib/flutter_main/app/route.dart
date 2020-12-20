@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/flutter_main/screens/home_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/login_screens.dart';
-import 'package:flutter_base_app/flutter_main/screens/on_boarding.dart';
-import 'package:flutter_base_app/flutter_main/screens/signup_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
+import 'package:flutter_base_app/flutter_main/screens/onboarding/on_boarding.dart';
+import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> getAll() => _routes;

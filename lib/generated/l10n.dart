@@ -74,6 +74,16 @@ class S {
       args: [],
     );
   }
+
+  /// `close`
+  String get close {
+    return Intl.message(
+      'close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
