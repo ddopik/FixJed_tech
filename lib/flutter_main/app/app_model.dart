@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_base_app/flutter_main/common/config.dart';
+import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
 
 /// this is model is used to initialize app configuration
 /// and according to your needs can build all your providers and routes upon it
@@ -7,9 +8,12 @@ import 'package:flutter_base_app/flutter_main/common/config.dart';
 /// */
 class AppModel extends ChangeNotifier {
   bool darkTheme = false;
-  String locale = AppDefaultConfig['DefaultLanguage'];
+  // String locale = AppDefaultConfig['DefaultLanguage'];
+  String locale ;
 
   getConfig() async {
+    locale=LocalPreferences().getAppLanguage();
+
     //todo load app main configuration here
     // SharedPreferences prefs = await SharedPreferences.getInstance();
     // locale = prefs.getString("language") ?? kAdvanceConfig['DefaultLanguage'];
@@ -19,6 +23,7 @@ class AppModel extends ChangeNotifier {
   Future<bool> changeLanguage(String country, BuildContext context) async {
     try {
       locale = country;
+
 
       // await prefs.setString("language", country);
       return true;

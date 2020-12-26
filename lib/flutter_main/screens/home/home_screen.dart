@@ -62,73 +62,78 @@ class HomeScreen extends StatelessWidget {
     FixJidCategory(
         id: "11",
         imgPath: "assets/images/ic_menu_11.png",
-        name: 'Desinfection',desc: "desc desc desc desc desc"),
+        name: 'Desinfection',
+        desc: "desc desc desc desc desc"),
     FixJidCategory(
         id: "12",
         imgPath: "assets/images/ic_menu_12.png",
-        name: 'Desinfection',desc: "desc desc desc desc desc"),
+        name: 'Desinfection',
+        desc: "desc desc desc desc desc"),
     FixJidCategory(
         id: "13",
         imgPath: "assets/images/ic_menu_13.png",
-        name: 'Desinfection',desc: "desc desc desc desc desc"),
+        name: 'Desinfection',
+        desc: "desc desc desc desc desc"),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Container(
-            alignment: Alignment.center,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Opacity(
-                  opacity: 0.800000011920929,
-                  child: Text("Delivering to",
-                      style: const TextStyle(
-                        color: boring_green,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Raleway",
-                        fontStyle: FontStyle.normal,
-                      ),
-                      textAlign: TextAlign.left),
-                ),
-                Text("5th settlements",
-                    style: const TextStyle(
-                      color: french_blue,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: "Raleway",
-                      fontStyle: FontStyle.normal,
+    return Directionality(
+        textDirection: TextDirection.ltr,
+        child: new Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Container(
+                alignment: Alignment.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Opacity(
+                      opacity: 0.800000011920929,
+                      child: Text("Delivering to",
+                          style: const TextStyle(
+                            color: boring_green,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Raleway",
+                            fontStyle: FontStyle.normal,
+                          ),
+                          textAlign: TextAlign.left),
                     ),
-                    textAlign: TextAlign.left)
+                    Text("5th settlements",
+                        style: const TextStyle(
+                          color: french_blue,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Raleway",
+                          fontStyle: FontStyle.normal,
+                        ),
+                        textAlign: TextAlign.left)
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Image(
+                      image: AssetImage("assets/images/ic_shopping.png"),
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.scaleDown),
+                )
               ],
             ),
-          ),
-          actions: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Image(
-                  image: AssetImage("assets/images/ic_shopping.png"),
-                  width: 40,
-                  height: 40,
-                  fit: BoxFit.scaleDown),
-            )
-          ],
-        ),
-        drawer: navigationDrawer(),
-        body: Container(
-          color: Colors.white,
-          child: Container(
-              margin: EdgeInsets.only(top: 2.0),
-              decoration: BoxDecoration(
-                  color: kBackgroundWhite,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(24.0),
-                      topRight: Radius.circular(24.0))),
-              alignment: Alignment.center,
-              child: renderHomeView()),
-        ));
+            drawer: navigationDrawer(),
+            body: Container(
+              color: Colors.white,
+              child: Container(
+                  margin: EdgeInsets.only(top: 2.0),
+                  decoration: BoxDecoration(
+                      color: kBackgroundWhite,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(24.0),
+                          topRight: Radius.circular(24.0))),
+                  alignment: Alignment.center,
+                  child: renderHomeView()),
+            )));
   }
 
   renderHomeView() {
@@ -152,41 +157,37 @@ class navigationDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           createDrawerHeader(),
-          createDrawerBodyItem(
-            icon: Icons.home,
-            text: 'Home',
-            // onTap: () =>
-            // Navigator.pushReplacementNamed(context, pageRoutes.home),
-          ),
-          createDrawerBodyItem(
-            icon: Icons.account_circle,
-            text: 'Profile',
-            // onTap: () =>
-            // Navigator.pushReplacementNamed(context, pageRoutes.profile),
-          ),
-          createDrawerBodyItem(
-            icon: Icons.event_note,
-            text: 'Events',
-            // onTap: () =>
-            // Navigator.pushReplacementNamed(context, pageRoutes.event),
+          Container(
+            margin: EdgeInsets.all(14.0),
+            child: Text("خدماتي",style: TextStyle(color: boring_green,fontWeight: FontWeight.w600),),
+            alignment: Alignment.center,
           ),
           Divider(),
-          createDrawerBodyItem(
-            icon: Icons.notifications_active,
-            text: 'Notifications',
-            // onTap: () =>
-            // Navigator.pushReplacementNamed(context, pageRoutes.notification),
+          Container(
+            margin: EdgeInsets.all(14.0),
+            child: Text("الاشعارات",style: TextStyle(color: boring_green,fontWeight: FontWeight.w600)),
+            alignment: Alignment.center,
           ),
-          createDrawerBodyItem(
-            icon: Icons.contact_phone,
-            text: 'Contact Info',
-            // onTap: () =>
-            // Navigator.pushReplacementNamed(context, pageRoutes.contact),
+          Divider(),
+          Container(
+            margin: EdgeInsets.all(14.0),
+            child: Text("الاعدادت",style: TextStyle(color: boring_green,fontWeight: FontWeight.w600)),
+            alignment: Alignment.center,
           ),
-          ListTile(
-            title: Text('App version 1.0.0'),
-            onTap: () {},
+          Divider(),
+          Container(
+            margin: EdgeInsets.all(14.0),
+            child: Text("مساعده",style: TextStyle(color: boring_green,fontWeight: FontWeight.w600)),
+            alignment: Alignment.center,
           ),
+          Divider(),
+          Container(
+            margin: EdgeInsets.all(14.0),
+            child: Text("تسجيل خروج",style: TextStyle(color: boring_green,fontWeight: FontWeight.w600)),
+            alignment: Alignment.center,
+          ),
+          Divider(),
+
         ],
       ),
     );
@@ -213,11 +214,11 @@ class navigationDrawer extends StatelessWidget {
                     child: Container(
                       child: Text("Mohamed Ahmed"),
                       decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
-                            spreadRadius: 0)
+                        // BoxShadow(
+                        //     color: const Color(0x29000000),
+                        //     offset: Offset(0, 3),
+                        //     blurRadius: 6,
+                        //     spreadRadius: 0)
                       ]),
                     ),
                   ),

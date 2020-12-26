@@ -15,6 +15,8 @@ class ServiceFeatures extends StatelessWidget {
     return Scaffold(
       appBar: getPrimaryAppBar(context, _fixJidCategory.name),
       body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             color: kBackgroundWhite,
             border: Border.all(

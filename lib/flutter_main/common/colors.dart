@@ -70,3 +70,5 @@ const kBackgroundAppBar = Color(0xffffffff);
 const kTeal50 = Color(0xFFE0F2F1);
 const kTeal100 = Colors.blueAccent;
 const kEmptyColor = Color(0x0D000000);
+const btnColor = const Color(0xff00abff);
+const lightPrimary = Color(0xfffcfcff);

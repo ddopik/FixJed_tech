@@ -81,22 +81,27 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
         children: <Widget>[
           ListView(),
           Container(
-            color: Colors.red,
+            width: MediaQuery.of(context).size.width,
             child: Container(
-              padding: EdgeInsets.all(14.0),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              padding: EdgeInsets.all(12.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    height: 120,
+                    width: MediaQuery.of(context).size.width * .9,
+                    height: MediaQuery.of(context).size.height * .15,
                     child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                       children: [
                         Image.asset(
                           widget.category.imgPath,
                           fit: BoxFit.contain,
-                        ),
-                        SizedBox(
-                          width: 14.0,
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
@@ -132,7 +137,9 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
                       ],
                     ),
                   ),
-                  renderFeaturesList(),
+                  LimitedBox(
+                      maxHeight: MediaQuery.of(context).size.height * .7,
+                      child: renderFeaturesList()),
                 ],
               ),
             ),

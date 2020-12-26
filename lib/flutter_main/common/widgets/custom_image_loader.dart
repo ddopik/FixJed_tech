@@ -6,12 +6,11 @@ import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import '../../../skeleton.dart';
 
 
-enum kSize { small, medium, large }
 
 class CustomImageLoader {
  static Widget image({
     String url,
-    kSize size,
+
     double width,
     double height,
     BoxFit fit,
