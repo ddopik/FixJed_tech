@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
-import 'package:flutter_base_app/flutter_main/screens/home/model/FixJidCategory.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_features_list_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
+ import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_list_view.dart';
 
-class ServicesSubFeatures extends StatelessWidget {
-  final FixJidCategory _fixJidCategory;
-
-  ServicesSubFeatures(this._fixJidCategory);
+// ignore: must_be_immutable
+class SubServicesFeaturesScreen extends StatelessWidget {
+  FixJidService _fixJidCategory;
 
   @override
   Widget build(BuildContext context) {
+    _fixJidCategory = ModalRoute.of(context).settings.arguments;
+    if(_fixJidCategory != null && _fixJidCategory is FixJidService){
     return Scaffold(
-      appBar: getPrimaryAppBar(context, _fixJidCategory.name),
+      appBar: getPrimaryAppBar(context, _fixJidCategory.serviceName),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -25,9 +26,12 @@ class ServicesSubFeatures extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(28.0),
                 topRight: Radius.circular(28.0))),
-        child: SubFeaturesListView(category: _fixJidCategory),
+        child: SubFeaturesListView(service: _fixJidCategory),
       ),
     );
+    }else{
+      throw "SubServicesFeatures ----> Failed to pares Service ";
+    }
   }
 
   Widget getPrimaryAppBar(BuildContext context, title) {

@@ -21,10 +21,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "DoNotHaveAnAccount" : MessageLookupByLibrary.simpleMessage("Don\'t have an account ?"),
-    "ForgotPassword" : MessageLookupByLibrary.simpleMessage("Forgot Password"),
-    "close" : MessageLookupByLibrary.simpleMessage("close"),
-    "login" : MessageLookupByLibrary.simpleMessage("Login"),
-    "signUp" : MessageLookupByLibrary.simpleMessage("Sign Up")
+    "DoNotHaveAnAccount" : MessageLookupByLibrary.simpleMessage("لا تملك حساب ؟"),
+    "ForgotPassword" : MessageLookupByLibrary.simpleMessage("نسيت كلمه المرو"),
+    "cartService" : MessageLookupByLibrary.simpleMessage("خدمه للعربه"),
+    "close" : MessageLookupByLibrary.simpleMessage("اغلاق"),
+    "edit_profile" : MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
+    "help" : MessageLookupByLibrary.simpleMessage("مساعده"),
+    "loading" : MessageLookupByLibrary.simpleMessage("تحميل"),
+    "login" : MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "myServices" : MessageLookupByLibrary.simpleMessage("الخدمات"),
+    "notification" : MessageLookupByLibrary.simpleMessage("الاشعارات"),
+    "setting" : MessageLookupByLibrary.simpleMessage("الاعدادات"),
+    "signOut" : MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "signUp" : MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
+    "youHaveAdded" : MessageLookupByLibrary.simpleMessage("لقد اضفت عدد")
   };
 }

@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/feature.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 
-class FeatureListItemView extends StatelessWidget {
-  final Feature features;
+class ServiceFeatureItemView extends StatelessWidget {
+  final FixJidService service;
 
-  FeatureListItemView({this.features});
+  ServiceFeatureItemView({this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class FeatureListItemView extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   CustomImageLoader.image(
-                      url: features.featureImage,
+                      url: service.serviceImage,
                       fit: BoxFit.contain,
                       width: MediaQuery.of(context).size.width * .25,
                       height: MediaQuery.of(context).size.height * .3),
@@ -45,7 +45,7 @@ class FeatureListItemView extends StatelessWidget {
                         height: 12.0,
                       ),
                       Text(
-                        features.featureName,
+                        service.serviceName,
                         style: TextStyle(
                             color: boring_green,
                             fontWeight: FontWeight.w700,
@@ -60,7 +60,7 @@ class FeatureListItemView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * .47,
                         height: MediaQuery.of(context).size.height * .1,
                         child: Text(
-                          features.featureDesc,
+                          service.serviceDesc,
                           style: TextStyle(
                               color: Color(0xd9275597),
                               fontWeight: FontWeight.w400,

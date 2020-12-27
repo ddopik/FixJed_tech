@@ -15,8 +15,10 @@ class LocalPreferences {
 
   static final LocalPreferences _instance = LocalPreferences._internal();
 
-  factory LocalPreferences() => _instance;
+  factory LocalPreferences() {
 
+    return _instance;
+  }
 
   // LocalPreferences._();
   // static LocalPreferences get getInstance {
@@ -30,11 +32,12 @@ class LocalPreferences {
   //   return _localPreferences;
   // }
 
+  Future<bool> setUpLocalPreferences() async {
 
-
-  Future<void> setUpLocalPreferences() async {
     _prefs = await SharedPreferences.getInstance();
+
   }
+
 
   /// check if the screen is already seen At the first time
   bool checkFirstSeen() {
@@ -44,6 +47,10 @@ class LocalPreferences {
 
   String getUserToken() {
     return _prefs.getString(_userToken) ?? false;
+  }
+
+  setAppLanguage(String appLanguage) {
+    _prefs.setString(_appLanguage, appLanguage) ?? 'ar';
   }
 
   String getAppLanguage() {

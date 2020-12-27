@@ -3,12 +3,12 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
-import 'package:flutter_base_app/flutter_main/common/config.dart';
+import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
+import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/home/model/FixJidCategory.dart';
-import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/sub/service_sub_features_screen.dart';
+ import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,7 +32,6 @@ class AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    widget._app.getConfig();
   }
 
   /// Build the App Theme
@@ -44,7 +43,7 @@ class AppState extends State<App> {
 
     if (isDarkTheme) {
       return buildDarkTheme(appModel.locale).copyWith(
-        primaryColor: Color(int.parse(AppDefaultConfig['app_main_color'])),
+        primaryColor: Color(int.parse("4282476961")),
       );
     }
 
@@ -55,62 +54,69 @@ class AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return FutureBuilder(
         future: LocalPreferences().setUpLocalPreferences(),
         builder: (context, snapshot) {
-          return ChangeNotifierProvider<AppModel>.value(
-            value: widget._app,
-            child: Consumer<AppModel>(
-              builder: (context, value, child) {
-                widget._app.getConfig();
-                return MultiProvider(
-                  providers: [
-                    ChangeNotifierProvider(create: (_) => widget._app),
-                  ],
-                  child: MaterialApp(
-                    ///todo include MaterialApp to new <consumer> decedent of AppLanguageModel
-                    debugShowCheckedModeBanner: false,
-                    supportedLocales: S.delegate.supportedLocales,
-                    locale: Locale(Provider.of<AppModel>(context).locale, ""),
-                    localizationsDelegates: const [
-                      S.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                      DefaultCupertinoLocalizations.delegate,
+          if (snapshot.connectionState == ConnectionState.done) {
+            dismissLoading();
+            return ChangeNotifierProvider<AppModel>.value(
+              value: widget._app,
+              child: Consumer<AppModel>(
+                builder: (context, value, child) {
+                  return MultiProvider(
+                    providers: [
+                      ChangeNotifierProvider(create: (_) => widget._app),
                     ],
+                    child: MaterialApp(
+                      navigatorKey: navigatorKey,
+                      ///todo include MaterialApp to new <consumer> decedent of AppLanguageModel
+                      debugShowCheckedModeBanner: false,
+                      supportedLocales: S.delegate.supportedLocales,
+                      locale: Locale(Provider.of<AppModel>(context).locale, ""),
+                      localizationsDelegates: const [
+                        S.delegate,
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate,
+                        DefaultCupertinoLocalizations.delegate,
+                      ],
 
-                    home: Scaffold(
-                      body: getNextScreen(),
+                      home: Scaffold(
+                        body: getNextScreen(),
+                      ),
+                      routes: Routes.getAll(),
+                      theme: getTheme(context),
                     ),
-                    routes: Routes.getAll(),
-                    theme: getTheme(context),
-                  ),
-                );
-              },
-            ),
-          );
+                  );
+                },
+              ),
+            );
+          } else {
+            print("FutureBuilder  snapshot.Not hasData --->" + snapshot.hasData.toString());
+            return Center(child: CircularProgressIndicator(),);
+          }
         });
   }
 
   Widget getNextScreen() {
-    var cat = FixJidCategory(
-        imgPath: "assets/images/ic_menu_8.png",
-        name: "title",
-        desc: "desc desc desc desc desc");
+    var cat = FixJidService(
+        serviceImage: "assets/images/ic_menu_8.png",
+        serviceName: "title",
+        serviceDesc: "desc desc desc desc desc");
 
-    return HomeScreen();
+     // return HomeScreen();
     // return ServicesSubFeatures(cat);
+    return HomeScreen();
+    if (!LocalPreferences().isAppFirstSeen()) {
 
-    if (LocalPreferences().checkLogin()) {
-      return Container(); // todo navigate to home Screen
-    } else if (LocalPreferences().isAppFirstSeen()) {
+      if (!LocalPreferences().checkLogin()) {
+        return HomeScreen();
+      }else{
+        return LoginScreen();
+      }
+    } else{
       LocalPreferences().setFirstSeen(false);
-      return LoginScreen(); // todo navigate to on Boarding screen
-    } else {
-      return Container(); // todo navigate to on Login screen
+      return Container(); /// todo navigate to onBoarding screens
     }
   }
 }

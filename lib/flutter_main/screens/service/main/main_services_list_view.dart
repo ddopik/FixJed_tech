@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
-import 'package:flutter_base_app/flutter_main/screens/home/model/FixJidCategory.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/provider/feature_model.dart';
+ import 'package:flutter_base_app/flutter_main/screens/service/provider/feature_model.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import '../model/feature.dart';
-import 'feature_list_item.dart';
+import '../model/service.dart';
+import 'service_feature_item_view.dart';
 
 // ignore: must_be_immutable
-class MainFeaturesListView extends StatefulWidget {
-  final FixJidCategory category;
+class MainServicesListView extends StatefulWidget {
+  final FixJidService service;
 
-  MainFeaturesListView({this.category});
+  MainServicesListView({this.service});
 
   @override
-  _PagedFeaturesListViewState createState() => _PagedFeaturesListViewState();
+  _PagedServiceListViewState createState() => _PagedServiceListViewState();
 }
 
-class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
-  final _pagingController = PagingController<int, Feature>(
+class _PagedServiceListViewState extends State<MainServicesListView> {
+  final _pagingController = PagingController<int, FixJidService>(
     firstPageKey: 0,
   );
 
   @override
   void initState() {
-    print("MainFeaturesListView ---> initState category is " +
-        widget.category.id.toString());
+    print("MainServicesListView ---> initState Service is " +
+        widget.service.serviceId.toString());
     _pagingController.addPageRequestListener((pageKey) {
       _fetchPage(pageKey);
     });
@@ -36,18 +36,18 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
 
   Future<void> _fetchPage(int pageKey) async {
     final nextPageKey = pageKey + 1;
-    FeaturesModel().getCategoryFeaturesList(
-        onSuccess: (features) {
-          print("MainFeaturesListView  (_fetchPage" +
-              widget.category.id.toString() +
-              ")---> returned features size is  " +
-              (features as List).length.toString());
-          _pagingController.appendPage(features, nextPageKey);
+    FeaturesModel().getServiceFeaturesList(
+        onSuccess: (service) {
+          print("MainServicesListView  (_fetchPage" +
+              widget.service.serviceId.toString() +
+              ")---> returned Service size is  " +
+              (service as List).length.toString());
+          _pagingController.appendPage(service, nextPageKey);
         },
         onError: (error) {
           _pagingController.error = error;
         },
-        categoryId: widget.category.id,
+        serviceId: widget.service.serviceId,
         page: nextPageKey);
 
     // final newItems =
@@ -97,10 +97,9 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
                       children: [
                         Image.asset(
-                          widget.category.imgPath,
+                          widget.service.serviceImage,
                           fit: BoxFit.contain,
                         ),
                         Column(
@@ -112,7 +111,7 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
                               height: 12.0,
                             ),
                             Text(
-                              widget.category.name,
+                              widget.service.serviceName,
                               style: TextStyle(
                                   color: boring_green,
                                   fontWeight: FontWeight.w700,
@@ -124,7 +123,7 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
                               height: 12.0,
                             ),
                             Text(
-                              widget.category.desc,
+                              widget.service.serviceDesc,
                               style: TextStyle(
                                   color: Color(0xd9275597),
                                   fontWeight: FontWeight.w400,
@@ -138,8 +137,8 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
                     ),
                   ),
                   LimitedBox(
-                      maxHeight: MediaQuery.of(context).size.height * .7,
-                      child: renderFeaturesList()),
+                      maxHeight: MediaQuery.of(context).size.height * .69,
+                      child: renderServiceList()),
                 ],
               ),
             ),
@@ -149,13 +148,22 @@ class _PagedFeaturesListViewState extends State<MainFeaturesListView> {
     );
   }
 
-  renderFeaturesList() {
+  renderServiceList() {
     return PagedListView.separated(
       itemExtent: 300.0,
       pagingController: _pagingController,
-      builderDelegate: PagedChildBuilderDelegate<Feature>(
-        itemBuilder: (context, features, index) {
-          return FeatureListItemView(features: features);
+      builderDelegate: PagedChildBuilderDelegate<FixJidService>(
+        itemBuilder: (context, service, index) {
+          print("renderServiceList ---> $index");
+          return GestureDetector(
+            child: ServiceFeatureItemView(service: service),
+            onTap: () {
+              print("ServiceFeatureItemView OnTap ---> "+service.serviceId.toString());
+
+              Navigator.of(context)
+                  .pushNamed(Routes.SUB_SERVICE_FEATURES, arguments: service);
+            },
+          );
         },
         firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
           error: _pagingController.error,

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
 import 'package:flutter_base_app/flutter_main/screens/onboarding/on_boarding.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/main/service_feature_item_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/main/service_features_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 
 class Routes {
@@ -11,12 +14,16 @@ class Routes {
   static final SIGNUP = "/SignUpScreen";
   static final LOGIN = "/loginScreen";
   static final HOME = "/homeScreen";
+  static final SERVICE_FEATURES = "/service_features";
+  static final SUB_SERVICE_FEATURES = "/sub_service_features";
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
     SIGNUP: (context) => SignUpScreen(),
     LOGIN: (context) => LoginScreen(),
     ONBOARDING: (context) => OnBoardingScreen(),
+    SERVICE_FEATURES: (context) => ServiceFeaturesScreen(),
+    SUB_SERVICE_FEATURES: (context) => SubServicesFeaturesScreen(),
   };
 
 // todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget

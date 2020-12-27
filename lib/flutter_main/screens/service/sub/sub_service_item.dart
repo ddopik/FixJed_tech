@@ -1,15 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/feature.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 
-class SubFeatureListItem extends StatelessWidget {
-  final Feature features;
+class SubServiceItem extends StatefulWidget {
+  final FixJidService service;
+  final Function onAdd, onRemove;
 
-  SubFeatureListItem({this.features});
+  SubServiceItem({this.service, this.onAdd, this.onRemove});
 
   @override
+  State<StatefulWidget> createState() {
+    print("SubServiceItem ---> build with ${service.serviceId}");
+    return TotalAddedServicesState();
+  }
+}
+
+class TotalAddedServicesState extends State<SubServiceItem> {
+  @override
   Widget build(BuildContext context) {
+    print(
+        "TotalAddedServicesState ---> build() with ${widget.service.totalCartCount}");
 // return Container(width: 200,height: 200,color: Colors.white70,);
     return Card(
         shape: RoundedRectangleBorder(
@@ -18,8 +29,8 @@ class SubFeatureListItem extends StatelessWidget {
         elevation: 2.0,
         child: Container(
           width: MediaQuery.of(context).size.width * .8,
-          height: MediaQuery.of(context).size.height * .18,
-          padding: EdgeInsets.all(22.0),
+          height: MediaQuery.of(context).size.height * .20,
+          padding: EdgeInsets.all(18.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -30,7 +41,7 @@ class SubFeatureListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    features.featureName,
+                    widget.service.serviceName,
                     style: TextStyle(
                         color: boring_green,
                         fontWeight: FontWeight.w700,
@@ -45,7 +56,7 @@ class SubFeatureListItem extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * .7,
                     height: MediaQuery.of(context).size.height * .07,
                     child: Text(
-                      features.featureDesc,
+                      widget.service.serviceDesc,
                       style: TextStyle(
                           color: Color(0xff646363),
                           fontWeight: FontWeight.w400,
@@ -81,7 +92,10 @@ class SubFeatureListItem extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                   iconSize: 144,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    widget.onAdd(widget.service.serviceId,
+                                        widget.service.totalCartCount);
+                                  },
                                 ),
                                 fit: BoxFit.fill,
                               ),
@@ -90,7 +104,7 @@ class SubFeatureListItem extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 14.0),
                             child: Text(
-                              "1",
+                              widget.service.totalCartCount.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: french_blue),
@@ -105,11 +119,14 @@ class SubFeatureListItem extends StatelessWidget {
                               child: FittedBox(
                                 child: IconButton(
                                   icon: Icon(
-                                    Icons.add,
+                                    Icons.remove,
                                     color: Colors.white,
                                   ),
                                   iconSize: 144,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    widget.onRemove(widget.service.serviceId,
+                                        widget.service.totalCartCount);
+                                  },
                                 ),
                                 fit: BoxFit.fill,
                               ),

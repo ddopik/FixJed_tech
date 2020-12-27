@@ -23,8 +23,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "DoNotHaveAnAccount" : MessageLookupByLibrary.simpleMessage("Don\'t have an account ?"),
     "ForgotPassword" : MessageLookupByLibrary.simpleMessage("Forgot Password"),
+    "cartService" : MessageLookupByLibrary.simpleMessage("service to cart"),
     "close" : MessageLookupByLibrary.simpleMessage("close"),
+    "edit_profile" : MessageLookupByLibrary.simpleMessage("Edit profile"),
+    "help" : MessageLookupByLibrary.simpleMessage("Help"),
+    "loading" : MessageLookupByLibrary.simpleMessage("loading"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
-    "signUp" : MessageLookupByLibrary.simpleMessage("Sign Up")
+    "myServices" : MessageLookupByLibrary.simpleMessage("My services"),
+    "notification" : MessageLookupByLibrary.simpleMessage("Notification"),
+    "setting" : MessageLookupByLibrary.simpleMessage("Setting"),
+    "signOut" : MessageLookupByLibrary.simpleMessage("Sign Out"),
+    "signUp" : MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "youHaveAdded" : MessageLookupByLibrary.simpleMessage("you have added")
   };
 }

@@ -2,8 +2,17 @@
 
   "signUp": "Sign Up",
   "login": "Login",
+  "edit_profile": "Edit profile",
   "ForgotPassword": "Forgot Password",
   "DoNotHaveAnAccount": "Don't have an account ?",
-  "close": "close"
+  "close": "close",
+  "loading": "loading",
+  "myServices": "My services",
+  "notification": "Notification",
+  "help":"Help",
+  "setting": "Setting",
+  "signOut":"Sign Out",
+  "youHaveAdded": "you have added",
+  "cartService": "service to cart"
 
 }

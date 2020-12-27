@@ -1,8 +1,17 @@
 {
 
-  "signUp": "Sign Up",
-  "login": "Login",
-  "ForgotPassword": "Forgot Password",
-  "DoNotHaveAnAccount": "Don't have an account ?",
-  "close": "close"
+  "signUp": "تسجيل جديد",
+  "login": "تسجيل الدخول",
+  "ForgotPassword": "نسيت كلمه المرو",
+  "edit_profile": "تعديل الملف الشخصي",
+  "DoNotHaveAnAccount": "لا تملك حساب ؟",
+  "close": "اغلاق",
+  "loading": "تحميل",
+  "myServices": "الخدمات",
+  "notification": "الاشعارات",
+  "help":"مساعده",
+  "setting": "الاعدادات",
+  "signOut":"تسجيل الخروج",
+  "youHaveAdded": "لقد اضفت عدد",
+  "cartService": "خدمه للعربه"
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/flutter_main/screens/home/model/FixJidCategory.dart';
-
+import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
+ 
 class HomeCategoryItem extends StatelessWidget {
-  final FixJidCategory _fixJidCategory;
+  final FixJidService _fixJidCategory;
 
   HomeCategoryItem(this._fixJidCategory);
 
@@ -12,8 +12,7 @@ class HomeCategoryItem extends StatelessWidget {
     return Container(
         padding: const EdgeInsets.all(10.0),
         alignment: Alignment.center,
-        child: InkWell(
-          onTap: () {},
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -28,14 +27,14 @@ class HomeCategoryItem extends StatelessWidget {
                       fit: BoxFit.contain,
                       width: 80,
                       height: 80,
-                      image: AssetImage(_fixJidCategory.imgPath),
+                      image: AssetImage(_fixJidCategory.serviceImage),
                     ),
                   ),
                 ),
               ),
               Container(
                 child: Text(
-                  _fixJidCategory.name,
+                  _fixJidCategory.serviceName,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: TextStyle(),
@@ -43,6 +42,6 @@ class HomeCategoryItem extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        );
   }
 }

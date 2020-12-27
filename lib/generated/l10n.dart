@@ -55,6 +55,16 @@ class S {
     );
   }
 
+  /// `Edit profile`
+  String get edit_profile {
+    return Intl.message(
+      'Edit profile',
+      name: 'edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Forgot Password`
   String get ForgotPassword {
     return Intl.message(
@@ -80,6 +90,86 @@ class S {
     return Intl.message(
       'close',
       name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `loading`
+  String get loading {
+    return Intl.message(
+      'loading',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My services`
+  String get myServices {
+    return Intl.message(
+      'My services',
+      name: 'myServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification`
+  String get notification {
+    return Intl.message(
+      'Notification',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get help {
+    return Intl.message(
+      'Help',
+      name: 'help',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Setting`
+  String get setting {
+    return Intl.message(
+      'Setting',
+      name: 'setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Out`
+  String get signOut {
+    return Intl.message(
+      'Sign Out',
+      name: 'signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `you have added`
+  String get youHaveAdded {
+    return Intl.message(
+      'you have added',
+      name: 'youHaveAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `service to cart`
+  String get cartService {
+    return Intl.message(
+      'service to cart',
+      name: 'cartService',
       desc: '',
       args: [],
     );
