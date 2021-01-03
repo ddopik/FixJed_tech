@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
+import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/provider/feature_model.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_item.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -23,16 +26,19 @@ class SubFeaturesListView extends StatefulWidget {
 
 class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
   double getQuantityActionViewHeight = 0;
-  double getQuantityActionViewWidth = 0;
-  int totalAddedServices = 0;
-  final _pagingController = PagingController<int, FixJidService>(
+
+  ViewActionModel viewActionModel = ViewActionModel();
+
+  ProductModel _productModel;
+  final _pagingController = PagingController<int, Product>(
     firstPageKey: 0,
   );
 
   @override
   void initState() {
     print("MainFeaturesListView ---> initState category is " +
-        widget.service.serviceId.toString());
+        widget.service.id.toString());
+    _productModel = ProductModel();
     _fetchPage(0);
     // _pagingController.addPageRequestListener((pageKey) {
     //   _fetchPage(pageKey);
@@ -42,18 +48,28 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
 
   Future<void> _fetchPage(int pageKey) async {
     final nextPageKey = pageKey + 1;
-    FeaturesModel().getServiceFeaturesList(
+    ProductModel().getServicesProducts(
         onSuccess: (features) {
           print("MainFeaturesListView  (_fetchPage" +
-              widget.service.serviceId.toString() +
+              widget.service.id.toString() +
               ")---> returned features size is  " +
               (features as List).length.toString());
-          _pagingController.appendPage(features, nextPageKey);
+
+          Product product = (features as List)[0];
+          if (product.isDefault) {
+            setState(() {
+              viewActionModel.requestExamineEnabled = true;
+              viewActionModel.requestExamineObject = product;
+            });
+          }
+
+          _pagingController.appendLastPage(features);
+          // _pagingController.appendPage(features, nextPageKey);
         },
         onError: (error) {
           _pagingController.error = error;
         },
-        serviceId: widget.service.serviceId,
+        serviceId: widget.service.id,
         page: nextPageKey);
 
     // final newItems =
@@ -78,7 +94,7 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
 
   @override
   Widget build(BuildContext context) {
-    // print("MainFeaturesListView ---> build() " + widget.category.name.toString() + "   " + widget.category.id.toString());
+    print("SubFeaturesListView ---> build()  called");
     return RefreshIndicator(
       onRefresh: () => Future.sync(
         () => _pagingController.refresh(),
@@ -113,16 +129,14 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
     );
   }
 
-  viewQuantityActionView(int count) {
+  viewQuantityActionView() {
     setState(() {
-      totalAddedServices = count;
-      getQuantityActionViewWidth = MediaQuery.of(context).size.width;
+      viewActionModel.totalAddedServices = viewActionModel.totalAddedServices;
       getQuantityActionViewHeight = 50;
     });
 
     Future.delayed(Duration(seconds: 2), () {
       setState(() {
-        getQuantityActionViewWidth = 0;
         getQuantityActionViewHeight = 0;
       });
     });
@@ -130,12 +144,17 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
 
   Widget getQuantityActionView() {
     var firstSegment = S.of(context).youHaveAdded;
-    var midSegment = totalAddedServices.toString();
+    var midSegment = viewActionModel.totalAddedServices.toString();
     var lastSegment = S.of(context).cartService;
+
+    if (viewActionModel.actionType == ActionType.CART_PRODUCT) {
+      viewActionModel.viewActionMessage =
+          firstSegment + " " + midSegment + " " + lastSegment;
+    }
     return AnimatedContainer(
       curve: Curves.fastOutSlowIn,
       duration: Duration(seconds: 1),
-      width: getQuantityActionViewWidth,
+      width: MediaQuery.of(context).size.width,
       height: getQuantityActionViewHeight,
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -144,7 +163,7 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
               topRight: Radius.circular(16.0), topLeft: Radius.circular(16.0))),
       child: Container(
         child: Text(
-          firstSegment + " " + midSegment + " " + lastSegment,
+          viewActionModel.viewActionMessage,
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -160,9 +179,17 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Image.asset(widget.service.serviceImage,
+            SizedBox(
+              width: 12.0,
+            ),
+            CustomImageLoader.image(
+                url: widget.service.imageUrl ?? '',
+                fit: BoxFit.contain,
                 width: MediaQuery.of(context).size.width * .35,
                 height: MediaQuery.of(context).size.height * .12),
+            SizedBox(
+              width: 12.0,
+            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +199,7 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                   height: 12.0,
                 ),
                 Text(
-                  widget.service.serviceName,
+                  widget.service.name,
                   style: TextStyle(
                       color: boring_green,
                       fontWeight: FontWeight.w700,
@@ -184,9 +211,9 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                   height: 8.0,
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width * .6,
+                  width: MediaQuery.of(context).size.width * .5,
                   child: Text(
-                    widget.service.serviceDesc + widget.service.serviceDesc,
+                    widget.service.description ?? "",
                     maxLines: 3,
                     style: TextStyle(
                         color: Color(0xd9275597),
@@ -200,28 +227,51 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
             )
           ],
         ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * .1,
-          color: Color(0xd9275597),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "$x \n $y",
-                style: TextStyle(
-                  color: Color(0xffffffff),
+        viewActionModel.requestExamineEnabled
+            ? Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .1,
+                color: Color(0xd9275597),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      "$x \n $y",
+                      style: TextStyle(
+                        color: Color(0xffffffff),
+                      ),
+                    ),
+                    customActionButton(
+                        width: MediaQuery.of(context).size.width * .35,
+                        height: 43,
+                        btnText: "اطلب خبير",
+                        btnColor: boring_green,
+                        textColor: white,
+                        onPressed: () {
+                          showLoading(context);
+                          _productModel.addProductToCart(
+                              onSuccess: (response) {
+                                dismissLoading();
+                                setState(() {
+                                  print("SetState() called");
+                                  viewActionModel.actionType =
+                                      ActionType.MESSAGE;
+                                  viewActionModel.viewActionMessage =
+                                      "تم آضافه طلب خبير";
+                                  viewQuantityActionView();
+                                });
+                              },
+                              onError: (message) {
+                                dismissLoading();
+                                showError(message);
+                              },
+                              productID:
+                                  viewActionModel.requestExamineObject.id);
+                        }),
+                  ],
                 ),
-              ),
-              customActionButton(
-                  width: MediaQuery.of(context).size.width * .35,
-                  height: 43,
-                  btnText: "اطلب خبير",
-                  btnColor: boring_green,
-                  textColor: white),
-            ],
-          ),
-        )
+              )
+            : Container()
       ],
     );
   }
@@ -230,42 +280,68 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
     return PagedListView.separated(
       itemExtent: 300.0,
       pagingController: _pagingController,
-      builderDelegate: PagedChildBuilderDelegate<FixJidService>(
+      builderDelegate: PagedChildBuilderDelegate<Product>(
         itemBuilder: (context, service, index) {
           print("PagedListView builder called is --->" +
               service.totalCartCount.toString());
           return SubServiceItem(
-              service: service,
-              onAdd: (subServiceId, count) {
-                setState(() {
-                  _pagingController.itemList =
-                      _pagingController.itemList.map((e) {
-                    // print("map is --->"+e.serviceId +" currentSelected ---->"+subServiceId);
-                    if (e.serviceId == subServiceId.toString()) {
-                      print("found Match Add service");
-                      totalAddedServices = totalAddedServices + 1;
-                      e.totalCartCount = e.totalCartCount + 1;
-                      viewQuantityActionView(totalAddedServices);}
-                    return e;
-                  }).toList();
-                });
+              product: service,
+              onAdd: (productId, count) {
+                showLoading(context);
+                _productModel.addProductToCart(
+                    onSuccess: (response) {
+                      dismissLoading();
+
+                      _pagingController.itemList =
+                          _pagingController.itemList.map((e) {
+                        print("map is --->" + e.id.toString());
+                        if (e.id == productId) {
+                          print("Found Match --->" + productId.toString());
+                          viewActionModel.totalAddedServices = viewActionModel.totalAddedServices + 1;
+                          e.totalCartCount = e.totalCartCount + 1;
+
+                        }
+                        return e;
+                      }).toList();
+                      setState(() {
+                        print("SetState() called");
+                        viewActionModel.actionType = ActionType.CART_PRODUCT;
+                        viewQuantityActionView();
+                      });
+                    },
+                    onError: (message) {
+                      dismissLoading();
+                      showError(message);
+                    },
+                    productID: productId);
               },
-              onRemove: (subServiceId, count) {
-                setState(() {
-                  _pagingController.itemList =
-                      _pagingController.itemList.map((e) {
-                    // print("map is --->"+e.serviceId +" currentSelected ---->"+subServiceId);
-                    if (e.serviceId == subServiceId.toString()) {
-                      if ((e.totalCartCount) > 0) {
-                        e.totalCartCount = e.totalCartCount - 1;
-                        totalAddedServices = totalAddedServices - 1;
-                        viewQuantityActionView(totalAddedServices);
-                      }
-                    }
-                    return e;
-                  }).toList();
-                  ;
-                });
+              onRemove: (productId, count) {
+                showLoading(context);
+                _productModel.removeProductFromCart(
+                    onSuccess: (response) {
+                      dismissLoading();
+
+                      setState(() {
+                        _pagingController.itemList =
+                            _pagingController.itemList.map((e) {
+                          // print("map is --->"+e.serviceId +" currentSelected ---->"+subServiceId);
+                          if (e.id == productId) {
+                            if ((e.totalCartCount) > 0) {
+                              e.totalCartCount = e.totalCartCount - 1;
+                              viewActionModel.totalAddedServices = viewActionModel.totalAddedServices - 1;
+                              // viewQuantityActionView(totalAddedServices,"remove");
+                            }
+                          }
+                          return e;
+                        }).toList();
+                        ;
+                      });
+                    },
+                    onError: (message) {
+                      dismissLoading();
+                      showError(message);
+                    },
+                    productID: productId);
               });
         },
         firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
@@ -281,3 +357,13 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
     );
   }
 }
+
+class ViewActionModel {
+  bool requestExamineEnabled = false;
+  ActionType actionType;
+  String viewActionMessage='';
+  Product requestExamineObject;
+  int totalAddedServices = 0;
+}
+
+enum ActionType { CART_PRODUCT, MESSAGE }

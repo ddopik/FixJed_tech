@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'colors.dart';
 import 'fonts.dart';
 
@@ -23,10 +22,9 @@ IconThemeData _customIconTheme(IconThemeData original) {
   return original.copyWith(color: kGrey900);
 }
 
-ThemeData buildLightTheme(String language) {
+ThemeData buildLightTheme(currentLocal) {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
-
     colorScheme: kColorScheme,
     buttonColor: kTeal400,
     cardColor: Colors.white,
@@ -36,11 +34,16 @@ ThemeData buildLightTheme(String language) {
         colorScheme: kColorScheme,
         textTheme: ButtonTextTheme.normal,
         buttonColor: Color(6404710)),
-    primaryColorLight: kLightBG,
+     primaryColorLight: kLightBG,
     primaryIconTheme: _customIconTheme(base.iconTheme),
-    textTheme: _buildTextTheme(base.textTheme, language),
-    primaryTextTheme: _buildTextTheme(base.primaryTextTheme, language),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme, language),
+    textTheme: _buildTextTheme(base.textTheme,currentLocal),
+    primaryTextTheme: _buildTextTheme(base.primaryTextTheme,currentLocal),
+    accentTextTheme: _buildTextTheme(base.accentTextTheme,currentLocal),
+      inputDecorationTheme: const InputDecorationTheme(
+        // labelStyle: TextStyle(color: Colors.red),
+        // hintStyle: TextStyle(color: Colors.red),
+        // errorStyle: TextStyle(color: Colors.red)
+      ),
     iconTheme: _customIconTheme(base.iconTheme),
     hintColor: Colors.black26,
     backgroundColor: Colors.white,
@@ -76,8 +79,8 @@ ThemeData buildLightTheme(String language) {
   );
 }
 
-TextTheme _buildTextTheme(TextTheme base, String language) {
-  return kTextTheme(base, language)
+TextTheme _buildTextTheme(TextTheme base,local) {
+  return kTextTheme(base,local)
       .copyWith(
         headline5: base.headline5
             .copyWith(fontWeight: FontWeight.w500, color: Colors.red),
@@ -103,18 +106,18 @@ TextTheme _buildTextTheme(TextTheme base, String language) {
 }
 
 
-ThemeData buildDarkTheme(String language) {
+ThemeData buildDarkTheme(currentLocal) {
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
-    textTheme: _buildTextTheme(base.textTheme, language).apply(
+    textTheme: _buildTextTheme(base.textTheme,currentLocal).apply(
       displayColor: kLightBG,
       bodyColor: kLightBG,
     ),
-    primaryTextTheme: _buildTextTheme(base.primaryTextTheme, language).apply(
+    primaryTextTheme: _buildTextTheme(base.primaryTextTheme,currentLocal).apply(
       displayColor: kLightBG,
       bodyColor: kLightBG,
     ),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme, language).apply(
+    accentTextTheme: _buildTextTheme(base.accentTextTheme,currentLocal).apply(
       displayColor: kLightBG,
       bodyColor: kLightBG,
     ),
@@ -173,8 +176,3 @@ const ColorScheme kColorScheme = ColorScheme(
 );
 
 
-const kMessageTextFieldDecoration = InputDecoration(
-  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  hintText: 'Type your message here...',
-  border: InputBorder.none,
-);

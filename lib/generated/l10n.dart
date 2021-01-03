@@ -55,6 +55,26 @@ class S {
     );
   }
 
+  /// `Invalid user name or password `
+  String get invalidLogin {
+    return Intl.message(
+      'Invalid user name or password ',
+      name: 'invalidLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User name`
+  String get userName {
+    return Intl.message(
+      'User name',
+      name: 'userName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit profile`
   String get edit_profile {
     return Intl.message(
@@ -70,6 +90,26 @@ class S {
     return Intl.message(
       'Forgot Password',
       name: 'ForgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password Reset`
+  String get resetPassword {
+    return Intl.message(
+      'Password Reset',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send link`
+  String get sendResetPasswordLink {
+    return Intl.message(
+      'Send link',
+      name: 'sendResetPasswordLink',
       desc: '',
       args: [],
     );
@@ -170,6 +210,216 @@ class S {
     return Intl.message(
       'service to cart',
       name: 'cartService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `email`
+  String get email {
+    return Intl.message(
+      'email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password`
+  String get password {
+    return Intl.message(
+      'password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account ?`
+  String get doNotHaveAccount {
+    return Intl.message(
+      'Don\'t have an account ?',
+      name: 'doNotHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account`
+  String get alreadyHaveAccount {
+    return Intl.message(
+      'Already have an account',
+      name: 'alreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `invalid password`
+  String get invalidPassword {
+    return Intl.message(
+      'invalid password',
+      name: 'invalidPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `invalid Email`
+  String get invalidEmail {
+    return Intl.message(
+      'invalid Email',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First name`
+  String get firstName {
+    return Intl.message(
+      'First name',
+      name: 'firstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name`
+  String get lastName {
+    return Intl.message(
+      'Last name',
+      name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `invalid`
+  String get invalid {
+    return Intl.message(
+      'invalid',
+      name: 'invalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password not matched`
+  String get notMatchedPassword {
+    return Intl.message(
+      'password not matched',
+      name: 'notMatchedPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Phone number`
+  String get invalidEmptyPhoneNumber {
+    return Intl.message(
+      'Invalid Phone number',
+      name: 'invalidEmptyPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By creating an account you are agree to our \n terms of services and privacy Policy`
+  String get policyHint {
+    return Intl.message(
+      'By creating an account you are agree to our \n terms of services and privacy Policy',
+      name: 'policyHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account created successfully`
+  String get accountCreated {
+    return Intl.message(
+      'Account created successfully',
+      name: 'accountCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your inbox`
+  String get checkYourInbox {
+    return Intl.message(
+      'Check your inbox',
+      name: 'checkYourInbox',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We have sent you a link through\nThe email you just entered`
+  String get checkYourInboxDesc {
+    return Intl.message(
+      'We have sent you a link through\nThe email you just entered',
+      name: 'checkYourInboxDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cart`
+  String get cart {
+    return Intl.message(
+      'Cart',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGPِ`
+  String get egp {
+    return Intl.message(
+      'EGPِ',
+      name: 'egp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `you have removed`
+  String get youHaveRemoved {
+    return Intl.message(
+      'you have removed',
+      name: 'youHaveRemoved',
       desc: '',
       args: [],
     );

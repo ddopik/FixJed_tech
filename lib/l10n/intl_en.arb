@@ -2,8 +2,12 @@
 
   "signUp": "Sign Up",
   "login": "Login",
+  "invalidLogin": "Invalid user name or password ",
+  "userName":"User name",
   "edit_profile": "Edit profile",
   "ForgotPassword": "Forgot Password",
+  "resetPassword": "Password Reset",
+  "sendResetPasswordLink": "Send link",
   "DoNotHaveAnAccount": "Don't have an account ?",
   "close": "close",
   "loading": "loading",
@@ -13,6 +17,28 @@
   "setting": "Setting",
   "signOut":"Sign Out",
   "youHaveAdded": "you have added",
-  "cartService": "service to cart"
+  "cartService": "service to cart",
+  "email": "email",
+  "password": "password",
+  "forgotPassword": "Forgot password",
+  "doNotHaveAccount": "Don't have an account ?",
+  "alreadyHaveAccount": "Already have an account",
+  "invalidPassword": "invalid password",
+  "invalidEmail": "invalid Email",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "confirmPassword": "Confirm password",
+  "invalid": "invalid",
+  "notMatchedPassword": "password not matched",
+  "invalidEmptyPhoneNumber": "Invalid Phone number",
+  "phoneNumber": "Phone number",
+  "policyHint": "By creating an account you are agree to our \\n terms of services and privacy Policy",
+  "accountCreated": "Account created successfully",
+  "checkYourInbox": "Check your inbox",
+  "checkYourInboxDesc": "We have sent you a link through\nThe email you just entered",
+  "cart": "Cart",
+  "egp": "EGPِ",
+  "youHaveRemoved": "you have removed"
+
 
 }

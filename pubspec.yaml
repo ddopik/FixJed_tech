@@ -85,7 +85,7 @@ dependencies:
   cupertino_icons: ^1.0.0
    ## Date Piker as IOS picker
   flutter_cupertino_date_picker: 1.0.26+2
-  flutter_inappwebview: ^4.0.0+4
+#  flutter_inappwebview: ^4.0.0+4
   permission_handler: ^5.0.1+1
   ##Popup dialog with slide mechanism. Use it like AlertDialog or SimpleDialog.
   slide_popup_dialog: ^0.0.2

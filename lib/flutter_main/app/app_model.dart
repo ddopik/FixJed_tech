@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
- import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
+import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
 
 /// this is model is used to initialize app configuration
 /// and according to your needs can build all your providers and routes upon it
@@ -7,14 +7,33 @@ import 'package:flutter/cupertino.dart';
 /// */
 class AppModel extends ChangeNotifier {
   bool darkTheme = false;
-   String locale ="ar";
+  Locale locale = Locale.fromSubtags(languageCode: 'ar');
 
-
-
+  /// update AppMain consumer with this <local> value
   changeLanguage(String local, BuildContext context) async {
-    locale = local;
+    if (local == "ar") {
+      locale = Locale.fromSubtags(languageCode: 'ar');
+    } else {
+      locale = Locale.fromSubtags(languageCode: 'en');
+    }
     LocalPreferences().setAppLanguage(local);
     notifyListeners();
+  }
+
+  setAppFirstSeen(bool state) {
+    LocalPreferences().setFirstSeen(state);
+  }
+
+  setUserToken(token) {
+    LocalPreferences().setUserToken(token);
+  }
+
+  setUserMail(mail) {
+    LocalPreferences().setUserMail(mail);
+  }
+
+  setUserId(id) {
+    LocalPreferences().setUserId(id);
   }
 
   Future<void> updateTheme(bool theme) async {

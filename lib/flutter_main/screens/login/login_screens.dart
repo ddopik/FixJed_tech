@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
-import 'package:flutter_base_app/flutter_main/common/tools.dart';
+import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:flutter_base_app/network/dio_manager.dart';
+
+import 'model/loginResponse.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   String _password;
+  String _userName;
   final GlobalKey<FormState> _loginFormState = GlobalKey<FormState>();
 
   // Toggles the password show status
@@ -33,8 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/background_init.png"),
-                fit: BoxFit.fill
-            ),
+                fit: BoxFit.fill),
           ),
           child: renderLoginForm()),
     );
@@ -52,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             // Create an Account
             Text(
-              "Log in",
+              S.of(context).login,
               style: const TextStyle(
                   color: const Color(0xffffffff),
                   fontWeight: FontWeight.w500,
@@ -77,9 +82,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                   color: const Color(0xffffffff)),
               child: TextFormField(
-                  cursorColor: Colors.black,
                   keyboardType: TextInputType.name,
                   decoration: new InputDecoration(
+                      errorStyle: TextStyle(height: 0),
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -87,12 +92,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       disabledBorder: InputBorder.none,
                       contentPadding: EdgeInsets.only(
                           left: 15, bottom: 11, top: 11, right: 15),
-                      hintText: "Email /user Name",
+                      hintText: S.of(context).email,
                       hintStyle: TextStyle(fontSize: 14)),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Invalid User name";
+                      showToast(S.of(context).invalidEmail);
+                      return '';
                     }
+                    _userName = value;
                     return null;
                   }),
             ),
@@ -115,20 +122,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   cursorColor: Colors.black,
                   keyboardType: TextInputType.name,
                   decoration: new InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: "Password",
-                      hintStyle: TextStyle(fontSize: 14)
-                  ),
-                  obscureText: true,
+                      errorStyle: TextStyle(height: 0),
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.only(
+                          left: 15, bottom: 11, top: 11, right: 15),
+                      hintText: S.of(context).password,
+                      hintStyle: TextStyle(fontSize: 14)),
+                  // obscureText: true,
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Invalid Password";
+                      showToast(S.of(context).invalidPassword);
+                      return '';
                     }
+                    _password = value;
                     return null;
                   }),
             ),
@@ -136,46 +145,54 @@ class _LoginScreenState extends State<LoginScreen> {
 
             // Rectangle 85
             ////////////////////
-        InkWell(
-          child:
-            Container(
-              width: MediaQuery.of(context).size.width * .70,
-              height: 45,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(24)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                        spreadRadius: 0)
-                  ],
-                  color: boring_green),
-              child: Text(
-                  "log in",
+            InkWell(
+              child: Container(
+                width: MediaQuery.of(context).size.width * .70,
+                height: 45,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(24)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: const Color(0x29000000),
+                          offset: Offset(0, 3),
+                          blurRadius: 6,
+                          spreadRadius: 0)
+                    ],
+                    color: boring_green),
+                child: Text(
+                  S.of(context).login,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
                       fontWeight: FontWeight.w600),
                 ),
-
-              ),onTap: (){loginUser();},),
+              ),
+              onTap: () {
+                loginUser();
+              },
+            ),
 ////////////////////////////////
             // forgot password
             SizedBox(height: 6.0),
-            Text("Forgot Password?",
-                style: const TextStyle(
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Raleway",
-                    fontStyle: FontStyle.normal,
-                    fontSize: 12.7),
-                textAlign: TextAlign.center),
+            GestureDetector(
+              child: Text(S.of(context).forgotPassword,
+                  style: const TextStyle(
+                      color: boring_green,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "Raleway",
+                      fontStyle: FontStyle.normal,
+                      decoration: TextDecoration.underline,
+                      fontSize: 18),
+                  textAlign: TextAlign.center),
+              onTap: () {
+                Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD);
+              },
+            ),
             // doesnt have an account
             GestureDetector(
                 child: Container(
-                  height: 20,
+                  height: 25,
                   child: RichText(
                       text: TextSpan(children: [
                     TextSpan(
@@ -184,21 +201,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.w400,
                             fontFamily: "Raleway",
                             fontStyle: FontStyle.normal,
-                            fontSize: 14.7),
-                        text: "don't have an account? "),
+                            fontSize: 16),
+                        text: S.of(context).doNotHaveAccount),
                     TextSpan(
-                        style: const TextStyle(
-                            color: const Color(0xffffffff),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Raleway",
-                            fontStyle: FontStyle.normal,
-                            decoration: TextDecoration.underline,
-                            fontSize: 14.7),
-                        text: "Sign up",
+                      style: const TextStyle(
+                          color: boring_green,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Raleway",
+                          fontStyle: FontStyle.normal,
+                          decoration: TextDecoration.underline,
+                          fontSize: 18),
+                      text: "  " + S.of(context).signUp,
                     )
                   ])),
                 ),
-                onTap: () => Navigator.of(context).pushNamed(Routes.SIGNUP))
+                onTap: () => Navigator.of(context).pushNamed(Routes.SIGN_UP))
           ],
         ),
       ),
@@ -207,11 +224,28 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   loginUser() {
-    logger.i("loginUser --> Pressed");
     if (_loginFormState.currentState.validate()) {
-      Navigator.of(context).pushReplacementNamed(Routes.HOME);
-    } else {
-
+      _loginUser();
     }
+  }
+
+  _loginUser() {
+    showLoading(context);
+    DIOManager().sendLoginRequest(
+      onSuccess: (response) {
+        LoginResponse loginResponse = LoginResponse.fromJson(response);
+        dismissLoading();
+
+        AppModel().setUserMail(loginResponse.email);
+        AppModel().setUserId(loginResponse.id.toString());
+        Navigator.of(context).pushReplacementNamed(Routes.HOME);
+      },
+      onError: (response) {
+        showError(S.of(context).invalidLogin);
+        dismissLoading();
+      },
+      userName: _userName,
+      password: _password,
+    );
   }
 }

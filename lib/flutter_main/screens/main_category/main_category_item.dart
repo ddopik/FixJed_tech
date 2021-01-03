@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
  
 class HomeCategoryItem extends StatelessWidget {
-  final FixJidService _fixJidCategory;
+  final FixJidCategory _fixJidCategory;
 
   HomeCategoryItem(this._fixJidCategory);
 
@@ -23,18 +25,13 @@ class HomeCategoryItem extends StatelessWidget {
                 child: ClipOval(
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Image(
-                      fit: BoxFit.contain,
-                      width: 80,
-                      height: 80,
-                      image: AssetImage(_fixJidCategory.serviceImage),
-                    ),
+                    child:CustomImageLoader.image(url:_fixJidCategory.imageUrl,width: 80,height: 80,fit: BoxFit.contain),
                   ),
                 ),
               ),
               Container(
                 child: Text(
-                  _fixJidCategory.serviceName,
+                  _fixJidCategory.name,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: TextStyle(),

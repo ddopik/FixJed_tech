@@ -47,6 +47,7 @@ void showToast(message) {
   EasyLoading.showToast(message, duration: Duration(seconds: 3));
 }
 
+
 void showProgress(message) {
   EasyLoading.showProgress(0.3, status: message);
 }

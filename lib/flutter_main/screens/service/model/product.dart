@@ -1,35 +1,38 @@
-class FixJidService {
-  FixJidService({
+class Product {
+  Product({
     this.id,
     this.name,
     this.imageUrl,
-    this.hasProduct,
-    this.errors,
+    this.price,
     this.description,
+    this.errors,
+    this.isDefault
   });
 
   int id;
   String name;
   String imageUrl;
-  bool hasProduct;
+  int price;
+  dynamic description;
   dynamic errors;
-  String description;
-
-  factory FixJidService.fromJson(Map<String, dynamic> json) => FixJidService(
+  int totalCartCount=0;
+  bool isDefault = false;
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
     id: json["id"],
     name: json["name"],
     imageUrl: json["imageUrl"],
-    hasProduct: json["hasProduct"] == null ? null : json["hasProduct"],
-    errors: json["errors"],
+    price: json["price"],
     description: json["description"],
+    errors: json["errors"],
+    isDefault: json["default"]??false,
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "name": name,
     "imageUrl": imageUrl,
-    "hasProduct": hasProduct == null ? null : hasProduct,
-    "errors": errors,
+    "price": price,
     "description": description,
+    "errors": errors,
   };
 }

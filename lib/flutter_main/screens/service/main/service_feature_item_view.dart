@@ -29,10 +29,10 @@ class ServiceFeatureItemView extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   CustomImageLoader.image(
-                      url: service.serviceImage,
+                      url: service.imageUrl,
                       fit: BoxFit.contain,
                       width: MediaQuery.of(context).size.width * .25,
-                      height: MediaQuery.of(context).size.height * .3),
+                      height: MediaQuery.of(context).size.height * .3 ),
                   SizedBox(
                     width: 14.0,
                   ),
@@ -45,7 +45,7 @@ class ServiceFeatureItemView extends StatelessWidget {
                         height: 12.0,
                       ),
                       Text(
-                        service.serviceName,
+                        service.name,
                         style: TextStyle(
                             color: boring_green,
                             fontWeight: FontWeight.w700,
@@ -60,7 +60,7 @@ class ServiceFeatureItemView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * .47,
                         height: MediaQuery.of(context).size.height * .1,
                         child: Text(
-                          service.serviceDesc,
+                          service.description ?? "",
                           style: TextStyle(
                               color: Color(0xd9275597),
                               fontWeight: FontWeight.w400,

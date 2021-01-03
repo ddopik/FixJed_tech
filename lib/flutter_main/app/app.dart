@@ -6,11 +6,16 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
+import 'package:flutter_base_app/flutter_main/screens/cart/cart_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
- import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
+import 'package:flutter_base_app/flutter_main/screens/signup/SignUpSuccessScreen.dart';
+import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -35,25 +40,24 @@ class AppState extends State<App> {
   }
 
   /// Build the App Theme
-  ThemeData getTheme(context) {
+  ThemeData getTheme(currentLocal,AppModel appModel) {
     Logger(printer: SimplePrinter(colors: true)).v("[AppState] build Theme");
 
-    AppModel appModel = Provider.of<AppModel>(context, listen: false);
+
     bool isDarkTheme = appModel.darkTheme ?? false;
 
     if (isDarkTheme) {
-      return buildDarkTheme(appModel.locale).copyWith(
+      return buildDarkTheme(currentLocal).copyWith(
         primaryColor: Color(int.parse("4282476961")),
       );
     }
 
     //
-    return buildLightTheme(appModel.locale).copyWith(
-        primaryColor: Colors.blueAccent, scaffoldBackgroundColor: Colors.white);
+    return buildLightTheme(currentLocal).copyWith(primaryColor: Colors.blueAccent, scaffoldBackgroundColor: Colors.white);
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext appContext) {
     return FutureBuilder(
         future: LocalPreferences().setUpLocalPreferences(),
         builder: (context, snapshot) {
@@ -72,7 +76,7 @@ class AppState extends State<App> {
                       ///todo include MaterialApp to new <consumer> decedent of AppLanguageModel
                       debugShowCheckedModeBanner: false,
                       supportedLocales: S.delegate.supportedLocales,
-                      locale: Locale(Provider.of<AppModel>(context).locale, ""),
+                      locale: Provider.of<AppModel>(context).locale,
                       localizationsDelegates: const [
                         S.delegate,
                         GlobalMaterialLocalizations.delegate,
@@ -80,12 +84,12 @@ class AppState extends State<App> {
                         GlobalCupertinoLocalizations.delegate,
                         DefaultCupertinoLocalizations.delegate,
                       ],
-
+                      builder: EasyLoading.init(),
                       home: Scaffold(
                         body: getNextScreen(),
                       ),
                       routes: Routes.getAll(),
-                      theme: getTheme(context),
+                      theme: getTheme("ar",value),
                     ),
                   );
                 },
@@ -99,14 +103,15 @@ class AppState extends State<App> {
   }
 
   Widget getNextScreen() {
-    var cat = FixJidService(
-        serviceImage: "assets/images/ic_menu_8.png",
-        serviceName: "title",
-        serviceDesc: "desc desc desc desc desc");
 
-     // return HomeScreen();
-    // return ServicesSubFeatures(cat);
-    return HomeScreen();
+
+    if (LocalPreferences().getUserToken() != null) {
+      return HomeScreen();
+    }else{
+      return LoginScreen();
+    }
+    // // return ServicesSubFeatures(cat);
+    // return ForgotPasswordScreen();
     if (!LocalPreferences().isAppFirstSeen()) {
 
       if (!LocalPreferences().checkLogin()) {
@@ -114,8 +119,9 @@ class AppState extends State<App> {
       }else{
         return LoginScreen();
       }
+
     } else{
-      LocalPreferences().setFirstSeen(false);
+      Provider.of<AppModel>(context).setAppFirstSeen(false);
       return Container(); /// todo navigate to onBoarding screens
     }
   }

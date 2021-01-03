@@ -3,81 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
-import 'package:flutter_base_app/flutter_main/screens/home/home_category_item.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/main_category_item.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/main_category_list_view.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/homePage';
-
-  List<FixJidService> menuList = [
-    FixJidService(
-        serviceId: "1",
-        serviceImage: "assets/images/ic_menu_8.png",
-        serviceName: 'Plumber',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "2",
-        serviceImage: "assets/images/ic_menu_2.png",
-        serviceName: 'Fridge',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "3",
-        serviceImage: "assets/images/ic_menu_3.png",
-        serviceName: 'Window',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "4",
-        serviceImage: "assets/images/ic_menu_4.png",
-        serviceName: 'Wash Machine',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "5",
-        serviceImage: "assets/images/ic_menu_5.png",
-        serviceName: 'Carpenter',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "6",
-        serviceImage: "assets/images/ic_menu_5.png",
-        serviceName: 'Electrician',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "7",
-        serviceImage: "assets/images/ic_menu_7.png",
-        serviceName: 'Car',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "8",
-        serviceImage: "assets/images/ic_menu_8.png",
-        serviceName: 'Clean',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "9",
-        serviceImage: "assets/images/ic_menu_9.png",
-        serviceName: 'Construction',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "10",
-        serviceImage: "assets/images/ic_menu_10.png",
-        serviceName: 'Desinfection',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "11",
-        serviceImage: "assets/images/ic_menu_11.png",
-        serviceName: 'Desinfection',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "12",
-        serviceImage: "assets/images/ic_menu_12.png",
-        serviceName: 'Desinfection',
-        serviceDesc: "desc desc desc desc desc"),
-    FixJidService(
-        serviceId: "13",
-        serviceImage: "assets/images/ic_menu_13.png",
-        serviceName: 'Desinfection',
-        serviceDesc: "desc desc desc desc desc"),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -134,32 +66,11 @@ class HomeScreen extends StatelessWidget {
                           topLeft: Radius.circular(24.0),
                           topRight: Radius.circular(24.0))),
                   alignment: Alignment.center,
-                  child: renderHomeView(context)),
+                  child: MainCategoryListView()),
             )));
   }
 
-  renderHomeView(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: GridView.count(
-            crossAxisCount: 3,
-            childAspectRatio: .7,
-            padding: const EdgeInsets.all(4.0),
-            mainAxisSpacing: 0.0,
-            crossAxisSpacing: 0.0,
-            children: [
-              ...menuList.map((e) {
-                return InkWell(
-                  child: HomeCategoryItem(e),
-                  onTap: () {
-                    print("HomeCategoryItem OnTap ---> "+e.serviceId.toString());
-                    Navigator.of(context)
-                        .pushNamed(Routes.SERVICE_FEATURES, arguments: e);
-                  },
-                );
-              })
-            ]));
-  }
+
 }
 
 class navigationDrawer extends StatelessWidget {

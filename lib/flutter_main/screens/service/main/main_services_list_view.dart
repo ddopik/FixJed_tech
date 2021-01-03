@@ -3,7 +3,9 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
- import 'package:flutter_base_app/flutter_main/screens/service/provider/feature_model.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../model/service.dart';
@@ -11,9 +13,9 @@ import 'service_feature_item_view.dart';
 
 // ignore: must_be_immutable
 class MainServicesListView extends StatefulWidget {
-  final FixJidService service;
+  final FixJidCategory fixJidCategory;
 
-  MainServicesListView({this.service});
+  MainServicesListView({this.fixJidCategory});
 
   @override
   _PagedServiceListViewState createState() => _PagedServiceListViewState();
@@ -26,28 +28,31 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
 
   @override
   void initState() {
-    print("MainServicesListView ---> initState Service is " +
-        widget.service.serviceId.toString());
-    _pagingController.addPageRequestListener((pageKey) {
-      _fetchPage(pageKey);
-    });
+    print("MainServicesListView ---> initState ServiceCategory is " +
+        widget.fixJidCategory.id.toString());
+    _fetchPage(0);
+    // _pagingController.addPageRequestListener((pageKey) {
+    //   _fetchPage(pageKey);
+    // });
     super.initState();
   }
 
   Future<void> _fetchPage(int pageKey) async {
     final nextPageKey = pageKey + 1;
-    FeaturesModel().getServiceFeaturesList(
+    ProductModel().getCategoryServiceList(
         onSuccess: (service) {
           print("MainServicesListView  (_fetchPage" +
-              widget.service.serviceId.toString() +
-              ")---> returned Service size is  " +
+              widget.fixJidCategory.id.toString() +
+              ")---> returned Services size is  " +
               (service as List).length.toString());
-          _pagingController.appendPage(service, nextPageKey);
+          _pagingController.appendLastPage(service);
+          // _pagingController.appendPage(service, nextPageKey);
         },
         onError: (error) {
           _pagingController.error = error;
+          _pagingController.appendLastPage([]);
         },
-        serviceId: widget.service.serviceId,
+        categoryId: widget.fixJidCategory.id,
         page: nextPageKey);
 
     // final newItems =
@@ -96,11 +101,20 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                     height: MediaQuery.of(context).size.height * .15,
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.asset(
-                          widget.service.serviceImage,
-                          fit: BoxFit.contain,
+                        SizedBox(
+                          width: 28,
+                        ),
+                        Container(
+                          child: CustomImageLoader.image(
+                              url: widget.fixJidCategory.imageUrl,
+                              fit: BoxFit.cover,
+                              width: MediaQuery.of(context).size.width * .25,
+                              height: MediaQuery.of(context).size.height * .3),
+                          color: Colors.red,
+                        ),
+                        SizedBox(
+                          width: 24,
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
@@ -111,7 +125,7 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                               height: 12.0,
                             ),
                             Text(
-                              widget.service.serviceName,
+                              widget.fixJidCategory.name,
                               style: TextStyle(
                                   color: boring_green,
                                   fontWeight: FontWeight.w700,
@@ -123,7 +137,7 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                               height: 12.0,
                             ),
                             Text(
-                              widget.service.serviceDesc,
+                              "description here",
                               style: TextStyle(
                                   color: Color(0xd9275597),
                                   fontWeight: FontWeight.w400,
@@ -158,10 +172,12 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
           return GestureDetector(
             child: ServiceFeatureItemView(service: service),
             onTap: () {
-              print("ServiceFeatureItemView OnTap ---> "+service.serviceId.toString());
-
-              Navigator.of(context)
-                  .pushNamed(Routes.SUB_SERVICE_FEATURES, arguments: service);
+              print(
+                  "ServiceFeatureItemView OnTap ---> " + service.id.toString());
+              if (service.hasProduct) {
+                Navigator.of(context)
+                    .pushNamed(Routes.SUB_SERVICE_FEATURES, arguments: service);
+              }
             },
           );
         },

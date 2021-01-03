@@ -1,17 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 
 class SubServiceItem extends StatefulWidget {
-  final FixJidService service;
+  final Product product;
   final Function onAdd, onRemove;
 
-  SubServiceItem({this.service, this.onAdd, this.onRemove});
+  SubServiceItem({this.product, this.onAdd, this.onRemove});
 
   @override
   State<StatefulWidget> createState() {
-    print("SubServiceItem ---> build with ${service.serviceId}");
+    print("SubServiceItem ---> build with ${product.id}");
     return TotalAddedServicesState();
   }
 }
@@ -20,7 +22,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
   @override
   Widget build(BuildContext context) {
     print(
-        "TotalAddedServicesState ---> build() with ${widget.service.totalCartCount}");
+        "TotalAddedServicesState ---> build() with ${widget.product.totalCartCount}");
 // return Container(width: 200,height: 200,color: Colors.white70,);
     return Card(
         shape: RoundedRectangleBorder(
@@ -41,7 +43,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    widget.service.serviceName,
+                    widget.product.name,
                     style: TextStyle(
                         color: boring_green,
                         fontWeight: FontWeight.w700,
@@ -56,7 +58,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                     width: MediaQuery.of(context).size.width * .7,
                     height: MediaQuery.of(context).size.height * .07,
                     child: Text(
-                      widget.service.serviceDesc,
+                      widget.product.description ?? "",
                       style: TextStyle(
                           color: Color(0xff646363),
                           fontWeight: FontWeight.w400,
@@ -69,7 +71,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text("١٠٠ جنيه مصري",
+                      Text(widget.product.price.toString() +" "+S.of(context).egp,
                           style: const TextStyle(
                               color: boring_green,
                               fontWeight: FontWeight.w800,
@@ -93,8 +95,8 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                                   ),
                                   iconSize: 144,
                                   onPressed: () {
-                                    widget.onAdd(widget.service.serviceId,
-                                        widget.service.totalCartCount);
+                                    widget.onAdd(widget.product.id,
+                                        widget.product.totalCartCount);
                                   },
                                 ),
                                 fit: BoxFit.fill,
@@ -104,7 +106,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 14.0),
                             child: Text(
-                              widget.service.totalCartCount.toString(),
+                              widget.product.totalCartCount.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: french_blue),
@@ -124,8 +126,8 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                                   ),
                                   iconSize: 144,
                                   onPressed: () {
-                                    widget.onRemove(widget.service.serviceId,
-                                        widget.service.totalCartCount);
+                                    widget.onRemove(widget.product.id,
+                                        widget.product.totalCartCount);
                                   },
                                 ),
                                 fit: BoxFit.fill,

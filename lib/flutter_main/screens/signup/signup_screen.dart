@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
+import 'package:flutter_base_app/network/dio_manager.dart';
 
 import '../../../generated/l10n.dart';
 
@@ -19,10 +21,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _confirm_password_controller =
       TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
+  String firstName, lastName, userName, email, phoneNumber;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,
@@ -51,7 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // Create an Account
-            Text("Create an account",
+            Text(S.of(context).signUp,
                 style: const TextStyle(
                     color: const Color(0xffffffff),
                     fontWeight: FontWeight.w500,
@@ -83,6 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       cursorColor: Colors.black,
                       keyboardType: TextInputType.name,
                       decoration: new InputDecoration(
+                          errorStyle: TextStyle(height: 0),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -90,12 +93,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           disabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.only(
                               left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: "First Name",
+                          hintText: S.of(context).firstName,
                           hintStyle: TextStyle(fontSize: 14)),
                       validator: (value) {
                         if (value.isEmpty) {
-                          return "Invalid User name";
+                          return S.of(context).invalid;
                         }
+                        firstName = value;
                         return null;
                       }),
                 ),
@@ -117,6 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       cursorColor: Colors.black,
                       keyboardType: TextInputType.name,
                       decoration: new InputDecoration(
+                          errorStyle: TextStyle(height: 0),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -124,12 +129,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           disabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.only(
                               left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: "Last name",
+                          hintText: S.of(context).lastName,
                           hintStyle: TextStyle(fontSize: 14)),
                       validator: (value) {
                         if (value.isEmpty) {
-                          return "Invalid Last name";
+                          return S.of(context).invalid;
                         }
+                        lastName = value;
                         return null;
                       }),
                 ),
@@ -151,24 +157,63 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   color: const Color(0xffffffff)),
               child: TextFormField(
                   cursorColor: Colors.black,
-                  keyboardType: TextInputType.name,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                     contentPadding: EdgeInsets.only(
                         left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: "Email",
+                    hintText: S.of(context).email,
                     hintStyle: TextStyle(fontSize: 14),
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Invalid Email ";
+                      return S.of(context).invalid;
                     }
+                    email = value;
                     return null;
                   }),
-            ), //
+            ),
+            //
+            Container(
+              width: mainButtonsWidth,
+              height: 45,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(24)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: const Color(0x29000000),
+                        offset: Offset(0, 3),
+                        blurRadius: 6,
+                        spreadRadius: 0)
+                  ],
+                  color: const Color(0xffffffff)),
+              child: TextFormField(
+                  cursorColor: Colors.black,
+                  keyboardType: TextInputType.name,
+                  decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 11, right: 15),
+                    hintText: S.of(context).userName,
+                    hintStyle: TextStyle(fontSize: 14),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return S.of(context).invalid;
+                    }
+                    userName = value;
+                    return null;
+                  }),
+            ),
+            //
             Container(
               width: mainButtonsWidth,
               height: 45,
@@ -187,19 +232,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   cursorColor: Colors.black,
                   keyboardType: TextInputType.name,
                   decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                     contentPadding: EdgeInsets.only(
                         left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: "Password",
+                    hintText: S.of(context).password,
                     hintStyle: TextStyle(fontSize: 14),
                   ),
                   obscureText: true,
                   validator: (value) {
-                    if (value.isEmpty) {
-                      return "Invalid Password";
+                    if (value.isEmpty && value.length < 6) {
+                      return S.of(context).invalid;
                     }
                     return null;
                   }),
@@ -223,26 +269,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   cursorColor: Colors.black,
                   keyboardType: TextInputType.name,
                   decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                     contentPadding: EdgeInsets.only(
                         left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: "Confirm Password",
+                    hintText: S.of(context).confirmPassword,
                     hintStyle: TextStyle(fontSize: 14),
                   ),
                   obscureText: true,
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Invalid Password";
+                      return S.of(context).invalid;
                     } else if (_password_controller.value !=
                         _confirm_password_controller.value) {
-                      return "PassWord not matchd";
+                      return S.of(context).notMatchedPassword;
                     }
                     return null;
                   }),
-            ), //
+            ),
+            //
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -266,6 +314,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     keyboardType: TextInputType.name,
                     enabled: false,
                     decoration: new InputDecoration(
+                        errorStyle: TextStyle(height: 0),
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -295,6 +344,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       cursorColor: Colors.black,
                       keyboardType: TextInputType.phone,
                       decoration: new InputDecoration(
+                        errorStyle: TextStyle(height: 0),
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -302,56 +352,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         disabledBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: "Phone number",
+                        hintText: S.of(context).phoneNumber,
                         hintStyle: TextStyle(fontSize: 14),
                       ),
                       validator: (value) {
                         if (value.isEmpty) {
-                          return "Phone can't be Empty";
+                          return S.of(context).invalid;
                         } else if (_phoneNumberController.value.text.length !=
                             11) {
-                          return "Invalid phone number";
+                          return S.of(context).invalidEmptyPhoneNumber;
                         }
+                        phoneNumber = value;
                         return null;
                       }),
                 ),
               ],
             ),
 
-            Container(
-              width: mainButtonsWidth,
-              height: 45,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(24)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                        spreadRadius: 0)
-                  ],
-                  color: const Color(0xffffffff)),
-              child: TextFormField(
-                cursorColor: Colors.black,
-                keyboardType: TextInputType.name,
-                decoration: new InputDecoration(
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                  hintText: "Invitation Code (Optional)",
-                ),
-              ),
-            ), //
+            // Container(
+            //   width: mainButtonsWidth,
+            //   height: 45,
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.all(Radius.circular(24)),
+            //       boxShadow: [
+            //         BoxShadow(
+            //             color: const Color(0x29000000),
+            //             offset: Offset(0, 3),
+            //             blurRadius: 6,
+            //             spreadRadius: 0)
+            //       ],
+            //       color: const Color(0xffffffff)),
+            //   child: TextFormField(
+            //     cursorColor: Colors.black,
+            //     keyboardType: TextInputType.name,
+            //     decoration: new InputDecoration(
+            //       border: InputBorder.none,
+            //       focusedBorder: InputBorder.none,
+            //       enabledBorder: InputBorder.none,
+            //       disabledBorder: InputBorder.none,
+            //       contentPadding:
+            //           EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+            //       hintText: "Invitation Code (Optional)",
+            //     ),
+            //   ),
+            // ), //
 
             // Rectangle 85
 
             // forgot password
             SizedBox(height: 6.0),
-            Text(
-                "By creating an account you are agree to our \n terms of services and privacy Policy",
+            Text(S.of(context).policyHint,
                 style: const TextStyle(
                     color: const Color(0xffffffff),
                     fontWeight: FontWeight.w400,
@@ -376,7 +426,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     color: boring_green),
                 child: InkWell(
                   child: Text(
-                    "Sign up",
+                    S.of(context).signUp,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
@@ -397,7 +447,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           fontFamily: "Raleway",
                           fontStyle: FontStyle.normal,
                           fontSize: 12.7),
-                      text: "Already have an account ?"),
+                      text: S.of(context).alreadyHaveAccount),
                   TextSpan(
                       style: const TextStyle(
                           color: const Color(0xffffffff),
@@ -406,11 +456,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           fontStyle: FontStyle.normal,
                           decoration: TextDecoration.underline,
                           fontSize: 16.7),
-                      text: "Log in")
+                      text: S.of(context).login)
                 ])),
                 onTap: () => Navigator.of(context).popAndPushNamed(Routes.LOGIN)
                 // onTap: () => Navigator.of(context).pushAndRemoveUntil(Routes.LOGIN)
-            )
+                )
           ],
         ),
       ),
@@ -419,9 +469,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   _signUpUser() {
     if (_signUpFormState.currentState.validate()) {
+      showLoading(context);
+      DIOManager().createUser(
+          onSuccess: (response) {
+            dismissLoading();
+            Navigator.of(context).pushReplacementNamed(Routes.SIGN_UP_SUCCESS);
 
-      return;
-      //todo call Api here
+          },
+          onError: (message) {
+            dismissLoading();
+            showError(message);
+          },
+          firstName: firstName,
+          userName: userName,
+          lastName: lastName,
+          mail: email,
+          phone: phoneNumber,
+          password: _password_controller.value.text);
     }
 
     logger.d('Failed to validate SignUpForm');

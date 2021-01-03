@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 
 import 'main_services_list_view.dart';
 
 // ignore: must_be_immutable
 class ServiceFeaturesScreen extends StatelessWidget {
-  FixJidService _fixJidCategory;
+  FixJidCategory _fixJidCategory;
 
   @override
   Widget build(BuildContext context) {
     _fixJidCategory = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
-      appBar: getPrimaryAppBar(context, _fixJidCategory.serviceName),
+      appBar: getPrimaryAppBar(context, _fixJidCategory.name),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -27,7 +28,7 @@ class ServiceFeaturesScreen extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(28.0),
                 topRight: Radius.circular(28.0))),
-        child: MainServicesListView(service: _fixJidCategory),
+        child: MainServicesListView(fixJidCategory: _fixJidCategory),
       ),
     );
   }

@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
 import 'package:flutter_base_app/flutter_main/screens/onboarding/on_boarding.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/main/service_feature_item_view.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/main/service_features_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/signup/SignUpSuccessScreen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> getAll() => _routes;
 
-  static final ONBOARDING = "/OnBoardingScreen";
-  static final SIGNUP = "/SignUpScreen";
-  static final LOGIN = "/loginScreen";
-  static final HOME = "/homeScreen";
-  static final SERVICE_FEATURES = "/service_features";
-  static final SUB_SERVICE_FEATURES = "/sub_service_features";
+  static const ON_BOARDING = "/OnBoardingScreen";
+  static const SIGN_UP = "/SignUpScreen";
+  static const SIGN_UP_SUCCESS = "/sign_up_success";
+  static const LOGIN = "/loginScreen";
+  static const FORGOT_PASSWORD = "/forgot_password";
+  static const HOME = "/homeScreen";
+  static const SERVICE_FEATURES = "/service_features";
+  static const SUB_SERVICE_FEATURES = "/sub_service_features";
+
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
-    SIGNUP: (context) => SignUpScreen(),
+    SIGN_UP: (context) => SignUpScreen(),
+    SIGN_UP_SUCCESS: (context) => SignUpSuccessScreen(),
+    FORGOT_PASSWORD: (context) => ForgotPasswordScreen(),
     LOGIN: (context) => LoginScreen(),
-    ONBOARDING: (context) => OnBoardingScreen(),
+    ON_BOARDING: (context) => OnBoardingScreen(),
     SERVICE_FEATURES: (context) => ServiceFeaturesScreen(),
     SUB_SERVICE_FEATURES: (context) => SubServicesFeaturesScreen(),
   };
