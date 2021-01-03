@@ -43,7 +43,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    widget.product.name,
+                    widget.product.name??'',
                     style: TextStyle(
                         color: boring_green,
                         fontWeight: FontWeight.w700,

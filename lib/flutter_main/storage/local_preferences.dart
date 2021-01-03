@@ -1,23 +1,27 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalPreferences {
-  final _userSeen = "seen";
-  final _loggedIn = "'logged_in'";
-  final _userToken = "user_token";
-  final _appLanguage = "app_language";
-  final _userMail = "user_mail";
-  final _userID = "user_id";
-  static LocalPreferences _localPreferences;
-  static LocalPreferences _factoryLocalPreferences;
-  SharedPreferences _prefs;
+  static const _userSeen = "seen";
+  static const _loggedIn = "'logged_in'";
+  static const _userToken = "user_token";
+  static const _appLanguage = "app_language";
+  static const _userMail = "user_mail";
+  static const _userID = "user_id";
+
+  LocalPreferences._();
 
   // The _internal construction is just a name often given to constructors that are private to the class (the name is not required to be ._internal you can create a private constructor using any Class._someName construction).
-  LocalPreferences._internal();
+  // LocalPreferences._internal();
+  //
+  // static final LocalPreferences _instance = LocalPreferences._internal();
 
-  static final LocalPreferences _instance = LocalPreferences._internal();
+  // factory LocalPreferences() {
+  //   return _instance;
+  // }
+  static SharedPreferences prefs2;
 
-  factory LocalPreferences() {
-    return _instance;
+  static  setupSharedPreferences() async {
+    prefs2 = await SharedPreferences.getInstance();
   }
 
   // LocalPreferences._();
@@ -32,61 +36,75 @@ class LocalPreferences {
   //   return _localPreferences;
   // }
 
-  Future<bool> setUpLocalPreferences() async {
-    _prefs = await SharedPreferences.getInstance();
+  static Future<bool> setUpLocalPreferences() async {
+
   }
 
   /// check if the screen is already seen At the first time
-  bool checkFirstSeen() {
+  static Future<bool> checkFirstSeen() async {
+    var _prefs= await SharedPreferences.getInstance();
     bool _seen = _prefs.getBool(_userSeen) ?? false;
     return _seen;
   }
 
-  String getUserToken() {
+  static Future<String> getUserToken() async {
+    var _prefs= await SharedPreferences.getInstance();
     return _prefs.getString(_userToken) ?? null;
   }
 
-  setAppLanguage(String appLanguage) {
-    _prefs.setString(_appLanguage, appLanguage) ?? 'ar';
+
+  static setAppLanguage(String appLanguage) async {
+    var _prefs= await SharedPreferences.getInstance();
+    _prefs.setString(_appLanguage, appLanguage);
   }
 
-  String getAppLanguage() {
+  static Future<String> getAppLanguage() async {
+    var _prefs= await SharedPreferences.getInstance();
     return _prefs.getString(_appLanguage) ?? 'ar';
   }
 
-
-  String getUserMail() {
-    return _prefs.getString(_userMail) ?? '';
+  static Future<String> getUserMail()  async {
+    var _prefs= await SharedPreferences.getInstance();
+    return  _prefs.getString(_userMail) ?? '';
   }
 
   // ignore: missing_return
-  bool setFirstSeen(bool state) {
+  static Future<bool> setFirstSeen(bool state) async {
+    var _prefs= await SharedPreferences.getInstance();
     _prefs.setBool(_userSeen, state);
   }
 
-  bool isAppFirstSeen() {
+  static Future<bool> isAppFirstSeen() async {
+    var _prefs= await SharedPreferences.getInstance();
     return _prefs.getBool(_userSeen) ?? true;
   }
 
   /// Check if the App is Login
-  bool checkLogin() {
+  static Future<bool> checkLogin() async {
+    var _prefs= await SharedPreferences.getInstance();
     return _prefs.getBool(_loggedIn) ?? false;
   }
 
   /// Check if the App is Login
-  setIsLoggedIn(bool state) async {
+  static setIsLoggedIn(bool state) async {
+    var _prefs= await SharedPreferences.getInstance();
     _prefs.setBool(_loggedIn, state);
   }
 
-  setUserToken(String token) {
+  static setUserToken(String token) async {
+    var _prefs= await SharedPreferences.getInstance();
     _prefs.setString(_userToken, token);
+
   }
 
-  setUserMail(String mail) {
+  static setUserMail(String mail) async {
+    var _prefs= await SharedPreferences.getInstance();
     _prefs.setString(_userMail, mail);
+
   }
 
-  setUserId(String id) {
+  static setUserId(String id) async {
+    var _prefs= await SharedPreferences.getInstance();
     _prefs.setString(_userID, id);
   }
 }

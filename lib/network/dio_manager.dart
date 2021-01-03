@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
 import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
 
 class DIOManager {
@@ -11,19 +13,22 @@ class DIOManager {
 
   DIOManager._dio();
 
-  Dio get _dio {
+  get _dio async {
     final Dio dio = Dio();
 
     dio.options.baseUrl = "http://34.193.99.151:8080/fix-jed";
     dio.options.headers = {
       // "Accept-Language": currentLanguage,
     };
-    if (LocalPreferences().getUserToken() != null) {
-      print("dio.options.headers " + LocalPreferences().getUserToken());
-      print("dio.options.headers " + LocalPreferences().getUserMail());
+    if (LocalPreferences.getUserToken() != null) {
+      String token = AppModel().getUserTokenTest();
+      String email = AppModel().getUserMailTest();
+      print("token is ---> " + token);
+      print("email is ---> " + email);
+
       dio.options.headers = {
-        "Authorization": "${LocalPreferences().getUserToken()}",
-        "email": "${LocalPreferences().getUserMail()}",
+        "Authorization": token,
+        "email": email,
       };
       print(dio.options.headers.toString());
       //
@@ -39,38 +44,10 @@ class DIOManager {
   static const String _GET_MAIN_CATEGORY = "/category/find-all-parents";
   static const String _GET_SUB_CATEGORY = "/category/find-all-by-parent-id";
   static const String _GET_PRODUCT = "/product/find-all-by-category-id";
-  static const String _GET_CART_PRODUCT = "/product/find-all-by-category-id";
+  static const String _GET_CART_PRODUCT = "/cart/find-all-product-in-cart";
   static const String _ADD_PRODUCT_TO_CART = "/cart/add-product-to-cart";
   static const String _REMOVE_PRODUCT_FROM_CART =
       "/cart/delete-product-from-cart";
-
-  sendLoginRequest(
-      {Function onSuccess,
-      Function onError,
-      String userName,
-      String password}) async {
-    var bodyParameter;
-
-    bodyParameter = {"username": userName, "password": password};
-
-    try {
-      Response response = await _dio.post(_USER_LOGIN, data: bodyParameter);
-
-      if (response.statusCode == 200) {
-        logger.e("_sendGetRequest onSuccess----> Of Url $_USER_LOGIN " +
-            response.toString());
-        AppModel().setUserToken(response.headers.map['authorization'][0]);
-        onSuccess(response.data);
-      } else {
-        logger.e("_sendGetRequest onError----> Of Url $_USER_LOGIN " +
-            response.toString());
-        onError(response);
-      }
-    } on DioError catch (e) {
-      handleDioErrorResponse(_USER_LOGIN, e, onError);
-    }
-    // _sendPostRequest(onSuccess: onSuccess,onError: onError, url: _USER_LOGIN,bodyParameters: bodyParameter);
-  }
 
   sendForgotPasswordMailRequest(
       {Function onSuccess, Function onError, type, String userName}) {
@@ -139,9 +116,7 @@ class DIOManager {
         queryParameters: {"parent-id": categoryId});
   }
 
-
   addProductToCart({Function onSuccess, Function onError, productId}) {
-
     _sendPostRequest(
         onSuccess: onSuccess,
         onError: onError,
@@ -163,6 +138,44 @@ class DIOManager {
       onError: onError,
       url: _GET_CART_PRODUCT,
     );
+  }
+
+  _sendDeleteRequest(
+      {Function onSuccess(data),
+      Function onError(data),
+      String url,
+      queryParameters,
+      bodyParameters}) async {
+    try {
+      Response response;
+      if (queryParameters != null && bodyParameters == null) {
+        print("addProductToCart onSuccess called [1]");
+        response = await _dio.delete(url, queryParameters: queryParameters);
+      } else if (queryParameters != null && bodyParameters != null) {
+        print("addProductToCart onSuccess called [2]");
+        response = await _dio.delete(url,
+            data: bodyParameters, queryParameters: queryParameters);
+      } else {
+        print("addProductToCart onSuccess called [3]");
+        response = await _dio.delete(url, data: bodyParameters);
+      }
+
+      if (response.statusCode == 200) {
+        logger.e("_sendGetRequest onSuccess----> Of Url $url " +
+            response.toString());
+        if (response.data != null) {
+          onSuccess(response.data);
+        } else {
+          onSuccess("Success");
+        }
+      } else {
+        logger.e(
+            "_sendGetRequest onError----> Of Url $url " + response.toString());
+        onError(response);
+      }
+    } on DioError catch (e) {
+      handleDioErrorResponse(url, e, onError);
+    }
   }
 
   _sendGetRequest(
@@ -192,50 +205,12 @@ class DIOManager {
     }
   }
 
-  _sendDeleteRequest(
-      {Function onSuccess(data),
-        Function onError(data),
-        String url,
-        queryParameters,
-        bodyParameters}) async {
-    try {
-      Response response;
-      if (queryParameters != null && bodyParameters == null) {
-        print("addProductToCart onSuccess called [1]");
-        response = await _dio.delete(url, queryParameters: queryParameters);
-      } else if (queryParameters != null && bodyParameters != null) {
-        print("addProductToCart onSuccess called [2]");
-        response = await _dio.delete(url,
-            data: bodyParameters, queryParameters: queryParameters);
-      } else {
-        print("addProductToCart onSuccess called [3]");
-        response = await _dio.delete(url, data: bodyParameters);
-      }
-
-      if (response.statusCode == 200) {
-        logger.e("_sendGetRequest onSuccess----> Of Url $url " +
-            response.toString());
-        if (response.data != null) {
-          onSuccess(response.data);
-        }else{
-          onSuccess("Success");
-        }
-
-      } else {
-        logger.e(
-            "_sendGetRequest onError----> Of Url $url " + response.toString());
-        onError(response);
-      }
-    } on DioError catch (e) {
-      handleDioErrorResponse(url, e, onError);
-    }
-  }
   _sendPostRequest(
       {Function onSuccess(data),
       Function onError(data),
       String url,
-       queryParameters,
-       bodyParameters}) async {
+      queryParameters,
+      bodyParameters}) async {
     try {
       Response response;
       if (queryParameters != null && bodyParameters == null) {
@@ -255,10 +230,9 @@ class DIOManager {
             response.toString());
         if (response.data != null) {
           onSuccess(response.data);
-        }else{
+        } else {
           onSuccess("Success");
         }
-
       } else {
         logger.e(
             "_sendGetRequest onError----> Of Url $url " + response.toString());
@@ -267,6 +241,36 @@ class DIOManager {
     } on DioError catch (e) {
       handleDioErrorResponse(url, e, onError);
     }
+  }
+
+  sendLoginRequest(
+      {Function onSuccess,
+      Function onError,
+      String userName,
+      String password}) async {
+    var bodyParameter;
+
+    bodyParameter = {"username": userName, "password": password};
+
+    try {
+      Response response = await _dio.post(_USER_LOGIN, data: bodyParameter);
+
+      if (response.statusCode == 200) {
+        logger.e("_sendGetRequest onSuccess----> Of Url $_USER_LOGIN " +
+            response.toString());
+        LoginResponse loginResponse = LoginResponse.fromJson(response.data);
+        loginResponse.token = response.headers.map['authorization'][0];
+        // AppModel().setUserToken(response.headers.map['authorization'][0]);
+        onSuccess(loginResponse);
+      } else {
+        logger.e("_sendGetRequest onError----> Of Url $_USER_LOGIN " +
+            response.toString());
+        onError(response);
+      }
+    } on DioError catch (e) {
+      handleDioErrorResponse(_USER_LOGIN, e, onError);
+    }
+    // _sendPostRequest(onSuccess: onSuccess,onError: onError, url: _USER_LOGIN,bodyParameters: bodyParameter);
   }
 
   handleDioErrorResponse(url, DioError e, onError) {
@@ -296,7 +300,8 @@ class DIOManager {
           errorResponse.fixJidErrorCode = "4";
           errorResponse.fixJidErrorDetails = "Unreachable";
           print(
-              "handleDioErrorResponse() DioErrorType---> DioErrorType.DEFAULT");
+              "handleDioErrorResponse() DioErrorType---> DioErrorType.DEFAULT " +
+                  e.message.toString());
           onError(errorResponse);
         } else {
           onError(e?.response ?? " UnExpected Error");
@@ -325,3 +330,240 @@ class ErrorResponse {
     }
   }
 }
+// ignore: missing_return
+// _sendPostRequest(
+//     {Function onSuccess(data),
+//     Function onError(data),
+//     String url,
+//     queryParameters,
+//     bodyParameters}) {
+//   // ignore: missing_return
+//   FutureBuilder(
+//       // ignore: missing_return
+//       future: _dio,
+//       // ignore: missing_return
+//       builder: (context, snapshot) {
+//         // ignore: missing_return
+//         if (snapshot.connectionState == ConnectionState.done) {
+//           // ignore: missing_return
+//           return _sendFuturePostRequest(
+//               dio: snapshot.data,
+//               onError: onError,
+//               onSuccess: onSuccess,
+//               queryParameters: queryParameters,
+//               bodyParameters: bodyParameters);
+//         }
+//       });
+// }
+
+// sendLoginRequest(
+//     {Function onSuccess,
+//     Function onError,
+//     String userName,
+//     String password}) {
+//   // ignore: missing_return
+//   FutureBuilder(
+//       // ignore: missing_return
+//       future: _dio,
+//       // ignore: missing_return
+//       builder: (context, snapshot) {
+//         // ignore: missing_return
+//         if (snapshot.connectionState == ConnectionState.done) {
+//           // ignore: missing_return
+//           return sendFutureLoginRequest(
+//             dio: snapshot.data,
+//             onError: onError,
+//             onSuccess: onSuccess,
+//           );
+//         }
+//       });
+// }
+
+// sendFutureLoginRequest(
+//     {Dio dio,
+//     Function onSuccess,
+//     Function onError,
+//     String userName,
+//     String password}) async {
+//   var bodyParameter;
+//
+//   bodyParameter = {"username": userName, "password": password};
+//
+//   try {
+//     Response response = await dio.post(_USER_LOGIN, data: bodyParameter);
+//
+//     if (response.statusCode == 200) {
+//       logger.e("_sendGetRequest onSuccess----> Of Url $_USER_LOGIN " +
+//           response.toString());
+//       LoginResponse loginResponse = LoginResponse.fromJson(response.data);
+//       loginResponse.token = response.headers.map['authorization'][0];
+//       // AppModel().setUserToken(response.headers.map['authorization'][0]);
+//       onSuccess(loginResponse);
+//     } else {
+//       logger.e("_sendGetRequest onError----> Of Url $_USER_LOGIN " +
+//           response.toString());
+//       onError(response);
+//     }
+//   } on DioError catch (e) {
+//     handleDioErrorResponse(_USER_LOGIN, e, onError);
+//   }
+//   // _sendPostRequest(onSuccess: onSuccess,onError: onError, url: _USER_LOGIN,bodyParameters: bodyParameter);
+// }
+
+// _sendGetRequest({
+//   Function onSuccess(data),
+//   Function onError(data),
+//   String url,
+//   queryParameters,
+// }) {
+//   // ignore: missing_return
+//   return FutureBuilder(
+//       // ignore: missing_return
+//       future: _dio,
+//       // ignore: missing_return
+//       builder: (context, snapshot) {
+//         // ignore: missing_return
+//         print("Done DOne Done" + snapshot.connectionState.toString());
+//         if (snapshot.connectionState == ConnectionState.done) {
+//           // ignore: missing_return
+//           print("Done DOne Done");
+//           return _sendFutureGetRequest(
+//             dio: snapshot.data,
+//             onError: onError,
+//             onSuccess: onSuccess,
+//             queryParameters: queryParameters,
+//           );
+//         }
+//       });
+// }
+
+// _sendFuturePostRequest(
+//     {Dio dio,
+//     Function onSuccess(data),
+//     Function onError(data),
+//     String url,
+//     queryParameters,
+//     bodyParameters}) async {
+//   try {
+//     Response response;
+//     if (queryParameters != null && bodyParameters == null) {
+//       print("addProductToCart onSuccess called [1]");
+//       response = await dio.post(url, queryParameters: queryParameters);
+//     } else if (queryParameters != null && bodyParameters != null) {
+//       print("addProductToCart onSuccess called [2]");
+//       response = await dio.post(url,
+//           data: bodyParameters, queryParameters: queryParameters);
+//     } else {
+//       print("addProductToCart onSuccess called [3]");
+//       response = await dio.post(url, data: bodyParameters);
+//     }
+//
+//     if (response.statusCode == 200) {
+//       logger.e("_sendGetRequest onSuccess----> Of Url $url " +
+//           response.toString());
+//       if (response.data != null) {
+//         onSuccess(response.data);
+//       } else {
+//         onSuccess("Success");
+//       }
+//     } else {
+//       logger.e(
+//           "_sendGetRequest onError----> Of Url $url " + response.toString());
+//       onError(response);
+//     }
+//   } on DioError catch (e) {
+//     handleDioErrorResponse(url, e, onError);
+//   }
+// }
+
+// _sendFutureGetRequest(
+//     {Dio dio,
+//     Function onSuccess,
+//     Function onError,
+//     String url,
+//     queryParameters}) async {
+//   try {
+//     Response response;
+//     if (queryParameters == null) {
+//       response = await dio.get("/$url");
+//     } else {
+//       response = await dio.get("/$url", queryParameters: queryParameters);
+//     }
+//     if (response.statusCode == 200) {
+//       logger.e(
+//           "_sendGetRequest onSuccess----> Of Url ${response.request.uri.toString()} " +
+//               response.toString());
+//       onSuccess(response.data);
+//     } else {
+//       print(
+//           "_sendGetRequest onError----> Of Url $url " + response.toString());
+//       onError(response);
+//     }
+//   } on DioError catch (e) {
+//     handleDioErrorResponse(url, e, onError);
+//   }
+// }
+
+// _sendDeleteRequest({
+//   Function onSuccess(data),
+//   Function onError(data),
+//   String url,
+//   queryParameters,
+// }) {
+//   // ignore: missing_return
+//   FutureBuilder(
+//       // ignore: missing_return
+//       future: _dio,
+//       // ignore: missing_return
+//       builder: (context, snapshot) {
+//         // ignore: missing_return
+//         if (snapshot.connectionState == ConnectionState.done) {
+//           // ignore: missing_return
+//           return _sendFutureDeleteRequest(
+//             dio: snapshot.data,
+//             onError: onError,
+//             onSuccess: onSuccess,
+//             queryParameters: queryParameters,
+//           );
+//         }
+//       });
+// }
+//
+// _sendFutureDeleteRequest(
+//     {Dio dio,
+//     Function onSuccess(data),
+//     Function onError(data),
+//     String url,
+//     queryParameters,
+//     bodyParameters}) async {
+//   try {
+//     Response response;
+//     if (queryParameters != null && bodyParameters == null) {
+//       print("addProductToCart onSuccess called [1]");
+//       response = await dio.delete(url, queryParameters: queryParameters);
+//     } else if (queryParameters != null && bodyParameters != null) {
+//       print("addProductToCart onSuccess called [2]");
+//       response = await dio.delete(url,
+//           data: bodyParameters, queryParameters: queryParameters);
+//     } else {
+//       print("addProductToCart onSuccess called [3]");
+//       response = await dio.delete(url, data: bodyParameters);
+//     }
+//
+//     if (response.statusCode == 200) {
+//       logger.e("_sendGetRequest onSuccess----> Of Url $url " +
+//           response.toString());
+//       if (response.data != null) {
+//         onSuccess(response.data);
+//       } else {
+//         onSuccess("Success");
+//       }
+//     } else {
+//       logger.e(
+//           "_sendGetRequest onError----> Of Url $url " + response.toString());
+//       onError(response);
+//     }
+//   } on DioError catch (e) {
+//     handleDioErrorResponse(url, e, onError);
+//   }
+// }

@@ -12,6 +12,7 @@ class LoginResponse {
   });
 
   int id;
+  String token ;
   String username;
   String firstName;
   String lastName;

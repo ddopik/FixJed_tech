@@ -6,13 +6,8 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
-import 'package:flutter_base_app/flutter_main/screens/cart/cart_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
-import 'package:flutter_base_app/flutter_main/screens/signup/SignUpSuccessScreen.dart';
-import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -40,9 +35,8 @@ class AppState extends State<App> {
   }
 
   /// Build the App Theme
-  ThemeData getTheme(currentLocal,AppModel appModel) {
+  ThemeData getTheme(currentLocal, AppModel appModel) {
     Logger(printer: SimplePrinter(colors: true)).v("[AppState] build Theme");
-
 
     bool isDarkTheme = appModel.darkTheme ?? false;
 
@@ -53,13 +47,14 @@ class AppState extends State<App> {
     }
 
     //
-    return buildLightTheme(currentLocal).copyWith(primaryColor: Colors.blueAccent, scaffoldBackgroundColor: Colors.white);
+    return buildLightTheme(currentLocal).copyWith(
+        primaryColor: Colors.blueAccent, scaffoldBackgroundColor: Colors.white);
   }
 
   @override
   Widget build(BuildContext appContext) {
     return FutureBuilder(
-        future: LocalPreferences().setUpLocalPreferences(),
+        future: LocalPreferences.setUpLocalPreferences(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             dismissLoading();
@@ -69,10 +64,12 @@ class AppState extends State<App> {
                 builder: (context, value, child) {
                   return MultiProvider(
                     providers: [
+                      // Provider<AppModel>.value(value: widget._app),
                       ChangeNotifierProvider(create: (_) => widget._app),
                     ],
                     child: MaterialApp(
                       navigatorKey: navigatorKey,
+
                       ///todo include MaterialApp to new <consumer> decedent of AppLanguageModel
                       debugShowCheckedModeBanner: false,
                       supportedLocales: S.delegate.supportedLocales,
@@ -89,40 +86,60 @@ class AppState extends State<App> {
                         body: getNextScreen(),
                       ),
                       routes: Routes.getAll(),
-                      theme: getTheme("ar",value),
+                      theme: getTheme("ar", value),
                     ),
                   );
                 },
               ),
             );
           } else {
-            print("FutureBuilder  snapshot.Not hasData --->" + snapshot.hasData.toString());
-            return Center(child: CircularProgressIndicator(),);
+            print("FutureBuilder  snapshot.Not hasData --->" +
+                snapshot.hasData.toString());
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           }
         });
   }
 
   Widget getNextScreen() {
+// return CartScreen();
 
+    // print("getNextScreen email---> " + widget._app.getUserMail().toString());
+    return FutureBuilder(
+      future: widget._app.getUserToken(),
+      // ignore: missing_return
+      builder: (context, snapshot) {
+        // ignore: missing_return
+        if (snapshot.connectionState == ConnectionState.done) {
+          dismissLoading();
+          print("token is "+snapshot.data.toString());
+          if (snapshot.data != null) {
+            return HomeScreen();
+          } else {
+            return LoginScreen();
+          }
+        }else{
+          return Container();
+          showLoading(context);
+        }
+      },
+    );
 
-    if (LocalPreferences().getUserToken() != null) {
-      return HomeScreen();
-    }else{
-      return LoginScreen();
-    }
-    // // return ServicesSubFeatures(cat);
-    // return ForgotPasswordScreen();
-    if (!LocalPreferences().isAppFirstSeen()) {
-
-      if (!LocalPreferences().checkLogin()) {
-        return HomeScreen();
-      }else{
-        return LoginScreen();
-      }
-
-    } else{
-      Provider.of<AppModel>(context).setAppFirstSeen(false);
-      return Container(); /// todo navigate to onBoarding screens
-    }
+    // Provider.of<AppModel>(context, listen: false).setAppFirstSeen(false);
+    // // // return ServicesSubFeatures(cat);
+    // // return ForgotPasswordScreen();
+    // if (!LocalPreferences.isAppFirstSeen()) {
+    //   if (!LocalPreferences.checkLogin()) {
+    //     return HomeScreen();
+    //   } else {
+    //     return LoginScreen();
+    //   }
+    // } else {
+    //   Provider.of<AppModel>(context).setAppFirstSeen(false);
+    //   return Container();
+    //
+    //   /// todo navigate to onBoarding screens
+    // }
   }
 }

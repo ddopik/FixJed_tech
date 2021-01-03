@@ -7,6 +7,7 @@ import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
+import 'package:provider/provider.dart';
 
 import 'model/loginResponse.dart';
 
@@ -233,11 +234,23 @@ class _LoginScreenState extends State<LoginScreen> {
     showLoading(context);
     DIOManager().sendLoginRequest(
       onSuccess: (response) {
-        LoginResponse loginResponse = LoginResponse.fromJson(response);
+        LoginResponse loginResponse = response;
         dismissLoading();
+        Provider.of<AppModel>(context, listen: false)
+            .setUserMail(loginResponse.email);
+        Provider.of<AppModel>(context, listen: false)
+            .setUserId(loginResponse.id.toString());
 
-        AppModel().setUserMail(loginResponse.email);
-        AppModel().setUserId(loginResponse.id.toString());
+        Provider.of<AppModel>(context, listen: false)
+            .setUserToken(loginResponse.token.toString());
+        print("sendLoginRequest saved mail ---> " +
+            Provider.of<AppModel>(context, listen: false)
+                .getUserMail()
+                .toString());
+        print("sendLoginRequest saved mail ---> " +
+            Provider.of<AppModel>(context, listen: false)
+                .getUserMail()
+                .toString());
         Navigator.of(context).pushReplacementNamed(Routes.HOME);
       },
       onError: (response) {

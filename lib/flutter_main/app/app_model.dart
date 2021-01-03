@@ -16,24 +16,38 @@ class AppModel extends ChangeNotifier {
     } else {
       locale = Locale.fromSubtags(languageCode: 'en');
     }
-    LocalPreferences().setAppLanguage(local);
+    LocalPreferences.setAppLanguage(local);
     notifyListeners();
   }
 
   setAppFirstSeen(bool state) {
-    LocalPreferences().setFirstSeen(state);
+    LocalPreferences.setFirstSeen(state);
   }
 
   setUserToken(token) {
-    LocalPreferences().setUserToken(token);
+    LocalPreferences.setUserToken(token);
   }
 
+  Future<String> getUserToken() async {
+    return  LocalPreferences.getUserToken();
+  }
+
+  String getUserTokenTest() {
+    return  LocalPreferences.prefs2.getString("user_token");
+  }
+  String getUserMailTest()  {
+    return  LocalPreferences.prefs2.getString("user_mail");
+  }
   setUserMail(mail) {
-    LocalPreferences().setUserMail(mail);
+    LocalPreferences.setUserMail(mail);
+  }
+
+  Future<String> getUserMail() async {
+    return await LocalPreferences.getUserMail();
   }
 
   setUserId(id) {
-    LocalPreferences().setUserId(id);
+    LocalPreferences.setUserId(id);
   }
 
   Future<void> updateTheme(bool theme) async {

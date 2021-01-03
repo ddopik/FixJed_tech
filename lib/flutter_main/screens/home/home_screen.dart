@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
-import 'package:flutter_base_app/flutter_main/screens/main_category/main_category_item.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/main_category_list_view.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/homePage';
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -47,11 +46,16 @@ class HomeScreen extends StatelessWidget {
               actions: <Widget>[
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Image(
-                      image: AssetImage("assets/images/ic_shopping.png"),
-                      width: 40,
-                      height: 40,
-                      fit: BoxFit.scaleDown),
+                  child: GestureDetector(
+                    child: Image(
+                        image: AssetImage("assets/images/ic_shopping.png"),
+                        width: 40,
+                        height: 40,
+                        fit: BoxFit.scaleDown),
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Routes.CART);
+                    },
+                  ),
                 )
               ],
             ),
@@ -69,8 +73,6 @@ class HomeScreen extends StatelessWidget {
                   child: MainCategoryListView()),
             )));
   }
-
-
 }
 
 class navigationDrawer extends StatelessWidget {

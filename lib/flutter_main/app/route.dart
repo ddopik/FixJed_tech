@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/screens/cart/cart_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
@@ -20,6 +21,7 @@ class Routes {
   static const HOME = "/homeScreen";
   static const SERVICE_FEATURES = "/service_features";
   static const SUB_SERVICE_FEATURES = "/sub_service_features";
+  static const CART = "/cart";
 
 
   static final Map<String, WidgetBuilder> _routes = {
@@ -31,6 +33,7 @@ class Routes {
     ON_BOARDING: (context) => OnBoardingScreen(),
     SERVICE_FEATURES: (context) => ServiceFeaturesScreen(),
     SUB_SERVICE_FEATURES: (context) => SubServicesFeaturesScreen(),
+    CART: (context) => CartScreen(),
   };
 
 // todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget
