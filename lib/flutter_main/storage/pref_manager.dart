@@ -61,7 +61,7 @@ class PrefManager {
   }
 
   String getUserMail() {
-    return _prefs.getString(_USER_MAIL) ?? null;
+    return _prefs.getString(_USER_MAIL) ?? '';
   }
 
   void setLang(String userData) {
@@ -72,8 +72,8 @@ class PrefManager {
     _prefs.setBool(_LOGIN_STATE, state);
   }
 
-  Future<bool> isUserLoggedIn() async {
-    return _prefs.getBool(_LOGIN_STATE);
+  bool isUserLoggedIn()  {
+    return _prefs.getBool(_LOGIN_STATE)??false;
   }
 
   setAppFirstSeenState(bool state) {

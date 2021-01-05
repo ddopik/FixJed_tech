@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
@@ -8,8 +9,10 @@ import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_item.dart';
+import 'package:flutter_base_app/flutter_main/screens/signup/sign_up_dialog_screen.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 
 import '../model/service.dart';
 
@@ -60,10 +63,11 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
             setState(() {
               viewActionModel.requestExamineEnabled = true;
               viewActionModel.requestExamineObject = product;
+              (features as List).removeAt(0);
             });
           }
 
-          _pagingController.appendLastPage(features);
+          _pagingController.appendLastPage((features as List));
           // _pagingController.appendPage(features, nextPageKey);
         },
         onError: (error) {
@@ -248,25 +252,7 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                         btnColor: boring_green,
                         textColor: white,
                         onPressed: () {
-                          showLoading(context);
-                          _productModel.addProductToCart(
-                              onSuccess: (response) {
-                                dismissLoading();
-                                setState(() {
-                                  print("SetState() called");
-                                  viewActionModel.actionType =
-                                      ActionType.MESSAGE;
-                                  viewActionModel.viewActionMessage =
-                                      "تم آضافه طلب خبير";
-                                  viewQuantityActionView();
-                                });
-                              },
-                              onError: (message) {
-                                dismissLoading();
-                                showError(message);
-                              },
-                              productID:
-                                  viewActionModel.requestExamineObject.id);
+                          sendExamineRequest();
                         }),
                   ],
                 ),
@@ -274,6 +260,64 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
             : Container()
       ],
     );
+  }
+
+  sendExamineRequest() {
+    if (Provider.of<AppModel>(context, listen: false).isUserLoggedIn()) {
+      showLoading(context);
+      _productModel.addProductToCart(
+          onSuccess: (response) {
+            dismissLoading();
+            setState(() {
+              print("SetState() called");
+              viewActionModel.actionType = ActionType.MESSAGE;
+              viewActionModel.viewActionMessage = "تم آضافه طلب خبير";
+              viewQuantityActionView();
+            });
+          },
+          onError: (message) {
+            dismissLoading();
+            showError(message);
+          },
+          productID: viewActionModel.requestExamineObject.id);
+    } else {
+      // Navigator.of(context).pushNamed(Routes.LOGIN);
+      signUpDialogScreen(context: context);
+    }
+  }
+
+  addProductToCart(productId) {
+    if (!Provider.of<AppModel>(context, listen: false).isUserLoggedIn()) {
+      showLoading(context);
+      _productModel.addProductToCart(
+          onSuccess: (response) {
+            dismissLoading();
+
+            _pagingController.itemList = _pagingController.itemList.map((e) {
+              print("map is --->" + e.id.toString());
+              if (e.id == productId) {
+                print("Found Match --->" + productId.toString());
+                viewActionModel.totalAddedServices =
+                    viewActionModel.totalAddedServices + 1;
+                e.totalCartCount = e.totalCartCount + 1;
+              }
+              return e;
+            }).toList();
+            setState(() {
+              print("SetState() called");
+              viewActionModel.actionType = ActionType.CART_PRODUCT;
+              viewQuantityActionView();
+            });
+          },
+          onError: (message) {
+            dismissLoading();
+            showError(message);
+          },
+          productID: productId);
+    } else {
+      // Navigator.of(context).pushNamed(Routes.LOGIN);
+      signUpDialogScreen(context: context);
+    }
   }
 
   renderFeaturesList() {
@@ -287,33 +331,8 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
           return SubServiceItem(
               product: service,
               onAdd: (productId, count) {
-                showLoading(context);
-                _productModel.addProductToCart(
-                    onSuccess: (response) {
-                      dismissLoading();
 
-                      _pagingController.itemList =
-                          _pagingController.itemList.map((e) {
-                        print("map is --->" + e.id.toString());
-                        if (e.id == productId) {
-                          print("Found Match --->" + productId.toString());
-                          viewActionModel.totalAddedServices = viewActionModel.totalAddedServices + 1;
-                          e.totalCartCount = e.totalCartCount + 1;
-
-                        }
-                        return e;
-                      }).toList();
-                      setState(() {
-                        print("SetState() called");
-                        viewActionModel.actionType = ActionType.CART_PRODUCT;
-                        viewQuantityActionView();
-                      });
-                    },
-                    onError: (message) {
-                      dismissLoading();
-                      showError(message);
-                    },
-                    productID: productId);
+                addProductToCart(productId);
               },
               onRemove: (productId, count) {
                 showLoading(context);
@@ -328,7 +347,8 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                           if (e.id == productId) {
                             if ((e.totalCartCount) > 0) {
                               e.totalCartCount = e.totalCartCount - 1;
-                              viewActionModel.totalAddedServices = viewActionModel.totalAddedServices - 1;
+                              viewActionModel.totalAddedServices =
+                                  viewActionModel.totalAddedServices - 1;
                               // viewQuantityActionView(totalAddedServices,"remove");
                             }
                           }
@@ -361,7 +381,7 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
 class ViewActionModel {
   bool requestExamineEnabled = false;
   ActionType actionType;
-  String viewActionMessage='';
+  String viewActionMessage = '';
   Product requestExamineObject;
   int totalAddedServices = 0;
 }

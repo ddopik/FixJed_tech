@@ -39,5 +39,13 @@
   "cart": "عربه التسوق",
   "egp": "جنيه مصري",
   "youHaveRemoved": "لقد قمت بآزاله",
-  "createNewAccount": "انشاء حساب جديد"
+  "createNewAccount": "انشاء حساب جديد",
+  "createAccount": "انشئ حساب",
+  "invalidUserName": "اسم مستخدم غير صحيح",
+  "invalidFirstName": "الاسم الاول غير صحيح",
+  "invalidLastName": "الاسم الاخير غير صحيح",
+
+  "passwordErrorLength": "كلمه المرور لا يجب ان تكون اقل من ٦ احرف",
+  "passwordWordNotMatched":"كلمه المرور غير متطابقه"
+
 }

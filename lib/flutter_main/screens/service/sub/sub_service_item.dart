@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 class SubServiceItem extends StatefulWidget {
@@ -31,7 +30,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
         elevation: 2.0,
         child: Container(
           width: MediaQuery.of(context).size.width * .8,
-          height: MediaQuery.of(context).size.height * .20,
+          height: MediaQuery.of(context).size.height * .22,
           padding: EdgeInsets.all(18.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -43,7 +42,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    widget.product.name??'',
+                    widget.product.name ?? '',
                     style: TextStyle(
                         color: boring_green,
                         fontWeight: FontWeight.w700,
@@ -58,7 +57,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                     width: MediaQuery.of(context).size.width * .7,
                     height: MediaQuery.of(context).size.height * .07,
                     child: Text(
-                      widget.product.description ?? "",
+                      widget.product.description ?? "description description description description description description description description",
                       style: TextStyle(
                           color: Color(0xff646363),
                           fontWeight: FontWeight.w400,
@@ -71,7 +70,10 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(widget.product.price.toString() +" "+S.of(context).egp,
+                      Text(
+                          widget.product.price.toString() +
+                              " " +
+                              S.of(context).egp,
                           style: const TextStyle(
                               color: boring_green,
                               fontWeight: FontWeight.w800,

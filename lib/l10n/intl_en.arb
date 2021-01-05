@@ -39,7 +39,15 @@
   "cart": "Cart",
   "egp": "EGPِ",
   "youHaveRemoved": "you have removed",
-  "createNewAccount": "Create new account"
+  "createNewAccount": "Create new account",
+  "createAccount": "Create account",
+  "invalidUserName": "Invalid user name",
+
+  "invalidFirstName": "Invalid first name",
+  "invalidLastName": "Invalid last name",
+  "passwordErrorLength": "Password can't be less than 6 char",
+  "passwordWordNotMatched": "Password not matched"
+
 
 
 }

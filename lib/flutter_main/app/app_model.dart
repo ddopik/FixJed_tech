@@ -40,6 +40,13 @@ class AppModel extends ChangeNotifier {
   setAppFirstSeen(bool state) {
     PrefManager().setAppFirstSeenState(state);
   }
+  setIsUserLoggedIn(bool state){
+    PrefManager().setUserLoginState(state);
+  }
+
+  bool isUserLoggedIn(){
+    return PrefManager().isUserLoggedIn();
+  }
 
   setUserToken(token) {
     PrefManager().setUserToken(token);
@@ -62,7 +69,7 @@ class AppModel extends ChangeNotifier {
   }
 
   setUserId(id) {
-    PrefManager().setUserId(id);
+    PrefManager().setUserId(id.toString());
   }
 
   Future<void> updateTheme(bool theme) async {

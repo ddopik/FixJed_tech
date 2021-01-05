@@ -65,7 +65,9 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                   margin: EdgeInsets.only(top: 2.0),
                   decoration: BoxDecoration(
-                      color: kBackgroundWhite,
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/background_2.png"),
+                          fit: BoxFit.cover),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(24.0),
                           topRight: Radius.circular(24.0))),

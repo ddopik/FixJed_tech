@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 
 import 'main_services_list_view.dart';
 
@@ -19,8 +19,11 @@ class ServiceFeaturesScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
+
         decoration: BoxDecoration(
-            color: kBackgroundWhite,
+            image: DecorationImage(
+                image: AssetImage("assets/images/background_2.png"),
+                fit: BoxFit.cover),
             border: Border.all(
               color: kBackgroundWhite,
               width: 1.0,
@@ -47,11 +50,16 @@ class ServiceFeaturesScreen extends StatelessWidget {
       actions: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Image(
-              image: AssetImage("assets/images/ic_shopping.png"),
-              width: 40,
-              height: 40,
-              fit: BoxFit.scaleDown),
+          child: GestureDetector(
+            child: Image(
+                image: AssetImage("assets/images/ic_shopping.png"),
+                width: 40,
+                height: 40,
+                fit: BoxFit.scaleDown),
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.CART);
+            },
+          ),
         )
       ],
     );

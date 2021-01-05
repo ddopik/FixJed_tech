@@ -102,10 +102,7 @@ class AppState extends State<App> {
   }
 
   getNextScreen() {
-    // // PrefManager().setUserToken("token token token");
-    // print("getNextScreen --->"+PrefManager().getUserToken().toString());
-    // return Container();
-
+    return HomeScreen();
     if (PrefManager().getUserToken() != null) {
       return HomeScreen();
     } else {

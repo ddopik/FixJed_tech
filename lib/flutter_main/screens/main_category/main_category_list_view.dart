@@ -23,10 +23,10 @@ class MainCategoryListViewState extends State<MainCategoryListView> {
 
   @override
   void initState() {
-    _fetchPage(0);
-    // _pagingController.addPageRequestListener((pageKey) {
-    //   _fetchPage(pageKey);
-    // });
+
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
     super.initState();
   }
 

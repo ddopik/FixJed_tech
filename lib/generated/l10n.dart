@@ -434,6 +434,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Create account`
+  String get createAccount {
+    return Intl.message(
+      'Create account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid user name`
+  String get invalidUserName {
+    return Intl.message(
+      'Invalid user name',
+      name: 'invalidUserName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid first name`
+  String get invalidFirstName {
+    return Intl.message(
+      'Invalid first name',
+      name: 'invalidFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid last name`
+  String get invalidLastName {
+    return Intl.message(
+      'Invalid last name',
+      name: 'invalidLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password can't be less than 6 char`
+  String get passwordErrorLength {
+    return Intl.message(
+      'Password can\'t be less than 6 char',
+      name: 'passwordErrorLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password not matched`
+  String get passwordWordNotMatched {
+    return Intl.message(
+      'Password not matched',
+      name: 'passwordWordNotMatched',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

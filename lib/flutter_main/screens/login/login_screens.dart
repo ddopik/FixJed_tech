@@ -159,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               onTap: () {
-                loginUser();
+                validateUser();
               },
             ),
 ////////////////////////////////
@@ -213,9 +213,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  loginUser() async {
-    print("userMail --->"+_userNameController.value.text.trim());
-    if (_userNameController.value.text == null ||  !isEmail(_userNameController.value.text.trim())) {
+  validateUser() async {
+    print("userMail --->" + _userNameController.value.text.trim());
+    if (_userNameController.value.text == null ||
+        !isEmail(_userNameController.value.text.trim())) {
       showToast(S.of(context).invalidEmail);
     } else if (_passwordController.value.text == null ||
         _passwordController.value.text.length < 6) {
@@ -237,6 +238,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
         Provider.of<AppModel>(context, listen: false)
             .setUserId(loginResponse.id.toString);
+
+
+        Provider.of<AppModel>(context, listen: false)
+            .setUserMail(loginResponse.email.toString());
+
+        Provider.of<AppModel>(context, listen: false).setIsUserLoggedIn(true);
 
         Navigator.of(context).pushReplacementNamed(Routes.HOME);
       },

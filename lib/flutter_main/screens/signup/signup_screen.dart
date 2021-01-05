@@ -17,10 +17,10 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _signUpFormState = GlobalKey<FormState>();
-  final TextEditingController _firstNameController= TextEditingController();
-  final TextEditingController _lastNameController =TextEditingController();
-  final TextEditingController _emailController =TextEditingController();
-  final TextEditingController _userNameController =TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
 
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
@@ -85,29 +85,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: const Color(0xffffffff)),
                   child: TextFormField(
                     controller: _firstNameController,
-                      enableInteractiveSelection: false,
-                      cursorColor: Colors.black,
-                      keyboardType: TextInputType.name,
-                      decoration: new InputDecoration(
-                          errorStyle: TextStyle(height: 0),
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.only(
-                              left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: S.of(context).firstName,
-                          hintStyle: TextStyle(fontSize: 14)),
-                      // validator: (value) {
-                      //   if (value.isEmpty) {
-                      //     return S.of(context).invalid;
-                      //   }
-                      //   firstName = value;
-                      //   return null;
-                      // }
-
-                      ),
+                    enableInteractiveSelection: false,
+                    cursorColor: Colors.black,
+                    keyboardType: TextInputType.name,
+                    decoration: new InputDecoration(
+                        errorStyle: TextStyle(height: 0),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.only(
+                            left: 15, bottom: 11, top: 11, right: 15),
+                        hintText: S.of(context).firstName,
+                        hintStyle: TextStyle(fontSize: 14)),
+                    // validator: (value) {
+                    //   if (value.isEmpty) {
+                    //     return S.of(context).invalid;
+                    //   }
+                    //   firstName = value;
+                    //   return null;
+                    // }
+                  ),
                 ),
                 SizedBox(width: 12.0),
                 Container(
@@ -125,27 +124,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: const Color(0xffffffff)),
                   child: TextFormField(
                     controller: _lastNameController,
-                      cursorColor: Colors.black,
-                      keyboardType: TextInputType.name,
-                      decoration: new InputDecoration(
-                          errorStyle: TextStyle(height: 0),
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.only(
-                              left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: S.of(context).lastName,
-                          hintStyle: TextStyle(fontSize: 14)),
-                      // validator: (value) {
-                      //   if (value.isEmpty) {
-                      //     return S.of(context).invalid;
-                      //   }
-                      //   lastName = value;
-                      //   return null;
-                      // }
-                      ),
+                    cursorColor: Colors.black,
+                    keyboardType: TextInputType.name,
+                    decoration: new InputDecoration(
+                        errorStyle: TextStyle(height: 0),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.only(
+                            left: 15, bottom: 11, top: 11, right: 15),
+                        hintText: S.of(context).lastName,
+                        hintStyle: TextStyle(fontSize: 14)),
+                    // validator: (value) {
+                    //   if (value.isEmpty) {
+                    //     return S.of(context).invalid;
+                    //   }
+                    //   lastName = value;
+                    //   return null;
+                    // }
+                  ),
                 ),
               ],
             ),
@@ -166,28 +165,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   color: const Color(0xffffffff)),
               child: TextFormField(
                 controller: _emailController,
-                  cursorColor: Colors.black,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: new InputDecoration(
-                    errorStyle: TextStyle(height: 0),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: S.of(context).email,
-                    hintStyle: TextStyle(fontSize: 14),
-                  ),
-                  // validator: (value) {
-                  //   if (value.isEmpty) {
-                  //     return S.of(context).invalid;
-                  //   }
-                  //   email = value;
-                  //   return null;
-                  // }
-
-                  ),
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.emailAddress,
+                decoration: new InputDecoration(
+                  errorStyle: TextStyle(height: 0),
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  contentPadding:
+                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                  hintText: S.of(context).email,
+                  hintStyle: TextStyle(fontSize: 14),
+                ),
+                // validator: (value) {
+                //   if (value.isEmpty) {
+                //     return S.of(context).invalid;
+                //   }
+                //   email = value;
+                //   return null;
+                // }
+              ),
             ),
             SizedBox(height: 10.0),
             //
@@ -206,28 +204,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   color: const Color(0xffffffff)),
               child: TextFormField(
                 controller: _userNameController,
-                  cursorColor: Colors.black,
-                  keyboardType: TextInputType.name,
-                  decoration: new InputDecoration(
-                    errorStyle: TextStyle(height: 0),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: S.of(context).userName,
-                    hintStyle: TextStyle(fontSize: 14),
-                  ),
-                  // validator: (value) {
-                  //   if (value.isEmpty) {
-                  //     return S.of(context).invalid;
-                  //   }
-                  //   userName = value;
-                  //   return null;
-                  // }
-
-                  ),
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.name,
+                decoration: new InputDecoration(
+                  errorStyle: TextStyle(height: 0),
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  contentPadding:
+                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                  hintText: S.of(context).userName,
+                  hintStyle: TextStyle(fontSize: 14),
+                ),
+                // validator: (value) {
+                //   if (value.isEmpty) {
+                //     return S.of(context).invalid;
+                //   }
+                //   userName = value;
+                //   return null;
+                // }
+              ),
             ),
             SizedBox(height: 10.0),
             //
@@ -245,29 +242,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                   color: const Color(0xffffffff)),
               child: TextFormField(
-                  controller: _passwordController,
-                  cursorColor: Colors.black,
-                  keyboardType: TextInputType.name,
-                  decoration: new InputDecoration(
-                    errorStyle: TextStyle(height: 0),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: S.of(context).password,
-                    hintStyle: TextStyle(fontSize: 14),
-                  ),
-                  obscureText: true,
-                  // validator: (value) {
-                  //   if (value.isEmpty && value.length < 6) {
-                  //     return S.of(context).invalid;
-                  //   }
-                  //   return null;
-                  // }
-
-                  ),
+                controller: _passwordController,
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.name,
+                decoration: new InputDecoration(
+                  errorStyle: TextStyle(height: 0),
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                  contentPadding:
+                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                  hintText: S.of(context).password,
+                  hintStyle: TextStyle(fontSize: 14),
+                ),
+                obscureText: true,
+                // validator: (value) {
+                //   if (value.isEmpty && value.length < 6) {
+                //     return S.of(context).invalid;
+                //   }
+                //   return null;
+                // }
+              ),
             ),
             SizedBox(height: 10.0),
             Container(
@@ -373,7 +369,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: TextFormField(
                     readOnly: true,
                     decoration: new InputDecoration(
-
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -388,15 +383,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
 
             SizedBox(height: 32.0),
-            Text(S.of(context).policyHint,
-                style: const TextStyle(
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Raleway",
-                    fontStyle: FontStyle.normal,
-                    fontSize: 12.7),
-                textAlign: TextAlign.center),
-            SizedBox(height: 16.0),
+            // Text(S.of(context).policyHint,
+            //     style: const TextStyle(
+            //         color: const Color(0xffffffff),
+            //         fontWeight: FontWeight.w400,
+            //         fontFamily: "Raleway",
+            //         fontStyle: FontStyle.normal,
+            //         fontSize: 12.7),
+            //     textAlign: TextAlign.center),
+            // SizedBox(height: 16.0),
             InkWell(
               child: Container(
                 width: MediaQuery.of(context).size.width * .85,
@@ -425,30 +420,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
               onTap: () => _signUpUser(),
             ),
             // doesnt have an account
-            GestureDetector(
-                child: RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      style: const TextStyle(
-                          color: const Color(0xffffffff),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Raleway",
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12.7),
-                      text: S.of(context).alreadyHaveAccount),
-                  TextSpan(
-                      style: const TextStyle(
-                          color: const Color(0xffffffff),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Raleway",
-                          fontStyle: FontStyle.normal,
-                          decoration: TextDecoration.underline,
-                          fontSize: 16.7),
-                      text: S.of(context).login)
-                ])),
-                onTap: () => Navigator.of(context).popAndPushNamed(Routes.LOGIN)
-                // onTap: () => Navigator.of(context).pushAndRemoveUntil(Routes.LOGIN)
-                )
+            // GestureDetector(
+            //     child: RichText(
+            //         text: TextSpan(children: [
+            //       TextSpan(
+            //           style: const TextStyle(
+            //               color: const Color(0xffffffff),
+            //               fontWeight: FontWeight.w400,
+            //               fontFamily: "Raleway",
+            //               fontStyle: FontStyle.normal,
+            //               fontSize: 12.7),
+            //           text: S.of(context).alreadyHaveAccount),
+            //       TextSpan(
+            //           style: const TextStyle(
+            //               color: const Color(0xffffffff),
+            //               fontWeight: FontWeight.w400,
+            //               fontFamily: "Raleway",
+            //               fontStyle: FontStyle.normal,
+            //               decoration: TextDecoration.underline,
+            //               fontSize: 16.7),
+            //           text: S.of(context).login)
+            //     ])),
+            //     onTap: () => Navigator.of(context).popAndPushNamed(Routes.LOGIN)
+            //     // onTap: () => Navigator.of(context).pushAndRemoveUntil(Routes.LOGIN)
+            //     )
           ],
         ),
       ),
@@ -456,7 +451,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   _signUpUser() {
-    if (_signUpFormState.currentState.validate()) {
+    if (validateSignUpForm()) {
       showLoading(context);
       DIOManager().createUser(
           onSuccess: (response) {
@@ -467,14 +462,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
             dismissLoading();
             showError(message);
           },
-          firstName: firstName,
-          userName: userName,
-          lastName: lastName,
-          mail: email,
-          phone: phoneNumber,
+          firstName: _firstNameController.value.text,
+          userName: _userNameController.value.text,
+          lastName: _lastNameController.value.text,
+          mail: _emailController.value.text,
+          phone: _phoneNumberController.value.text,
           password: _passwordController.value.text);
     }
 
-    logger.d('Failed to validate SignUpForm');
+
+  }
+
+  validateSignUpForm() {
+    print("_firstNameController.value.text --->"+_firstNameController.value.text);
+    if (_firstNameController.value.text.isEmpty) {
+      showInfo(S.of(context).invalidFirstName);
+      return false;
+    }
+    if (_lastNameController.value.text.isEmpty) {
+      showInfo(S.of(context).invalidLastName);
+      return false;
+    }
+    if (_emailController.value.text .isEmpty||
+        !isEmail(_emailController.value.text)) {
+      showInfo(S.of(context).invalidEmail);
+      return false;
+    }
+    if (_userNameController.value.text .isEmpty) {
+      showInfo(S.of(context).invalidUserName);
+      return false;
+    }
+    if (_passwordController.value.text .isEmpty) {
+      showInfo(S.of(context).invalidPassword);
+      return false;
+    } else if (_passwordController.value.text.length > 6) {
+      showInfo(S.of(context).passwordErrorLength);
+      return false;
+    }
+    if (_confirmPasswordController.value.text.isEmpty) {
+      showInfo(S.of(context).invalidPassword);
+      return false;
+    } else if (_confirmPasswordController.value.text.length > 6) {
+      showInfo(S.of(context).passwordWordNotMatched);
+      return false;
+    }
+
+    if (_phoneNumberController.value.text .isEmpty ||
+        _phoneNumberController.value.text.length < 11 ||
+        !isNumber(_phoneNumberController.value.text)) {
+      showInfo(S.of(context).invalidEmptyPhoneNumber);
+      return false;
+    }
+
+    return true;
   }
 }
