@@ -8,7 +8,8 @@ import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
-import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
+import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
+import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,8 +19,6 @@ import 'package:provider/provider.dart';
 import 'app_model.dart';
 
 class App extends StatefulWidget {
-  final _app = AppModel();
-
   @override
   State<StatefulWidget> createState() {
     return AppState();
@@ -27,6 +26,8 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
+  final _app = AppModel();
+
   ////todo add you project providers here
 
   @override
@@ -54,18 +55,18 @@ class AppState extends State<App> {
   @override
   Widget build(BuildContext appContext) {
     return FutureBuilder(
-        future: LocalPreferences.setUpLocalPreferences(),
+        future: PrefManager().setupSharedPreferences(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             dismissLoading();
             return ChangeNotifierProvider<AppModel>.value(
-              value: widget._app,
+              value: _app,
               child: Consumer<AppModel>(
                 builder: (context, value, child) {
                   return MultiProvider(
                     providers: [
                       // Provider<AppModel>.value(value: widget._app),
-                      ChangeNotifierProvider(create: (_) => widget._app),
+                      ChangeNotifierProvider.value(value: _app),
                     ],
                     child: MaterialApp(
                       navigatorKey: navigatorKey,
@@ -93,8 +94,6 @@ class AppState extends State<App> {
               ),
             );
           } else {
-            print("FutureBuilder  snapshot.Not hasData --->" +
-                snapshot.hasData.toString());
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -102,44 +101,15 @@ class AppState extends State<App> {
         });
   }
 
-  Widget getNextScreen() {
-// return CartScreen();
+  getNextScreen() {
+    // // PrefManager().setUserToken("token token token");
+    // print("getNextScreen --->"+PrefManager().getUserToken().toString());
+    // return Container();
 
-    // print("getNextScreen email---> " + widget._app.getUserMail().toString());
-    return FutureBuilder(
-      future: widget._app.getUserToken(),
-      // ignore: missing_return
-      builder: (context, snapshot) {
-        // ignore: missing_return
-        if (snapshot.connectionState == ConnectionState.done) {
-          dismissLoading();
-          print("token is "+snapshot.data.toString());
-          if (snapshot.data != null) {
-            return HomeScreen();
-          } else {
-            return LoginScreen();
-          }
-        }else{
-          return Container();
-          showLoading(context);
-        }
-      },
-    );
-
-    // Provider.of<AppModel>(context, listen: false).setAppFirstSeen(false);
-    // // // return ServicesSubFeatures(cat);
-    // // return ForgotPasswordScreen();
-    // if (!LocalPreferences.isAppFirstSeen()) {
-    //   if (!LocalPreferences.checkLogin()) {
-    //     return HomeScreen();
-    //   } else {
-    //     return LoginScreen();
-    //   }
-    // } else {
-    //   Provider.of<AppModel>(context).setAppFirstSeen(false);
-    //   return Container();
-    //
-    //   /// todo navigate to onBoarding screens
-    // }
+    if (PrefManager().getUserToken() != null) {
+      return HomeScreen();
+    } else {
+      return SignUpScreen();
+    }
   }
 }

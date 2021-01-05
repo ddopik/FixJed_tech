@@ -5,6 +5,7 @@ import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
+import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
 import 'package:provider/provider.dart';
@@ -20,8 +21,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
-  String _password;
-  String _userName;
+  TextEditingController _userNameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   final GlobalKey<FormState> _loginFormState = GlobalKey<FormState>();
 
   // Toggles the password show status
@@ -35,28 +37,27 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          height: MediaQuery.of(context).size.height,
-          alignment: Alignment.topCenter,
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/background_init.png"),
                 fit: BoxFit.fill),
           ),
-          child: renderLoginForm()),
+          child: SingleChildScrollView(
+            child: renderLoginForm(),
+          )),
     );
   }
 
   renderLoginForm() {
     return Form(
-      child: Container(
-        alignment: Alignment.center,
-        height: MediaQuery.of(context).size.height * .38,
-        margin: EdgeInsets.only(top: 170),
+      child: Expanded(
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Create an Account
+
             Text(
               S.of(context).login,
               style: const TextStyle(
@@ -83,29 +84,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                   color: const Color(0xffffffff)),
               child: TextFormField(
-                  keyboardType: TextInputType.name,
-                  decoration: new InputDecoration(
-                      errorStyle: TextStyle(height: 0),
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      disabledBorder: InputBorder.none,
-                      contentPadding: EdgeInsets.only(
-                          left: 15, bottom: 11, top: 11, right: 15),
-                      hintText: S.of(context).email,
-                      hintStyle: TextStyle(fontSize: 14)),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      showToast(S.of(context).invalidEmail);
-                      return '';
-                    }
-                    _userName = value;
-                    return null;
-                  }),
+                controller: _userNameController,
+                keyboardType: TextInputType.name,
+                decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 11, right: 15),
+                    hintText: S.of(context).email,
+                    hintStyle: TextStyle(fontSize: 14)),
+              ),
             ),
             //
-
+            SizedBox(height: 16.0),
             Container(
               width: MediaQuery.of(context).size.width * .70,
               height: 45,
@@ -120,30 +115,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                   color: const Color(0xffffffff)),
               child: TextFormField(
-                  cursorColor: Colors.black,
-                  keyboardType: TextInputType.name,
-                  decoration: new InputDecoration(
-                      errorStyle: TextStyle(height: 0),
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      disabledBorder: InputBorder.none,
-                      contentPadding: EdgeInsets.only(
-                          left: 15, bottom: 11, top: 11, right: 15),
-                      hintText: S.of(context).password,
-                      hintStyle: TextStyle(fontSize: 14)),
-                  // obscureText: true,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      showToast(S.of(context).invalidPassword);
-                      return '';
-                    }
-                    _password = value;
-                    return null;
-                  }),
+                controller: _passwordController,
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.name,
+                decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 11, right: 15),
+                    hintText: S.of(context).password,
+                    hintStyle: TextStyle(fontSize: 14)),
+                // obscureText: true,
+              ),
             ),
             //
-
+            SizedBox(height: 16.0),
             // Rectangle 85
             ////////////////////
             InkWell(
@@ -224,41 +213,39 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  loginUser() {
-    if (_loginFormState.currentState.validate()) {
+  loginUser() async {
+    print("userMail --->"+_userNameController.value.text.trim());
+    if (_userNameController.value.text == null ||  !isEmail(_userNameController.value.text.trim())) {
+      showToast(S.of(context).invalidEmail);
+    } else if (_passwordController.value.text == null ||
+        _passwordController.value.text.length < 6) {
+      showToast(S.of(context).invalidPassword);
+    } else {
       _loginUser();
     }
   }
 
-  _loginUser() {
+  _loginUser() async {
     showLoading(context);
     DIOManager().sendLoginRequest(
-      onSuccess: (response) {
+      onSuccess: (response) async {
         LoginResponse loginResponse = response;
         dismissLoading();
-        Provider.of<AppModel>(context, listen: false)
-            .setUserMail(loginResponse.email);
-        Provider.of<AppModel>(context, listen: false)
-            .setUserId(loginResponse.id.toString());
 
         Provider.of<AppModel>(context, listen: false)
             .setUserToken(loginResponse.token.toString());
-        print("sendLoginRequest saved mail ---> " +
-            Provider.of<AppModel>(context, listen: false)
-                .getUserMail()
-                .toString());
-        print("sendLoginRequest saved mail ---> " +
-            Provider.of<AppModel>(context, listen: false)
-                .getUserMail()
-                .toString());
+
+        Provider.of<AppModel>(context, listen: false)
+            .setUserId(loginResponse.id.toString);
+
         Navigator.of(context).pushReplacementNamed(Routes.HOME);
       },
       onError: (response) {
         showError(S.of(context).invalidLogin);
         dismissLoading();
       },
-      userName: _userName,
-      password: _password,
+      userName: _userNameController.value.text.trim(),
+      password: _passwordController.value.text.trim(),
     );
   }
 }

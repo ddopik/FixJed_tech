@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_base_app/flutter_main/storage/local_preferences.dart';
+import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 
 /// this is model is used to initialize app configuration
 /// and according to your needs can build all your providers and routes upon it
@@ -9,6 +9,23 @@ class AppModel extends ChangeNotifier {
   bool darkTheme = false;
   Locale locale = Locale.fromSubtags(languageCode: 'ar');
 
+  Future<bool> setUpConfig() async {
+
+
+// try {
+//   var state = await PrefManager().setupSharedPreferences();
+//   print("PrefManager has been initialized[2] $state");
+//   return true;
+// }catch(e){
+//   print("PrefManager has been Error[3] " + e.toString());
+//   return true;
+// }
+
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // locale = prefs.getString("language") ?? kAdvanceConfig['DefaultLanguage'];
+    // Session.shared.setupDefaultSession();
+  }
+
   /// update AppMain consumer with this <local> value
   changeLanguage(String local, BuildContext context) async {
     if (local == "ar") {
@@ -16,38 +33,36 @@ class AppModel extends ChangeNotifier {
     } else {
       locale = Locale.fromSubtags(languageCode: 'en');
     }
-    LocalPreferences.setAppLanguage(local);
+    PrefManager().setLang(local);
     notifyListeners();
   }
 
   setAppFirstSeen(bool state) {
-    LocalPreferences.setFirstSeen(state);
+    PrefManager().setAppFirstSeenState(state);
   }
 
   setUserToken(token) {
-    LocalPreferences.setUserToken(token);
+    PrefManager().setUserToken(token);
   }
 
-  Future<String> getUserToken() async {
-    return  LocalPreferences.getUserToken();
+  String getUserToken() {
+    return PrefManager().getUserToken();
   }
 
-  String getUserTokenTest() {
-    return  LocalPreferences.prefs2.getString("user_token");
+  Future<bool> isAppFirstSeen() async {
+    return await PrefManager().isAppFirstSeen();
   }
-  String getUserMailTest()  {
-    return  LocalPreferences.prefs2.getString("user_mail");
-  }
+
   setUserMail(mail) {
-    LocalPreferences.setUserMail(mail);
+    PrefManager().setUserMail(mail);
   }
 
-  Future<String> getUserMail() async {
-    return await LocalPreferences.getUserMail();
+  String getUserMail() {
+    return PrefManager().getUserMail();
   }
 
   setUserId(id) {
-    LocalPreferences.setUserId(id);
+    PrefManager().setUserId(id);
   }
 
   Future<void> updateTheme(bool theme) async {

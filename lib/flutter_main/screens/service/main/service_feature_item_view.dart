@@ -60,7 +60,7 @@ class ServiceFeatureItemView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * .47,
                         height: MediaQuery.of(context).size.height * .1,
                         child: Text(
-                          service.description ?? "",
+                          service.description ?? " description description description description",
                           style: TextStyle(
                               color: Color(0xd9275597),
                               fontWeight: FontWeight.w400,

@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkYourInboxDesc" : MessageLookupByLibrary.simpleMessage("لقد أرسلنا لك رابطًا من خلال\nالبريد الإلكتروني الذي أدخلته للتو"),
     "close" : MessageLookupByLibrary.simpleMessage("اغلاق"),
     "confirmPassword" : MessageLookupByLibrary.simpleMessage("تآكيد كلمه المرور"),
+    "createNewAccount" : MessageLookupByLibrary.simpleMessage("انشاء حساب جديد"),
     "doNotHaveAccount" : MessageLookupByLibrary.simpleMessage("لا تملك حساب ؟"),
     "edit_profile" : MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
     "egp" : MessageLookupByLibrary.simpleMessage("جنيه مصري"),
@@ -56,7 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "sendResetPasswordLink" : MessageLookupByLibrary.simpleMessage("ارسل الرابط"),
     "setting" : MessageLookupByLibrary.simpleMessage("الاعدادات"),
     "signOut" : MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-    "signUp" : MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
+    "signUp" : MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "userName" : MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
     "youHaveAdded" : MessageLookupByLibrary.simpleMessage("لقد اضفت عدد"),
     "youHaveRemoved" : MessageLookupByLibrary.simpleMessage("لقد قمت بآزاله")

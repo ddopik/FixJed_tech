@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkYourInboxDesc" : MessageLookupByLibrary.simpleMessage("We have sent you a link through\nThe email you just entered"),
     "close" : MessageLookupByLibrary.simpleMessage("close"),
     "confirmPassword" : MessageLookupByLibrary.simpleMessage("Confirm password"),
+    "createNewAccount" : MessageLookupByLibrary.simpleMessage("Create new account"),
     "doNotHaveAccount" : MessageLookupByLibrary.simpleMessage("Don\'t have an account ?"),
     "edit_profile" : MessageLookupByLibrary.simpleMessage("Edit profile"),
     "egp" : MessageLookupByLibrary.simpleMessage("EGPِ"),

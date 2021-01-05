@@ -45,7 +45,7 @@ ThemeData buildLightTheme(currentLocal) {
         // errorStyle: TextStyle(color: Colors.red)
       ),
     iconTheme: _customIconTheme(base.iconTheme),
-    hintColor: Colors.black26,
+    hintColor: french_blue,
     backgroundColor: Colors.white,
     primaryColor: kLightPrimary,
     accentColor: kLightAccent,

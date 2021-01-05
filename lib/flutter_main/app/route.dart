@@ -4,7 +4,6 @@ import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_pas
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
 import 'package:flutter_base_app/flutter_main/screens/onboarding/on_boarding.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/main/service_feature_item_view.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/main/service_features_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/SignUpSuccessScreen.dart';
@@ -22,7 +21,6 @@ class Routes {
   static const SERVICE_FEATURES = "/service_features";
   static const SUB_SERVICE_FEATURES = "/sub_service_features";
   static const CART = "/cart";
-
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
