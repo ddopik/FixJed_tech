@@ -494,6 +494,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Please check internet connection and try again.`
+  String get onTryAgainMessage {
+    return Intl.message(
+      'Please check internet connection and try again.',
+      name: 'onTryAgainMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No connection`
+  String get noConnection {
+    return Intl.message(
+      'No connection',
+      name: 'noConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again`
+  String get tryAgain {
+    return Intl.message(
+      'Try again',
+      name: 'tryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We couldn't find any results matching your applied Type.`
+  String get emptyListMessage {
+    return Intl.message(
+      'We couldn\'t find any results matching your applied Type.',
+      name: 'emptyListMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No result Found`
+  String get noResultFound {
+    return Intl.message(
+      'No result Found',
+      name: 'noResultFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong`
+  String get someThingWrong {
+    return Intl.message(
+      'Something went wrong',
+      name: 'someThingWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `'The application has encountered an unknown error.\n'\n 'Please try again later.'`
+  String get applicationError {
+    return Intl.message(
+      '\'The application has encountered an unknown error.\n\'\n \'Please try again later.\'',
+      name: 'applicationError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

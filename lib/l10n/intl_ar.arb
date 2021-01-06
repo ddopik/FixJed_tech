@@ -44,8 +44,15 @@
   "invalidUserName": "اسم مستخدم غير صحيح",
   "invalidFirstName": "الاسم الاول غير صحيح",
   "invalidLastName": "الاسم الاخير غير صحيح",
-
   "passwordErrorLength": "كلمه المرور لا يجب ان تكون اقل من ٦ احرف",
-  "passwordWordNotMatched":"كلمه المرور غير متطابقه"
+  "passwordWordNotMatched":"كلمه المرور غير متطابقه",
+  "onTryAgainMessage": "يرجى التحقق من اتصال الإنترنت وحاول مرة أخرى.",
+  "noConnection": "لا يوجد اتصال",
+  "tryAgain": "آعاده المحاوله",
+  "emptyListMessage": "لم نتمكن من العثور على أي نتائج",
+  "noResultFound": "لا توجد نتائج",
+  "someThingWrong": "هناك خطأ ما",
+  "applicationError": "واجه التطبيق خطأ غير معروف.",
+
 
 }

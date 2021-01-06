@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
@@ -31,19 +30,21 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          height: MediaQuery.of(context).size.height,
-          alignment: Alignment.topCenter,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/background_init.png"),
-                fit: BoxFit.fill),
-          ),
-          child: renderLoginForm()),
+      body: SingleChildScrollView(
+        child: Container(
+            height: MediaQuery.of(context).size.height,
+            alignment: Alignment.topCenter,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/background_init.png"),
+                  fit: BoxFit.fill),
+            ),
+            child: renderForgotPasswordForm()),
+      ),
     );
   }
 
-  renderLoginForm() {
+  renderForgotPasswordForm() {
     return Form(
       child: Container(
         alignment: Alignment.center,
@@ -77,7 +78,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ],
             ),
             // Rectangle 85
-            SizedBox(height: 14.0),
+            SizedBox(height: 22.0),
             Container(
               width: MediaQuery.of(context).size.width * .70,
               height: 45,
@@ -114,7 +115,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   }),
             ),
             //
-            SizedBox(height: 24.0),
+            SizedBox(height: 12.0),
             // Rectangle 85
             ////////////////////
             InkWell(

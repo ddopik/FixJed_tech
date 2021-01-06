@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:slide_popup_dialog/pill_gesture.dart';
-
 
 class SlideDialog extends StatefulWidget {
   final Widget child;
@@ -28,7 +26,8 @@ class _SlideDialogState extends State<SlideDialog> {
     final deviceHeight = MediaQuery.of(context).size.height;
 
     return AnimatedPadding(
-      padding: MediaQuery.of(context).viewInsets + EdgeInsets.only(top: deviceHeight / 3.5 + _currentPosition),
+      padding: MediaQuery.of(context).viewInsets +
+          EdgeInsets.only(top: deviceHeight / 2.5 + _currentPosition),
       duration: Duration(milliseconds: 100),
       curve: Curves.decelerate,
       child: MediaQuery.removeViewInsets(
@@ -37,34 +36,38 @@ class _SlideDialogState extends State<SlideDialog> {
         removeRight: true,
         removeBottom: true,
         context: context,
-        child: GestureDetector(child: Center(
-          child: Container(
-            width: deviceWidth,
-            height: deviceHeight *.8,
-            child: Material(
-              color: widget.backgroundColor ?? Theme.of(context).dialogBackgroundColor,
-              elevation: 24.0,
-              type: MaterialType.card,
-              child: Column(
-                children: <Widget>[
-                  PillGesture(
-                    pillColor: widget.pillColor,
-                    onVerticalDragStart: _onVerticalDragStart,
-                    onVerticalDragEnd: _onVerticalDragEnd,
-                    onVerticalDragUpdate: _onVerticalDragUpdate,
+        child: GestureDetector(
+          child: Center(
+            child: Container(
+              width: deviceWidth,
+              height: deviceHeight * .6,
+              child: Material(
+                color: widget.backgroundColor ??
+                    Theme.of(context).dialogBackgroundColor,
+                elevation: 24.0,
+                type: MaterialType.card,
+                child: Column(
+                  children: <Widget>[
+                    PillGesture(
+                      pillColor: widget.pillColor,
+                      onVerticalDragStart: _onVerticalDragStart,
+                      onVerticalDragEnd: _onVerticalDragEnd,
+                      onVerticalDragUpdate: _onVerticalDragUpdate,
+                    ),
+                    widget.child,
+                  ],
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
                   ),
-                  widget.child,
-                ],
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
                 ),
               ),
             ),
           ),
-        ),onTap: (){},),
+          onTap: () {},
+        ),
       ),
     );
   }

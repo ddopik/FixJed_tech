@@ -4,7 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:logger/logger.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
-
+clearFocus(BuildContext context) {
+  FocusScopeNode currentFocus = FocusScope.of(context);
+  if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+    FocusManager.instance.primaryFocus.unfocus();
+  }
+}
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
     hexColor = hexColor.toUpperCase().replaceAll("#", "");

@@ -46,7 +46,14 @@
   "invalidFirstName": "Invalid first name",
   "invalidLastName": "Invalid last name",
   "passwordErrorLength": "Password can't be less than 6 char",
-  "passwordWordNotMatched": "Password not matched"
+  "passwordWordNotMatched": "Password not matched",
+  "onTryAgainMessage": "Please check internet connection and try again.",
+  "noConnection": "No connection",
+  "tryAgain": "Try again",
+  "emptyListMessage": "We couldn't find any results matching your applied Type.",
+  "noResultFound": "No result Found",
+  "someThingWrong": "Something went wrong",
+  "applicationError": "'The application has encountered an unknown error.\\n'\n 'Please try again later.'"
 
 
 

@@ -72,6 +72,10 @@ class AppModel extends ChangeNotifier {
     PrefManager().setUserId(id.toString());
   }
 
+  logOutUser(){
+    PrefManager().clearSharedPreferences();
+  }
+
   Future<void> updateTheme(bool theme) async {
     // try {
     //   SharedPreferences prefs = await SharedPreferences.getInstance();

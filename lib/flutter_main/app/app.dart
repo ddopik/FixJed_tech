@@ -94,7 +94,9 @@ class AppState extends State<App> {
               ),
             );
           } else {
-            return Center(
+            return Container(
+              alignment: Alignment.center,
+              color: Color(0xffffffff),
               child: CircularProgressIndicator(),
             );
           }
@@ -109,4 +111,5 @@ class AppState extends State<App> {
       return SignUpScreen();
     }
   }
+
 }

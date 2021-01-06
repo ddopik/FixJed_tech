@@ -108,10 +108,10 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                         Container(
                           child: CustomImageLoader.image(
                               url: widget.fixJidCategory.imageUrl,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                               width: MediaQuery.of(context).size.width * .25,
                               height: MediaQuery.of(context).size.height * .3),
-                          color: Colors.red,
+
                         ),
                         SizedBox(
                           width: 24,

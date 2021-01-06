@@ -9,7 +9,7 @@ import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_item.dart';
-import 'package:flutter_base_app/flutter_main/screens/signup/sign_up_dialog_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/sign_up_dialog_screen.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
@@ -281,13 +281,13 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
           },
           productID: viewActionModel.requestExamineObject.id);
     } else {
-      // Navigator.of(context).pushNamed(Routes.LOGIN);
-      signUpDialogScreen(context: context);
+
+      loginDialogScreen(context: context);
     }
   }
 
   addProductToCart(productId) {
-    if (!Provider.of<AppModel>(context, listen: false).isUserLoggedIn()) {
+    if (Provider.of<AppModel>(context, listen: false).isUserLoggedIn()) {
       showLoading(context);
       _productModel.addProductToCart(
           onSuccess: (response) {
@@ -316,7 +316,38 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
           productID: productId);
     } else {
       // Navigator.of(context).pushNamed(Routes.LOGIN);
-      signUpDialogScreen(context: context);
+      loginDialogScreen(context: context);
+    }
+  }
+
+  removeProductFromCart(productId) {
+    if (Provider.of<AppModel>(context, listen: false).isUserLoggedIn()) {
+      showLoading(context);
+      _productModel.removeProductFromCart(
+          onSuccess: (response) {
+            dismissLoading();
+
+            setState(() {
+              _pagingController.itemList = _pagingController.itemList.map((e) {
+                // print("map is --->"+e.serviceId +" currentSelected ---->"+subServiceId);
+                if (e.id == productId) {
+                  if ((e.totalCartCount) > 0) {
+                    e.totalCartCount = e.totalCartCount - 1;
+                    viewActionModel.totalAddedServices =
+                        viewActionModel.totalAddedServices - 1;
+                    // viewQuantityActionView(totalAddedServices,"remove");
+                  }
+                }
+                return e;
+              }).toList();
+              ;
+            });
+          },
+          onError: (message) {
+            dismissLoading();
+            showError(message);
+          },
+          productID: productId);
     }
   }
 
@@ -331,38 +362,9 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
           return SubServiceItem(
               product: service,
               onAdd: (productId, count) {
-
                 addProductToCart(productId);
               },
-              onRemove: (productId, count) {
-                showLoading(context);
-                _productModel.removeProductFromCart(
-                    onSuccess: (response) {
-                      dismissLoading();
-
-                      setState(() {
-                        _pagingController.itemList =
-                            _pagingController.itemList.map((e) {
-                          // print("map is --->"+e.serviceId +" currentSelected ---->"+subServiceId);
-                          if (e.id == productId) {
-                            if ((e.totalCartCount) > 0) {
-                              e.totalCartCount = e.totalCartCount - 1;
-                              viewActionModel.totalAddedServices =
-                                  viewActionModel.totalAddedServices - 1;
-                              // viewQuantityActionView(totalAddedServices,"remove");
-                            }
-                          }
-                          return e;
-                        }).toList();
-                        ;
-                      });
-                    },
-                    onError: (message) {
-                      dismissLoading();
-                      showError(message);
-                    },
-                    productID: productId);
-              });
+              onRemove: (productId, count) {});
         },
         firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
           error: _pagingController.error,

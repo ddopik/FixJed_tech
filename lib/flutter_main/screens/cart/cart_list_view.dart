@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_base_app/flutter_main/screens/service/provider/product_m
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_item.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CartListView extends StatefulWidget {
@@ -180,10 +182,10 @@ class _CartListViewState extends State<CartListView> {
                 });
               });
         },
-        firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
+        firstPageErrorIndicatorBuilder: (context) =>Provider.of<AppModel>(context).isUserLoggedIn()? ErrorIndicator(
           error: _pagingController.error,
           onTryAgain: () => _pagingController.refresh(),
-        ),
+        ):EmptyListIndicator(),
         noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
       ),
       padding: const EdgeInsets.all(16),

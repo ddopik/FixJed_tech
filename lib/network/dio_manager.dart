@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_base_app/flutter_main/app/app_model.dart';
+import 'package:flutter_base_app/flutter_main/common/model/ErrorResponse.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 
 class DIOManager {
   static final DIOManager _instance = DIOManager._dio();
@@ -17,18 +18,16 @@ class DIOManager {
 
     dio.options.baseUrl = "http://34.193.99.151:8080/fix-jed";
     dio.options.headers = {
-      // "Accept-Language": currentLanguage,
+      "Accept-Language": currentLanguage,
     };
+    print("Header AcceptedLanguage --- >" + currentLanguage.toString());
     if (PrefManager().getUserToken() != null) {
-      print("dio.options.headers " + PrefManager().getUserToken());
-      print("dio.options.headers " + PrefManager().getUserMail());
       dio.options.headers = {
         "Authorization": "${PrefManager().getUserToken()}",
         "email": "${PrefManager().getUserMail()}",
       };
-      print(dio.options.headers.toString());
-      //
     }
+    print(dio.options.headers.toString());
     return dio;
   }
 
@@ -284,21 +283,16 @@ class DIOManager {
 
         if (e?.response?.statusCode == 500) {
           onError("Un Expected Error");
-        } else {
-          errorResponse = ErrorResponse.fromJson(e.response.headers.map);
+        } else if (e?.response?.statusCode == 406) {
+          errorResponse = ErrorResponse.fromJson(e.response.data);
           onError(errorResponse);
+        } else if (e?.response?.statusCode == 401) {
+          onError(S.current.invalidLogin);
+        } else {
+          onError(" UnExpected Error");
         }
       } else {
-        // Something happened in setting up or sending the request that triggered an Error
-        print("handleDioErrorResponse() DioErrorType---> " + e.type.toString());
-        if (e.type == DioErrorType.DEFAULT) {
-          errorResponse = ErrorResponse();
-          errorResponse.fixJidErrorCode = "4";
-          errorResponse.fixJidErrorDetails = "Unreachable";
-          onError(errorResponse);
-        } else {
-          onError(e?.response ?? " UnExpected Error");
-        }
+        onError(e?.response ?? " UnExpected Error");
       }
     } catch (e) {
       onError("Un Expected Error");
@@ -306,20 +300,20 @@ class DIOManager {
   }
 }
 
-class ErrorResponse {
-  String fixJidErrorDetails;
-  String fixJidErrorCode;
-
-  ErrorResponse({this.fixJidErrorDetails, this.fixJidErrorCode});
-
-  factory ErrorResponse.fromJson(Map<String, dynamic> json) {
-    try {
-      return ErrorResponse(
-          fixJidErrorDetails: json['optique_error_details'][0],
-          fixJidErrorCode: json['optique_error_code'][0]);
-    } catch (e) {
-      return ErrorResponse(
-          fixJidErrorDetails: "Un parsed Error", fixJidErrorCode: "0");
-    }
-  }
-}
+// class ErrorResponse {
+//   String fixJidErrorDetails;
+//   String fixJidErrorCode;
+//
+//   ErrorResponse({this.fixJidErrorDetails, this.fixJidErrorCode});
+//
+//   factory ErrorResponse.fromJson(Map<String, dynamic> json) {
+//     try {
+//       return ErrorResponse(
+//           fixJidErrorDetails: json['optique_error_details'][0],
+//           fixJidErrorCode: json['optique_error_code'][0]);
+//     } catch (e) {
+//       return ErrorResponse(
+//           fixJidErrorDetails: "Un parsed Error", fixJidErrorCode: "0");
+//     }
+//   }
+// }

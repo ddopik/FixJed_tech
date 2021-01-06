@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/main_category_list_view.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/homePage';
@@ -119,12 +121,26 @@ class navigationDrawer extends StatelessWidget {
             alignment: Alignment.center,
           ),
           Divider(),
-          Container(
-            margin: EdgeInsets.all(14.0),
-            child: Text(S.of(context).signOut,
-                style: TextStyle(
-                    color: boring_green, fontWeight: FontWeight.w600)),
-            alignment: Alignment.center,
+          GestureDetector(
+            child: Container(
+              margin: EdgeInsets.all(14.0),
+              child: Text(
+                  Provider.of<AppModel>(context).isUserLoggedIn()
+                      ? S.of(context).signOut
+                      : S.of(context).login,
+                  style: TextStyle(
+                      color: boring_green, fontWeight: FontWeight.w600)),
+              alignment: Alignment.center,
+            ),
+            onTap: () {
+              if (Provider.of<AppModel>(context,listen: false).isUserLoggedIn()) {
+                Provider.of<AppModel>(context,listen: false).logOutUser();
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(Routes.LOGIN, (route) => false);
+              } else {
+                Navigator.of(context).pushNamed(Routes.LOGIN);
+              }
+            },
           ),
           Divider(),
         ],
@@ -141,7 +157,9 @@ class navigationDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Image(
-                  image: AssetImage("assets/images/image_profile.png"),
+                width: 110,
+                  height: 110,
+                  image: AssetImage("assets/images/img_profile.jpeg"),
                   fit: BoxFit.contain),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
