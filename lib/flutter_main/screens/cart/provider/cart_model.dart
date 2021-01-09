@@ -7,11 +7,21 @@ class CartModel{
   getCartProduct({onSuccess, onError, serviceId, page}) {
     DIOManager().getCartProducts(
         onSuccess: (response) {
-          List<CartResponse> servicesList = (response as List).map((model) => CartResponse.fromJson(model)).toList();
-          onSuccess(servicesList);
+          CartResponse cartResponse = CartResponse.fromJson(response);
+          onSuccess(cartResponse);
         },
         onError: (errorResponse) {
           onError(errorResponse);
         },);
+  }
+  removeProductFromCart({onSuccess, onError, serviceId}) {
+    DIOManager().removeProductFromCart(
+        onSuccess: (response) {
+          onSuccess(true);
+        },
+        onError: (errorResponse) {
+          onError(errorResponse);
+        },
+        productId: serviceId);
   }
 }

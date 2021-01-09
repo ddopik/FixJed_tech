@@ -17,7 +17,7 @@ class MainCategoryListView extends StatefulWidget {
 }
 
 class MainCategoryListViewState extends State<MainCategoryListView> {
-  final _pagingController = PagingController<int, FixJidCategory>(
+  final _pagingController = PagingController<int, FixJedCategory>(
     firstPageKey: 0,
   );
 
@@ -68,7 +68,7 @@ class MainCategoryListViewState extends State<MainCategoryListView> {
       ),
       child: PagedGridView(
         pagingController: _pagingController,
-        builderDelegate: PagedChildBuilderDelegate<FixJidCategory>(
+        builderDelegate: PagedChildBuilderDelegate<FixJedCategory>(
           itemBuilder: (context, fixJidCategory, index) {
             return InkWell(
               child: HomeCategoryItem(fixJidCategory),

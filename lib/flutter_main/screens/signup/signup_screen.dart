@@ -438,7 +438,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               fontFamily: "Raleway",
                               fontStyle: FontStyle.normal,
                               fontSize: 12.7),
-                          text: S.of(context).alreadyHaveAccount+"    "),
+                          text: S.of(context).alreadyHaveAccount + "    "),
                       TextSpan(
                           style: const TextStyle(
                               color: boring_green,
@@ -491,41 +491,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
     print("_firstNameController.value.text --->" +
         _firstNameController.value.text);
     if (_firstNameController.value.text.isEmpty) {
-      showInfo(S.of(context).invalidFirstName);
+      showError(S.of(context).invalidFirstName);
       return false;
     }
     if (_lastNameController.value.text.isEmpty) {
-      showInfo(S.of(context).invalidLastName);
+      showError(S.of(context).invalidLastName);
       return false;
     }
     if (_emailController.value.text.isEmpty ||
         !isEmail(_emailController.value.text)) {
-      showInfo(S.of(context).invalidEmail);
+      showError(S.of(context).invalidEmail);
       return false;
     }
     if (_userNameController.value.text.isEmpty) {
-      showInfo(S.of(context).invalidUserName);
+      showError(S.of(context).invalidUserName);
       return false;
     }
     if (_passwordController.value.text.isEmpty) {
-      showInfo(S.of(context).invalidPassword);
+      showError(S.of(context).invalidPassword);
       return false;
-    } else if (_passwordController.value.text.length > 6) {
-      showInfo(S.of(context).passwordErrorLength);
+    } else if (_passwordController.value.text.length < 6) {
+      showError(S.of(context).passwordErrorLength);
       return false;
     }
+    else if (_passwordController.value.text.contains(" ")) {
+      showError(S.of(context).passwordSpaceError);
+      return false;
+    }
+
     if (_confirmPasswordController.value.text.isEmpty) {
-      showInfo(S.of(context).invalidPassword);
+      showError(S.of(context).invalidPassword);
       return false;
     } else if (_confirmPasswordController.value.text.length > 6) {
-      showInfo(S.of(context).passwordWordNotMatched);
+      showError(S.of(context).passwordWordNotMatched);
       return false;
     }
 
     if (_phoneNumberController.value.text.isEmpty ||
         _phoneNumberController.value.text.length < 11 ||
         !isNumber(_phoneNumberController.value.text)) {
-      showInfo(S.of(context).invalidEmptyPhoneNumber);
+      showError(S.of(context).invalidEmptyPhoneNumber);
       return false;
     }
 

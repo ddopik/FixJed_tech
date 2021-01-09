@@ -5,7 +5,7 @@ import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid
 import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
  
 class HomeCategoryItem extends StatelessWidget {
-  final FixJidCategory _fixJidCategory;
+  final FixJedCategory _fixJidCategory;
 
   HomeCategoryItem(this._fixJidCategory);
 
@@ -25,7 +25,7 @@ class HomeCategoryItem extends StatelessWidget {
                 child: ClipOval(
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
-                    child:CustomImageLoader.image(url:_fixJidCategory.imageUrl,width: 80,height: 80,fit: BoxFit.contain),
+                    child:CustomImageLoader.image(url:_fixJidCategory.imageUrl,width: 80,height: 65,fit: BoxFit.contain),
                   ),
                 ),
               ),

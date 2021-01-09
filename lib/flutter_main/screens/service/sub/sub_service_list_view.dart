@@ -6,11 +6,11 @@ import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/log_in_dialog_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_item.dart';
-import 'package:flutter_base_app/flutter_main/screens/login/sign_up_dialog_screen.dart';
-import 'package:flutter_base_app/generated/l10n.dart';
+ import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
@@ -42,10 +42,10 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
     print("MainFeaturesListView ---> initState category is " +
         widget.service.id.toString());
     _productModel = ProductModel();
-    _fetchPage(0);
-    // _pagingController.addPageRequestListener((pageKey) {
-    //   _fetchPage(pageKey);
-    // });
+    // _fetchPage(0);
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
     super.initState();
   }
 
@@ -299,7 +299,7 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                 print("Found Match --->" + productId.toString());
                 viewActionModel.totalAddedServices =
                     viewActionModel.totalAddedServices + 1;
-                e.totalCartCount = e.totalCartCount + 1;
+                e.productCartCount = e.productCartCount + 1;
               }
               return e;
             }).toList();
@@ -320,19 +320,21 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
     }
   }
 
-  removeProductFromCart(productId) {
+  subtractProductFromCart(productId) {
     if (Provider.of<AppModel>(context, listen: false).isUserLoggedIn()) {
       showLoading(context);
-      _productModel.removeProductFromCart(
+      _productModel.subtractProductFromCart(
           onSuccess: (response) {
             dismissLoading();
 
             setState(() {
+
+
               _pagingController.itemList = _pagingController.itemList.map((e) {
                 // print("map is --->"+e.serviceId +" currentSelected ---->"+subServiceId);
                 if (e.id == productId) {
-                  if ((e.totalCartCount) > 0) {
-                    e.totalCartCount = e.totalCartCount - 1;
+                  if ((e.productCartCount) > 0) {
+                    e.productCartCount = e.productCartCount - 1;
                     viewActionModel.totalAddedServices =
                         viewActionModel.totalAddedServices - 1;
                     // viewQuantityActionView(totalAddedServices,"remove");
@@ -340,7 +342,9 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                 }
                 return e;
               }).toList();
-              ;
+
+
+
             });
           },
           onError: (message) {
@@ -358,13 +362,13 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
       builderDelegate: PagedChildBuilderDelegate<Product>(
         itemBuilder: (context, service, index) {
           print("PagedListView builder called is --->" +
-              service.totalCartCount.toString());
+              service.productCartCount.toString());
           return SubServiceItem(
               product: service,
               onAdd: (productId, count) {
                 addProductToCart(productId);
               },
-              onRemove: (productId, count) {});
+              onSubtract: (productId, count) {subtractProductFromCart(productId);});
         },
         firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
           error: _pagingController.error,

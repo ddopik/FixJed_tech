@@ -11,7 +11,10 @@ import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
 import 'package:provider/provider.dart';
 
-Future<T> loginDialogScreen<T>(
+TextEditingController _userNameController = TextEditingController();
+TextEditingController _passwordController = TextEditingController();
+
+loginDialogScreen<T>(
     {@required BuildContext context,
     Color barrierColor,
     bool barrierDismissible = false,
@@ -19,7 +22,9 @@ Future<T> loginDialogScreen<T>(
     Color pillColor,
     String message,
     Color backgroundColor}) {
+  print("loginDialogScreen ---> build() --> called");
   assert(context != null);
+
   return showGeneralDialog(
     context: context,
     pageBuilder: (context, animation1, animation2) {},
@@ -28,22 +33,22 @@ Future<T> loginDialogScreen<T>(
     barrierLabel: "Dismiss",
     transitionDuration: transitionDuration,
     transitionBuilder: (context, animation1, animation2, widget) {
+      print("animation1 ---- > " + animation1.toString());
       final curvedValue = Curves.easeInOut.transform(animation1.value) - 1.0;
       return GestureDetector(
         child: Transform(
-            transform: Matrix4.translationValues(0.0, curvedValue * -300, 0.0),
-            child: Opacity(
-              opacity: animation1.value,
-              child: SingleChildScrollView(
-                child: Expanded(
-                  child: SlideDialog(
-                      pillColor: pillColor ?? Colors.blueGrey[200],
-                      backgroundColor:
-                          backgroundColor ?? Theme.of(context).canvasColor,
-                      child: renderLoginForm(context)),
-                ),
-              ),
-            )),
+          transform: Matrix4.translationValues(0.0, curvedValue * -300, 0.0),
+          child: Opacity(
+            opacity: animation1.value,
+            child: SingleChildScrollView(
+              child: SlideDialog(
+                  pillColor: pillColor ?? Colors.blueGrey[200],
+                  backgroundColor:
+                      backgroundColor ?? Theme.of(context).canvasColor,
+                  child: renderLoginForm(context)),
+            ),
+          ),
+        ),
         onTap: () {
           Navigator.of(context).pop();
         },
@@ -53,17 +58,15 @@ Future<T> loginDialogScreen<T>(
 }
 
 renderLoginForm(BuildContext context) {
+  print("renderLoginForm  --> called");
   bool _obscureText = true;
-  TextEditingController _userNameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+
   _loginUser() async {
-    clearFocus(context);
     showLoading(context);
     DIOManager().sendLoginRequest(
       onSuccess: (response) async {
         LoginResponse loginResponse = response;
         dismissLoading();
-
         Provider.of<AppModel>(context, listen: false)
             .setUserToken(loginResponse.token.toString());
 
@@ -87,11 +90,16 @@ renderLoginForm(BuildContext context) {
   }
 
   validateUser() async {
-    print("userMail --->" + _userNameController.value.text.trim());
-    if (_userNameController.value.text == null ||
-        !isEmail(_userNameController.value.text.trim())) {
+    print("userMail --->" +
+        _userNameController.value.text.trim() +"----isEmpty---"+  _userNameController.value.text.isNotEmpty.toString() +
+        " \\\\--->is valid" +
+        " "+isEmail(_userNameController.value.text.trim()).toString());
+
+
+
+    if (_userNameController.value.text.isEmpty || !isEmail(_userNameController.value.text.trim())) {
       showToast(S.of(context).invalidEmail);
-    } else if (_passwordController.value.text == null ||
+    } else if (_passwordController.value.text.isEmpty ||
         _passwordController.value.text.length < 6) {
       showToast(S.of(context).invalidPassword);
     } else {
@@ -100,27 +108,95 @@ renderLoginForm(BuildContext context) {
   }
 
   return Form(
-    child: Expanded(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // Create an Account
-          Text(
-            S.of(context).login,
-            style: const TextStyle(
-                color: french_blue,
-                fontWeight: FontWeight.w700,
-                fontFamily: "Raleway",
-                fontStyle: FontStyle.normal,
-                fontSize: 18.0),
-            textAlign: TextAlign.center,
+    child: Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        // Create an Account
+        Text(
+          S.of(context).login,
+          style: const TextStyle(
+              color: french_blue,
+              fontWeight: FontWeight.w700,
+              fontFamily: "Raleway",
+              fontStyle: FontStyle.normal,
+              fontSize: 18.0),
+          textAlign: TextAlign.center,
+        ),
+        // Rectangle 85
+        SizedBox(height: 12.0),
+        Container(
+          width: MediaQuery.of(context).size.width * .70,
+          height: 45,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(24)),
+              boxShadow: [
+                BoxShadow(
+                    color: const Color(0x29000000),
+                    offset: Offset(0, 3),
+                    blurRadius: 6,
+                    spreadRadius: 0)
+              ],
+              color: const Color(0xffffffff)),
+          child: TextFormField(
+            enableSuggestions: false,
+            controller: _userNameController,
+            keyboardType: TextInputType.visiblePassword,
+            decoration: new InputDecoration(
+                errorStyle: TextStyle(height: 0),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                contentPadding:
+                    EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                hintText: S.of(context).email,
+                hintStyle: TextStyle(fontSize: 14)),
           ),
-          // Rectangle 85
-          SizedBox(height: 12.0),
-          Container(
+        ),
+        //
+        SizedBox(height: 16.0),
+        Container(
+          width: MediaQuery.of(context).size.width * .70,
+          height: 45,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(24)),
+              boxShadow: [
+                BoxShadow(
+                    color: const Color(0x29000000),
+                    offset: Offset(0, 3),
+                    blurRadius: 6,
+                    spreadRadius: 0)
+              ],
+              color: const Color(0xffffffff)),
+          child: TextFormField(
+            controller: _passwordController,
+            cursorColor: Colors.black,
+
+            keyboardType: TextInputType.name,
+            decoration: new InputDecoration(
+                errorStyle: TextStyle(height: 0),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                contentPadding:
+                    EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                hintText: S.of(context).password,
+                hintStyle: TextStyle(fontSize: 14)),
+            obscureText: true,
+          ),
+        ),
+        //
+        SizedBox(height: 16.0),
+        // Rectangle 85
+        ////////////////////
+        InkWell(
+          child: Container(
             width: MediaQuery.of(context).size.width * .70,
             height: 45,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(24)),
                 boxShadow: [
@@ -130,105 +206,37 @@ renderLoginForm(BuildContext context) {
                       blurRadius: 6,
                       spreadRadius: 0)
                 ],
-                color: const Color(0xffffffff)),
-            child: TextFormField(
-              controller: _userNameController,
-              keyboardType: TextInputType.name,
-              decoration: new InputDecoration(
-                  errorStyle: TextStyle(height: 0),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                  hintText: S.of(context).email,
-                  hintStyle: TextStyle(fontSize: 14)),
+                color: boring_green),
+            child: Text(
+              S.of(context).login,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600),
             ),
           ),
-          //
-          SizedBox(height: 16.0),
-          Container(
-            width: MediaQuery.of(context).size.width * .70,
-            height: 45,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(24)),
-                boxShadow: [
-                  BoxShadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(0, 3),
-                      blurRadius: 6,
-                      spreadRadius: 0)
-                ],
-                color: const Color(0xffffffff)),
-            child: TextFormField(
-              controller: _passwordController,
-              cursorColor: Colors.black,
-              keyboardType: TextInputType.name,
-              decoration: new InputDecoration(
-                  errorStyle: TextStyle(height: 0),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                  hintText: S.of(context).password,
-                  hintStyle: TextStyle(fontSize: 14)),
-              // obscureText: true,
-            ),
-          ),
-          //
-          SizedBox(height: 16.0),
-          // Rectangle 85
-          ////////////////////
-          InkWell(
-            child: Container(
-              width: MediaQuery.of(context).size.width * .70,
-              height: 45,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(24)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                        spreadRadius: 0)
-                  ],
-                  color: boring_green),
-              child: Text(
-                S.of(context).login,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            onTap: () {
-              validateUser();
-            },
-          ),
+          onTap: () {
+            validateUser();
+          },
+        ),
 ////////////////////////////////
-          // forgot password
-          SizedBox(height: 6.0),
-          GestureDetector(
-            child: Text(S.of(context).forgotPassword,
-                style: const TextStyle(
-                    color: boring_green,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Raleway",
-                    fontStyle: FontStyle.normal,
-                    decoration: TextDecoration.underline,
-                    fontSize: 18),
-                textAlign: TextAlign.center),
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD);
-            },
-          ),
-        ],
-      ),
+        // forgot password
+        SizedBox(height: 6.0),
+        GestureDetector(
+          child: Text(S.of(context).forgotPassword,
+              style: const TextStyle(
+                  color: boring_green,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: "Raleway",
+                  fontStyle: FontStyle.normal,
+                  decoration: TextDecoration.underline,
+                  fontSize: 18),
+              textAlign: TextAlign.center),
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD);
+          },
+        ),
+      ],
     ),
   );
 }

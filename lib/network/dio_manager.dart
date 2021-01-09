@@ -5,8 +5,7 @@ import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
-
-class DIOManager {
+ class DIOManager {
   static final DIOManager _instance = DIOManager._dio();
 
   factory DIOManager() => _instance;
@@ -41,8 +40,9 @@ class DIOManager {
   static const String _GET_PRODUCT = "/product/find-all-by-category-id";
   static const String _GET_CART_PRODUCT = "/cart/find-all-product-in-cart";
   static const String _ADD_PRODUCT_TO_CART = "/cart/add-product-to-cart";
-  static const String _REMOVE_PRODUCT_FROM_CART =
-      "/cart/delete-product-from-cart";
+  static const String _SUBTRACT_PRODUCT_FROM_CART =      "/cart/delete-product-from-cart";
+  static const String _REMOVE_PRODUCT_FROM_CART ="/cart/delete-all-product-from-cart";
+
 
   sendLoginRequest(
       {Function onSuccess,
@@ -51,8 +51,12 @@ class DIOManager {
       String password}) async {
     var bodyParameter;
 
-    bodyParameter = {"username": userName, "password": password};
-
+    bodyParameter = {
+      "username": userName.toString(),
+      "password": password.trim()
+    };
+    print("Body userName --->" + trimAll(userName) + "--");
+    print("Body password --->" + trimAll(password) + "--");
     try {
       Response response = await _dio.post(_USER_LOGIN, data: bodyParameter);
 
@@ -149,6 +153,13 @@ class DIOManager {
         queryParameters: {"product-id": productId});
   }
 
+  subtractProductFromCart({Function onSuccess, Function onError, productId}) {
+    _sendDeleteRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: _SUBTRACT_PRODUCT_FROM_CART,
+        queryParameters: {"product-id": productId});
+  }
   removeProductFromCart({Function onSuccess, Function onError, productId}) {
     _sendDeleteRequest(
         onSuccess: onSuccess,

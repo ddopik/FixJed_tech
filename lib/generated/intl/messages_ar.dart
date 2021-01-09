@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "doNotHaveAccount" : MessageLookupByLibrary.simpleMessage("لا تملك حساب ؟"),
     "edit_profile" : MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
     "egp" : MessageLookupByLibrary.simpleMessage("جنيه مصري"),
+    "egpPrice" : MessageLookupByLibrary.simpleMessage("جنيه"),
     "email" : MessageLookupByLibrary.simpleMessage("البريد الااكتروني"),
     "emptyListMessage" : MessageLookupByLibrary.simpleMessage("لم نتمكن من العثور على أي نتائج"),
     "firstName" : MessageLookupByLibrary.simpleMessage("الاسم الاول"),
@@ -54,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loading" : MessageLookupByLibrary.simpleMessage("تحميل"),
     "login" : MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "myServices" : MessageLookupByLibrary.simpleMessage("الخدمات"),
+    "no" : MessageLookupByLibrary.simpleMessage("لا"),
     "noConnection" : MessageLookupByLibrary.simpleMessage("لا يوجد اتصال"),
     "noResultFound" : MessageLookupByLibrary.simpleMessage("لا توجد نتائج"),
     "notMatchedPassword" : MessageLookupByLibrary.simpleMessage("كلمه المرور غير متطابقه"),
@@ -61,7 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "onTryAgainMessage" : MessageLookupByLibrary.simpleMessage("يرجى التحقق من اتصال الإنترنت وحاول مرة أخرى."),
     "password" : MessageLookupByLibrary.simpleMessage("كلمه المرور"),
     "passwordErrorLength" : MessageLookupByLibrary.simpleMessage("كلمه المرور لا يجب ان تكون اقل من ٦ احرف"),
+    "passwordSpaceError" : MessageLookupByLibrary.simpleMessage("كلمه المرور لايمكن ان تحتوي علي آي مسافات"),
     "passwordWordNotMatched" : MessageLookupByLibrary.simpleMessage("كلمه المرور غير متطابقه"),
+    "pay" : MessageLookupByLibrary.simpleMessage("آدفع"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "policyHint" : MessageLookupByLibrary.simpleMessage("بإنشاء حساب ، فإنك توافق على \n شروط الخدمات وسياسة الخصوصية"),
     "resetPassword" : MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
@@ -72,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "someThingWrong" : MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "tryAgain" : MessageLookupByLibrary.simpleMessage("آعاده المحاوله"),
     "userName" : MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+    "yes" : MessageLookupByLibrary.simpleMessage("نعم"),
     "youHaveAdded" : MessageLookupByLibrary.simpleMessage("لقد اضفت عدد"),
     "youHaveRemoved" : MessageLookupByLibrary.simpleMessage("لقد قمت بآزاله")
   };

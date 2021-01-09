@@ -13,7 +13,7 @@ import 'service_feature_item_view.dart';
 
 // ignore: must_be_immutable
 class MainServicesListView extends StatefulWidget {
-  final FixJidCategory fixJidCategory;
+  final FixJedCategory fixJidCategory;
 
   MainServicesListView({this.fixJidCategory});
 
@@ -30,10 +30,10 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
   void initState() {
     print("MainServicesListView ---> initState ServiceCategory is " +
         widget.fixJidCategory.id.toString());
-    _fetchPage(0);
-    // _pagingController.addPageRequestListener((pageKey) {
-    //   _fetchPage(pageKey);
-    // });
+
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
     super.initState();
   }
 
@@ -87,76 +87,72 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
           ListView(),
           Container(
             width: MediaQuery.of(context).size.width,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              padding: EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * .9,
-                    height: MediaQuery.of(context).size.height * .15,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        SizedBox(
-                          width: 28,
-                        ),
-                        Container(
-                          child: CustomImageLoader.image(
-                              url: widget.fixJidCategory.imageUrl,
-                              fit: BoxFit.contain,
-                              width: MediaQuery.of(context).size.width * .25,
-                              height: MediaQuery.of(context).size.height * .3),
-
-                        ),
-                        SizedBox(
-                          width: 24,
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 12.0,
-                            ),
-                            Text(
-                              widget.fixJidCategory.name,
-                              style: TextStyle(
-                                  color: boring_green,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: "Tajawal",
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 16.0),
-                            ),
-                            SizedBox(
-                              height: 12.0,
-                            ),
-                            Text(
-                              "description here",
-                              style: TextStyle(
-                                  color: Color(0xd9275597),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "Tajawal",
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 14.0),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
+            height: MediaQuery.of(context).size.height,
+            padding: EdgeInsets.all(12.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * .9,
+                  height: MediaQuery.of(context).size.height * .15,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      SizedBox(
+                        width: 28,
+                      ),
+                      Container(
+                        child: CustomImageLoader.image(
+                            url: widget.fixJidCategory.imageUrl,
+                            fit: BoxFit.contain,
+                            width: MediaQuery.of(context).size.width * .25,
+                            height: MediaQuery.of(context).size.height * .3),
+                      ),
+                      SizedBox(
+                        width: 24,
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 12.0,
+                          ),
+                          Text(
+                            widget.fixJidCategory.name,
+                            style: TextStyle(
+                                color: boring_green,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: "Tajawal",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 16.0),
+                          ),
+                          SizedBox(
+                            height: 12.0,
+                          ),
+                          Text(
+                            "description here",
+                            style: TextStyle(
+                                color: Color(0xd9275597),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Tajawal",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14.0),
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                  LimitedBox(
-                      maxHeight: MediaQuery.of(context).size.height * .69,
-                      child: renderServiceList()),
-                ],
-              ),
+                ),
+                LimitedBox(
+                    maxHeight: MediaQuery.of(context).size.height * .67,
+                    child: renderServiceList()),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );

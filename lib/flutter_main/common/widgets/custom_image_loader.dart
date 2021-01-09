@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 
-import '../../../skeleton.dart';
+import 'skeleton.dart';
 
 
 

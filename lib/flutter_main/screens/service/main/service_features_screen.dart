@@ -8,13 +8,15 @@ import 'main_services_list_view.dart';
 
 // ignore: must_be_immutable
 class ServiceFeaturesScreen extends StatelessWidget {
-  FixJidCategory _fixJidCategory;
+  FixJedCategory _fixJidCategory;
 
   @override
   Widget build(BuildContext context) {
+    print("ServiceFeaturesScreen  build() ----> Called");
     _fixJidCategory = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: getPrimaryAppBar(context, _fixJidCategory.name),
       body: Container(
         width: MediaQuery.of(context).size.width,

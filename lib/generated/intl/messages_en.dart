@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "doNotHaveAccount" : MessageLookupByLibrary.simpleMessage("Don\'t have an account ?"),
     "edit_profile" : MessageLookupByLibrary.simpleMessage("Edit profile"),
     "egp" : MessageLookupByLibrary.simpleMessage("EGPِ"),
+    "egpPrice" : MessageLookupByLibrary.simpleMessage("EGPِ"),
     "email" : MessageLookupByLibrary.simpleMessage("email"),
     "emptyListMessage" : MessageLookupByLibrary.simpleMessage("We couldn\'t find any results matching your applied Type."),
     "firstName" : MessageLookupByLibrary.simpleMessage("First name"),
@@ -54,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loading" : MessageLookupByLibrary.simpleMessage("loading"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
     "myServices" : MessageLookupByLibrary.simpleMessage("My services"),
+    "no" : MessageLookupByLibrary.simpleMessage("No"),
     "noConnection" : MessageLookupByLibrary.simpleMessage("No connection"),
     "noResultFound" : MessageLookupByLibrary.simpleMessage("No result Found"),
     "notMatchedPassword" : MessageLookupByLibrary.simpleMessage("password not matched"),
@@ -61,7 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "onTryAgainMessage" : MessageLookupByLibrary.simpleMessage("Please check internet connection and try again."),
     "password" : MessageLookupByLibrary.simpleMessage("password"),
     "passwordErrorLength" : MessageLookupByLibrary.simpleMessage("Password can\'t be less than 6 char"),
+    "passwordSpaceError" : MessageLookupByLibrary.simpleMessage("Password mustn\'t contain any spaces"),
     "passwordWordNotMatched" : MessageLookupByLibrary.simpleMessage("Password not matched"),
+    "pay" : MessageLookupByLibrary.simpleMessage("Pay"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Phone number"),
     "policyHint" : MessageLookupByLibrary.simpleMessage("By creating an account you are agree to our \\n terms of services and privacy Policy"),
     "resetPassword" : MessageLookupByLibrary.simpleMessage("Password Reset"),
@@ -72,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "someThingWrong" : MessageLookupByLibrary.simpleMessage("Something went wrong"),
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Try again"),
     "userName" : MessageLookupByLibrary.simpleMessage("User name"),
+    "yes" : MessageLookupByLibrary.simpleMessage("Yes"),
     "youHaveAdded" : MessageLookupByLibrary.simpleMessage("you have added"),
     "youHaveRemoved" : MessageLookupByLibrary.simpleMessage("you have removed")
   };

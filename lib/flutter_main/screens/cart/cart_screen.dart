@@ -15,6 +15,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).cart),
@@ -32,7 +33,9 @@ class _CartScreenState extends State<CartScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-            color: kBackgroundWhite,
+            image: DecorationImage(
+                image: AssetImage("assets/images/background_2.png"),
+                fit: BoxFit.cover),
             border: Border.all(
               color: kBackgroundWhite,
               width: 1.0,

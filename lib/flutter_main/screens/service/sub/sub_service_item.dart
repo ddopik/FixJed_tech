@@ -6,9 +6,9 @@ import 'package:flutter_base_app/generated/l10n.dart';
 
 class SubServiceItem extends StatefulWidget {
   final Product product;
-  final Function onAdd, onRemove;
+  final Function onAdd, onSubtract;
 
-  SubServiceItem({this.product, this.onAdd, this.onRemove});
+  SubServiceItem({this.product, this.onAdd, this.onSubtract});
 
   @override
   State<StatefulWidget> createState() {
@@ -21,7 +21,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
   @override
   Widget build(BuildContext context) {
     print(
-        "TotalAddedServicesState ---> build() with ${widget.product.totalCartCount}");
+        "TotalAddedServicesState ---> build() with ${widget.product.productCartCount}");
 // return Container(width: 200,height: 200,color: Colors.white70,);
     return Card(
         shape: RoundedRectangleBorder(
@@ -98,7 +98,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                                   iconSize: 144,
                                   onPressed: () {
                                     widget.onAdd(widget.product.id,
-                                        widget.product.totalCartCount);
+                                        widget.product.productCartCount);
                                   },
                                 ),
                                 fit: BoxFit.fill,
@@ -108,7 +108,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 14.0),
                             child: Text(
-                              widget.product.totalCartCount.toString(),
+                              widget.product.productCartCount.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: french_blue),
@@ -128,8 +128,8 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                                   ),
                                   iconSize: 144,
                                   onPressed: () {
-                                    widget.onRemove(widget.product.id,
-                                        widget.product.totalCartCount);
+                                    widget.onSubtract(widget.product.id,
+                                        widget.product.productCartCount);
                                   },
                                 ),
                                 fit: BoxFit.fill,

@@ -1,27 +1,33 @@
-import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
 
 class CartResponse {
   CartResponse({
-    this.id,
-    this.count,
-    this.product,
+    this.cartTotalProductsCount,
+    this.cartTotalPrice,
+    this.cartProductCount,
+    this.categories,
+    this.errors,
   });
 
-  int id;
-  int count;
-  Product product;
+  int cartTotalProductsCount;
+  int cartTotalPrice;
+  int cartProductCount;
+  List<FixJedCategory> categories;
+  dynamic errors;
 
   factory CartResponse.fromJson(Map<String, dynamic> json) => CartResponse(
-        id: json["id"],
-        count: json["count"],
-        product: Product.fromJson(json["product"]),
-      );
+    cartTotalProductsCount: json["cartTotalProductsCount"],
+    cartTotalPrice: json["cartTotalPrice"],
+    cartProductCount: json["cartProductCount"],
+    categories: List<FixJedCategory>.from(json["categories"].map((x) => FixJedCategory.fromJson(x))),
+    errors: json["errors"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "count": count,
-        "product": product.toJson(),
-      };
+    "cartTotalProductsCount": cartTotalProductsCount,
+    "cartTotalPrice": cartTotalPrice,
+    "cartProductCount": cartProductCount,
+    "categories": List<dynamic>.from(categories.map((x) => x.toJson())),
+    "errors": errors,
+  };
 }
-
-

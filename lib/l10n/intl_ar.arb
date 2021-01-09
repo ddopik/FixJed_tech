@@ -53,6 +53,11 @@
   "noResultFound": "لا توجد نتائج",
   "someThingWrong": "هناك خطأ ما",
   "applicationError": "واجه التطبيق خطأ غير معروف.",
+  "passwordSpaceError": "كلمه المرور لايمكن ان تحتوي علي آي مسافات",
+  "egpPrice": "جنيه",
+  "yes":"نعم",
+  "no":"لا",
+  "pay": "آدفع"
 
 
 }

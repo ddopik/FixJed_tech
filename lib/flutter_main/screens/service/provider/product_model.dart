@@ -46,8 +46,8 @@ class ProductModel extends ChangeNotifier {
         productId: productID);
   }
 
-  removeProductFromCart({onSuccess, onError, productID}) {
-    DIOManager().removeProductFromCart(
+  subtractProductFromCart({onSuccess, onError, productID}) {
+    DIOManager().subtractProductFromCart(
         onSuccess: (response) {
           onSuccess(true);
         },

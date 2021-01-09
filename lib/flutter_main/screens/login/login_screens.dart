@@ -84,6 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: const Color(0xffffffff)),
             child: TextFormField(
               controller: _userNameController,
+              autocorrect: false,
+              enableSuggestions: false,
               keyboardType: TextInputType.name,
               decoration: new InputDecoration(
                   errorStyle: TextStyle(height: 0),
@@ -127,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                   hintText: S.of(context).password,
                   hintStyle: TextStyle(fontSize: 14)),
-              // obscureText: true,
+              obscureText: true,
             ),
           ),
           //
@@ -213,8 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   validateUser() async {
     print("userMail --->" + _userNameController.value.text.trim());
-    if (_userNameController.value.text == null ||
-        !isEmail(_userNameController.value.text.trim())) {
+    if (_userNameController.value.text.isEmpty || !isEmail(_userNameController.value.text.trim())) {
       showToast(S.of(context).invalidEmail);
     } else if (_passwordController.value.text == null ||
         _passwordController.value.text.length < 6) {

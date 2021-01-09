@@ -15,7 +15,7 @@ class Product {
   int price;
   dynamic description;
   dynamic errors;
-  int totalCartCount=0;
+  int productCartCount=0;
   bool isDefault = false;
   factory Product.fromJson(Map<String, dynamic> json) => Product(
     id: json["id"],

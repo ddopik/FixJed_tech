@@ -1,15 +1,18 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:logger/logger.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
+
 clearFocus(BuildContext context) {
   FocusScopeNode currentFocus = FocusScope.of(context);
   if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
     FocusManager.instance.primaryFocus.unfocus();
   }
 }
+
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
     hexColor = hexColor.toUpperCase().replaceAll("#", "");
@@ -33,14 +36,14 @@ String get currentLanguage {
 bool get isRTL {
   return Localizations.localeOf(navigatorKey.currentContext).toString() == "ar";
 }
+
 bool isEmail(String em) {
-  String p =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-
-  RegExp regExp = new RegExp(p);
-
-  return regExp.hasMatch(em);
+  bool emailValid = RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(em);
+  return emailValid;
 }
+
 bool isNumber(String string) {
   // Null or empty string is not a number
   if (string == null || string.isEmpty) {
@@ -58,4 +61,24 @@ bool isNumber(String string) {
   }
 
   return true;
+}
+
+/// trims leading whitespace
+String ltrim(String str) {
+  return str.replaceFirst(new RegExp(r"^\s+"), "");
+}
+
+/// trims trailing whitespace
+String rtrim(String str) {
+  return str.replaceFirst(new RegExp(r"\s+$"), "");
+}
+
+String trimAll(String str) {
+  String value = ltrim(str);
+  value = rtrim(value);
+  return value;
+}
+
+getPrice(context, price) {
+  return price.toString() + " " + S.of(context).egpPrice;
 }

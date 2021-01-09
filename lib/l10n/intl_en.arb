@@ -53,7 +53,12 @@
   "emptyListMessage": "We couldn't find any results matching your applied Type.",
   "noResultFound": "No result Found",
   "someThingWrong": "Something went wrong",
-  "applicationError": "'The application has encountered an unknown error.\\n'\n 'Please try again later.'"
+  "applicationError": "'The application has encountered an unknown error.\\n'\n 'Please try again later.'",
+  "passwordSpaceError": "Password mustn't contain any spaces",
+  "egpPrice": "EGPِ",
+  "yes":"Yes",
+  "no":"No",
+  "pay": "Pay"
 
 
 

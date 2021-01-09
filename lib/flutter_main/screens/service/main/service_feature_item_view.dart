@@ -31,8 +31,8 @@ class ServiceFeatureItemView extends StatelessWidget {
                   CustomImageLoader.image(
                       url: service.imageUrl,
                       fit: BoxFit.contain,
-                      width: MediaQuery.of(context).size.width * .25,
-                      height: MediaQuery.of(context).size.height * .3 ),
+                      width: MediaQuery.of(context).size.width * .23,
+                      height: MediaQuery.of(context).size.height * .3),
                   SizedBox(
                     width: 14.0,
                   ),
@@ -60,7 +60,8 @@ class ServiceFeatureItemView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * .47,
                         height: MediaQuery.of(context).size.height * .1,
                         child: Text(
-                          service.description ?? " description description description description",
+                          service.description ??
+                              " description description description description",
                           style: TextStyle(
                               color: Color(0xd9275597),
                               fontWeight: FontWeight.w400,

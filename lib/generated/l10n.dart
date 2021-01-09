@@ -564,6 +564,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Password mustn't contain any spaces`
+  String get passwordSpaceError {
+    return Intl.message(
+      'Password mustn\'t contain any spaces',
+      name: 'passwordSpaceError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGPِ`
+  String get egpPrice {
+    return Intl.message(
+      'EGPِ',
+      name: 'egpPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay`
+  String get pay {
+    return Intl.message(
+      'Pay',
+      name: 'pay',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

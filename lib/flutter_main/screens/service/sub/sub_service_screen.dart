@@ -14,6 +14,7 @@ class SubServicesFeaturesScreen extends StatelessWidget {
     _fixJidCategory = ModalRoute.of(context).settings.arguments;
     if(_fixJidCategory != null && _fixJidCategory is FixJidService){
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: getPrimaryAppBar(context, _fixJidCategory.name),
       body: Container(
         width: MediaQuery.of(context).size.width,

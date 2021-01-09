@@ -5,8 +5,8 @@ import 'package:flutter_base_app/network/dio_manager.dart';
 class MainCategoryModel {
   getMainCategory({onSuccess, onError, page}) {
     DIOManager().getMainCategory(onSuccess: (response) {
-      List<FixJidCategory> categoryList = (response as List)
-          .map((model) => FixJidCategory.fromJson(model))
+      List<FixJedCategory> categoryList = (response as List)
+          .map((model) => FixJedCategory.fromJson(model))
           .toList();
       onSuccess(categoryList);
     }, onError: (response) {
