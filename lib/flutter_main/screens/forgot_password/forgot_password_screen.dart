@@ -11,6 +11,7 @@ import 'package:flutter_base_app/network/dio_manager.dart';
 class ForgotPasswordScreen extends StatefulWidget {
   @override
   State createState() {
+
     return _ForgotPasswordScreenState();
   }
 }

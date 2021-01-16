@@ -614,6 +614,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Add new address`
+  String get addNewAddress {
+    return Intl.message(
+      'Add new address',
+      name: 'addNewAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address name`
+  String get addressName {
+    return Intl.message(
+      'Address name',
+      name: 'addressName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get addressCity {
+    return Intl.message(
+      'City',
+      name: 'addressCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address street`
+  String get addressStreet {
+    return Intl.message(
+      'Address street',
+      name: 'addressStreet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Building number`
+  String get addressBuildingNumber {
+    return Intl.message(
+      'Building number',
+      name: 'addressBuildingNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Floor number`
+  String get AddressFloorNumber {
+    return Intl.message(
+      'Floor number',
+      name: 'AddressFloorNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apartment number`
+  String get apartmentNumber {
+    return Intl.message(
+      'Apartment number',
+      name: 'apartmentNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment`
+  String get payment {
+    return Intl.message(
+      'Payment',
+      name: 'payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saved places`
+  String get savedPlaces {
+    return Intl.message(
+      'Saved places',
+      name: 'savedPlaces',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment method`
+  String get paymentMethod {
+    return Intl.message(
+      'Payment method',
+      name: 'paymentMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose date`
+  String get chooseDate {
+    return Intl.message(
+      'Choose date',
+      name: 'chooseDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay on Delivery`
+  String get payOnDelivery {
+    return Intl.message(
+      'Pay on Delivery',
+      name: 'payOnDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No saved places`
+  String get noSavedPlaces {
+    return Intl.message(
+      'No saved places',
+      name: 'noSavedPlaces',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create request`
+  String get createRequest {
+    return Intl.message(
+      'Create request',
+      name: 'createRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

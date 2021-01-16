@@ -10,7 +10,7 @@ import 'package:flutter_base_app/flutter_main/screens/login/log_in_dialog_screen
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_item.dart';
- import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
@@ -119,7 +119,9 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * .25,
+                    height: viewActionModel.requestExamineEnabled
+                        ? MediaQuery.of(context).size.height * .25
+                        : MediaQuery.of(context).size.height * .15,
                     child: getSubFeatureHeaderView(),
                   ),
                   Expanded(child: renderFeaturesList()),
@@ -281,7 +283,6 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
           },
           productID: viewActionModel.requestExamineObject.id);
     } else {
-
       loginDialogScreen(context: context);
     }
   }
@@ -328,8 +329,6 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
             dismissLoading();
 
             setState(() {
-
-
               _pagingController.itemList = _pagingController.itemList.map((e) {
                 // print("map is --->"+e.serviceId +" currentSelected ---->"+subServiceId);
                 if (e.id == productId) {
@@ -342,9 +341,6 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
                 }
                 return e;
               }).toList();
-
-
-
             });
           },
           onError: (message) {
@@ -368,7 +364,9 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
               onAdd: (productId, count) {
                 addProductToCart(productId);
               },
-              onSubtract: (productId, count) {subtractProductFromCart(productId);});
+              onSubtract: (productId, count) {
+                subtractProductFromCart(productId);
+              });
         },
         firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
           error: _pagingController.error,

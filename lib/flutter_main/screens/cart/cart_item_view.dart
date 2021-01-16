@@ -91,7 +91,7 @@ class TotalAddedServicesState extends State<CarItemView> {
                                 color: boring_green,
                               ),
                               onPressed: () {
-                                widget.onRemoveCategory(widget.category.id.toString());
+                                widget.onRemoveCategory(widget.category);
                               })
                         ],
                       ),

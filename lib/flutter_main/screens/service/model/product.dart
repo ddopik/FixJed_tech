@@ -6,7 +6,8 @@ class Product {
     this.price,
     this.description,
     this.errors,
-    this.isDefault
+    this.isDefault,
+    this.productCartCount
   });
 
   int id;
@@ -25,6 +26,8 @@ class Product {
     description: json["description"],
     errors: json["errors"],
     isDefault: json["default"]??false,
+    productCartCount: json["count"]??0,
+
   );
 
   Map<String, dynamic> toJson() => {

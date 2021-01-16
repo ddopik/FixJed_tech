@@ -4,39 +4,37 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-Widget customActionButton(
-    {String btnText,
-    Function onPressed,
-    double width,
-    double height,
-    int fontSize,
-      Color textColor,
-      Color btnColor,
-      bool enable=true,
-    }) {
-  Color getButtonColorState(){
-    if(enable){
-      return btnColor??btnColor;
-    }else{
+Widget customActionButton({
+  String btnText,
+  Function onPressed,
+  double width,
+  double height,
+  double fontSize,
+  Color textColor,
+  Color btnColor,
+  bool enable = true,
+}) {
+  Color getButtonColorState() {
+    if (enable) {
+      return btnColor ?? btnColor;
+    } else {
       return lightPrimary;
     }
   }
 
-
   return RaisedButton(
-
     onPressed: () {
-      enable?onPressed():null;
+      enable ? onPressed() : null;
     },
-    textColor: textColor??Colors.white,
-    color: getButtonColorState() ,
+    textColor: textColor ?? Colors.white,
+    color: getButtonColorState(),
     padding: EdgeInsets.all(0),
     shape: RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(24.0),
     ),
     child: Container(
       width: width ?? 225,
-      height: height??40,
+      height: height ?? 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
       ),
@@ -49,5 +47,4 @@ Widget customActionButton(
       ),
     ),
   );
-
 }

@@ -1,21 +1,32 @@
 import 'package:flutter_base_app/flutter_main/screens/cart/model/cart_response.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
 
-class CartModel{
+class CartModel {
   getCartProduct({onSuccess, onError, serviceId, page}) {
     DIOManager().getCartProducts(
+      onSuccess: (response) {
+        CartResponse cartResponse = CartResponse.fromJson(response);
+        onSuccess(cartResponse);
+      },
+      onError: (errorResponse) {
+        onError(errorResponse);
+      },
+    );
+  }
+
+  removeProductFromCart({onSuccess, onError, serviceId}) {
+    DIOManager().removeProductFromCart(
         onSuccess: (response) {
-          CartResponse cartResponse = CartResponse.fromJson(response);
-          onSuccess(cartResponse);
+          onSuccess(true);
         },
         onError: (errorResponse) {
           onError(errorResponse);
-        },);
+        },
+        productId: serviceId);
   }
-  removeProductFromCart({onSuccess, onError, serviceId}) {
-    DIOManager().removeProductFromCart(
+
+  removeCategoryFromCart({onSuccess, onError, serviceId}) {
+    DIOManager().removeCategoryFromCart(
         onSuccess: (response) {
           onSuccess(true);
         },

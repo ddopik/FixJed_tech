@@ -5,7 +5,8 @@ import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
- class DIOManager {
+
+class DIOManager {
   static final DIOManager _instance = DIOManager._dio();
 
   factory DIOManager() => _instance;
@@ -40,9 +41,13 @@ import 'package:flutter_base_app/generated/l10n.dart';
   static const String _GET_PRODUCT = "/product/find-all-by-category-id";
   static const String _GET_CART_PRODUCT = "/cart/find-all-product-in-cart";
   static const String _ADD_PRODUCT_TO_CART = "/cart/add-product-to-cart";
-  static const String _SUBTRACT_PRODUCT_FROM_CART =      "/cart/delete-product-from-cart";
-  static const String _REMOVE_PRODUCT_FROM_CART ="/cart/delete-all-product-from-cart";
-
+  static const String _SUBTRACT_PRODUCT_FROM_CART =
+      "/cart/delete-product-from-cart";
+  static const String _REMOVE_PRODUCT_FROM_CART =
+      "/cart/delete-all-product-from-cart";
+  static const String _REMOVE_CATEGORY_FROM_CART =
+      "/cart/delete-category-from-cart";
+  static const String GET_SAVED_ADDRESS = "/cart/delete-category-from-cart";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -160,6 +165,7 @@ import 'package:flutter_base_app/generated/l10n.dart';
         url: _SUBTRACT_PRODUCT_FROM_CART,
         queryParameters: {"product-id": productId});
   }
+
   removeProductFromCart({Function onSuccess, Function onError, productId}) {
     _sendDeleteRequest(
         onSuccess: onSuccess,
@@ -168,11 +174,27 @@ import 'package:flutter_base_app/generated/l10n.dart';
         queryParameters: {"product-id": productId});
   }
 
+  removeCategoryFromCart({Function onSuccess, Function onError, productId}) {
+    _sendDeleteRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: _REMOVE_CATEGORY_FROM_CART,
+        queryParameters: {"category-id": productId});
+  }
+
   getCartProducts({Function onSuccess, Function onError}) {
     _sendGetRequest(
       onSuccess: onSuccess,
       onError: onError,
       url: _GET_CART_PRODUCT,
+    );
+  }
+
+  getSavedAddress({Function onSuccess, Function onError}) {
+    _sendGetRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      url: GET_SAVED_ADDRESS,
     );
   }
 

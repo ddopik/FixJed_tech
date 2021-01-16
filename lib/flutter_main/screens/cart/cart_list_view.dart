@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
@@ -26,7 +27,7 @@ class CartListView extends StatefulWidget {
 class _CartListViewState extends State<CartListView> {
   ProductModel _productModel;
   CartModel _cartModel;
-  var totalCartPrice =0;
+  var totalCartPrice = 0;
 
   final _pagingController = PagingController<int, FixJedCategory>(
     firstPageKey: 0,
@@ -82,16 +83,23 @@ class _CartListViewState extends State<CartListView> {
     // print("MainFeaturesListView ---> build() " + widget.category.name.toString() + "   " + widget.category.id.toString());
 
     return RefreshIndicator(
-      onRefresh: () => Future.sync(
-        () => _pagingController.refresh(),
-      ),
+      onRefresh: () =>
+          Future.sync(
+                () => _pagingController.refresh(),
+          ),
       child: Stack(
         alignment: Alignment.topCenter,
         children: <Widget>[
           ListView(),
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,25 +108,32 @@ class _CartListViewState extends State<CartListView> {
                 Expanded(child: renderCartList()),
                 (totalCartPrice > 0)
                     ? Container(
-                        child: customActionButton(
-                            width: MediaQuery.of(context).size.width * .77,
-                            height: 45,
-                            btnColor: boring_green,
-                            textColor: Color(0xffffffff),
-                            btnText: S.current.pay +
-                                " ( " +
-                                getPrice(context, totalCartPrice) +
-                                " )"),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                color: const Color(0x29000000),
-                                offset: Offset(0, 3),
-                                blurRadius: 6,
-                                spreadRadius: 0)
-                          ],
-                        ),
-                      )
+                  child: customActionButton(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * .77,
+                      height: 45,
+                      btnColor: boring_green,
+                      textColor: Color(0xffffffff),
+                      btnText: S.current.pay +
+                          " ( " +
+                          getPrice(context, totalCartPrice) +
+                          " )",
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(Routes.ADDRESS_LIST_SCREEN);
+
+                      }),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: const Color(0x29000000),
+                          offset: Offset(0, 3),
+                          blurRadius: 6,
+                          spreadRadius: 0)
+                    ],
+                  ),
+                )
                     : Container(),
                 SizedBox(
                   height: 10,
@@ -142,20 +157,21 @@ class _CartListViewState extends State<CartListView> {
             onAddQuantity: addProductQuantityToCart,
             onRemoveQuantity: subtractProductFromCart,
             onRemoveProduct: removeProductFromCart,
-            onRemoveCategory: removeCategoryFromCart,
+            onRemoveCategory: removeCategoryFromCartDialog,
           );
         },
         firstPageErrorIndicatorBuilder: (context) =>
-            Provider.of<AppModel>(context).isUserLoggedIn()
-                ? ErrorIndicator(
-                    error: _pagingController.error,
-                    onTryAgain: () => _pagingController.refresh(),
-                  )
-                : EmptyListIndicator(),
+        Provider.of<AppModel>(context).isUserLoggedIn()
+            ? ErrorIndicator(
+          error: _pagingController.error,
+          onTryAgain: () => _pagingController.refresh(),
+        )
+            : EmptyListIndicator(),
         noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
       ),
       padding: const EdgeInsets.all(16),
-      separatorBuilder: (context, index) => const SizedBox(
+      separatorBuilder: (context, index) =>
+      const SizedBox(
         height: 16,
       ),
     );
@@ -234,22 +250,26 @@ class _CartListViewState extends State<CartListView> {
         serviceId: productId);
   }
 
-  void removeCategoryFromCart(productId) {
+  void removeCategoryFromCart(category) {
+    print("removeCategoryFromCart --->" + category.id.toString());
+    _cartModel.removeCategoryFromCart(
+        onSuccess: (response) {
+          dismissLoading();
+          _pagingController.refresh();
+        },
+        onError: (message) {
+          dismissLoading();
+          _pagingController.refresh();
+          // showError(message);
+        },
+        serviceId: category.id);
+  }
+
+  void removeCategoryFromCartDialog(category) {
     showDialog(
         context: context,
-        builder: (BuildContext context) => getDeleteConfirmDialogView(context));
-    // _cartModel.removeProductFromCart(
-    //     onSuccess: (response) {
-    //       dismissLoading();
-    //
-    //       _pagingController.refresh();
-    //
-    //     },
-    //     onError: (message) {
-    //       dismissLoading();
-    //       _pagingController.refresh();
-    //       // showError(message);
-    //     },
-    //     serviceId: productId);
+        builder: (BuildContext context) =>
+            getDeleteConfirmDialogView(
+                context, category, removeCategoryFromCart));
   }
 }

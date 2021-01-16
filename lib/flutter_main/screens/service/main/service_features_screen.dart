@@ -40,6 +40,7 @@ class ServiceFeaturesScreen extends StatelessWidget {
 
   Widget getPrimaryAppBar(BuildContext context, title) {
     return AppBar(
+      elevation: 0.0,
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios),
         color: french_blue,

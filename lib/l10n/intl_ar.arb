@@ -57,7 +57,23 @@
   "egpPrice": "جنيه",
   "yes":"نعم",
   "no":"لا",
-  "pay": "آدفع"
+  "pay": "آدفع",
+  "addNewAddress":"أضف عنوان جديد",
+  "addressName": "اسم عنوان",
+  "addressCity": "المدينه",
+  "addressStreet": "اسم الشارع",
+  "addressBuildingNumber": "رقم المبنى",
+  "AddressFloorNumber": "رقم الطابق",
+  "apartmentNumber":"رقم الشقة",
+  "apply": "تم",
+  "savedPlaces": "الأماكن المحفوظة",
+  "chooseDate":"اختر التاريخ",
+  "paymentMethod": "طريقة الدفع",
+  "payment": "الدفع",
+  "payOnDelivery": "الدفع عند الاستلام",
+  "noSavedPlaces": "لا توجد أماكن محفوظة",
+  "createRequest": "قدم طلبك",
+  "total": "اجمالي"
 
 
 }

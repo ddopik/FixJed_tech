@@ -61,7 +61,8 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             ),
-            drawer: navigationDrawer(),
+            drawer:
+            navigationDrawer(),
             body: Container(
               color: Colors.white,
               child: Container(
@@ -135,8 +136,7 @@ class navigationDrawer extends StatelessWidget {
             onTap: () {
               if (Provider.of<AppModel>(context,listen: false).isUserLoggedIn()) {
                 Provider.of<AppModel>(context,listen: false).logOutUser();
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(Routes.LOGIN, (route) => false);
+                Navigator.of(context).pushNamedAndRemoveUntil(Routes.HOME, (route) => false);
               } else {
                 Navigator.of(context).pushNamed(Routes.LOGIN);
               }

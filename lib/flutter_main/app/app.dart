@@ -7,7 +7,10 @@ import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/cart/delete_confirm_dialog.dart';
+import 'package:flutter_base_app/flutter_main/screens/checkout/address/address_form_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/checkout/address/savedAddress/address_list_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/payment/payment_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -49,7 +52,16 @@ class AppState extends State<App> {
 
     //
     return buildLightTheme(currentLocal).copyWith(
-        primaryColor: Colors.blueAccent, scaffoldBackgroundColor: Colors.white);
+      appBarTheme: AppBarTheme(
+          textTheme: TextTheme(
+              headline6: TextStyle(
+                  color: const Color(0xd9275597),
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Tajawal",
+                  fontStyle: FontStyle.normal,
+                  fontSize: 18.0))),
+      scaffoldBackgroundColor: Colors.white,
+    );
   }
 
   @override
@@ -104,12 +116,11 @@ class AppState extends State<App> {
   }
 
   getNextScreen() {
-    return HomeScreen();
+    return AddressListScreen();
     if (PrefManager().getUserToken() != null) {
       return HomeScreen();
     } else {
       return SignUpScreen();
     }
   }
-
 }

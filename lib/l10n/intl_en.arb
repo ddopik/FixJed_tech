@@ -58,8 +58,21 @@
   "egpPrice": "EGPِ",
   "yes":"Yes",
   "no":"No",
-  "pay": "Pay"
-
-
-
+  "pay": "Pay",
+  "addNewAddress": "Add new address",
+  "addressName": "Address name",
+  "addressCity": "City",
+  "addressStreet": "Address street",
+  "addressBuildingNumber": "Building number",
+  "AddressFloorNumber": "Floor number",
+  "apartmentNumber":"Apartment number",
+  "apply": "Apply",
+  "payment": "Payment",
+  "savedPlaces": "Saved places",
+  "paymentMethod": "Payment method",
+  "chooseDate": "Choose date",
+  "payOnDelivery": "Pay on Delivery",
+  "noSavedPlaces": "No saved places",
+  "createRequest": "Create request",
+"total": "Total"
 }
