@@ -6,7 +6,9 @@ import 'package:flutter_base_app/generated/l10n.dart';
 
 class AddressItemView extends StatelessWidget {
   final Address address;
+
   AddressItemView({this.address});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +23,7 @@ class AddressItemView extends StatelessWidget {
             elevation: 2.0,
             child: Container(
               width: MediaQuery.of(context).size.width * .8,
-              height: MediaQuery.of(context).size.height * .18,
+              height: MediaQuery.of(context).size.height * .20,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -31,9 +33,11 @@ class AddressItemView extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+
                           children: [
+                            SizedBox(
+                              height: 12,
+                            ),
                             Row(
                               children: [
                                 IconButton(
@@ -43,7 +47,7 @@ class AddressItemView extends StatelessWidget {
                                     ),
                                     iconSize: 20,
                                     onPressed: null),
-                                Text(S.current.savedPlaces,
+                                Text("Address Name",
                                     style: const TextStyle(
                                         color: french_blue,
                                         fontWeight: FontWeight.w600,
@@ -56,9 +60,9 @@ class AddressItemView extends StatelessWidget {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 50,
+                                  width: 20,
                                 ),
-                                Text(S.current.noSavedPlaces,
+                                Text("Street name",
                                     style: const TextStyle(
                                         color: const Color(0xff646363),
                                         fontWeight: FontWeight.w400,
@@ -70,23 +74,49 @@ class AddressItemView extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                IconButton(
-                                    icon: Icon(
-                                      Icons.add_circle_outlined,
-                                      color: boring_green,
-                                    ),
-                                    iconSize: 20,
-                                    onPressed: null),
-                                Text(S.of(context).addNewAddress,
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text("Builder number",
                                     style: const TextStyle(
                                         color: const Color(0xff646363),
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w400,
                                         fontFamily: "Tajawal",
                                         fontStyle: FontStyle.normal,
-                                        fontSize: 17.0),
+                                        fontSize: 16.0),
                                     textAlign: TextAlign.left),
                               ],
-                            )
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text("Appartment Number",
+                                    style: const TextStyle(
+                                        color: const Color(0xff646363),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "Tajawal",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16.0),
+                                    textAlign: TextAlign.left),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text("Floor Number",
+                                    style: const TextStyle(
+                                        color: const Color(0xff646363),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "Tajawal",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16.0),
+                                    textAlign: TextAlign.left),
+                              ],
+                            ),
                           ],
                         ),
                       )),
@@ -103,11 +133,9 @@ class AddressItemView extends StatelessWidget {
                               ),
                               iconSize: 25,
                               onPressed: () {}),
-                          IconButton(
-                              icon: Icon(Icons.arrow_back_ios_rounded,
-                                  color: boring_green),
-                              iconSize: 25,
-                              onPressed: () {})
+                          SizedBox(
+                            height: 50,
+                          )
                         ],
                       ))
                 ],

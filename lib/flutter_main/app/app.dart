@@ -10,7 +10,6 @@ import 'package:flutter_base_app/flutter_main/screens/cart/delete_confirm_dialog
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/address_form_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/savedAddress/address_list_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/payment/payment_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -116,7 +115,7 @@ class AppState extends State<App> {
   }
 
   getNextScreen() {
-    return AddressListScreen();
+    return HomeScreen();
     if (PrefManager().getUserToken() != null) {
       return HomeScreen();
     } else {

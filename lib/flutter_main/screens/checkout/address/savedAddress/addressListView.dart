@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import 'address_item_view.dart';
@@ -36,10 +38,7 @@ class _AddressListViewState extends State<AddressListView> {
     final nextPageKey = pageKey + 1;
     _addressModel.getSavedAddress(
         onSuccess: (savedAddress) {
-
-
           _pagingController.appendLastPage(savedAddress);
-
           // _pagingController.appendPage(features, nextPageKey);
         },
         onError: (error) {
@@ -103,10 +102,45 @@ class _AddressListViewState extends State<AddressListView> {
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<Address>(
         itemBuilder: (context, address, index) {
-          return AddressItemView(address: address);
+          if (index == _pagingController.itemList.length - 1) {
+            return Column(
+              children: [
+                AddressItemView(address: address),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                            icon: Icon(
+                              Icons.add_circle_outlined,
+                              color: boring_green,
+                            ),
+                            iconSize: 25,
+                            onPressed: null),
+                        Text(S.of(context).addNewAddress,
+                            style: const TextStyle(
+                                color: french_blue,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: "Tajawal",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 18.0),
+                            textAlign: TextAlign.left),
+                      ],
+                    ),
+                    IconButton(
+                        icon: Icon(Icons.arrow_back_ios_rounded,color:boring_green ,size: 20,),
+                        onPressed: () {})
+                  ],
+                )
+              ],
+            );
+          } else {
+            return AddressItemView(address: address);
+          }
         },
-        firstPageErrorIndicatorBuilder: (context) =>
-          EmptyListIndicator(),
+        firstPageErrorIndicatorBuilder: (context) => EmptyListIndicator(),
         noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
       ),
       padding: const EdgeInsets.all(16),

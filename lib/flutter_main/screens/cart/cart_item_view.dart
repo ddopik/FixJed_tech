@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
@@ -12,14 +13,14 @@ class CarItemView extends StatefulWidget {
   final Function onAddQuantity,
       onRemoveQuantity,
       onRemoveProduct,
-      onRemoveCategory;
+      onRemoveCategory,
+      onAddNEwCategory;
 
-  CarItemView(
-      {this.category,
-      this.onAddQuantity,
-      this.onRemoveQuantity,
-      this.onRemoveProduct,
-      this.onRemoveCategory});
+  CarItemView({this.category,
+    this.onAddQuantity,
+    this.onRemoveQuantity,
+    this.onRemoveProduct,
+    this.onRemoveCategory, this.onAddNEwCategory});
 
   @override
   State<StatefulWidget> createState() {
@@ -45,7 +46,10 @@ class TotalAddedServicesState extends State<CarItemView> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * .9,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * .9,
                   padding: EdgeInsets.all(8),
                   alignment: Alignment.topCenter,
                   decoration: BoxDecoration(
@@ -105,45 +109,48 @@ class TotalAddedServicesState extends State<CarItemView> {
                       SizedBox(
                         height: 24,
                       ),
-                      Container(
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: Container(
-                                width: 22,
-                                height: 22,
-                                color: Colors.green,
-                                alignment: Alignment.topCenter,
-                                child: FittedBox(
-                                  child: IconButton(
-                                    icon: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
+                      GestureDetector(
+                        child: Container(
+
+                          child: Row(
+                            children: [
+                              ClipOval(
+                                child: Container(
+                                  width: 22,
+                                  height: 22,
+                                  color: Colors.green,
+                                  alignment: Alignment.topCenter,
+                                  child: FittedBox(
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                      iconSize: 144,
+
                                     ),
-                                    iconSize: 144,
-                                    onPressed: () {
-                                      // widget.onAdd(widget.service.id,
-                                      //     widget.service.totalCartCount);
-                                    },
+                                    fit: BoxFit.fill,
                                   ),
-                                  fit: BoxFit.fill,
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 10),
+                              SizedBox(width: 10),
 
-                            // اضف خدمة اخري
-                            Text("اضف خدمة اخري ",
-                                style: const TextStyle(
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: "Tajawal",
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 14.7),
-                                textAlign: TextAlign.left)
-                          ],
+                              // اضف خدمة اخري
+                              Text("اضف خدمة اخري ",
+                                  style: const TextStyle(
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "Tajawal",
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 14.7),
+                                  textAlign: TextAlign.left)
+                            ],
+                          ),
+                          margin: EdgeInsets.symmetric(horizontal: 12),
                         ),
-                        margin: EdgeInsets.symmetric(horizontal: 12),
+                        onTap: () {
+                          widget.onAddNEwCategory(widget.category);
+                        },
                       ),
                       SizedBox(
                         height: 14,
@@ -192,8 +199,14 @@ class TotalAddedServicesState extends State<CarItemView> {
         ),
         elevation: 2.0,
         child: Container(
-          width: MediaQuery.of(context).size.width * .9,
-          height: MediaQuery.of(context).size.height * .22,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width * .9,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height * .22,
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -231,8 +244,14 @@ class TotalAddedServicesState extends State<CarItemView> {
                   ),
                   SizedBox(height: 6),
                   Container(
-                    width: MediaQuery.of(context).size.width * .7,
-                    height: MediaQuery.of(context).size.height * .07,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width * .7,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * .07,
                     child: Text(
                       widget.category.description ??
                           "description description description description description description description description",
@@ -249,7 +268,9 @@ class TotalAddedServicesState extends State<CarItemView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(product.price.toString() + " " + S.of(context).egp,
+                      Text(product.price.toString() + " " + S
+                          .of(context)
+                          .egp,
                           style: const TextStyle(
                               color: boring_green,
                               fontWeight: FontWeight.w800,

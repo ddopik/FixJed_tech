@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_butto
 import 'package:flutter_base_app/flutter_main/screens/cart/model/cart_response.dart';
 import 'package:flutter_base_app/flutter_main/screens/cart/provider/cart_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -81,25 +83,17 @@ class _CartListViewState extends State<CartListView> {
   @override
   Widget build(BuildContext context) {
     // print("MainFeaturesListView ---> build() " + widget.category.name.toString() + "   " + widget.category.id.toString());
-
     return RefreshIndicator(
-      onRefresh: () =>
-          Future.sync(
-                () => _pagingController.refresh(),
-          ),
+      onRefresh: () => Future.sync(
+        () => _pagingController.refresh(),
+      ),
       child: Stack(
         alignment: Alignment.topCenter,
         children: <Widget>[
           ListView(),
           Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
-            height: MediaQuery
-                .of(context)
-                .size
-                .height,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,32 +102,29 @@ class _CartListViewState extends State<CartListView> {
                 Expanded(child: renderCartList()),
                 (totalCartPrice > 0)
                     ? Container(
-                  child: customActionButton(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width * .77,
-                      height: 45,
-                      btnColor: boring_green,
-                      textColor: Color(0xffffffff),
-                      btnText: S.current.pay +
-                          " ( " +
-                          getPrice(context, totalCartPrice) +
-                          " )",
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(Routes.ADDRESS_LIST_SCREEN);
-
-                      }),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                          spreadRadius: 0)
-                    ],
-                  ),
-                )
+                        child: customActionButton(
+                            width: MediaQuery.of(context).size.width * .77,
+                            height: 45,
+                            btnColor: boring_green,
+                            textColor: Color(0xffffffff),
+                            btnText: S.current.pay +
+                                " ( " +
+                                getPrice(context, totalCartPrice) +
+                                " )",
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(Routes.ADDRESS_LIST_SCREEN);
+                            }),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: const Color(0x29000000),
+                                offset: Offset(0, 3),
+                                blurRadius: 6,
+                                spreadRadius: 0)
+                          ],
+                        ),
+                      )
                     : Container(),
                 SizedBox(
                   height: 10,
@@ -158,20 +149,20 @@ class _CartListViewState extends State<CartListView> {
             onRemoveQuantity: subtractProductFromCart,
             onRemoveProduct: removeProductFromCart,
             onRemoveCategory: removeCategoryFromCartDialog,
+            onAddNEwCategory: onAddNEwCategory,
           );
         },
         firstPageErrorIndicatorBuilder: (context) =>
-        Provider.of<AppModel>(context).isUserLoggedIn()
-            ? ErrorIndicator(
-          error: _pagingController.error,
-          onTryAgain: () => _pagingController.refresh(),
-        )
-            : EmptyListIndicator(),
+            Provider.of<AppModel>(context).isUserLoggedIn()
+                ? ErrorIndicator(
+                    error: _pagingController.error,
+                    onTryAgain: () => _pagingController.refresh(),
+                  )
+                : EmptyListIndicator(),
         noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
       ),
       padding: const EdgeInsets.all(16),
-      separatorBuilder: (context, index) =>
-      const SizedBox(
+      separatorBuilder: (context, index) => const SizedBox(
         height: 16,
       ),
     );
@@ -268,8 +259,18 @@ class _CartListViewState extends State<CartListView> {
   void removeCategoryFromCartDialog(category) {
     showDialog(
         context: context,
-        builder: (BuildContext context) =>
-            getDeleteConfirmDialogView(
-                context, category, removeCategoryFromCart));
+        builder: (BuildContext context) => getDeleteConfirmDialogView(
+            context, category, removeCategoryFromCart));
+  }
+
+  void onAddNEwCategory(FixJedCategory category) {
+    print("onAddNEwCategory --->"+category.toString());
+    FixJidService fixJedCategory =FixJidService();
+    fixJedCategory.id = category.id;
+    fixJedCategory.name = category.name;
+    fixJedCategory.imageUrl =category.imageUrl;
+    fixJedCategory.description = category.description;
+    Navigator.of(context).pushNamed(Routes.SUB_SERVICE_FEATURES,arguments:fixJedCategory );
+    // FixJedCategory fixJedCategory = FixJedCategory();
   }
 }
