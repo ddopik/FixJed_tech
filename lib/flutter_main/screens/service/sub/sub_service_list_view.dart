@@ -7,6 +7,7 @@ import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/log_in_dialog_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_item.dart';
@@ -14,11 +15,10 @@ import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
-import '../model/service.dart';
 
 // ignore: must_be_immutable
 class SubFeaturesListView extends StatefulWidget {
-  final FixJidService service;
+  final FixJedCategory service;
 
   SubFeaturesListView({this.service});
 
@@ -57,16 +57,16 @@ class _PagedSubFeaturesListViewState extends State<SubFeaturesListView> {
               widget.service.id.toString() +
               ")---> returned features size is  " +
               (features as List).length.toString());
-
-          Product product = (features as List)[0];
-          if (product.isDefault) {
-            setState(() {
-              viewActionModel.requestExamineEnabled = true;
-              viewActionModel.requestExamineObject = product;
-              (features as List).removeAt(0);
-            });
+          if ((features as List).length > 0) {
+            Product product = (features as List)[0];
+            if (product.isDefault) {
+              setState(() {
+                viewActionModel.requestExamineEnabled = true;
+                viewActionModel.requestExamineObject = product;
+                (features as List).removeAt(0);
+              });
+            }
           }
-
           _pagingController.appendLastPage((features as List));
           // _pagingController.appendPage(features, nextPageKey);
         },

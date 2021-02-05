@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cartService" : MessageLookupByLibrary.simpleMessage("service to cart"),
     "checkYourInbox" : MessageLookupByLibrary.simpleMessage("Check your inbox"),
     "checkYourInboxDesc" : MessageLookupByLibrary.simpleMessage("We have sent you a link through\nThe email you just entered"),
+    "chooseCheckDate" : MessageLookupByLibrary.simpleMessage("Choose visiting date"),
     "chooseDate" : MessageLookupByLibrary.simpleMessage("Choose date"),
     "close" : MessageLookupByLibrary.simpleMessage("close"),
     "confirmPassword" : MessageLookupByLibrary.simpleMessage("Confirm password"),

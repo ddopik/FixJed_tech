@@ -73,7 +73,6 @@
   "payOnDelivery": "الدفع عند الاستلام",
   "noSavedPlaces": "لا توجد أماكن محفوظة",
   "createRequest": "قدم طلبك",
-  "total": "اجمالي"
-
-
+  "total": "اجمالي",
+  "chooseCheckDate": "آختر تاريخ الزياره"
 }

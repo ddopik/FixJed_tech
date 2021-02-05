@@ -8,8 +8,7 @@ import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import '../model/service.dart';
-import 'service_feature_item_view.dart';
+ import 'service_feature_item_view.dart';
 
 // ignore: must_be_immutable
 class MainServicesListView extends StatefulWidget {
@@ -22,7 +21,7 @@ class MainServicesListView extends StatefulWidget {
 }
 
 class _PagedServiceListViewState extends State<MainServicesListView> {
-  final _pagingController = PagingController<int, FixJidService>(
+  final _pagingController = PagingController<int, FixJedCategory>(
     firstPageKey: 0,
   );
 
@@ -162,7 +161,7 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
     return PagedListView.separated(
       itemExtent: 300.0,
       pagingController: _pagingController,
-      builderDelegate: PagedChildBuilderDelegate<FixJidService>(
+      builderDelegate: PagedChildBuilderDelegate<FixJedCategory>(
         itemBuilder: (context, service, index) {
           print("renderServiceList ---> $index");
           return GestureDetector(

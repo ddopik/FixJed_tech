@@ -774,6 +774,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Choose visiting date`
+  String get chooseCheckDate {
+    return Intl.message(
+      'Choose visiting date',
+      name: 'chooseCheckDate',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

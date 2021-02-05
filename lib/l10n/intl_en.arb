@@ -1,9 +1,8 @@
 {
-
   "signUp": "Sign Up",
   "login": "Login",
   "invalidLogin": "Invalid user name or password ",
-  "userName":"User name",
+  "userName": "User name",
   "edit_profile": "Edit profile",
   "ForgotPassword": "Forgot Password",
   "resetPassword": "Password Reset",
@@ -13,9 +12,9 @@
   "loading": "loading",
   "myServices": "My services",
   "notification": "Notification",
-  "help":"Help",
+  "help": "Help",
   "setting": "Setting",
-  "signOut":"Sign Out",
+  "signOut": "Sign Out",
   "youHaveAdded": "you have added",
   "cartService": "service to cart",
   "email": "email",
@@ -42,7 +41,6 @@
   "createNewAccount": "Create new account",
   "createAccount": "Create account",
   "invalidUserName": "Invalid user name",
-
   "invalidFirstName": "Invalid first name",
   "invalidLastName": "Invalid last name",
   "passwordErrorLength": "Password can't be less than 6 char",
@@ -56,8 +54,8 @@
   "applicationError": "'The application has encountered an unknown error.\\n'\n 'Please try again later.'",
   "passwordSpaceError": "Password mustn't contain any spaces",
   "egpPrice": "EGPِ",
-  "yes":"Yes",
-  "no":"No",
+  "yes": "Yes",
+  "no": "No",
   "pay": "Pay",
   "addNewAddress": "Add new address",
   "addressName": "Address name",
@@ -65,7 +63,7 @@
   "addressStreet": "Address street",
   "addressBuildingNumber": "Building number",
   "AddressFloorNumber": "Floor number",
-  "apartmentNumber":"Apartment number",
+  "apartmentNumber": "Apartment number",
   "apply": "Apply",
   "payment": "Payment",
   "savedPlaces": "Saved places",
@@ -74,5 +72,6 @@
   "payOnDelivery": "Pay on Delivery",
   "noSavedPlaces": "No saved places",
   "createRequest": "Create request",
-"total": "Total"
+  "total": "Total",
+  "chooseCheckDate": "Choose visiting date"
 }

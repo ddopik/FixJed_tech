@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
 
 class HomeCategoryItem extends StatelessWidget {
   final FixJedCategory _fixJidCategory;

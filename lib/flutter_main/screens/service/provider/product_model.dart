@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
-import 'package:flutter_base_app/network/dio_manager.dart';
+ import 'package:flutter_base_app/network/dio_manager.dart';
 
 class ProductModel extends ChangeNotifier {
-  FixJidService currentSelectedCategory;
+  FixJedCategory currentSelectedCategory;
 
   getCategoryServiceList({onSuccess, onError, categoryId, page}) {
     DIOManager().getSubCategory(
         onSuccess: (response) {
-          List<FixJidService> servicesList = (response as List)
-              .map((model) => FixJidService.fromJson(model))
+          List<FixJedCategory> servicesList = (response as List)
+              .map((model) => FixJedCategory.fromJson(model))
               .toList();
           onSuccess(servicesList);
         },

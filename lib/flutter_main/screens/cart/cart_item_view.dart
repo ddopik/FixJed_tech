@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
-import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
+import 'package:flutter_base_app/flutter_main/screens/cart/calender_view.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -16,11 +16,13 @@ class CarItemView extends StatefulWidget {
       onRemoveCategory,
       onAddNEwCategory;
 
-  CarItemView({this.category,
-    this.onAddQuantity,
-    this.onRemoveQuantity,
-    this.onRemoveProduct,
-    this.onRemoveCategory, this.onAddNEwCategory});
+  CarItemView(
+      {this.category,
+      this.onAddQuantity,
+      this.onRemoveQuantity,
+      this.onRemoveProduct,
+      this.onRemoveCategory,
+      this.onAddNEwCategory});
 
   @override
   State<StatefulWidget> createState() {
@@ -46,10 +48,7 @@ class TotalAddedServicesState extends State<CarItemView> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width * .9,
+                  width: MediaQuery.of(context).size.width * .9,
                   padding: EdgeInsets.all(8),
                   alignment: Alignment.topCenter,
                   decoration: BoxDecoration(
@@ -93,6 +92,7 @@ class TotalAddedServicesState extends State<CarItemView> {
                               icon: Icon(
                                 Icons.delete,
                                 color: boring_green,
+                                size: 32,
                               ),
                               onPressed: () {
                                 widget.onRemoveCategory(widget.category);
@@ -111,13 +111,12 @@ class TotalAddedServicesState extends State<CarItemView> {
                       ),
                       GestureDetector(
                         child: Container(
-
                           child: Row(
                             children: [
                               ClipOval(
                                 child: Container(
-                                  width: 22,
-                                  height: 22,
+                                  width: 28,
+                                  height: 28,
                                   color: Colors.green,
                                   alignment: Alignment.topCenter,
                                   child: FittedBox(
@@ -127,7 +126,6 @@ class TotalAddedServicesState extends State<CarItemView> {
                                         color: Colors.white,
                                       ),
                                       iconSize: 144,
-
                                     ),
                                     fit: BoxFit.fill,
                                   ),
@@ -152,6 +150,10 @@ class TotalAddedServicesState extends State<CarItemView> {
                           widget.onAddNEwCategory(widget.category);
                         },
                       ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      getCalenderView(),
                       SizedBox(
                         height: 14,
                       ),
@@ -199,14 +201,8 @@ class TotalAddedServicesState extends State<CarItemView> {
         ),
         elevation: 2.0,
         child: Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width * .9,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height * .22,
+          width: MediaQuery.of(context).size.width * .9,
+          height: MediaQuery.of(context).size.height * .22,
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -234,7 +230,7 @@ class TotalAddedServicesState extends State<CarItemView> {
                         child: Icon(
                           Icons.close,
                           color: boring_green,
-                          size: 16,
+                          size: 22,
                         ),
                         onTap: () {
                           widget.onRemoveProduct(product.id);
@@ -244,14 +240,8 @@ class TotalAddedServicesState extends State<CarItemView> {
                   ),
                   SizedBox(height: 6),
                   Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .7,
-                    height: MediaQuery
-                        .of(context)
-                        .size
-                        .height * .07,
+                    width: MediaQuery.of(context).size.width * .7,
+                    height: MediaQuery.of(context).size.height * .07,
                     child: Text(
                       widget.category.description ??
                           "description description description description description description description description",
@@ -268,9 +258,7 @@ class TotalAddedServicesState extends State<CarItemView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(product.price.toString() + " " + S
-                          .of(context)
-                          .egp,
+                      Text(product.price.toString() + " " + S.of(context).egp,
                           style: const TextStyle(
                               color: boring_green,
                               fontWeight: FontWeight.w800,
@@ -283,8 +271,8 @@ class TotalAddedServicesState extends State<CarItemView> {
                           children: [
                             ClipOval(
                               child: Container(
-                                width: 22,
-                                height: 22,
+                                width: 28,
+                                height: 28,
                                 color: Colors.green,
                                 alignment: Alignment.topCenter,
                                 child: FittedBox(
@@ -313,8 +301,8 @@ class TotalAddedServicesState extends State<CarItemView> {
                             ),
                             ClipOval(
                               child: Container(
-                                width: 22,
-                                height: 22,
+                                width: 28,
+                                height: 28,
                                 color: Colors.green,
                                 alignment: Alignment.topCenter,
                                 child: FittedBox(
@@ -340,6 +328,19 @@ class TotalAddedServicesState extends State<CarItemView> {
               )
             ],
           ),
+        ));
+  }
+  Widget getCalenderView() {
+    return Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+        elevation: 2.0,
+        child: Container(
+          width: MediaQuery.of(context).size.width * .8,
+          child: CalenderView(onDateSelected: (DateTime date){
+            print("Current Selected Date is "+date.toString());
+          },),
         ));
   }
 }

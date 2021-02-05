@@ -38,8 +38,8 @@ class _AddressListViewState extends State<AddressListView> {
     final nextPageKey = pageKey + 1;
     _addressModel.getSavedAddress(
         onSuccess: (savedAddress) {
+
           _pagingController.appendLastPage(savedAddress);
-          // _pagingController.appendPage(features, nextPageKey);
         },
         onError: (error) {
           _pagingController.error = error;
@@ -84,7 +84,7 @@ class _AddressListViewState extends State<AddressListView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(child: renderCartList()),
+                Expanded(child: renderAddressList()),
                 SizedBox(
                   height: 10,
                 )
@@ -96,9 +96,8 @@ class _AddressListViewState extends State<AddressListView> {
     );
   }
 
-  renderCartList() {
+  renderAddressList() {
     return PagedListView.separated(
-      itemExtent: 300.0,
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<Address>(
         itemBuilder: (context, address, index) {
@@ -143,9 +142,9 @@ class _AddressListViewState extends State<AddressListView> {
         firstPageErrorIndicatorBuilder: (context) => EmptyListIndicator(),
         noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
       ),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(0),
       separatorBuilder: (context, index) => const SizedBox(
-        height: 16,
+        height: 0,
       ),
     );
   }

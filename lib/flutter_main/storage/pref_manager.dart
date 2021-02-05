@@ -22,7 +22,9 @@ class PrefManager {
   SharedPreferences _prefs;
 
   Future<bool> setupSharedPreferences() async {
-    _prefs = await SharedPreferences.getInstance();
+    // _prefs = await SharedPreferences.getInstance();
+
+    _instance._prefs =await SharedPreferences.getInstance();
     return true;
   }
 

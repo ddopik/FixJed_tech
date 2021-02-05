@@ -61,8 +61,7 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             ),
-            drawer:
-            navigationDrawer(),
+            drawer: navigationDrawer(),
             body: Container(
               color: Colors.white,
               child: Container(
@@ -134,9 +133,11 @@ class navigationDrawer extends StatelessWidget {
               alignment: Alignment.center,
             ),
             onTap: () {
-              if (Provider.of<AppModel>(context,listen: false).isUserLoggedIn()) {
-                Provider.of<AppModel>(context,listen: false).logOutUser();
-                Navigator.of(context).pushNamedAndRemoveUntil(Routes.HOME, (route) => false);
+              if (Provider.of<AppModel>(context, listen: false)
+                  .isUserLoggedIn()) {
+                Provider.of<AppModel>(context, listen: false).logOutUser();
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(Routes.HOME, (route) => false);
               } else {
                 Navigator.of(context).pushNamed(Routes.LOGIN);
               }
@@ -157,7 +158,7 @@ class navigationDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Image(
-                width: 110,
+                  width: 110,
                   height: 110,
                   image: AssetImage("assets/images/img_profile.jpeg"),
                   fit: BoxFit.contain),

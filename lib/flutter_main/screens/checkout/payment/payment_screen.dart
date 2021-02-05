@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
- import 'package:flutter_base_app/generated/l10n.dart';
-
-import 'calender_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/checkout/payment/savedPlacesGroupView.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 
 class PaymentScreen extends StatefulWidget {
   @override
@@ -60,10 +59,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
               children: [
                 getPaymentAddressView(),
                 getPaymentMethodsView(),
-                SizedBox(
-                  height: 14,
-                ),
-                getCalenderView()
               ],
             ),
             SizedBox(
@@ -85,7 +80,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             fontSize: 22.0),
                         textAlign: TextAlign.left),
                     // 350 جنيه مصري
-                    Text("350"+" "+S.current.egp,
+                    Text("350" + " " + S.current.egp,
                         style: const TextStyle(
                             color: const Color(0xff5cb06d),
                             fontWeight: FontWeight.w500,
@@ -106,7 +101,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       textColor: Color(0xffffffff),
                       fontSize: 18,
                       btnText: S.current.createRequest),
-
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -141,18 +135,21 @@ class _PaymentScreenState extends State<PaymentScreen> {
             elevation: 2.0,
             child: Container(
               width: MediaQuery.of(context).size.width * .8,
-              height: MediaQuery.of(context).size.height * .18,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                      flex: 3,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
@@ -173,21 +170,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     textAlign: TextAlign.left),
                               ],
                             ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 50,
+                            IconButton(
+                                icon: Icon(
+                                  Icons.edit,
+                                  color: boring_green,
                                 ),
-                                Text(S.current.noSavedPlaces,
-                                    style: const TextStyle(
-                                        color: const Color(0xff646363),
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: "Tajawal",
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 16.0),
-                                    textAlign: TextAlign.left),
-                              ],
-                            ),
+                                iconSize: 25,
+                                onPressed: () {
+                                  /// todo await and refresh here
+                                })
+                          ],
+                        ),
+                        SavedPlacesGroupView(),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                             Row(
                               children: [
                                 IconButton(
@@ -195,7 +193,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       Icons.add_circle_outlined,
                                       color: boring_green,
                                     ),
-                                    iconSize: 20,
+                                    iconSize: 30,
                                     onPressed: null),
                                 Text(S.of(context).addNewAddress,
                                     style: const TextStyle(
@@ -206,30 +204,42 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         fontSize: 17.0),
                                     textAlign: TextAlign.left),
                               ],
-                            )
+                            ),
+                            IconButton(
+                                icon: Icon(Icons.arrow_back_ios_rounded,
+                                    color: boring_green),
+                                iconSize: 25,
+                                onPressed: () {
+                                  /// todo await and refresh here
+                                })
                           ],
-                        ),
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          IconButton(
-                              icon: Icon(
-                                Icons.edit,
-                                color: boring_green,
-                              ),
-                              iconSize: 25,
-                              onPressed: () {}),
-                          IconButton(
-                              icon: Icon(Icons.arrow_back_ios_rounded,
-                                  color: boring_green),
-                              iconSize: 25,
-                              onPressed: () {})
-                        ],
-                      ))
+                        )
+                      ],
+                    ),
+                  )),
+                  // Flexible(
+                  //     flex: 1,
+                  //     child: Container(
+                  //       color: Colors.red,
+                  //       child: Column(
+                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //         mainAxisSize: MainAxisSize.max,
+                  //         children: [
+                  //           IconButton(
+                  //               icon: Icon(
+                  //                 Icons.edit,
+                  //                 color: boring_green,
+                  //               ),
+                  //               iconSize: 25,
+                  //               onPressed: () {}),
+                  //           IconButton(
+                  //               icon: Icon(Icons.arrow_back_ios_rounded,
+                  //                   color: boring_green),
+                  //               iconSize: 25,
+                  //               onPressed: () {})
+                  //         ],
+                  //       ),
+                  //     ))
                 ],
               ),
             ))
@@ -307,19 +317,5 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ))
       ],
     );
-  }
-
-  Widget getCalenderView() {
-    return Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
-        ),
-        elevation: 2.0,
-        child: Container(
-          width: MediaQuery.of(context).size.width * .8,
-          child: CalenderView(onDateSelected: (DateTime date){
-            print("Current Selected Date is "+date.toString());
-          },),
-        ));
   }
 }

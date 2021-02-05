@@ -85,8 +85,8 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                         children: [
                           ClipOval(
                             child: Container(
-                              width: 22,
-                              height: 22,
+                              width: 28,
+                              height: 28,
                               color: Colors.green,
                               alignment: Alignment.topCenter,
                               child: FittedBox(
@@ -116,8 +116,8 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                           ),
                           ClipOval(
                             child: Container(
-                              width: 22,
-                              height: 22,
+                              width: 28,
+                              height: 28,
                               color: Colors.green,
                               alignment: Alignment.topCenter,
                               child: FittedBox(

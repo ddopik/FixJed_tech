@@ -13,9 +13,6 @@ class AddressItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 18,
-        ),
         Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
@@ -23,7 +20,7 @@ class AddressItemView extends StatelessWidget {
             elevation: 2.0,
             child: Container(
               width: MediaQuery.of(context).size.width * .8,
-              height: MediaQuery.of(context).size.height * .20,
+              height: MediaQuery.of(context).size.height * .26,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -33,10 +30,9 @@ class AddressItemView extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
                         child: Column(
-
                           children: [
                             SizedBox(
-                              height: 12,
+                              height: 8,
                             ),
                             Row(
                               children: [
@@ -47,14 +43,14 @@ class AddressItemView extends StatelessWidget {
                                     ),
                                     iconSize: 20,
                                     onPressed: null),
-                                Text("Address Name",
+                                Text(address.title,
                                     style: const TextStyle(
                                         color: french_blue,
                                         fontWeight: FontWeight.w600,
                                         fontFamily: "Tajawal",
                                         fontStyle: FontStyle.normal,
                                         fontSize: 18.0),
-                                    textAlign: TextAlign.left),
+                                    textAlign: TextAlign.start),
                               ],
                             ),
                             Row(
@@ -62,7 +58,10 @@ class AddressItemView extends StatelessWidget {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Text("Street name",
+                                Text(
+                                    S.current.addressStreet +
+                                        " : " +
+                                        address.streetName,
                                     style: const TextStyle(
                                         color: const Color(0xff646363),
                                         fontWeight: FontWeight.w400,
@@ -77,7 +76,10 @@ class AddressItemView extends StatelessWidget {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Text("Builder number",
+                                Text(
+                                    S.current.addressBuildingNumber +
+                                        " : " +
+                                        address.buildingNumber.toString(),
                                     style: const TextStyle(
                                         color: const Color(0xff646363),
                                         fontWeight: FontWeight.w400,
@@ -92,7 +94,10 @@ class AddressItemView extends StatelessWidget {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Text("Appartment Number",
+                                Text(
+                                    S.current.apartmentNumber +
+                                        " : " +
+                                        address.apartmentNumber,
                                     style: const TextStyle(
                                         color: const Color(0xff646363),
                                         fontWeight: FontWeight.w400,
@@ -107,7 +112,10 @@ class AddressItemView extends StatelessWidget {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Text("Floor Number",
+                                Text(
+                                    S.current.AddressFloorNumber +
+                                        " : " +
+                                        address.floorNumber.toString(),
                                     style: const TextStyle(
                                         color: const Color(0xff646363),
                                         fontWeight: FontWeight.w400,
@@ -127,6 +135,7 @@ class AddressItemView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           IconButton(
+                              padding: EdgeInsets.symmetric(horizontal: 18),
                               icon: Icon(
                                 Icons.edit,
                                 color: boring_green,
@@ -140,7 +149,7 @@ class AddressItemView extends StatelessWidget {
                       ))
                 ],
               ),
-            ))
+            )),
       ],
     );
   }

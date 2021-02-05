@@ -25,6 +25,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 29
 
@@ -43,6 +47,11 @@ android {
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        buildConfigField("String", "FAWRY_MERCHANT_ID", apikeyProperties['FAWRY_MERCHANT_ID'])
+        buildConfigField("String", "ZENDESK_URL", apikeyProperties['ZENDESK_URL'])
+        buildConfigField("String", "ZENDESK_APP_ID", apikeyProperties['ZENDESK_APP_ID'])
+        buildConfigField("String", "ZENDESK_CLIENT_ID", apikeyProperties['ZENDESK_CLIENT_ID'])
+        buildConfigField("String", "ZENDESK_CHAT_ACCOUNT_KEY", apikeyProperties['ZENDESK_CHAT_ACCOUNT_KEY'])
     }
 
     buildTypes {
@@ -59,5 +68,11 @@ flutter {
 }
 
 dependencies {
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    api group: 'com.zendesk', name: 'messaging', version: '5.1.0'
+    api group: 'com.zendesk', name: 'chat', version: '3.1.0'
 }

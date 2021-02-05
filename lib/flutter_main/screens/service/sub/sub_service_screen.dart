@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/model/service.dart';
- import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_list_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
+  import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_list_view.dart';
 
 // ignore: must_be_immutable
 class SubServicesFeaturesScreen extends StatelessWidget {
-  FixJidService _fixJidCategory;
+  FixJedCategory _fixJidCategory;
 
   @override
   Widget build(BuildContext context) {
     _fixJidCategory = ModalRoute.of(context).settings.arguments;
-    if(_fixJidCategory != null && _fixJidCategory is FixJidService){
+    if(_fixJidCategory != null && _fixJidCategory is FixJedCategory){
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: getPrimaryAppBar(context, _fixJidCategory.name),

@@ -40,14 +40,14 @@ class DIOManager {
   static const String _GET_SUB_CATEGORY = "/category/find-all-by-parent-id";
   static const String _GET_PRODUCT = "/product/find-all-by-category-id";
   static const String _GET_CART_PRODUCT = "/cart/find-all-product-in-cart";
-  static const String _ADD_PRODUCT_TO_CART = "/cart/add-product-to-cart";
+  static const String _ADD_PRODUCT_TO_CART = "/cart/increase-product-to-cart";
   static const String _SUBTRACT_PRODUCT_FROM_CART =
       "/cart/delete-product-from-cart";
   static const String _REMOVE_PRODUCT_FROM_CART =
-      "/cart/delete-all-product-from-cart";
+      "/cart/delete-product-from-cart";
   static const String _REMOVE_CATEGORY_FROM_CART =
       "/cart/delete-category-from-cart";
-  static const String GET_SAVED_ADDRESS = "/cart/delete-category-from-cart";
+  static const String GET_SAVED_ADDRESS = "/address/find-all-addresses";
 
   sendLoginRequest(
       {Function onSuccess,

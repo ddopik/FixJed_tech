@@ -78,7 +78,7 @@ dependencies:
   rubber: 0.4.0
   flutter_localizations:
     sdk: flutter
-  country_code_picker: 1.4.0
+#  country_code_picker: 1.4.0
   ## autoCompete DropDownListView
   flutter_typeahead: ^1.8.8
   # The following adds the Cupertino Icons font to your application.
@@ -93,7 +93,7 @@ dependencies:
   ##This is a BottomSheet with a draggable height like the Google Maps App on Android.
   expandable_bottom_sheet: ^0.2.1+1
 #  file_picker: ^2.0.12
-  camera: ^0.5.8+11
+#  camera: ^0.5.8+11
 #  path_provider: ^1.6.24
   gallery_saver: ^2.0.1
   ## nice Log View
