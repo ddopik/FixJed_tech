@@ -47,11 +47,16 @@ class _CartListViewState extends State<CartListView> {
     final nextPageKey = pageKey + 1;
     CartModel().getCartProduct(
         onSuccess: (features) {
-          CartResponse cartResponse = features;
-          setState(() {
-            totalCartPrice = cartResponse.cartTotalPrice;
-          });
-          _pagingController.appendLastPage(cartResponse.categories);
+
+          if(features != null) {
+            CartResponse cartResponse = features;
+            setState(() {
+              totalCartPrice = cartResponse.cartTotalPrice;
+            });
+            _pagingController.appendLastPage(cartResponse.categories);
+          }else{
+            _pagingController.appendLastPage([]);
+          }
         },
         onError: (error) {
           _pagingController.error = error;

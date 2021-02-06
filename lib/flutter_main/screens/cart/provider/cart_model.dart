@@ -5,8 +5,16 @@ class CartModel {
   getCartProduct({onSuccess, onError, serviceId, page}) {
     DIOManager().getCartProducts(
       onSuccess: (response) {
-        CartResponse cartResponse = CartResponse.fromJson(response);
-        onSuccess(cartResponse);
+        try {
+          if (response != null) {
+            CartResponse cartResponse = CartResponse.fromJson(response);
+            onSuccess(cartResponse);
+          } else {
+            onSuccess(null);
+          }
+        } catch (e) {
+          onSuccess(null);
+        }
       },
       onError: (errorResponse) {
         onError(errorResponse);
