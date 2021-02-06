@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addNewAddress" : MessageLookupByLibrary.simpleMessage("Add new address"),
     "addressBuildingNumber" : MessageLookupByLibrary.simpleMessage("Building number"),
     "addressCity" : MessageLookupByLibrary.simpleMessage("City"),
+    "addressCreatedSuccessfully" : MessageLookupByLibrary.simpleMessage("Address submitedd Successfully"),
     "addressName" : MessageLookupByLibrary.simpleMessage("Address name"),
     "addressStreet" : MessageLookupByLibrary.simpleMessage("Address street"),
     "alreadyHaveAccount" : MessageLookupByLibrary.simpleMessage("Already have an account"),

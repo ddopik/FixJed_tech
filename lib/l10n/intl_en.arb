@@ -73,5 +73,6 @@
   "noSavedPlaces": "No saved places",
   "createRequest": "Create request",
   "total": "Total",
-  "chooseCheckDate": "Choose visiting date"
+  "chooseCheckDate": "Choose visiting date",
+  "addressCreatedSuccessfully": "Address submitedd Successfully"
 }

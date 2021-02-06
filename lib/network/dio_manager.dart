@@ -48,6 +48,9 @@ class DIOManager {
   static const String _REMOVE_CATEGORY_FROM_CART =
       "/cart/delete-category-from-cart";
   static const String GET_SAVED_ADDRESS = "/address/find-all-addresses";
+  static const String GET_CITIES = "/city/find-all";
+  static const String SUBMIT_NEW_ADDRESS = "/address/add-new-address";
+  static const String EDIT_ADDRESS = "/address/update-by-id";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -158,6 +161,63 @@ class DIOManager {
         queryParameters: {"product-id": productId});
   }
 
+  submitNewAddress(
+      {Function onSuccess,
+        Function onError,
+        addressId,
+        title,
+        streetName,
+        apartmentNumber,
+        buildingNumber,
+        floorNumber,
+        regionId,
+        description}) {
+
+
+
+    _sendPostRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: SUBMIT_NEW_ADDRESS,
+        bodyParameters: {
+          "title": title,
+          "streetName": streetName,
+          "apartmentNumber": apartmentNumber,
+          "buildingNumber": buildingNumber,
+          "floorNumber": floorNumber,
+          "regionId": regionId,
+          "description": description,
+        });
+  }
+
+
+  editAddress(
+      {Function onSuccess,
+      Function onError,
+      addressId,
+      title,
+      streetName,
+      apartmentNumber,
+      buildingNumber,
+      floorNumber,
+      regionId,
+      description}) {
+    _sendPutRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: EDIT_ADDRESS,
+        bodyParameters: {
+          "id": addressId,
+          "title": title,
+          "streetName": streetName,
+          "apartmentNumber": apartmentNumber,
+          "buildingNumber": buildingNumber,
+          "floorNumber": floorNumber,
+          "regionId": regionId,
+          "description": description,
+        });
+  }
+
   subtractProductFromCart({Function onSuccess, Function onError, productId}) {
     _sendDeleteRequest(
         onSuccess: onSuccess,
@@ -198,6 +258,14 @@ class DIOManager {
     );
   }
 
+  getCities({Function onSuccess, Function onError}) {
+    _sendGetRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      url: GET_CITIES,
+    );
+  }
+
   _sendGetRequest(
       {Function onSuccess,
       Function onError,
@@ -234,19 +302,19 @@ class DIOManager {
     try {
       Response response;
       if (queryParameters != null && bodyParameters == null) {
-        print("addProductToCart onSuccess called [1]");
+        print("_sendDeleteRequest onSuccess called [1]");
         response = await _dio.delete(url, queryParameters: queryParameters);
       } else if (queryParameters != null && bodyParameters != null) {
-        print("addProductToCart onSuccess called [2]");
+        print("_sendDeleteRequest onSuccess called [2]");
         response = await _dio.delete(url,
             data: bodyParameters, queryParameters: queryParameters);
       } else {
-        print("addProductToCart onSuccess called [3]");
+        print("_sendDeleteRequest onSuccess called [3]");
         response = await _dio.delete(url, data: bodyParameters);
       }
 
       if (response.statusCode == 200) {
-        logger.e("_sendGetRequest onSuccess----> Of Url $url " +
+        logger.e("_sendDeleteRequest onSuccess----> Of Url $url " +
             response.toString());
         if (response.data != null) {
           onSuccess(response.data);
@@ -254,8 +322,8 @@ class DIOManager {
           onSuccess("Success");
         }
       } else {
-        logger.e(
-            "_sendGetRequest onError----> Of Url $url " + response.toString());
+        logger.e("_sendDeleteRequest onError----> Of Url $url " +
+            response.toString());
         onError(response);
       }
     } on DioError catch (e) {
@@ -269,22 +337,23 @@ class DIOManager {
       String url,
       queryParameters,
       bodyParameters}) async {
+    print("submitNewAddress ----> "+bodyParameters.toString());
     try {
       Response response;
       if (queryParameters != null && bodyParameters == null) {
-        print("addProductToCart onSuccess called [1]");
+        print("_sendPostRequest onSuccess called [1]");
         response = await _dio.post(url, queryParameters: queryParameters);
       } else if (queryParameters != null && bodyParameters != null) {
-        print("addProductToCart onSuccess called [2]");
+        print("_sendPostRequest onSuccess called [2]");
         response = await _dio.post(url,
             data: bodyParameters, queryParameters: queryParameters);
       } else {
-        print("addProductToCart onSuccess called [3]");
+        print("_sendPostRequest onSuccess called [3]");
         response = await _dio.post(url, data: bodyParameters);
       }
 
       if (response.statusCode == 200) {
-        logger.e("_sendGetRequest onSuccess----> Of Url $url " +
+        logger.e("_sendPostRequest onSuccess----> Of Url $url " +
             response.toString());
         if (response.data != null) {
           onSuccess(response.data);
@@ -293,7 +362,46 @@ class DIOManager {
         }
       } else {
         logger.e(
-            "_sendGetRequest onError----> Of Url $url " + response.toString());
+            "_sendPostRequest onError----> Of Url $url " + response.toString());
+        onError(response);
+      }
+    } on DioError catch (e) {
+      handleDioErrorResponse(url, e, onError);
+    }
+  }
+
+  _sendPutRequest(
+      {Function onSuccess(data),
+      Function onError(data),
+      String url,
+      queryParameters,
+      bodyParameters}) async {
+    print("bodyParameters --->"+bodyParameters.toString());
+    try {
+      Response response;
+      if (queryParameters != null && bodyParameters == null) {
+        print("_sendPutRequest onSuccess called [1]");
+        response = await _dio.put(url, queryParameters: queryParameters);
+      } else if (queryParameters != null && bodyParameters != null) {
+        print("_sendPutRequest onSuccess called [2]");
+        response = await _dio.put(url,
+            data: bodyParameters, queryParameters: queryParameters);
+      } else {
+        print("_sendPutRequest onSuccess called [3]");
+        response = await _dio.put(url, data: bodyParameters);
+      }
+
+      if (response.statusCode == 200) {
+        logger.e("_sendPostRequest onSuccess----> Of Url $url " +
+            response.toString());
+        if (response.data != null) {
+          onSuccess(response.data);
+        } else {
+          onSuccess("Success");
+        }
+      } else {
+        logger.e(
+            "_sendPutRequest onError----> Of Url $url " + response.toString());
         onError(response);
       }
     } on DioError catch (e) {
@@ -318,6 +426,7 @@ class DIOManager {
           onError("Un Expected Error");
         } else if (e?.response?.statusCode == 406) {
           errorResponse = ErrorResponse.fromJson(e.response.data);
+
           onError(errorResponse);
         } else if (e?.response?.statusCode == 401) {
           onError(S.current.invalidLogin);

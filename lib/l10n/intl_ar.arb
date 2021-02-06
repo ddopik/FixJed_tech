@@ -74,5 +74,6 @@
   "noSavedPlaces": "لا توجد أماكن محفوظة",
   "createRequest": "قدم طلبك",
   "total": "اجمالي",
-  "chooseCheckDate": "آختر تاريخ الزياره"
+  "chooseCheckDate": "آختر تاريخ الزياره",
+  "addressCreatedSuccessfully": "تم انشاء العنوان بنجاح"
 }

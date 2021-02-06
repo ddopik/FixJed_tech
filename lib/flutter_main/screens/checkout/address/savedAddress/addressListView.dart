@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
-import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -38,7 +38,6 @@ class _AddressListViewState extends State<AddressListView> {
     final nextPageKey = pageKey + 1;
     _addressModel.getSavedAddress(
         onSuccess: (savedAddress) {
-
           _pagingController.appendLastPage(savedAddress);
         },
         onError: (error) {
@@ -104,7 +103,15 @@ class _AddressListViewState extends State<AddressListView> {
           if (index == _pagingController.itemList.length - 1) {
             return Column(
               children: [
-                AddressItemView(address: address),
+                AddressItemView(
+                  address: address,
+                  onAddressEditClick: (address) async {
+                    await Navigator.of(context).pushNamed(
+                        Routes.ADDRESS_FORM_SCREEN,
+                        arguments: address);
+                    _pagingController.refresh();
+                  },
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
@@ -117,7 +124,12 @@ class _AddressListViewState extends State<AddressListView> {
                               color: boring_green,
                             ),
                             iconSize: 25,
-                            onPressed: null),
+                            onPressed: () async {
+                              await Navigator.of(context).pushNamed(
+                                Routes.ADDRESS_FORM_SCREEN,
+                              );
+                              _pagingController.refresh();
+                            }),
                         Text(S.of(context).addNewAddress,
                             style: const TextStyle(
                                 color: french_blue,
@@ -129,14 +141,30 @@ class _AddressListViewState extends State<AddressListView> {
                       ],
                     ),
                     IconButton(
-                        icon: Icon(Icons.arrow_back_ios_rounded,color:boring_green ,size: 20,),
-                        onPressed: () {})
+                        icon: Icon(
+                          Icons.arrow_back_ios_rounded,
+                          color: boring_green,
+                          size: 20,
+                        ),
+                        onPressed: () async {
+                          await Navigator.of(context).pushNamed(
+                            Routes.ADDRESS_FORM_SCREEN,
+                          );
+                          _pagingController.refresh();
+                        })
                   ],
                 )
               ],
             );
           } else {
-            return AddressItemView(address: address);
+            return AddressItemView(
+              address: address,
+              onAddressEditClick: (address) async {
+                await Navigator.of(context)
+                    .pushNamed(Routes.ADDRESS_FORM_SCREEN, arguments: address);
+                _pagingController.refresh();
+              },
+            );
           }
         },
         firstPageErrorIndicatorBuilder: (context) => EmptyListIndicator(),

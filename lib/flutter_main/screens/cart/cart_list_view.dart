@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
@@ -11,7 +10,7 @@ import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_butto
 import 'package:flutter_base_app/flutter_main/screens/cart/model/cart_response.dart';
 import 'package:flutter_base_app/flutter_main/screens/cart/provider/cart_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
- import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
+import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
@@ -53,8 +52,7 @@ class _CartListViewState extends State<CartListView> {
             totalCartPrice = cartResponse.cartTotalPrice;
           });
           _pagingController.appendLastPage(cartResponse.categories);
-
-         },
+        },
         onError: (error) {
           _pagingController.error = error;
         },
@@ -110,8 +108,9 @@ class _CartListViewState extends State<CartListView> {
                                 getPrice(context, totalCartPrice) +
                                 " )",
                             onPressed: () {
-                              Navigator.of(context)
-                                  .pushNamed(Routes.PAYMENT_SCREEN);
+                              Navigator.of(context).pushNamed(
+                                  Routes.PAYMENT_SCREEN,
+                                  arguments: totalCartPrice);
                             }),
                         decoration: BoxDecoration(
                           boxShadow: [
@@ -262,10 +261,10 @@ class _CartListViewState extends State<CartListView> {
   }
 
   void onAddNEwCategory(FixJedCategory category) {
-    print("onAddNEwCategory --->"+category.toString());
+    print("onAddNEwCategory --->" + category.toString());
 
-
-    Navigator.of(context).pushNamed(Routes.SUB_SERVICE_FEATURES,arguments:category );
+    Navigator.of(context)
+        .pushNamed(Routes.SUB_SERVICE_FEATURES, arguments: category);
     // FixJedCategory fixJedCategory = FixJedCategory();
   }
 }

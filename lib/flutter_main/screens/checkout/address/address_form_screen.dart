@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
+import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
+import 'model/Address.dart';
 import 'model/city.dart';
 
 class AddressFormScreen extends StatefulWidget {
@@ -14,8 +17,13 @@ class AddressFormScreen extends StatefulWidget {
 }
 
 class _AddressFormScreenState extends State<AddressFormScreen> {
+  Address _currentAddress;
+
+  AddressModel _addressModel;
+
   List<City> dropdownCityList;
-  City dropdownCityValue;
+  City _selectedDropdownCityValue;
+
   TextEditingController addressNameController = TextEditingController();
   TextEditingController addressCityController = TextEditingController();
   TextEditingController addressStreetController = TextEditingController();
@@ -26,9 +34,16 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
       TextEditingController();
 
   @override
+  void initState() {
+    _addressModel = AddressModel();
+    dropdownCityList = getCitiesList();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    dropdownCityList = getMockCityList();
-    dropdownCityValue = dropdownCityList[0];
+    _currentAddress = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
         appBar: AppBar(
           title: Text(S.of(context).addNewAddress),
@@ -65,14 +80,16 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   Widget getAddressFormView() {
     return SingleChildScrollView(
       child: Container(
-        height: MediaQuery.of(context).size.height*.8,
-         child: Column(
+        height: MediaQuery.of(context).size.height * .8,
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Column(
               children: [
-                SizedBox(height: 32,),
+                SizedBox(
+                  height: 32,
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width * .85,
                   height: 55,
@@ -90,6 +107,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                   child: TextFormField(
                     cursorColor: Colors.black,
                     keyboardType: TextInputType.name,
+                    controller: addressNameController,
                     decoration: new InputDecoration(
                         errorStyle: TextStyle(height: 0),
                         border: InputBorder.none,
@@ -99,7 +117,9 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                         disabledBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: S.of(context).addressName,
+                        hintText: (_currentAddress != null)
+                            ? _currentAddress.title
+                            : S.of(context).addressName,
                         hintStyle: TextStyle(fontSize: 14)),
                   ),
                 ),
@@ -122,17 +142,21 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                         ],
                         color: const Color(0xffffffff)),
                     child: DropdownButton<City>(
-                      value: dropdownCityValue,
+                      value: dropdownCityList?.singleWhere(
+                          (element) => element.id == _currentAddress?.id,
+                          orElse: () {
+                        return dropdownCityList[0];
+                      }),
                       underline: Container(
                         height: 2,
                       ),
                       onChanged: (City newValue) {
                         setState(() {
-                          dropdownCityValue = newValue;
+                          _selectedDropdownCityValue = newValue;
                         });
                       },
                       items: dropdownCityList
-                          .map<DropdownMenuItem<City>>((City value) {
+                          ?.map<DropdownMenuItem<City>>((City value) {
                         return DropdownMenuItem<City>(
                           value: value,
                           child: Container(
@@ -143,7 +167,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                             ),
                           ),
                         );
-                      }).toList(),
+                      })?.toList(),
                     )),
                 SizedBox(
                   height: 14,
@@ -175,7 +199,8 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                         disabledBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: S.of(context).addressStreet,
+                        hintText: _currentAddress?.streetName ??
+                            S.of(context).addressStreet,
                         hintStyle: TextStyle(fontSize: 14)),
                   ),
                 ),
@@ -209,7 +234,8 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                         disabledBorder: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: S.of(context).addressBuildingNumber,
+                        hintText: _currentAddress?.buildingNumber ??
+                            S.of(context).addressBuildingNumber,
                         hintStyle: TextStyle(fontSize: 14)),
                   ),
                 ),
@@ -249,7 +275,8 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                               disabledBorder: InputBorder.none,
                               contentPadding: EdgeInsets.only(
                                   left: 15, bottom: 11, top: 11, right: 15),
-                              hintText: S.of(context).AddressFloorNumber,
+                              hintText: _currentAddress?.floorNumber ??
+                                  S.of(context).AddressFloorNumber,
                               hintStyle: TextStyle(fontSize: 14),
                             ),
                           ),
@@ -283,7 +310,8 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                                 disabledBorder: InputBorder.none,
                                 contentPadding: EdgeInsets.only(
                                     left: 15, bottom: 11, top: 11, right: 15),
-                                hintText: S.current.apartmentNumber),
+                                hintText: _currentAddress?.apartmentNumber ??
+                                    S.current.apartmentNumber),
                           ),
                         ),
                       )
@@ -298,7 +326,14 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                   height: 45,
                   btnColor: boring_green,
                   textColor: Color(0xffffffff),
-                  btnText:S.current.apply),
+                  btnText: S.current.apply,
+                  onPressed: () {
+                    if (_currentAddress != null) {
+                      updateNewAddress();
+                    } else {
+                      submitNewAddress();
+                    }
+                  }),
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -315,20 +350,61 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
     );
   }
 
-  List<City> getMockCityList() {
-    City city = City();
-    city.name = "Cairo";
-    city.id = 1;
-    City city2 = City();
-    city2.name = "Giza";
-    city2.id = 1;
-    City city3 = City();
-    city3.name = "Alex";
-    city3.id = 1;
-    City city4 = City();
-    city4.name = "Fayom";
-    city4.id = 1;
+  getCitiesList() {
+    _addressModel.getCities(onSuccess: (cityList) {
+      setState(() {
+        dropdownCityList = cityList;
+      });
+    });
+  }
 
-    return [city, city2, city3, city4];
+  submitNewAddress() {
+    _addressModel.submitNewAddress(
+        title: addressNameController.value.text,
+        streetName: addressStreetController.value.text,
+        cityId: _selectedDropdownCityValue?.id ?? dropdownCityList[0].id,
+        floor: addressFloorNumberController.value.text,
+        apartmentNumber: addressApartmentNumberController.value.text,
+        buildingNumber: addressBuildingNumberController.value.text,
+        onSuccess: (response) {
+          showInfo(S.current.addressCreatedSuccessfully);
+          Navigator.of(context).pop();
+        },
+        onError: (errorResponse) {
+          showError(S.current.applicationError);
+        });
+  }
+
+  updateNewAddress() {
+    if (addressNameController.value.text == null) {
+      print("addressNameController ---> is null");
+    }
+    _addressModel.editAddress(
+        id: _currentAddress.id,
+        title: addressNameController.value.text.isNotEmpty
+            ? addressNameController.value.text
+            : _currentAddress.title,
+        streetName: addressStreetController.value.text.isNotEmpty
+            ? addressStreetController.value.text
+            : _currentAddress.streetName,
+        cityId: (_selectedDropdownCityValue != null)
+            ? _selectedDropdownCityValue.id
+            : dropdownCityList[0].id,
+        floor: addressFloorNumberController.value.text.isNotEmpty
+            ? addressFloorNumberController.value.text
+            : _currentAddress.floorNumber.toString(),
+        apartmentNumber: addressApartmentNumberController.value.text.isNotEmpty
+            ? addressApartmentNumberController.value.text
+            : _currentAddress.apartmentNumber.toString(),
+        buildingNumber: addressBuildingNumberController.value.text.isNotEmpty
+            ? addressBuildingNumberController.value.text
+            : _currentAddress.buildingNumber,
+        onSuccess: (response) {
+          showInfo(S.current.addressCreatedSuccessfully);
+          Navigator.of(context).pop();
+        },
+        onError: (errorResponse) {
+          showError(errorResponse);
+        });
   }
 }

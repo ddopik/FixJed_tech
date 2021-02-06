@@ -6,8 +6,9 @@ import 'package:flutter_base_app/generated/l10n.dart';
 
 class AddressItemView extends StatelessWidget {
   final Address address;
+  final Function onAddressEditClick;
 
-  AddressItemView({this.address});
+  AddressItemView({this.address, this.onAddressEditClick});
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +142,9 @@ class AddressItemView extends StatelessWidget {
                                 color: boring_green,
                               ),
                               iconSize: 25,
-                              onPressed: () {}),
+                              onPressed: () {
+                                onAddressEditClick(address);
+                              }),
                           SizedBox(
                             height: 50,
                           )

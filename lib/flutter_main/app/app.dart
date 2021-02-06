@@ -116,7 +116,7 @@ class AppState extends State<App> {
   }
 
   getNextScreen() {
-    return PaymentScreen();
+    return HomeScreen();
     if (PrefManager().getUserToken() != null) {
       return HomeScreen();
     } else {

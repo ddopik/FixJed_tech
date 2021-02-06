@@ -784,6 +784,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Address submitedd Successfully`
+  String get addressCreatedSuccessfully {
+    return Intl.message(
+      'Address submitedd Successfully',
+      name: 'addressCreatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
