@@ -49,6 +49,7 @@ class DIOManager {
       "/cart/delete-category-from-cart";
   static const String GET_SAVED_ADDRESS = "/address/find-all-addresses";
   static const String GET_CITIES = "/city/find-all";
+  static const String GET_REGION = "/find-all-by-city-id/";
   static const String SUBMIT_NEW_ADDRESS = "/address/add-new-address";
   static const String EDIT_ADDRESS = "/address/update-by-id";
 
@@ -163,18 +164,15 @@ class DIOManager {
 
   submitNewAddress(
       {Function onSuccess,
-        Function onError,
-        addressId,
-        title,
-        streetName,
-        apartmentNumber,
-        buildingNumber,
-        floorNumber,
-        regionId,
-        description}) {
-
-
-
+      Function onError,
+      addressId,
+      title,
+      streetName,
+      apartmentNumber,
+      buildingNumber,
+      floorNumber,
+      regionId,
+      description}) {
     _sendPostRequest(
         onSuccess: onSuccess,
         onError: onError,
@@ -189,7 +187,6 @@ class DIOManager {
           "description": description,
         });
   }
-
 
   editAddress(
       {Function onSuccess,
@@ -266,6 +263,14 @@ class DIOManager {
     );
   }
 
+  getCitiesRegion({Function onSuccess, Function onError, cityId}) {
+    _sendGetRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: GET_REGION,
+        queryParameters: {"city-id:$cityId"});
+  }
+
   _sendGetRequest(
       {Function onSuccess,
       Function onError,
@@ -337,7 +342,7 @@ class DIOManager {
       String url,
       queryParameters,
       bodyParameters}) async {
-    print("submitNewAddress ----> "+bodyParameters.toString());
+    print("submitNewAddress ----> " + bodyParameters.toString());
     try {
       Response response;
       if (queryParameters != null && bodyParameters == null) {
@@ -376,7 +381,7 @@ class DIOManager {
       String url,
       queryParameters,
       bodyParameters}) async {
-    print("bodyParameters --->"+bodyParameters.toString());
+    print("bodyParameters --->" + bodyParameters.toString());
     try {
       Response response;
       if (queryParameters != null && bodyParameters == null) {

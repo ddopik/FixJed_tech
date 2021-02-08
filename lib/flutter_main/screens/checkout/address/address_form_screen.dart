@@ -22,7 +22,9 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   AddressModel _addressModel;
 
   List<City> dropdownCityList;
+  List<City> dropdownCityRegionList;
   City _selectedDropdownCityValue;
+  City _selectedDropdownRegionValue;
 
   TextEditingController addressNameController = TextEditingController();
   TextEditingController addressCityController = TextEditingController();
@@ -37,6 +39,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   void initState() {
     _addressModel = AddressModel();
     dropdownCityList = getCitiesList();
+
     super.initState();
   }
 
@@ -142,11 +145,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                         ],
                         color: const Color(0xffffffff)),
                     child: DropdownButton<City>(
-                      value: dropdownCityList?.singleWhere(
-                          (element) => element.id == _currentAddress?.id,
-                          orElse: () {
-                        return dropdownCityList[0];
-                      }),
+                      value: dropdownCityList?.first,
                       underline: Container(
                         height: 2,
                       ),
@@ -156,6 +155,52 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                         });
                       },
                       items: dropdownCityList
+                          ?.map<DropdownMenuItem<City>>((City value) {
+                        return DropdownMenuItem<City>(
+                          value: value,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * .7,
+                            child: Text(
+                              value.name,
+                              style: TextStyle(color: french_blue),
+                            ),
+                          ),
+                        );
+                      })?.toList(),
+                    )),
+                SizedBox(
+                  height: 14,
+                ),
+                Container(
+                    width: MediaQuery.of(context).size.width * .85,
+                    height: 55,
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.symmetric(horizontal: 14),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(26)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: const Color(0x29000000),
+                              offset: Offset(0, 3),
+                              blurRadius: 6,
+                              spreadRadius: 0)
+                        ],
+                        color: const Color(0xffffffff)),
+                    child: DropdownButton<City>(
+                      value: dropdownCityRegionList?.singleWhere(
+                          (element) => element.id == _currentAddress?.id,
+                          orElse: () {
+                        return dropdownCityRegionList?.first;
+                      }),
+                      underline: Container(
+                        height: 2,
+                      ),
+                      onChanged: (City newValue) {
+                        setState(() {
+                          _selectedDropdownRegionValue = newValue;
+                        });
+                      },
+                      items: dropdownCityRegionList
                           ?.map<DropdownMenuItem<City>>((City value) {
                         return DropdownMenuItem<City>(
                           value: value,
@@ -352,10 +397,20 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
   getCitiesList() {
     _addressModel.getCities(onSuccess: (cityList) {
-      setState(() {
-        dropdownCityList = cityList;
-      });
+      dropdownCityList = cityList;
+      getCitiesRegionList(
+          _selectedDropdownRegionValue?.id ?? dropdownCityList?.first);
     });
+  }
+
+  getCitiesRegionList(City city) {
+    _addressModel.getCitiesRegion(
+        cityId: city.id,
+        onSuccess: (cityList) {
+          dropdownCityRegionList = cityList;
+        });
+
+    setState(() {});
   }
 
   submitNewAddress() {
@@ -388,8 +443,8 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
             ? addressStreetController.value.text
             : _currentAddress.streetName,
         cityId: (_selectedDropdownCityValue != null)
-            ? _selectedDropdownCityValue.id
-            : dropdownCityList[0].id,
+            ? _selectedDropdownRegionValue.id
+            : dropdownCityRegionList[0].id,
         floor: addressFloorNumberController.value.text.isNotEmpty
             ? addressFloorNumberController.value.text
             : _currentAddress.floorNumber.toString(),

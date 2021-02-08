@@ -83,4 +83,18 @@ class AddressModel {
       },
     );
   }
+
+  getCitiesRegion({onSuccess, onError,cityId}) {
+    DIOManager().getCitiesRegion(
+      cityId: cityId,
+      onSuccess: (response) {
+        List<City> aAddressList =
+            (response as List).map((model) => City.fromJson(model)).toList();
+        onSuccess(aAddressList);
+      },
+      onError: (errorResponse) {
+        onError(errorResponse);
+      },
+    );
+  }
 }
