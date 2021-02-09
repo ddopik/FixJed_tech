@@ -52,6 +52,7 @@ class DIOManager {
   static const String GET_REGION = "/find-all-by-city-id/";
   static const String SUBMIT_NEW_ADDRESS = "/address/add-new-address";
   static const String EDIT_ADDRESS = "/address/update-by-id";
+  static const String SUBMIT_TRANSACTION = "/transaction/add";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -269,6 +270,17 @@ class DIOManager {
         onError: onError,
         url: GET_REGION,
         queryParameters: {"city-id:$cityId"});
+  }
+
+  submitTransaction(
+      {addressId, paymentId, Function onSuccess, Function onError}) {
+    // addressId = int.parse(addressId);
+    _sendPostRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      bodyParameters: {"paymentId": paymentId, "addressId": addressId},
+      url: SUBMIT_TRANSACTION,
+    );
   }
 
   _sendGetRequest(

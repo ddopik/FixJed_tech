@@ -5,11 +5,18 @@ import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Add
 import 'package:flutter_base_app/generated/l10n.dart';
 
 class SavedPlacesGroupView extends StatefulWidget {
-  final Function onAddressSelected;
-  final List<Address> addressList;
+  Function onAddressSelected;
+  Address selectedAddress;
+  List<Address> addressList = [];
+  int textvat;
 
-  SavedPlacesGroupView({Key key, this.onAddressSelected, this.addressList})
-      : super(key: key);
+  SavedPlacesGroupView({onAddressSelected, addressList}) {
+    if (this.addressList.isEmpty) {
+      this.addressList = addressList;
+    }
+
+    this.onAddressSelected = onAddressSelected;
+  }
 
   @override
   State<StatefulWidget> createState() {
@@ -18,11 +25,15 @@ class SavedPlacesGroupView extends StatefulWidget {
 }
 
 class _SavedPlacesGroupViewState extends State<SavedPlacesGroupView> {
-  Address _selectedAddress;
+  @override
+  void initState() {
+    widget.textvat = 0;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    print("SavedPlacesGroupView ---> build() ");
+    print("SavedPlacesGroupView ---> build() } ");
 
     return Column(
         mainAxisSize: MainAxisSize.max,
@@ -37,26 +48,26 @@ class _SavedPlacesGroupViewState extends State<SavedPlacesGroupView> {
   }
 
   Widget getSavedPlacesRadioItems() {
-    print("getSavedPlacesRadioItems ---->" +
-        widget.addressList.length.toString());
     if (widget.addressList.length > 0) {
       return Column(
         children: [
-          for (Address address in widget.addressList)
+          // for (Address address in widget.addressList)
+          for (int i = 0; i < widget.addressList.length; i++)
             Row(
               children: [
                 Radio(
-                  value: address,
-                  groupValue: _selectedAddress,
+                  value: widget.addressList[i],
+                  groupValue:
+                      widget.selectedAddress ?? widget.addressList.first,
                   onChanged: (index) {
                     setState(() {
-                      widget.onAddressSelected(address);
-                      _selectedAddress = address;
+                      widget.onAddressSelected(widget.addressList[i]);
+                      widget.selectedAddress = widget.addressList[i];
                     });
                   },
                   activeColor: boring_green,
                 ),
-                Text(address.title,
+                Text(widget.addressList[i].title,
                     style: const TextStyle(
                         color: const Color(0xff646363),
                         fontWeight: FontWeight.w500,

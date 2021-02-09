@@ -444,7 +444,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
             : _currentAddress.streetName,
         cityId: (_selectedDropdownCityValue != null)
             ? _selectedDropdownRegionValue.id
-            : dropdownCityRegionList[0].id,
+            : dropdownCityRegionList?.first?.id ?? 0,
         floor: addressFloorNumberController.value.text.isNotEmpty
             ? addressFloorNumberController.value.text
             : _currentAddress.floorNumber.toString(),
@@ -455,7 +455,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
             ? addressBuildingNumberController.value.text
             : _currentAddress.buildingNumber,
         onSuccess: (response) {
-          showInfo(S.current.addressCreatedSuccessfully);
+          showInfo(S.current.addressUpdatedSuccessfully);
           Navigator.of(context).pop();
         },
         onError: (errorResponse) {

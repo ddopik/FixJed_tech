@@ -5,37 +5,41 @@ import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
+import 'package:flutter_base_app/flutter_main/screens/checkout/payment/provier/SubmitTransactionModel.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/payment/savedPlacesGroupView.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
-class PaymentScreen extends StatefulWidget {
-  Address currentSelectedAddress;
-  AddressModel addressModel;
-  List<Address> addressList = [];
+import 'confirm_dialog_view.dart';
 
-
+class SubmitTransactionScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _PaymentScreenState();
+    return _SubmitTransactionScreenState();
   }
 }
 
-class _PaymentScreenState extends State<PaymentScreen> {
-  int _totalPrice=0;
+class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
+  int _totalPrice = 0;
+  Address currentSelectedAddress;
+  AddressModel addressModel;
+  SubmitTransactionModel _submitTransactionModel;
+  List<Address> addressList = [];
+
   @override
   void initState() {
-    widget.addressModel = AddressModel();
+    addressModel = AddressModel();
+    _submitTransactionModel = SubmitTransactionModel();
     getSavedAddress();
     super.initState();
   }
 
   getSavedAddress() {
-    widget.addressModel.getSavedAddress(
+    addressModel.getSavedAddress(
       onSuccess: (savedAddress) {
         setState(() {
-          widget.addressList = savedAddress;
+          addressList = savedAddress;
           print("getSavedAddress ---> called() with" +
-              widget.addressList.length.toString());
+              addressList.length.toString());
         });
       },
       onError: (error) {},
@@ -44,7 +48,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _totalPrice = ModalRoute.of(context).settings.arguments??0;
+    _totalPrice = ModalRoute.of(context).settings.arguments ?? 0;
     return Scaffold(
         appBar: AppBar(
           title: Text(S.of(context).payment),
@@ -129,7 +133,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     btnColor: boring_green,
                     textColor: Color(0xffffffff),
                     fontSize: 18,
-                    btnText: S.current.createRequest),
+                    btnText: S.current.createRequest,
+                    onPressed: () {
+                      submitTransaction();
+                    }),
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -213,9 +220,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           ],
                         ),
                         SavedPlacesGroupView(
-                            addressList: widget.addressList,
+                            addressList: addressList,
                             onAddressSelected: (address) {
-                              widget.currentSelectedAddress = address;
+                              currentSelectedAddress = address;
                             }),
                         Row(
                           mainAxisSize: MainAxisSize.max,
@@ -342,5 +349,55 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ))
       ],
     );
+  }
+
+  submitTransaction() {
+    showConfirmTransactionDialog();
+    // showLoading(context);
+    // if (addressList.length <= 0) {
+    //   showInfo(S.of(context).pleaseAddAddress);
+    // } else {
+
+    // _submitTransactionModel.submitOrder(
+    //     addressId: currentSelectedAddress?.id??addressList?.first?.id,
+    //     onSuccess: (response) {
+    //       showSuccesses(context, "Successed");
+    //       dismissLoading();
+    //     },
+    //     onError: (errorResponse) {
+    //       showError( "Fail");
+    //       dismissLoading();
+    //     });
+  }
+
+  showConfirmTransactionDialog() {
+    showGeneralDialog(
+        barrierColor: Colors.black.withOpacity(0.5),
+        transitionBuilder: (context, a1, a2, widget) {
+          return Container(
+            alignment: Alignment.topCenter,
+            margin: EdgeInsets.only(top: 72),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24.0),
+              child: Container(
+                width: 350.0 * a1.value,
+                height: (MediaQuery.of(context).size.height * .8) * a1.value,
+                color: Colors.white,
+                child: ConfirmDialogView(
+                  transActionAddress:
+                      currentSelectedAddress ?? addressList?.first,
+                ),
+              ),
+            ),
+          );
+        },
+        transitionDuration: Duration(milliseconds: 200),
+        // DURATION FOR ANIMATION
+        barrierDismissible: true,
+        barrierLabel: 'LABEL',
+        context: context,
+        pageBuilder: (context, animation1, animation2) {
+          return Text('PAGE BUILDER');
+        });
   }
 }

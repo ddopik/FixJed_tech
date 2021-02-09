@@ -75,5 +75,11 @@
   "createRequest": "قدم طلبك",
   "total": "اجمالي",
   "chooseCheckDate": "آختر تاريخ الزياره",
-  "addressCreatedSuccessfully": "تم انشاء العنوان بنجاح"
+  "addressCreatedSuccessfully": "تم انشاء العنوان بنجاح",
+  "addressUpdatedSuccessfully": "تم تعديل العنوان بنجاح",
+  "pleaseAddAddress": "يجب اضافه عنوان للمتابعه",
+  "confirm": "تآكيد",
+  "transactionSubmitted": "لقد تم ارسال طلبك !",
+  "": "ستتلقي مكالمه من احد ممثلينا لتآكيد موعدك \\"
+
 }

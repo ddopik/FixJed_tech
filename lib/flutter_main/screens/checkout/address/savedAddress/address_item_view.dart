@@ -42,7 +42,7 @@ class AddressItemView extends StatelessWidget {
                                       Icons.location_on,
                                       color: boring_green,
                                     ),
-                                    iconSize: 20,
+                                    iconSize: 30,
                                     onPressed: null),
                                 Text(address.title,
                                     style: const TextStyle(
@@ -136,7 +136,7 @@ class AddressItemView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           IconButton(
-                              padding: EdgeInsets.symmetric(horizontal: 18),
+                              padding: EdgeInsets.only(bottom: 22, left: 8),
                               icon: Icon(
                                 Icons.edit,
                                 color: boring_green,

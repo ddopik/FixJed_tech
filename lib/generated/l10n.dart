@@ -785,11 +785,51 @@ class S {
     );
   }
 
-  /// `Address submitedd Successfully`
+  /// `Address submitted Successfully`
   String get addressCreatedSuccessfully {
     return Intl.message(
-      'Address submitedd Successfully',
+      'Address submitted Successfully',
       name: 'addressCreatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address updated Successfully`
+  String get addressUpdatedSuccessfully {
+    return Intl.message(
+      'Address updated Successfully',
+      name: 'addressUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please add address in order to submit request`
+  String get pleaseAddAddress {
+    return Intl.message(
+      'Please add address in order to submit request',
+      name: 'pleaseAddAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `you order has been sent !`
+  String get transactionSubmitted {
+    return Intl.message(
+      'you order has been sent !',
+      name: 'transactionSubmitted',
       desc: '',
       args: [],
     );

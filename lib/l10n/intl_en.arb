@@ -74,5 +74,10 @@
   "createRequest": "Create request",
   "total": "Total",
   "chooseCheckDate": "Choose visiting date",
-  "addressCreatedSuccessfully": "Address submitedd Successfully"
+  "addressCreatedSuccessfully": "Address submitted Successfully",
+  "addressUpdatedSuccessfully": "Address updated Successfully",
+  "pleaseAddAddress": "Please add address in order to submit request",
+  "confirm": "Confirm",
+  "transactionSubmitted": "you order has been sent !"
+
 }

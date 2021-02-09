@@ -84,7 +84,7 @@ class AddressModel {
     );
   }
 
-  getCitiesRegion({onSuccess, onError,cityId}) {
+  getCitiesRegion({onSuccess, onError, cityId}) {
     DIOManager().getCitiesRegion(
       cityId: cityId,
       onSuccess: (response) {

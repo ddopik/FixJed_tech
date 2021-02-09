@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/screens/cart/cart_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/address_form_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/savedAddress/address_list_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/payment/payment_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/checkout/payment/submit_transaction_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
@@ -40,7 +40,7 @@ class Routes {
     CART: (context) => CartScreen(),
     ADDRESS_FORM_SCREEN: (context) => AddressFormScreen(),
     ADDRESS_LIST_SCREEN: (context) => AddressListScreen(),
-    PAYMENT_SCREEN: (context) => PaymentScreen(),
+    PAYMENT_SCREEN: (context) => SubmitTransactionScreen(),
   };
 
 // todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget
