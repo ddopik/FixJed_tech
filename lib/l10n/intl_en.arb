@@ -78,6 +78,13 @@
   "addressUpdatedSuccessfully": "Address updated Successfully",
   "pleaseAddAddress": "Please add address in order to submit request",
   "confirm": "Confirm",
-  "transactionSubmitted": "you order has been sent !"
+  "transactionSubmitted": "you order has been sent !",
+  "transactionSubmittedDesc"  : "You will receive a call from our representatives to confirm your appointment  You can track your order from",
+  "all": "All",
+  "pending": "Pending",
+  "confirmed": "Confirmed",
+  "canceled": "Canceled",
+  "onGoing": "OnGoing"
+
 
 }

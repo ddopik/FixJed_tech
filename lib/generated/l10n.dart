@@ -834,6 +834,66 @@ class S {
       args: [],
     );
   }
+
+  /// `You will receive a call from our representatives to confirm your appointment  You can track your order from`
+  String get transactionSubmittedDesc {
+    return Intl.message(
+      'You will receive a call from our representatives to confirm your appointment  You can track your order from',
+      name: 'transactionSubmittedDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message(
+      'Pending',
+      name: 'pending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmed`
+  String get confirmed {
+    return Intl.message(
+      'Confirmed',
+      name: 'confirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled`
+  String get canceled {
+    return Intl.message(
+      'Canceled',
+      name: 'canceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OnGoing`
+  String get onGoing {
+    return Intl.message(
+      'OnGoing',
+      name: 'onGoing',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

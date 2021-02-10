@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
@@ -352,52 +353,52 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
   }
 
   submitTransaction() {
-    showConfirmTransactionDialog();
-    // showLoading(context);
-    // if (addressList.length <= 0) {
-    //   showInfo(S.of(context).pleaseAddAddress);
-    // } else {
+    showLoading(context);
+    if (addressList.length <= 0) {
+      showInfo(S.of(context).pleaseAddAddress);
+    } else {
+      _submitTransactionModel.submitOrder(
+          addressId: currentSelectedAddress?.id ?? addressList?.first?.id,
+          onSuccess: (response) {
+            dismissLoading();
+            Navigator.pushNamedAndRemoveUntil(context,
+                Routes.TRANSACTION_SUBMIT_SCREEN, ModalRoute.withName('/'));
+          },
+          onError: (errorResponse) {
+            showError(S.of(context).someThingWrong);
+            dismissLoading();
+          });
+    }
 
-    // _submitTransactionModel.submitOrder(
-    //     addressId: currentSelectedAddress?.id??addressList?.first?.id,
-    //     onSuccess: (response) {
-    //       showSuccesses(context, "Successed");
-    //       dismissLoading();
-    //     },
-    //     onError: (errorResponse) {
-    //       showError( "Fail");
-    //       dismissLoading();
-    //     });
-  }
-
-  showConfirmTransactionDialog() {
-    showGeneralDialog(
-        barrierColor: Colors.black.withOpacity(0.5),
-        transitionBuilder: (context, a1, a2, widget) {
-          return Container(
-            alignment: Alignment.topCenter,
-            margin: EdgeInsets.only(top: 72),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(24.0),
-              child: Container(
-                width: 350.0 * a1.value,
-                height: (MediaQuery.of(context).size.height * .8) * a1.value,
-                color: Colors.white,
-                child: ConfirmDialogView(
-                  transActionAddress:
-                      currentSelectedAddress ?? addressList?.first,
+    showConfirmTransactionDialog() {
+      showGeneralDialog(
+          barrierColor: Colors.black.withOpacity(0.5),
+          transitionBuilder: (context, a1, a2, widget) {
+            return Container(
+              alignment: Alignment.topCenter,
+              margin: EdgeInsets.only(top: 72),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24.0),
+                child: Container(
+                  width: 350.0 * a1.value,
+                  height: (MediaQuery.of(context).size.height * .8) * a1.value,
+                  color: Colors.white,
+                  child: ConfirmDialogView(
+                    transActionAddress:
+                        currentSelectedAddress ?? addressList?.first,
+                  ),
                 ),
               ),
-            ),
-          );
-        },
-        transitionDuration: Duration(milliseconds: 200),
-        // DURATION FOR ANIMATION
-        barrierDismissible: true,
-        barrierLabel: 'LABEL',
-        context: context,
-        pageBuilder: (context, animation1, animation2) {
-          return Text('PAGE BUILDER');
-        });
+            );
+          },
+          transitionDuration: Duration(milliseconds: 200),
+          // DURATION FOR ANIMATION
+          barrierDismissible: true,
+          barrierLabel: 'LABEL',
+          context: context,
+          pageBuilder: (context, animation1, animation2) {
+            return Text('PAGE BUILDER');
+          });
+    }
   }
 }

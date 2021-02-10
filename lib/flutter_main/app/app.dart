@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
+import 'package:flutter_base_app/flutter_main/app/test_screen.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
@@ -117,7 +118,7 @@ class AppState extends State<App> {
   }
 
   getNextScreen() {
-    return TransactionSubmittedScreen();
+    return HomeScreen();
     if (PrefManager().getUserToken() != null) {
       return HomeScreen();
     } else {
