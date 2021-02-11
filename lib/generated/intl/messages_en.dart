@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lastName" : MessageLookupByLibrary.simpleMessage("Last name"),
     "loading" : MessageLookupByLibrary.simpleMessage("loading"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
+    "main" : MessageLookupByLibrary.simpleMessage("Home"),
     "myServices" : MessageLookupByLibrary.simpleMessage("My services"),
     "no" : MessageLookupByLibrary.simpleMessage("No"),
     "noConnection" : MessageLookupByLibrary.simpleMessage("No connection"),

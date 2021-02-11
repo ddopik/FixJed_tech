@@ -6,16 +6,25 @@ import 'package:flutter_base_app/flutter_main/screens/transaction/provider/trans
 import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_item_view.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import 'model/Transaction.dart';
+import 'model/transaction.dart';
 
-class PendingTransactionListView extends StatefulWidget {
+
+
+class TransactionListView extends StatefulWidget {
+  final TransactionItemType transactionItemType;
+  final Function onCancelTransactionClick;
+
+  const TransactionListView(
+      {Key key, this.transactionItemType, this.onCancelTransactionClick})
+      : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
-    return _PendingTransactionListView();
+    return _TransactionListViewState();
   }
 }
 
-class _PendingTransactionListView extends State<PendingTransactionListView> {
+class _TransactionListViewState extends State<TransactionListView> {
   final _pagingController = PagingController<int, Transaction>(
     firstPageKey: 0,
   );
@@ -32,15 +41,15 @@ class _PendingTransactionListView extends State<PendingTransactionListView> {
   Future<void> _fetchPage(int pageKey) async {
     final nextPageKey = pageKey + 1;
     TransactionModel().getAllTransaction(
-      onSuccess: (features) {
-        if ((features as List).length > 0) {}
-        _pagingController.appendLastPage((features as List));
-        // _pagingController.appendPage(features, nextPageKey);
-      },
-      onError: (error) {
-        _pagingController.error = error;
-      },
-    );
+        onSuccess: (features) {
+          if ((features as List).length > 0) {}
+          _pagingController.appendLastPage((features as List));
+          // _pagingController.appendPage(features, nextPageKey);
+        },
+        onError: (error) {
+          _pagingController.error = error;
+        },
+        transactionItemType: widget.transactionItemType);
 
     // final newItems =
     //     await widget.repository.getArticleListPage(number: pageKey, size: 8);
@@ -56,15 +65,10 @@ class _PendingTransactionListView extends State<PendingTransactionListView> {
     // }
   }
 
-  @override
-  void dispose() {
-    _pagingController.dispose();
-    super.dispose();
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    print("SubFeaturesListView ---> build()  called");
     return RefreshIndicator(
       onRefresh: () => Future.sync(
         () => _pagingController.refresh(),
@@ -92,8 +96,8 @@ class _PendingTransactionListView extends State<PendingTransactionListView> {
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<Transaction>(
         itemBuilder: (context, transaction, index) {
-          return TransactionListView(
-            transactionItemType: TransactionItemType.ALL,
+          return TransactionItemView(
+            transactionItemType: widget.transactionItemType,
             transaction: transaction,
             onCancelTransactionClick: () {},
           );

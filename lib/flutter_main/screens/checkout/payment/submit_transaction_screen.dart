@@ -136,7 +136,8 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
                     fontSize: 18,
                     btnText: S.current.createRequest,
                     onPressed: () {
-                      submitTransaction();
+                      showConfirmTransactionDialog();
+
                     }),
                 decoration: BoxDecoration(
                   boxShadow: [
@@ -370,35 +371,39 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
           });
     }
 
-    showConfirmTransactionDialog() {
-      showGeneralDialog(
-          barrierColor: Colors.black.withOpacity(0.5),
-          transitionBuilder: (context, a1, a2, widget) {
-            return Container(
-              alignment: Alignment.topCenter,
-              margin: EdgeInsets.only(top: 72),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(24.0),
-                child: Container(
-                  width: 350.0 * a1.value,
-                  height: (MediaQuery.of(context).size.height * .8) * a1.value,
-                  color: Colors.white,
-                  child: ConfirmDialogView(
+
+  }
+  showConfirmTransactionDialog() {
+    showGeneralDialog(
+        barrierColor: Colors.black.withOpacity(0.5),
+        transitionBuilder: (context, a1, a2, widget) {
+          return Container(
+            alignment: Alignment.topCenter,
+            margin: EdgeInsets.only(top: 72),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24.0),
+              child: Container(
+                width: 350.0 * a1.value,
+                height: (MediaQuery.of(context).size.height * .8) * a1.value,
+                color: Colors.white,
+                child: ConfirmDialogView(
                     transActionAddress:
-                        currentSelectedAddress ?? addressList?.first,
-                  ),
+                    currentSelectedAddress ?? addressList?.first,
+                    onConfirm:(){
+                      submitTransaction();
+                    }
                 ),
               ),
-            );
-          },
-          transitionDuration: Duration(milliseconds: 200),
-          // DURATION FOR ANIMATION
-          barrierDismissible: true,
-          barrierLabel: 'LABEL',
-          context: context,
-          pageBuilder: (context, animation1, animation2) {
-            return Text('PAGE BUILDER');
-          });
-    }
+            ),
+          );
+        },
+        transitionDuration: Duration(milliseconds: 200),
+        // DURATION FOR ANIMATION
+        barrierDismissible: true,
+        barrierLabel: 'LABEL',
+        context: context,
+        pageBuilder: (context, animation1, animation2) {
+          return Text('PAGE BUILDER');
+        });
   }
 }

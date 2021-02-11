@@ -242,6 +242,10 @@ class _LoginScreenState extends State<LoginScreen> {
         Provider.of<AppModel>(context, listen: false)
             .setUserMail(loginResponse.email.toString());
 
+
+        Provider.of<AppModel>(context, listen: false)
+            .setUserMail(loginResponse.phone.toString());
+
         Provider.of<AppModel>(context, listen: false).setIsUserLoggedIn(true);
 
         Navigator.of(context).pushReplacementNamed(Routes.HOME);

@@ -10,7 +10,7 @@
   "sendResetPasswordLink": "ارسل الرابط",
   "close": "اغلاق",
   "loading": "تحميل",
-  "myServices": "الخدمات",
+  "myServices": "خدماتي",
   "notification": "الاشعارات",
   "help": "مساعده",
   "setting": "الاعدادات",
@@ -84,5 +84,6 @@
   "pending": "قيد الانتظار",
   "confirmed": "تم التآكيد",
   "canceled": "تم الالغاء",
-  "onGoing": "القادمه"
+  "onGoing": "القادمه",
+  "main": "الرئيسيه"
 }

@@ -49,10 +49,20 @@ class DIOManager {
       "/cart/delete-category-from-cart";
   static const String GET_SAVED_ADDRESS = "/address/find-all-addresses";
   static const String GET_CITIES = "/city/find-all";
-  static const String GET_REGION = "/find-all-by-city-id/";
+  static const String GET_REGION = "/address/find-by-id/";
   static const String SUBMIT_NEW_ADDRESS = "/address/add-new-address";
   static const String EDIT_ADDRESS = "/address/update-by-id";
   static const String SUBMIT_TRANSACTION = "/transaction/add";
+  static const String GET_ALL_SUBMIT_TRANSACTION =
+      "/transaction/find-all-by-status?transaction-status=SUBMITTED";
+  static const String GET_ALL_CONFIRMED_TRANSACTION =
+      "/transaction/find-all-by-status?transaction-status=CONFIRMED";
+  static const String GET_ALL_CANCELED_TRANSACTION =
+      "/transaction/find-all-by-status?transaction-status=CANCELLED";
+  static const String GET_ALL_UPCOMING_TRANSACTION =
+      "/transaction/find-all-by-status?transaction-status=UPCOMING";
+  static const String GET_ALL_DELIVERED_TRANSACTION =
+      "/transaction/find-all-by-status?transaction-status=DELIVERED";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -269,7 +279,15 @@ class DIOManager {
         onSuccess: onSuccess,
         onError: onError,
         url: GET_REGION,
-        queryParameters: {"city-id:$cityId"});
+        queryParameters: {"address-id-id:$cityId"});
+  }
+
+
+  getAllTransaction({Function onSuccess, Function onError, cityId}) {
+    _sendGetRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: GET_ALL_SUBMIT_TRANSACTION,);
   }
 
   submitTransaction(

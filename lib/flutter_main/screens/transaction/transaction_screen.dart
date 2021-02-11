@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_item_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_list_view.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 class TransactionScreen extends StatefulWidget {
@@ -17,6 +18,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           elevation: 0.0,
           toolbarHeight: 60,
@@ -27,25 +29,39 @@ class _TransactionScreenState extends State<TransactionScreen> {
             indicatorWeight: 3.5,
             labelStyle: TextStyle(fontWeight: FontWeight.w700),
             unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w700),
-            tabs: [
-              Tab(text: S.of(context).canceled),
-              Tab(text: S.of(context).confirmed),
-              Tab(text: S.of(context).onGoing),
-              Tab(text: S.of(context).pending),
-              Tab(text: S.of(context).all),
-            ],
+            tabs: getTabAddressList(),
           ),
         ),
-        body: TabBarView(
-          children: [
-            TransactionListView(transactionItemType: TransactionItemType.ALL,),
-            TransactionListView(),
-            TransactionListView(),
-            TransactionListView(),
-            TransactionListView(),
-          ],
+        body:
+        TabBarView(
+          children: getTabViewList(),
         ),
       ),
     );
+  }
+
+  List<Tab> getTabAddressList() {
+    List<Tab> list = [
+      Tab(text: S.of(context).canceled),
+      Tab(text: S.of(context).confirmed),
+      Tab(text: S.of(context).onGoing),
+      Tab(text: S.of(context).pending),
+      Tab(text: S.of(context).all)
+    ];
+    return list.reversed.toList();
+  }
+
+  List<Widget> getTabViewList() {
+    List<TransactionListView> list = [
+      TransactionListView(
+        transactionItemType: TransactionItemType.CANCELED,
+        onCancelTransactionClick: () {},
+      ),
+      TransactionListView(transactionItemType: TransactionItemType.CONFIRMED),
+      TransactionListView(transactionItemType: TransactionItemType.ON_GOING),
+      TransactionListView(transactionItemType: TransactionItemType.PENDING),
+      TransactionListView(transactionItemType: TransactionItemType.ALL),
+    ];
+    return list.reversed.toList();
   }
 }

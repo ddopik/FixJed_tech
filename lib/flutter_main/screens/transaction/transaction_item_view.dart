@@ -1,20 +1,141 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_base_app/flutter_main/screens/transaction/model/Transaction.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:intl/intl.dart';
 
-class TransactionListView extends StatelessWidget {
+import 'model/transaction.dart';
+
+class TransactionItemView extends StatelessWidget {
   final Transaction transaction;
   final TransactionItemType transactionItemType;
   final Function onCancelTransactionClick;
+  var dateFormat = new DateFormat('yyyy-MM-dd');
 
-  const TransactionListView(
+  TransactionItemView(
       {this.transaction,
       this.transactionItemType,
       this.onCancelTransactionClick});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+        elevation: 2.0,
+        child: Container(
+            width: MediaQuery.of(context).size.width * .8,
+            height: MediaQuery.of(context).size.height * .28,
+            child: Padding(
+                padding: EdgeInsets.all(18),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(children: [
+                      // Ellipse 20
+                      Container(
+                          width: 22,
+                          height: 22,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: getTransactionStateColor(), width: 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              color: getTransactionStateColor())),
+                      SizedBox(
+                        width: 14,
+                      ),
+                      Text(
+                        transaction.categoriesNames.join(","),
+                        style: const TextStyle(
+                            color: french_blue,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: "Tajawal",
+                            fontStyle: FontStyle.normal,
+                            fontSize: 18.0),
+                      )
+                    ]),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 18,
+                      ),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              "الطلب المقدم",
+                              style: const TextStyle(
+                                color: const Color(0xff646363),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Tajawal",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 16.0,
+                              ),
+                            ),
+                            Text(
+                              transaction.addressName,
+                              style: const TextStyle(
+                                  color: const Color(0xff646363),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "Tajawal",
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16.0),
+                            ),
+                            Text(
+                              S.current.total +
+                                  " : " +
+                                  transaction.totalPrice.toString() +
+                                  " " +
+                                  S.current.egpPrice,
+                              style: const TextStyle(
+                                  color: const Color(0xff646363),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "Tajawal",
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16.0),
+                            ),
+                            Text(
+                              DateFormat.yMMMMd().format(
+                                  DateTime.parse(transaction.createdDate)),
+                              style: const TextStyle(
+                                  color: const Color(0xff646363),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "Tajawal",
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16.0),
+                            )
+                          ]),
+                    )
+                  ],
+                ))));
+  }
+
+  Color getTransactionStateColor() {
+    switch (transactionItemType) {
+      case TransactionItemType.ALL:
+        {
+          return Color(0xff2de8e1);
+        }
+      case TransactionItemType.PENDING:
+        return Color(0xfffcfb5a);
+        break;
+      case TransactionItemType.CANCELED:
+        return Color(0xffe82d2d);
+        break;
+      case TransactionItemType.CONFIRMED:
+        return Color(0xff6ee82d);
+        break;
+      case TransactionItemType.ON_GOING:
+        return Color(0xff2d67e8);
+        break;
+    }
   }
 }
 
-enum TransactionItemType { ALL, PENDING, CANCELED, ON_GOING }
+// DateFormat.yMMMMd().format(now)
+// DateTime.parse(transaction.createdDate).month,
+enum TransactionItemType { ALL, PENDING, CANCELED, CONFIRMED, ON_GOING }

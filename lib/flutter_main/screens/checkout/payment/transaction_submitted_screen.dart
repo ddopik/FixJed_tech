@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
+import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/screens/home/home_navigation_drawer.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 class TransactionSubmittedScreen extends StatelessWidget {
@@ -33,7 +36,7 @@ class TransactionSubmittedScreen extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     text: S.of(context).transactionSubmittedDesc,
-                      style: TextStyle(
+                    style: TextStyle(
                         color: const Color(0xffffffff),
                         fontWeight: FontWeight.w500,
                         fontFamily: "Tajawal",
@@ -42,8 +45,15 @@ class TransactionSubmittedScreen extends StatelessWidget {
                     children: <TextSpan>[
                       TextSpan(
                           text: "خدماتي ",
+                          style: TextStyle(
+                            color: boring_green,
+                            fontWeight: FontWeight.w700,
+                          ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => print('click')),
+                            ..onTap = () => Navigator.of(context)
+                                .pushNamedAndRemoveUntil(
+                                    Routes.HOME, (route) => false,
+                                    arguments: CurrentHomeSelection.TRANSACTION)),
                     ],
                   ),
                 )

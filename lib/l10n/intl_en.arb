@@ -84,7 +84,8 @@
   "pending": "Pending",
   "confirmed": "Confirmed",
   "canceled": "Canceled",
-  "onGoing": "OnGoing"
+  "onGoing": "OnGoing",
+  "main": "Home"
 
 
 }

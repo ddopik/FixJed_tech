@@ -6,6 +6,7 @@ class PrefManager {
   static const _TOKEN = "user_token";
   static const _USER_ID = "user_id";
   static const _USER_MAIL = "user_mail";
+  static const _USER_PHONE = "user_phone";
 
   static const _appLanguage = "app_language";
 
@@ -57,6 +58,11 @@ class PrefManager {
   ) {
     _prefs.setString(_USER_MAIL, data);
   }
+  void setUserPhone(
+      String data,
+      ) {
+    _prefs.setString(_USER_PHONE, data);
+  }
 
   getUserId() {
     return _prefs.getString(_USER_ID) ?? null;
@@ -65,7 +71,9 @@ class PrefManager {
   String getUserMail() {
     return _prefs.getString(_USER_MAIL) ?? '';
   }
-
+  String getUserPhone() {
+    return _prefs.getString(_USER_PHONE) ?? "012221231";
+  }
   void setLang(String userData) {
     _prefs.setString(_appLanguage, userData);
   }

@@ -3,15 +3,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
-import 'package:flutter_base_app/flutter_main/app/test_screen.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
-import 'package:flutter_base_app/flutter_main/screens/cart/delete_confirm_dialog.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/address/address_form_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/address/savedAddress/address_list_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/payment/submit_transaction_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/payment/transaction_submitted_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
@@ -33,7 +27,7 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   final _app = AppModel();
 
-  ////todo add you project providers here
+
 
   @override
   void initState() {
@@ -97,11 +91,14 @@ class AppState extends State<App> {
                         DefaultCupertinoLocalizations.delegate,
                       ],
                       builder: EasyLoading.init(),
-                      home: Scaffold(
-                        body: getNextScreen(),
+                      theme: getTheme("ar", value),
+                      home: Directionality(
+                        child: Scaffold(
+                          body: getNextScreen(),
+                        ),
+                        textDirection: TextDirection.rtl,
                       ),
                       routes: Routes.getAll(),
-                      theme: getTheme("ar", value),
                     ),
                   );
                 },

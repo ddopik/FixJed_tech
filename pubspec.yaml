@@ -103,8 +103,7 @@ dependencies:
   infinite_scroll_pagination: ^2.2.1
   flutter_easyloading: ^2.2.1
   flutter_calendar_carousel: ^1.5.2
-
-
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:

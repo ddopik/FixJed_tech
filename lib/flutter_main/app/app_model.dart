@@ -68,6 +68,11 @@ class AppModel extends ChangeNotifier {
     return PrefManager().getUserMail();
   }
 
+  String getUserPhone() {
+    return PrefManager().getUserPhone() ;
+  }
+
+
   setUserId(id) {
     PrefManager().setUserId(id.toString());
   }

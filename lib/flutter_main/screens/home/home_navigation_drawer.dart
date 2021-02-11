@@ -40,6 +40,23 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
               child: Text(
                 S
                     .of(context)
+                    .main,
+                style:
+                TextStyle(color: boring_green, fontWeight: FontWeight.w600),
+              ),
+              alignment: Alignment.center,
+            ),
+            onTap: () {
+              widget.onNavigateClick(CurrentHomeSelection.HOME);
+              Navigator.pop(context);
+            },
+          ),
+          GestureDetector(
+            child: Container(
+              margin: EdgeInsets.all(14.0),
+              child: Text(
+                S
+                    .of(context)
                     .myServices,
                 style:
                 TextStyle(color: boring_green, fontWeight: FontWeight.w600),
@@ -48,8 +65,11 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
             ),
             onTap: () {
               widget.onNavigateClick(CurrentHomeSelection.TRANSACTION);
+              Navigator.pop(context);
             },
           ),
+
+
           Divider(),
           Container(
             margin: EdgeInsets.all(14.0),
