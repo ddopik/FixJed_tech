@@ -99,5 +99,7 @@
   "choosePhoto": "Choose from Gallery",
   "CapturePhoto": "Capture photo",
   "deletePhoto": "Delete photo",
-  "updated": "done"
+  "updated": "done",
+  "addNewPhone":"Add new phone",
+  "editPhone":"Edit phoneِ"
 }

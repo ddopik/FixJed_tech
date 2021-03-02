@@ -28,8 +28,6 @@ class UserProfileModel {
 
   changeUserPassword(
       {context, onSuccess, onError, password, newPassword, confirmPassword}) {
-
-
     DIOManager().changePassword(
         password: password,
         confirmPassword: confirmPassword,
@@ -40,5 +38,29 @@ class UserProfileModel {
         onError: (errorResponse) {
           onError(errorResponse.toString());
         });
+  }
+
+  changeUserPhone({context, onSuccess, onError, phone_1, phone_2}) {
+    DIOManager().changePhone(
+        phone: int.parse(phone_1),
+        secondPhone: int.parse(phone_2),
+        onSuccess: (response) {
+          Navigator.of(context).pop();
+        },
+        onError: (errorResponse) {
+          onError(errorResponse.toString());
+        });
+  }
+
+  addNewPhone({context, onSuccess, onError, phone_1, phone_2}) {
+    // DIOManager().addNewPhone(
+    //     phone: phone_1,
+    //     secondPhone: phone_2,
+    //     onSuccess: (response) {
+    //       Navigator.of(context).pop();
+    //     },
+    //     onError: (errorResponse) {
+    //       onError(errorResponse.toString());
+    //     });
   }
 }

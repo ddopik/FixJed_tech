@@ -1,23 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/slide_dialog.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
-import 'package:provider/provider.dart';
 
-TextEditingController _firstNameController = TextEditingController();
-TextEditingController _lastNameController = TextEditingController();
+TextEditingController _addNewPhoneTextController = TextEditingController();
 
-changeProfileNameDialogView<T>(
+addNewPhoneDialogView<T>(
     {@required BuildContext context,
     Color barrierColor,
     bool barrierDismissible = false,
     Duration transitionDuration = const Duration(milliseconds: 300),
     Color pillColor,
     String message,
+      String title,
+      String currentPhoneNumber,
     Color backgroundColor,
-    Function onChangeProfileClick}) {
+    Function addPhoneNumber}) {
   assert(context != null);
 
   return showGeneralDialog(
@@ -40,7 +39,7 @@ changeProfileNameDialogView<T>(
                   pillColor: pillColor ?? Colors.blueGrey[200],
                   backgroundColor:
                       backgroundColor ?? Theme.of(context).canvasColor,
-                  child: renderProfileNameForm(context, onChangeProfileClick)),
+                  child: renderProfileNameForm(context,addPhoneNumber,title,currentPhoneNumber)),
             ),
           ),
         ),
@@ -52,15 +51,15 @@ changeProfileNameDialogView<T>(
   );
 }
 
-renderProfileNameForm(BuildContext context, Function onChangeProfileNameClick) {
+renderProfileNameForm(BuildContext context, Function onChangePhoneClick,title,currentPhoneNumber) {
   return Form(
     child: Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          S.of(context).changeName,
-          style: const TextStyle(
+          title,
+          style:  TextStyle(
               color: french_blue,
               fontWeight: FontWeight.w700,
               fontFamily: "Raleway",
@@ -75,15 +74,15 @@ renderProfileNameForm(BuildContext context, Function onChangeProfileNameClick) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width * .35,
+              width: MediaQuery.of(context).size.width * .75,
               height: 45,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(24)),
                   color: Color(0xffe7f5e8)),
               child: TextFormField(
                 enableSuggestions: false,
-                controller: _firstNameController,
-                keyboardType: TextInputType.visiblePassword,
+                controller: _addNewPhoneTextController,
+                keyboardType: TextInputType.phone,
                 decoration: new InputDecoration(
                     errorStyle: TextStyle(height: 0),
                     border: InputBorder.none,
@@ -93,35 +92,12 @@ renderProfileNameForm(BuildContext context, Function onChangeProfileNameClick) {
                     disabledBorder: InputBorder.none,
                     contentPadding: EdgeInsets.only(
                         left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: Provider.of<AppModel>(context).getUserFirstName(),
+                    hintText: currentPhoneNumber,
                     hintStyle: TextStyle(fontSize: 14)),
               ),
             ),
             SizedBox(
               width: 14,
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * .35,
-              height: 45,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(24)),
-                  color: Color(0xffe7f5e8)),
-              child: TextFormField(
-                enableSuggestions: false,
-                controller: _lastNameController,
-                keyboardType: TextInputType.visiblePassword,
-                decoration: new InputDecoration(
-                    errorStyle: TextStyle(height: 0),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 11, top: 11, right: 15),
-                    hintText: Provider.of<AppModel>(context).getUserLastName(),
-                    hintStyle: TextStyle(fontSize: 14)),
-              ),
             ),
           ],
         ),
@@ -154,8 +130,7 @@ renderProfileNameForm(BuildContext context, Function onChangeProfileNameClick) {
             ),
           ),
           onTap: () {
-            onChangeProfileNameClick(_firstNameController.value.text,
-                _lastNameController.value.text);
+            onChangePhoneClick(_addNewPhoneTextController.value.text);
           },
         ),
       ],

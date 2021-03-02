@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'changePasswordDialogView.dart';
 import 'changeProfileNameDialogView.dart';
 import 'change_profile_photo_dialog_view.dart';
+import 'edit_phone_dialog_view.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -260,7 +261,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       border: Border.all(color: boring_green, width: 0.5),
-                      color:  Color(0xffe7f5e8)),
+                      color: Color(0xffe7f5e8)),
                   child: TextFormField(
                     controller: _passwordController,
                     readOnly: true,
@@ -325,32 +326,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Icons.edit,
                               color: Colors.green,
                             )),
+                        onTap: () {
+                          addNewPhoneDialogView(
+                              context: context,
+                              title: S.of(context).editPhone,
+                              currentPhoneNumber:
+                                  Provider.of<AppModel>(context, listen: false)
+                                      .getUserPhone(),
+                              addPhoneNumber: changeUserPhone);
+                        },
                       ),
                     ),
                     SizedBox(width: 12.0),
-                    // Container(
-                    //   width: MediaQuery.of(context).size.width * .20,
-                    //   height: 45,
-                    //   decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.all(Radius.circular(24)),
-                    //       border: Border.all(
-                    //           color: boring_green,
-                    //           width: 0.5
-                    //       ),
-                    //       color: const Color(0xffe7f5e8)),
-                    //   child: TextFormField(
-                    //     readOnly: true,
-                    //     decoration: new InputDecoration(
-                    //         border: InputBorder.none,
-                    //         focusedBorder: InputBorder.none,
-                    //         enabledBorder: InputBorder.none,
-                    //         errorBorder: InputBorder.none,
-                    //         disabledBorder: InputBorder.none,
-                    //         contentPadding: EdgeInsets.only(
-                    //             left: 15, bottom: 11, top: 11, right: 15),
-                    //         hintText: "+20"),
-                    //   ),
-                    // ),
                   ],
                 ),
                 SizedBox(height: 16.0),
@@ -365,9 +352,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: boring_green,
                           ),
                           iconSize: 25,
-                          onPressed: () async {}),
+                          onPressed: () async {
+                            addNewPhoneDialogView(
+                                context: context,
+                                title: S.of(context).addNewPhone,
+                                currentPhoneNumber: S.of(context).phoneNumber,
+                                addPhoneNumber: addPhoneNumber);
+                          }),
                       // اضف رقم هاتف
-                      Text("اضف رقم هاتف",
+                      Text(S.of(context).addNewPhone,
                           style: const TextStyle(
                               color: french_blue,
                               fontWeight: FontWeight.w500,
@@ -472,16 +465,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     showLoading(context);
     var f_name, l_name;
     if (firstName.isEmpty) {
-      f_name = Provider.of<AppModel>(context, listen: false).getUserLastName();
+      f_name = Provider.of<AppModel>(context, listen: false).getUserFirstName();
+      print("default first name :$f_name");
     } else {
       f_name = firstName;
     }
     if (lastName.isEmpty) {
       l_name = Provider.of<AppModel>(context, listen: false).getUserLastName();
+      print("default last name :$l_name");
     } else {
       l_name = lastName;
     }
-
+    print("first name :$f_name --- lastName : $l_name");
     UserProfileModel().editUserFirstNameAndLastName(
         firstName: f_name,
         lastName: l_name,
@@ -503,6 +498,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
         password: oldPassword,
         confirmPassword: oldPassword,
         newPassword: newPassword,
+        onSuccess: () {
+          showSuccesses(context, S.current.updated);
+          dismissLoading();
+          getUserData();
+          Navigator.of(context).pop();
+        },
+        onError: (error) {
+          showError(error.toString());
+          dismissLoading();
+        });
+  }
+
+  changeUserPhone(String phoneNumber) {
+    return;
+    showLoading(context);
+    print("changeUserPhone  $phoneNumber");
+    UserProfileModel().changeUserPhone(
+        phone_1: phoneNumber,
+        phone_2: "",
+        onSuccess: () {
+          showSuccesses(context, S.current.updated);
+          dismissLoading();
+          getUserData();
+          Navigator.of(context).pop();
+        },
+        onError: (error) {
+          showError(error.toString());
+          dismissLoading();
+        });
+  }
+
+  addPhoneNumber(String phoneNumber) {
+    print("changeUserPhone  $phoneNumber");
+
+    showLoading(context);
+
+
+    UserProfileModel().changeUserPhone(
+        phone_1: Provider.of<AppModel>(context, listen: false).getUserPhone(),
+        phone_2: phoneNumber,
         onSuccess: () {
           showSuccesses(context, S.current.updated);
           dismissLoading();

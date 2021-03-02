@@ -73,6 +73,7 @@ class DIOManager {
   static const String GET_NOTIFICATION = "/notification/find-all";
   static const String EDIT_USER_FIRST_LAST_NAME = "/profile/change-username";
   static const String CHANGE_PASSWORD = "/profile/change-password";
+  static const String CHANGE_PHONE = "/profile/change-phone";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -258,6 +259,18 @@ class DIOManager {
           "newPassword": newPassword,
           "confirmPassword": confirmPassword,
         });
+  }
+
+  changePhone(
+      {Function onSuccess, Function onError, phone,secondPhone}) {
+    _sendPutRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: CHANGE_PHONE,
+        bodyParameters: {
+          "phone": phone,
+          "secondPhone": secondPhone,
+         });
   }
 
   subtractProductFromCart({Function onSuccess, Function onError, productId}) {

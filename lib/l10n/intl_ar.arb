@@ -98,5 +98,7 @@
   "choosePhoto": "اختر من الصور",
   "CapturePhoto": "التقط صوره",
   "deletePhoto": "احذف الصوره",
-  "updated": "تم التعديل"
+  "updated": "تم التعديل",
+  "addNewPhone": "آضافه رقم جديد",
+  "editPhone": "تعديل رقم الهاتف"
 }

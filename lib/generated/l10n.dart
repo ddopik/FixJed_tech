@@ -1044,6 +1044,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Add new phone`
+  String get addNewPhone {
+    return Intl.message(
+      'Add new phone',
+      name: 'addNewPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit phoneِ`
+  String get editPhone {
+    return Intl.message(
+      'Edit phoneِ',
+      name: 'editPhone',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
