@@ -24,7 +24,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final GlobalKey<FormState> _profileFormState = GlobalKey<FormState>();
   final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
 
@@ -261,7 +260,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       border: Border.all(color: boring_green, width: 0.5),
-                      color: const Color(0xffe7f5e8)),
+                      color:  Color(0xffe7f5e8)),
                   child: TextFormField(
                     controller: _passwordController,
                     readOnly: true,
@@ -285,12 +284,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {
                       changePasswordDialogView(
                           context: context,
-                          onChangePasswordClick: (newPassword) {
-                            _userProfileModel.submitChangePassword(
-                                newPassword: newPassword,
-                                onSuccess: () {},
-                                onError: () {});
-                          });
+                          onChangePasswordClick: changeUserPassword);
                     },
                     obscureText: true,
                   ),
@@ -495,6 +489,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
           showSuccesses(context, S.current.updated);
           dismissLoading();
           getUserData();
+        },
+        onError: (error) {
+          showError(error.toString());
+          dismissLoading();
+        });
+  }
+
+  changeUserPassword(String oldPassword, String newPassword) {
+    showLoading(context);
+    print("oldPassword : $oldPassword ---- newPassword : $newPassword");
+    UserProfileModel().changeUserPassword(
+        password: oldPassword,
+        confirmPassword: oldPassword,
+        newPassword: newPassword,
+        onSuccess: () {
+          showSuccesses(context, S.current.updated);
+          dismissLoading();
+          getUserData();
+          Navigator.of(context).pop();
         },
         onError: (error) {
           showError(error.toString());

@@ -54,9 +54,7 @@ changePasswordDialogView<T>(
 }
 
 renderForgotPasswordForm(BuildContext context, Function onChangePasswordClick) {
-
   bool _obscureText = true;
-
   validateUser() async {
     if (_oldPasswordController.value.text.isEmpty) {
       showToast(S.of(context).invalidPassword);
@@ -67,7 +65,8 @@ renderForgotPasswordForm(BuildContext context, Function onChangePasswordClick) {
         _passwordController.value.text) {
       showToast(S.of(context).passwordWordNotMatched);
     } else {
-      onChangePasswordClick(_passwordController.value.text);
+      onChangePasswordClick(
+          _oldPasswordController.value.text, _passwordController.value.text);
     }
   }
 
@@ -93,14 +92,8 @@ renderForgotPasswordForm(BuildContext context, Function onChangePasswordClick) {
           height: 45,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(24)),
-              boxShadow: [
-                BoxShadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                    spreadRadius: 0)
-              ],
-              color: const Color(0xffffffff)),
+              border: Border.all(color: boring_green, width: 0.5),
+              color: Color(0xffe7f5e8)),
           child: TextFormField(
             enableSuggestions: false,
             controller: _oldPasswordController,
@@ -125,14 +118,8 @@ renderForgotPasswordForm(BuildContext context, Function onChangePasswordClick) {
           height: 45,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(24)),
-              boxShadow: [
-                BoxShadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                    spreadRadius: 0)
-              ],
-              color: const Color(0xffffffff)),
+              border: Border.all(color: boring_green, width: 0.5),
+              color: Color(0xffe7f5e8)),
           child: TextFormField(
             controller: _passwordController,
             cursorColor: Colors.black,
@@ -157,14 +144,8 @@ renderForgotPasswordForm(BuildContext context, Function onChangePasswordClick) {
           height: 45,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(24)),
-              boxShadow: [
-                BoxShadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                    spreadRadius: 0)
-              ],
-              color: const Color(0xffffffff)),
+              border: Border.all(color: boring_green, width: 0.5),
+              color: Color(0xffe7f5e8)),
           child: TextFormField(
             controller: _confirmPasswordController,
             cursorColor: Colors.black,

@@ -72,6 +72,7 @@ class DIOManager {
 
   static const String GET_NOTIFICATION = "/notification/find-all";
   static const String EDIT_USER_FIRST_LAST_NAME = "/profile/change-username";
+  static const String CHANGE_PASSWORD = "/profile/change-password";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -244,6 +245,18 @@ class DIOManager {
         bodyParameters: {
           "firstName": firstName,
           "lastName": lastName,
+        });
+  }
+  changePassword(
+      {Function onSuccess, Function onError, password, newPassword,confirmPassword}) {
+    _sendPutRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: CHANGE_PASSWORD,
+        bodyParameters: {
+          "password": password,
+          "newPassword": newPassword,
+          "confirmPassword": confirmPassword,
         });
   }
 

@@ -1,7 +1,6 @@
-import 'package:flutter_base_app/flutter_main/app/app_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/screens/profile/model/user_profile_response.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
-import 'package:provider/provider.dart';
 
 class UserProfileModel {
   getUserProfileData({onSuccess, onError}) {
@@ -14,16 +13,29 @@ class UserProfileModel {
     });
   }
 
-  submitChangePassword({newPassword, onSuccess, onError}) {}
-
   editUserFirstNameAndLastName(
       {context, onSuccess, onError, firstName, lastName}) {
     DIOManager().editUserFirstNameAndLastName(
-        firstName:
-            firstName ,
-        lastName: lastName ,
+        firstName: firstName,
+        lastName: lastName,
         onSuccess: (response) {
           onSuccess();
+        },
+        onError: (errorResponse) {
+          onError(errorResponse.toString());
+        });
+  }
+
+  changeUserPassword(
+      {context, onSuccess, onError, password, newPassword, confirmPassword}) {
+
+
+    DIOManager().changePassword(
+        password: password,
+        confirmPassword: confirmPassword,
+        newPassword: newPassword,
+        onSuccess: (response) {
+          Navigator.of(context).pop();
         },
         onError: (errorResponse) {
           onError(errorResponse.toString());
