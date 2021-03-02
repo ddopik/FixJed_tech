@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/main_category_list_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/notification/notification_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_screen.dart';
 
 import 'home_navigation_drawer.dart';
@@ -19,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    Future.delayed(Duration.zero,(){
+    Future.delayed(Duration.zero, () {
       setState(() {
         _currentDrawerSelection =
-        ModalRoute.of(context).settings.arguments as CurrentHomeSelection;
+            ModalRoute.of(context).settings.arguments as CurrentHomeSelection;
       });
     });
     super.initState();
@@ -30,9 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return new Scaffold(
         appBar: AppBar(
           elevation: 0.0,
@@ -107,12 +106,16 @@ class _HomeScreenState extends State<HomeScreen> {
     print("renderMainView ----> " + _currentDrawerSelection.toString());
     switch (_currentDrawerSelection) {
       case CurrentHomeSelection.HOME:
-        {
-          return MainCategoryListView();
-        }
+        return MainCategoryListView();
       case CurrentHomeSelection.TRANSACTION:
         return TransactionScreen();
 
+        break;
+      case CurrentHomeSelection.NOTIFICATION:
+        return NotificationScreen();
+        break;
+      case CurrentHomeSelection.PROFILE:
+        return ProfileScreen();
         break;
       default:
         {

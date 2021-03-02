@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: Container(
+      body: Container(
           alignment: Alignment.topCenter,
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -56,7 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Create an Account
-          SizedBox(height: MediaQuery.of(context).size.height * .18,),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .18,
+          ),
           Text(
             S.of(context).login,
             style: const TextStyle(
@@ -86,7 +88,6 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _userNameController,
               autocorrect: false,
               enableSuggestions: false,
-              keyboardType: TextInputType.name,
               decoration: new InputDecoration(
                   errorStyle: TextStyle(height: 0),
                   border: InputBorder.none,
@@ -215,7 +216,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   validateUser() async {
     print("userMail --->" + _userNameController.value.text.trim());
-    if (_userNameController.value.text.isEmpty || !isEmail(_userNameController.value.text.trim())) {
+    if (_userNameController.value.text.isEmpty ||
+        !isEmail(_userNameController.value.text.trim())) {
       showToast(S.of(context).invalidEmail);
     } else if (_passwordController.value.text == null ||
         _passwordController.value.text.length < 6) {
@@ -242,9 +244,20 @@ class _LoginScreenState extends State<LoginScreen> {
         Provider.of<AppModel>(context, listen: false)
             .setUserMail(loginResponse.email.toString());
 
+        Provider.of<AppModel>(context, listen: false)
+            .setUserPhone(loginResponse.phone.toString());
 
         Provider.of<AppModel>(context, listen: false)
-            .setUserMail(loginResponse.phone.toString());
+            .setUserName(loginResponse.username.toString());
+
+        Provider.of<AppModel>(context, listen: false)
+            .setUserFirstName(loginResponse.firstName.toString());
+
+        Provider.of<AppModel>(context, listen: false)
+            .setUserLastName(loginResponse.lastName.toString());
+
+        Provider.of<AppModel>(context, listen: false)
+            .setUserProfileImage(loginResponse.imageUrl.toString());
 
         Provider.of<AppModel>(context, listen: false).setIsUserLoggedIn(true);
 

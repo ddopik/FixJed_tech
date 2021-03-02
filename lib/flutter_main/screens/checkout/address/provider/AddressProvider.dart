@@ -85,9 +85,11 @@ class AddressModel {
   }
 
   getCitiesRegion({onSuccess, onError, cityId}) {
+    print("getCitiesRegion --->" + cityId.toString());
     DIOManager().getCitiesRegion(
       cityId: cityId,
       onSuccess: (response) {
+        print("getCitiesRegion --->" + response.toString());
         List<City> aAddressList =
             (response as List).map((model) => City.fromJson(model)).toList();
         onSuccess(aAddressList);

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 
 class CircleImageWidget extends StatelessWidget {
   final double width;
@@ -41,10 +41,12 @@ class CircleImageWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(radius)),
-        border: enableBorders ? Border.all(
-          color: borderColor,
-          width: borderWidth,
-        ) : null,
+        border: enableBorders
+            ? Border.all(
+                color: borderColor,
+                width: borderWidth,
+              )
+            : null,
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(radius)),

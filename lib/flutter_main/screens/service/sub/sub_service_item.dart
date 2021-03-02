@@ -44,7 +44,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                   Text(
                     widget.product.name ?? '',
                     style: TextStyle(
-                        color: boring_green,
+                        color: french_blue,
                         fontWeight: FontWeight.w700,
                         fontFamily: "Tajawal",
                         fontStyle: FontStyle.normal,
@@ -57,11 +57,12 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                     width: MediaQuery.of(context).size.width * .7,
                     height: MediaQuery.of(context).size.height * .07,
                     child: Text(
-                      widget.product.description ?? "description description description description description description description description",
+                      widget.product.description ??
+                          "description description description description description description description description",
                       style: TextStyle(
                           color: Color(0xff646363),
                           fontWeight: FontWeight.w400,
-                          fontFamily: "Tajawal",
+                           fontFamily: "Tajawal",
                           fontStyle: FontStyle.normal,
                           fontSize: 14.0),
                     ),

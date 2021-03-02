@@ -7,7 +7,6 @@ import 'addressListView.dart';
 class AddressListScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-
     return _AddressListScreenState();
   }
 }
@@ -20,15 +19,6 @@ class _AddressListScreenState extends State<AddressListScreen> {
           title: Text(S.of(context).savedPlaces),
           elevation: 0.0,
           centerTitle: true,
-          actions: [
-            IconButton(
-              icon: Icon(Icons.arrow_back_ios_rounded),
-              color: french_blue,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )
-          ],
         ),
         body: Container(
             width: MediaQuery.of(context).size.width,

@@ -9,7 +9,7 @@ class Skeleton extends StatefulWidget {
     Key key,
     this.height = 20,
     this.width = 200,
-    this.cornerRadius =24,
+    this.cornerRadius = 24,
   }) : super(key: key);
 
   @override

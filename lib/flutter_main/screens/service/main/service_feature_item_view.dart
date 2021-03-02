@@ -47,7 +47,7 @@ class ServiceFeatureItemView extends StatelessWidget {
                       Text(
                         service.name,
                         style: TextStyle(
-                            color: boring_green,
+                            color: french_blue,
                             fontWeight: FontWeight.w700,
                             fontFamily: "Tajawal",
                             fontStyle: FontStyle.normal,

@@ -84,6 +84,19 @@
   "pending": "قيد الانتظار",
   "confirmed": "تم التآكيد",
   "canceled": "تم الالغاء",
+  "delivered": "تم التوصيل",
   "onGoing": "القادمه",
-  "main": "الرئيسيه"
+  "main": "الرئيسيه",
+  "save": "حفظ",
+  "myAddresses": "عنواني",
+  "personalInfo": "بيانات شخصيه",
+  "oldPassword": "كلمه السر القديمه",
+  "newPassword": "كلمه السر القديمه",
+  "changePassword": "تغيير كلمه المرور",
+  "passwordNotMatched": "كلمه المرور غير متطابقه",
+  "changeName": "تغير الاسم",
+  "choosePhoto": "اختر من الصور",
+  "CapturePhoto": "التقط صوره",
+  "deletePhoto": "احذف الصوره",
+  "updated": "تم التعديل"
 }

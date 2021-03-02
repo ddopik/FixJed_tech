@@ -3,10 +3,12 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
+import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -26,8 +28,6 @@ class App extends StatefulWidget {
 
 class AppState extends State<App> {
   final _app = AppModel();
-
-
 
   @override
   void initState() {
@@ -55,7 +55,8 @@ class AppState extends State<App> {
                   fontWeight: FontWeight.w700,
                   fontFamily: "Tajawal",
                   fontStyle: FontStyle.normal,
-                  fontSize: 18.0))),
+                  fontSize: 18.0)),
+          iconTheme: IconThemeData(color: french_blue)),
       scaffoldBackgroundColor: Colors.white,
     );
   }

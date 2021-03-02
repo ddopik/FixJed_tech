@@ -8,6 +8,7 @@ import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_pas
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
 import 'package:flutter_base_app/flutter_main/screens/onboarding/on_boarding.dart';
+import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
  import 'package:flutter_base_app/flutter_main/screens/service/main/service_features_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/signup/SignUpSuccessScreen.dart';
@@ -31,6 +32,7 @@ class Routes {
   static const PAYMENT_SCREEN = "/payment_screen";
   static const TRANSACTION_SUBMIT_SCREEN = "/transaction_submit_screen";
   static const TRANSACTION_SCREEN = "/transaction_screen";
+  static const PROFILE_SCREEN = "/profile_screen";
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
@@ -47,6 +49,7 @@ class Routes {
     PAYMENT_SCREEN: (context) => SubmitTransactionScreen(),
     TRANSACTION_SUBMIT_SCREEN: (context) => TransactionSubmittedScreen(),
     TRANSACTION_SCREEN: (context) => TransactionScreen(),
+    PROFILE_SCREEN: (context) => ProfileScreen(),
   };
 
 // todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget

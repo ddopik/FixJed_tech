@@ -10,8 +10,6 @@ class AppModel extends ChangeNotifier {
   Locale locale = Locale.fromSubtags(languageCode: 'ar');
 
   Future<bool> setUpConfig() async {
-
-
 // try {
 //   var state = await PrefManager().setupSharedPreferences();
 //   print("PrefManager has been initialized[2] $state");
@@ -40,16 +38,29 @@ class AppModel extends ChangeNotifier {
   setAppFirstSeen(bool state) {
     PrefManager().setAppFirstSeenState(state);
   }
-  setIsUserLoggedIn(bool state){
+
+  setIsUserLoggedIn(bool state) {
     PrefManager().setUserLoginState(state);
   }
 
-  bool isUserLoggedIn(){
+  bool isUserLoggedIn() {
     return PrefManager().isUserLoggedIn();
   }
 
   setUserToken(token) {
     PrefManager().setUserToken(token);
+  }
+
+  setUserName(userName) {
+    PrefManager().setUserName(userName);
+  }
+
+  setUserFirstName(firstName) {
+    PrefManager().setUserFirstName(firstName);
+  }
+
+  setUserLastName(lastName) {
+    PrefManager().setUserLastName(lastName);
   }
 
   String getUserToken() {
@@ -64,20 +75,45 @@ class AppModel extends ChangeNotifier {
     PrefManager().setUserMail(mail);
   }
 
+
+  setUserPhone(phone) {
+    PrefManager().setUserPhone(phone);
+  }
+
   String getUserMail() {
     return PrefManager().getUserMail();
   }
 
-  String getUserPhone() {
-    return PrefManager().getUserPhone() ;
+  String getUserName() {
+    return PrefManager().getUserName();
   }
 
+  String getUserFirstName() {
+    return PrefManager().getUserFirstName();
+  }
+
+  String getUserLastName() {
+    return PrefManager().getUserLastName();
+  }
+
+  String getUserPhone() {
+    return PrefManager().getUserPhone();
+  }
+
+  String getUserProfileImage() {
+    // print(" getUserProfileImage ----->" + PrefManager().getUserImage().toString());
+    return PrefManager().getUserImage() ?? '';
+  }
 
   setUserId(id) {
     PrefManager().setUserId(id.toString());
   }
 
-  logOutUser(){
+  setUserProfileImage(image) {
+    PrefManager().setUserProfileImage(image);
+  }
+
+  logOutUser() {
     PrefManager().clearSharedPreferences();
   }
 

@@ -55,15 +55,7 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
           title: Text(S.of(context).payment),
           elevation: 0.0,
           centerTitle: true,
-          actions: [
-            IconButton(
-              icon: Icon(Icons.arrow_back_ios_rounded),
-              color: french_blue,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )
-          ],
+
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,

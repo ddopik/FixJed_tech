@@ -26,11 +26,12 @@ class TransactionItemView extends StatelessWidget {
         elevation: 2.0,
         child: Container(
             width: MediaQuery.of(context).size.width * .8,
-            height: MediaQuery.of(context).size.height * .28,
+            height: MediaQuery.of(context).size.height * .178,
             child: Padding(
                 padding: EdgeInsets.all(18),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
                     Row(children: [
                       // Ellipse 20
@@ -98,18 +99,58 @@ class TransactionItemView extends StatelessWidget {
                                   fontStyle: FontStyle.normal,
                                   fontSize: 16.0),
                             ),
-                            Text(
-                              DateFormat.yMMMMd().format(
-                                  DateTime.parse(transaction.createdDate)),
-                              style: const TextStyle(
-                                  color: const Color(0xff646363),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "Tajawal",
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 16.0),
+                            Row(
+                              mainAxisAlignment: (transactionItemType ==
+                                      TransactionItemType.PENDING)
+                                  ? MainAxisAlignment.spaceAround
+                                  : MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  DateFormat.yMMMMd().format(
+                                      DateTime.parse(transaction.createdDate)),
+                                  style: const TextStyle(
+                                      color: const Color(0xff646363),
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Tajawal",
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 16.0),
+                                ),
+                                (transactionItemType ==
+                                        TransactionItemType.PENDING)
+                                    ? Expanded(
+                                        child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          InkWell(
+                                            child: Container(
+                                              width: 95,
+                                              height: 30,
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(22)),
+                                                color: Colors.red,
+                                              ),
+                                              child: Text(
+                                                "Cancel",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              onCancelTransactionClick(
+                                                  transaction);
+                                            },
+                                          ),
+                                        ],
+                                      ))
+                                    : Container()
+                              ],
                             )
                           ]),
-                    )
+                    ),
+                    // Rectangle 46
                   ],
                 ))));
   }
@@ -118,7 +159,7 @@ class TransactionItemView extends StatelessWidget {
     switch (transactionItemType) {
       case TransactionItemType.ALL:
         {
-          return Color(0xff2de8e1);
+          return getTransactionDynamicColor(transaction.transactionStatus);
         }
       case TransactionItemType.PENDING:
         return Color(0xfffcfb5a);
@@ -129,7 +170,29 @@ class TransactionItemView extends StatelessWidget {
       case TransactionItemType.CONFIRMED:
         return Color(0xff6ee82d);
         break;
-      case TransactionItemType.ON_GOING:
+      case TransactionItemType.DELIVERED:
+        return Color(0xff2d67e8);
+        break;
+    }
+  }
+
+  //Apply only for stats SUBMITTED
+  Color getTransactionDynamicColor(type) {
+    switch (type) {
+      case "SUBMITTED":
+        {
+          return Color(0xff2de8e1);
+        }
+      case "PENDING":
+        return Color(0xfffcfb5a);
+        break;
+      case "CANCELED":
+        return Color(0xffe82d2d);
+        break;
+      case "CONFIRMED":
+        return Color(0xff6ee82d);
+        break;
+      case "DELIVERED":
         return Color(0xff2d67e8);
         break;
     }
@@ -138,4 +201,4 @@ class TransactionItemView extends StatelessWidget {
 
 // DateFormat.yMMMMd().format(now)
 // DateTime.parse(transaction.createdDate).month,
-enum TransactionItemType { ALL, PENDING, CANCELED, CONFIRMED, ON_GOING }
+enum TransactionItemType { ALL, PENDING, CANCELED, CONFIRMED, DELIVERED }

@@ -52,15 +52,6 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
           title: Text(S.of(context).addNewAddress),
           elevation: 0.0,
           centerTitle: true,
-          actions: [
-            IconButton(
-              icon: Icon(Icons.arrow_back_ios_rounded),
-              color: french_blue,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )
-          ],
         ),
         body: Container(
             width: MediaQuery.of(context).size.width,
@@ -398,6 +389,10 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   getCitiesList() {
     _addressModel.getCities(onSuccess: (cityList) {
       dropdownCityList = cityList;
+
+      print("getCitiesList --->" + cityList.toString());
+      print("_selectedDropdownRegionValue --->" +
+          _selectedDropdownRegionValue?.id.toString());
       getCitiesRegionList(
           _selectedDropdownRegionValue?.id ?? dropdownCityList?.first);
     });
@@ -407,10 +402,13 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
     _addressModel.getCitiesRegion(
         cityId: city.id,
         onSuccess: (cityList) {
-          dropdownCityRegionList = cityList;
+          setState(() {
+            dropdownCityRegionList = cityList;
+          });
+        },
+        onError: (error) {
+          setState(() {});
         });
-
-    setState(() {});
   }
 
   submitNewAddress() {

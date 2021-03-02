@@ -2,28 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
-import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
-import 'package:flutter_base_app/flutter_main/screens/transaction/provider/transaction_model.dart';
-import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_item_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/notification/provider/notification_model.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import 'model/transaction.dart';
+import 'model/fix_jed_notification.dart';
+import 'notificationItemView.dart';
 
-class TransactionListView extends StatefulWidget {
-  final TransactionItemType transactionItemType;
-
-  TransactionListView({
-    this.transactionItemType,
-  });
-
+class NotificationListView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _TransactionListViewState();
+    return _NotificationListViewState();
   }
 }
 
-class _TransactionListViewState extends State<TransactionListView> {
-  final _pagingController = PagingController<int, Transaction>(
+class _NotificationListViewState extends State<NotificationListView> {
+  final _pagingController = PagingController<int, FixJedNotification>(
     firstPageKey: 0,
   );
 
@@ -38,16 +31,16 @@ class _TransactionListViewState extends State<TransactionListView> {
 
   Future<void> _fetchPage(int pageKey) async {
     final nextPageKey = pageKey + 1;
-    TransactionModel().getTransaction(
-        onSuccess: (features) {
-          if ((features as List).length > 0) {}
-          _pagingController.appendLastPage((features as List));
-          // _pagingController.appendPage(features, nextPageKey);
-        },
-        onError: (error) {
-          _pagingController.error = error;
-        },
-        transactionItemType: widget.transactionItemType);
+    NotificationModel().getNotification(
+      onSuccess: (response) {
+        if ((response as List).length > 0) {}
+        _pagingController.appendLastPage((response as List));
+        // _pagingController.appendPage(features, nextPageKey);
+      },
+      onError: (error) {
+        _pagingController.error = error;
+      },
+    );
 
     // final newItems =
     //     await widget.repository.getArticleListPage(number: pageKey, size: 8);
@@ -90,24 +83,9 @@ class _TransactionListViewState extends State<TransactionListView> {
     return PagedListView.separated(
       itemExtent: 300.0,
       pagingController: _pagingController,
-      builderDelegate: PagedChildBuilderDelegate<Transaction>(
-        itemBuilder: (context, transaction, index) {
-          return TransactionItemView(
-            transactionItemType: widget.transactionItemType,
-            transaction: transaction,
-            onCancelTransactionClick: (pTransaction) {
-
-
-              TransactionModel().cancelTransaction(
-                  onSuccess: () {
-                  _pagingController.refresh();
-                  },
-                  onError: (errorMessage) {
-                    showError(errorMessage);
-                  },
-                  transaction: transaction);
-            },
-          );
+      builderDelegate: PagedChildBuilderDelegate<FixJedNotification>(
+        itemBuilder: (context, notification, index) {
+          return NotificationItemView(notification: notification);
         },
         firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
           error: _pagingController.error,

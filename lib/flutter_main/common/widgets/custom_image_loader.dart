@@ -5,12 +5,9 @@ import 'package:flutter_base_app/flutter_main/common/colors.dart';
 
 import 'skeleton.dart';
 
-
-
 class CustomImageLoader {
- static Widget image({
+  static Widget image({
     String url,
-
     double width,
     double height,
     BoxFit fit,
@@ -64,8 +61,6 @@ class CustomImageLoader {
         ],
       );
     }
-
-
 
     return ExtendedImage.network(
       url,

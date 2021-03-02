@@ -11,7 +11,7 @@ PODS:
     - Flutter
   - path_provider (0.0.1):
     - Flutter
-  - "permission_handler (5.0.1+1)":
+  - "permission_handler (5.1.0+2)":
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
@@ -58,10 +58,10 @@ SPEC CHECKSUMS:
   gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
   notification_permissions: b74860c2967c1579243a675e63cd55e0ae75cef7
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
-  permission_handler: eac8e15b4a1a3fba55b761d19f3f4e6b005d15b6
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "uk.devwork.pathfinder",
+    "sha256_cert_fingerprints":
+    ["F9:31:1B:DE:E5:F2:A1:FF:BC:17:B8:FB:A8:35:79:94:85:43:A6:EB:8F:C9:53:7F:E8:D9:0E:33:D6:14:BE:3A"]
+  }
+}]

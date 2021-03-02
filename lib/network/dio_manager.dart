@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_base_app/flutter_main/common/model/ErrorResponse.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
+import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_item_view.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
@@ -49,10 +50,11 @@ class DIOManager {
       "/cart/delete-category-from-cart";
   static const String GET_SAVED_ADDRESS = "/address/find-all-addresses";
   static const String GET_CITIES = "/city/find-all";
-  static const String GET_REGION = "/address/find-by-id/";
+  static const String GET_REGION = "/region/find-all-by-city-id";
   static const String SUBMIT_NEW_ADDRESS = "/address/add-new-address";
   static const String EDIT_ADDRESS = "/address/update-by-id";
   static const String SUBMIT_TRANSACTION = "/transaction/add";
+
   static const String GET_ALL_SUBMIT_TRANSACTION =
       "/transaction/find-all-by-status?transaction-status=SUBMITTED";
   static const String GET_ALL_CONFIRMED_TRANSACTION =
@@ -63,6 +65,13 @@ class DIOManager {
       "/transaction/find-all-by-status?transaction-status=UPCOMING";
   static const String GET_ALL_DELIVERED_TRANSACTION =
       "/transaction/find-all-by-status?transaction-status=DELIVERED";
+
+  static const String GET_PROFILE_DATA = "/profile/find-user-data";
+
+  static const String CANCEL_TRANSACTION = "/transaction/cancel";
+
+  static const String GET_NOTIFICATION = "/notification/find-all";
+  static const String EDIT_USER_FIRST_LAST_NAME = "/profile/change-username";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -226,6 +235,18 @@ class DIOManager {
         });
   }
 
+  editUserFirstNameAndLastName(
+      {Function onSuccess, Function onError, firstName, lastName}) {
+    _sendPutRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: EDIT_USER_FIRST_LAST_NAME,
+        bodyParameters: {
+          "firstName": firstName,
+          "lastName": lastName,
+        });
+  }
+
   subtractProductFromCart({Function onSuccess, Function onError, productId}) {
     _sendDeleteRequest(
         onSuccess: onSuccess,
@@ -279,15 +300,75 @@ class DIOManager {
         onSuccess: onSuccess,
         onError: onError,
         url: GET_REGION,
-        queryParameters: {"address-id-id:$cityId"});
+        queryParameters: {"city-id": cityId});
   }
 
+  getTransaction(
+      {Function onSuccess,
+      Function onError,
+      TransactionItemType transactionItemType}) {
+    switch (transactionItemType) {
+      case TransactionItemType.ALL:
+        _sendGetRequest(
+          onSuccess: onSuccess,
+          onError: onError,
+          url: GET_ALL_SUBMIT_TRANSACTION,
+        );
+        break;
+      case TransactionItemType.PENDING:
+        _sendGetRequest(
+          onSuccess: onSuccess,
+          onError: onError,
+          url: GET_ALL_UPCOMING_TRANSACTION,
+        );
+        break;
+      case TransactionItemType.CANCELED:
+        _sendGetRequest(
+          onSuccess: onSuccess,
+          onError: onError,
+          url: GET_ALL_CANCELED_TRANSACTION,
+        );
+        break;
+      case TransactionItemType.CONFIRMED:
+        _sendGetRequest(
+          onSuccess: onSuccess,
+          onError: onError,
+          url: GET_ALL_CONFIRMED_TRANSACTION,
+        );
+        break;
+      case TransactionItemType.DELIVERED:
+        _sendGetRequest(
+          onSuccess: onSuccess,
+          onError: onError,
+          url: GET_ALL_DELIVERED_TRANSACTION,
+        );
+        break;
+    }
+  }
 
-  getAllTransaction({Function onSuccess, Function onError, cityId}) {
+  cancelTransaction({Function onSuccess, Function onError, transactionId}) {
+    _sendPutRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      queryParameters: {"transaction-id": transactionId},
+      url: CANCEL_TRANSACTION,
+    );
+  }
+
+  getProfileData({Function onSuccess, Function onError}) {
     _sendGetRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: GET_ALL_SUBMIT_TRANSACTION,);
+      onSuccess: onSuccess,
+      onError: onError,
+      url: GET_PROFILE_DATA,
+    );
+  }
+
+  getNotification({Function onSuccess, Function onError}) {
+    _sendGetRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      url: GET_NOTIFICATION,
+    );
   }
 
   submitTransaction(
@@ -415,14 +496,11 @@ class DIOManager {
     try {
       Response response;
       if (queryParameters != null && bodyParameters == null) {
-        print("_sendPutRequest onSuccess called [1]");
         response = await _dio.put(url, queryParameters: queryParameters);
       } else if (queryParameters != null && bodyParameters != null) {
-        print("_sendPutRequest onSuccess called [2]");
         response = await _dio.put(url,
             data: bodyParameters, queryParameters: queryParameters);
       } else {
-        print("_sendPutRequest onSuccess called [3]");
         response = await _dio.put(url, data: bodyParameters);
       }
 
@@ -461,15 +539,14 @@ class DIOManager {
           onError("Un Expected Error");
         } else if (e?.response?.statusCode == 406) {
           errorResponse = ErrorResponse.fromJson(e.response.data);
-
-          onError(errorResponse);
+          onError(errorResponse.errors[0].message);
         } else if (e?.response?.statusCode == 401) {
           onError(S.current.invalidLogin);
         } else {
-          onError(" UnExpected Error");
+          onError(S.current.noResultFound);
         }
       } else {
-        onError(e?.response ?? " UnExpected Error");
+        onError(e?.response ?? "UnExpected Error");
       }
     } catch (e) {
       onError("Un Expected Error");

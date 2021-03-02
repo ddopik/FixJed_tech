@@ -895,11 +895,151 @@ class S {
     );
   }
 
+  /// `delivered`
+  String get delivered {
+    return Intl.message(
+      'delivered',
+      name: 'delivered',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home`
   String get main {
     return Intl.message(
       'Home',
       name: 'main',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My addresses`
+  String get myAddresses {
+    return Intl.message(
+      'My addresses',
+      name: 'myAddresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal info`
+  String get personalInfo {
+    return Intl.message(
+      'Personal info',
+      name: 'personalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old password`
+  String get oldPassword {
+    return Intl.message(
+      'Old password',
+      name: 'oldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change password`
+  String get changePassword {
+    return Intl.message(
+      'Change password',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password not matched`
+  String get passwordNotMatched {
+    return Intl.message(
+      'password not matched',
+      name: 'passwordNotMatched',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change name`
+  String get changeName {
+    return Intl.message(
+      'Change name',
+      name: 'changeName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose new profile Photo`
+  String get chooseNewProfilePhoto {
+    return Intl.message(
+      'Choose new profile Photo',
+      name: 'chooseNewProfilePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose from Gallery`
+  String get choosePhoto {
+    return Intl.message(
+      'Choose from Gallery',
+      name: 'choosePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capture photo`
+  String get CapturePhoto {
+    return Intl.message(
+      'Capture photo',
+      name: 'CapturePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete photo`
+  String get deletePhoto {
+    return Intl.message(
+      'Delete photo',
+      name: 'deletePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `done`
+  String get updated {
+    return Intl.message(
+      'done',
+      name: 'updated',
       desc: '',
       args: [],
     );

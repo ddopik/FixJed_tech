@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/screens/transaction/provider/transaction_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_item_view.dart';
 import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_list_view.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -13,6 +14,13 @@ class TransactionScreen extends StatefulWidget {
 }
 
 class _TransactionScreenState extends State<TransactionScreen> {
+  TransactionModel _transactionModel;
+
+  @override
+  void initState() {
+    _transactionModel = TransactionModel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -32,8 +40,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
             tabs: getTabAddressList(),
           ),
         ),
-        body:
-        TabBarView(
+        body: TabBarView(
           children: getTabViewList(),
         ),
       ),
@@ -44,7 +51,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
     List<Tab> list = [
       Tab(text: S.of(context).canceled),
       Tab(text: S.of(context).confirmed),
-      Tab(text: S.of(context).onGoing),
+      Tab(text: S.of(context).delivered),
       Tab(text: S.of(context).pending),
       Tab(text: S.of(context).all)
     ];
@@ -55,11 +62,12 @@ class _TransactionScreenState extends State<TransactionScreen> {
     List<TransactionListView> list = [
       TransactionListView(
         transactionItemType: TransactionItemType.CANCELED,
-        onCancelTransactionClick: () {},
       ),
       TransactionListView(transactionItemType: TransactionItemType.CONFIRMED),
-      TransactionListView(transactionItemType: TransactionItemType.ON_GOING),
-      TransactionListView(transactionItemType: TransactionItemType.PENDING),
+      TransactionListView(transactionItemType: TransactionItemType.DELIVERED),
+      TransactionListView(
+        transactionItemType: TransactionItemType.PENDING,
+      ),
       TransactionListView(transactionItemType: TransactionItemType.ALL),
     ];
     return list.reversed.toList();

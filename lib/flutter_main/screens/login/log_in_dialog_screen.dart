@@ -6,7 +6,7 @@ import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
-import 'package:flutter_base_app/flutter_main/screens/login/slide_dialog.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/slide_dialog.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
 import 'package:provider/provider.dart';

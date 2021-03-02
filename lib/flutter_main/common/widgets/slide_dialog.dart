@@ -5,12 +5,13 @@ class SlideDialog extends StatefulWidget {
   final Widget child;
   final Color backgroundColor;
   final Color pillColor;
+  final double heightRatio;
 
-  SlideDialog({
-    @required this.child,
-    @required this.pillColor,
-    @required this.backgroundColor,
-  });
+  SlideDialog(
+      {@required this.child,
+      @required this.pillColor,
+      @required this.backgroundColor,
+      this.heightRatio = 2.5});
 
   @override
   _SlideDialogState createState() => _SlideDialogState();
@@ -27,7 +28,8 @@ class _SlideDialogState extends State<SlideDialog> {
 
     return AnimatedPadding(
       padding: MediaQuery.of(context).viewInsets +
-          EdgeInsets.only(top: deviceHeight / 2.5 + _currentPosition),
+          EdgeInsets.only(
+              top: deviceHeight / widget.heightRatio ?? 2.5 + _currentPosition),
       duration: Duration(milliseconds: 100),
       curve: Curves.decelerate,
       child: MediaQuery.removeViewInsets(

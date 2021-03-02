@@ -79,13 +79,25 @@
   "pleaseAddAddress": "Please add address in order to submit request",
   "confirm": "Confirm",
   "transactionSubmitted": "you order has been sent !",
-  "transactionSubmittedDesc"  : "You will receive a call from our representatives to confirm your appointment  You can track your order from",
+  "transactionSubmittedDesc": "You will receive a call from our representatives to confirm your appointment  You can track your order from",
   "all": "All",
   "pending": "Pending",
   "confirmed": "Confirmed",
   "canceled": "Canceled",
   "onGoing": "OnGoing",
-  "main": "Home"
-
-
+  "delivered": "delivered",
+  "main": "Home",
+  "save": "Save",
+  "myAddresses": "My addresses",
+  "personalInfo": "Personal info",
+  "oldPassword": "Old password",
+  "newPassword": "New password",
+  "changePassword": "Change password",
+  "passwordNotMatched": "password not matched",
+  "changeName": "Change name",
+  "chooseNewProfilePhoto": "Choose new profile Photo",
+  "choosePhoto": "Choose from Gallery",
+  "CapturePhoto": "Capture photo",
+  "deletePhoto": "Delete photo",
+  "updated": "done"
 }

@@ -6,7 +6,11 @@ class PrefManager {
   static const _TOKEN = "user_token";
   static const _USER_ID = "user_id";
   static const _USER_MAIL = "user_mail";
+  static const _USER_NAME = "user_name";
+  static const _USER_FIRST_NAME = "user_first_name";
+  static const _USER_LAST_NAME = "user_last_name";
   static const _USER_PHONE = "user_phone";
+  static const _USER_IMAGE = "user_img";
 
   static const _appLanguage = "app_language";
 
@@ -25,7 +29,7 @@ class PrefManager {
   Future<bool> setupSharedPreferences() async {
     // _prefs = await SharedPreferences.getInstance();
 
-    _instance._prefs =await SharedPreferences.getInstance();
+    _instance._prefs = await SharedPreferences.getInstance();
     return true;
   }
 
@@ -58,10 +62,35 @@ class PrefManager {
   ) {
     _prefs.setString(_USER_MAIL, data);
   }
+
+  void setUserName(
+    String data,
+  ) {
+    _prefs.setString(_USER_NAME, data);
+  }
+
+  void setUserFirstName(
+    String data,
+  ) {
+    _prefs.setString(_USER_FIRST_NAME, data);
+  }
+
+  void setUserLastName(
+    String data,
+  ) {
+    _prefs.setString(_USER_LAST_NAME, data);
+  }
+
   void setUserPhone(
-      String data,
-      ) {
+    String data,
+  ) {
     _prefs.setString(_USER_PHONE, data);
+  }
+
+  void setUserProfileImage(
+    String data,
+  ) {
+    _prefs.setString(_USER_IMAGE, data);
   }
 
   getUserId() {
@@ -71,9 +100,26 @@ class PrefManager {
   String getUserMail() {
     return _prefs.getString(_USER_MAIL) ?? '';
   }
-  String getUserPhone() {
-    return _prefs.getString(_USER_PHONE) ?? "012221231";
+   getUserImage() {
+    return _prefs.getString(_USER_IMAGE)??'';
   }
+
+  String getUserName() {
+    return _prefs.getString(_USER_NAME) ?? '';
+  }
+
+  String getUserFirstName() {
+    return _prefs.getString(_USER_FIRST_NAME) ?? '';
+  }
+
+  String getUserLastName() {
+    return _prefs.getString(_USER_LAST_NAME) ?? '';
+  }
+
+  String getUserPhone() {
+    return _prefs.getString(_USER_PHONE) ?? "";
+  }
+
   void setLang(String userData) {
     _prefs.setString(_appLanguage, userData);
   }
@@ -82,8 +128,8 @@ class PrefManager {
     _prefs.setBool(_LOGIN_STATE, state);
   }
 
-  bool isUserLoggedIn()  {
-    return _prefs.getBool(_LOGIN_STATE)??false;
+  bool isUserLoggedIn() {
+    return _prefs.getBool(_LOGIN_STATE) ?? false;
   }
 
   setAppFirstSeenState(bool state) {
