@@ -272,6 +272,17 @@ class DIOManager {
           "secondPhone": secondPhone,
          });
   }
+  addNewPhone(
+      {Function onSuccess, Function onError, phone,secondPhone}) {
+    _sendPutRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: CHANGE_PHONE,
+        bodyParameters: {
+          "phone": phone,
+          "secondPhone": secondPhone,
+         });
+  }
 
   subtractProductFromCart({Function onSuccess, Function onError, productId}) {
     _sendDeleteRequest(

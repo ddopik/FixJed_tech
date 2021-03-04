@@ -496,7 +496,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     print("oldPassword : $oldPassword ---- newPassword : $newPassword");
     UserProfileModel().changeUserPassword(
         password: oldPassword,
-        confirmPassword: oldPassword,
+        confirmPassword: newPassword,
         newPassword: newPassword,
         onSuccess: () {
           showSuccesses(context, S.current.updated);
@@ -534,8 +534,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     showLoading(context);
 
-
-    UserProfileModel().changeUserPhone(
+    UserProfileModel().addNewPhone(
         phone_1: Provider.of<AppModel>(context, listen: false).getUserPhone(),
         phone_2: phoneNumber,
         onSuccess: () {

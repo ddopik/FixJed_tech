@@ -33,7 +33,7 @@ class UserProfileModel {
         confirmPassword: confirmPassword,
         newPassword: newPassword,
         onSuccess: (response) {
-          Navigator.of(context).pop();
+         onSuccess();
         },
         onError: (errorResponse) {
           onError(errorResponse.toString());
@@ -53,14 +53,14 @@ class UserProfileModel {
   }
 
   addNewPhone({context, onSuccess, onError, phone_1, phone_2}) {
-    // DIOManager().addNewPhone(
-    //     phone: phone_1,
-    //     secondPhone: phone_2,
-    //     onSuccess: (response) {
-    //       Navigator.of(context).pop();
-    //     },
-    //     onError: (errorResponse) {
-    //       onError(errorResponse.toString());
-    //     });
+    DIOManager().addNewPhone(
+        phone: phone_1,
+        secondPhone: phone_2,
+        onSuccess: (response) {
+          Navigator.of(context).pop();
+        },
+        onError: (errorResponse) {
+          onError(errorResponse.toString());
+        });
   }
 }

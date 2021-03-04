@@ -75,7 +75,6 @@ class AppModel extends ChangeNotifier {
     PrefManager().setUserMail(mail);
   }
 
-
   setUserPhone(phone) {
     PrefManager().setUserPhone(phone);
   }

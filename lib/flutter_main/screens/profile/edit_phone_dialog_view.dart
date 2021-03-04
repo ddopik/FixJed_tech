@@ -13,8 +13,8 @@ addNewPhoneDialogView<T>(
     Duration transitionDuration = const Duration(milliseconds: 300),
     Color pillColor,
     String message,
-      String title,
-      String currentPhoneNumber,
+    String title,
+    String currentPhoneNumber,
     Color backgroundColor,
     Function addPhoneNumber}) {
   assert(context != null);
@@ -39,7 +39,8 @@ addNewPhoneDialogView<T>(
                   pillColor: pillColor ?? Colors.blueGrey[200],
                   backgroundColor:
                       backgroundColor ?? Theme.of(context).canvasColor,
-                  child: renderProfileNameForm(context,addPhoneNumber,title,currentPhoneNumber)),
+                  child: renderProfileNameForm(
+                      context, addPhoneNumber, title, currentPhoneNumber)),
             ),
           ),
         ),
@@ -51,7 +52,8 @@ addNewPhoneDialogView<T>(
   );
 }
 
-renderProfileNameForm(BuildContext context, Function onChangePhoneClick,title,currentPhoneNumber) {
+renderProfileNameForm(BuildContext context, Function onChangePhoneClick, title,
+    currentPhoneNumber) {
   return Form(
     child: Column(
       mainAxisSize: MainAxisSize.max,
@@ -59,7 +61,7 @@ renderProfileNameForm(BuildContext context, Function onChangePhoneClick,title,cu
       children: [
         Text(
           title,
-          style:  TextStyle(
+          style: TextStyle(
               color: french_blue,
               fontWeight: FontWeight.w700,
               fontFamily: "Raleway",
