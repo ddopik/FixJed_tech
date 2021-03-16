@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
+import 'package:flutter_base_app/flutter_main/screens/checkout/payment/add_address_dialog_view.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -13,7 +13,6 @@ import 'address_item_view.dart';
 class AddressListView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
- 
     return _AddressListViewState();
   }
 }
@@ -106,10 +105,19 @@ class _AddressListViewState extends State<AddressListView> {
                 AddressItemView(
                   address: address,
                   onAddressEditClick: (address) async {
-                    await Navigator.of(context).pushNamed(
-                        Routes.ADDRESS_FORM_SCREEN,
-                        arguments: address);
-                    _pagingController.refresh();
+                    addNewAddressDialogView(
+                        address: address,
+                        context: context,
+                        onAddNewAddress: () {
+                          setState(() {
+                            _pagingController.refresh();
+                          });
+                        });
+
+                    // await Navigator.of(context).pushNamed(
+                    //     Routes.ADDRESS_FORM_SCREEN,
+                    //     arguments: address);
+                    // _pagingController.refresh();
                   },
                 ),
                 Row(
@@ -125,10 +133,14 @@ class _AddressListViewState extends State<AddressListView> {
                             ),
                             iconSize: 25,
                             onPressed: () async {
-                              await Navigator.of(context).pushNamed(
-                                Routes.ADDRESS_FORM_SCREEN,
-                              );
-                              _pagingController.refresh();
+                              addNewAddressDialogView(
+
+                                  context: context,
+                                  onAddNewAddress: () {
+                                    setState(() {
+                                      _pagingController.refresh();
+                                    });
+                                  });
                             }),
                         Text(S.of(context).addNewAddress,
                             style: const TextStyle(
@@ -140,18 +152,6 @@ class _AddressListViewState extends State<AddressListView> {
                             textAlign: TextAlign.left),
                       ],
                     ),
-                    IconButton(
-                        icon: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          color: boring_green,
-                          size: 20,
-                        ),
-                        onPressed: () async {
-                          await Navigator.of(context).pushNamed(
-                            Routes.ADDRESS_FORM_SCREEN,
-                          );
-                          _pagingController.refresh();
-                        })
                   ],
                 )
               ],
@@ -160,9 +160,18 @@ class _AddressListViewState extends State<AddressListView> {
             return AddressItemView(
               address: address,
               onAddressEditClick: (address) async {
-                await Navigator.of(context)
-                    .pushNamed(Routes.ADDRESS_FORM_SCREEN, arguments: address);
-                _pagingController.refresh();
+                addNewAddressDialogView(
+                  address: address,
+                    context: context,
+                    onAddNewAddress: () {
+                      setState(() {
+                        _pagingController.refresh();
+                      });
+                    });
+
+                //   await Navigator.of(context)
+                //       .pushNamed(Routes.ADDRESS_FORM_SCREEN, arguments: address);
+                //   _pagingController.refresh();
               },
             );
           }

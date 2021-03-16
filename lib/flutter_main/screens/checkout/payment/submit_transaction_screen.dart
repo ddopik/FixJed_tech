@@ -4,12 +4,14 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/navigation_app_back_icon.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/payment/provier/SubmitTransactionModel.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/payment/savedPlacesGroupView.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
+import 'add_address_dialog_view.dart';
 import 'confirm_dialog_view.dart';
 
 class SubmitTransactionScreen extends StatefulWidget {
@@ -54,8 +56,13 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
         appBar: AppBar(
           title: Text(S.of(context).payment),
           elevation: 0.0,
+          leading: IconButton(
+            icon: Icon(getBackNavigationIcon(context), color: french_blue),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
           centerTitle: true,
-
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -78,6 +85,7 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
 
   Widget getPaymentView() {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 21),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,6 +100,9 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              SizedBox(
+                height: 16,
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -129,7 +140,6 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
                     btnText: S.current.createRequest,
                     onPressed: () {
                       showConfirmTransactionDialog();
-
                     }),
                 decoration: BoxDecoration(
                   boxShadow: [
@@ -161,6 +171,7 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
             elevation: 2.0,
             child: Container(
               width: MediaQuery.of(context).size.width * .8,
+              padding: EdgeInsets.all(10),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -186,7 +197,7 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
                                     ),
                                     iconSize: 30,
                                     onPressed: null),
-                                Text(S.current.savedPlaces,
+                                Text(S.current.myAddresses,
                                     style: const TextStyle(
                                         color: french_blue,
                                         fontWeight: FontWeight.w600,
@@ -242,25 +253,16 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
                                       textAlign: TextAlign.left),
                                 ],
                               ),
-                              onTap: () async {
-                                await Navigator.of(context)
-                                    .pushNamed(Routes.ADDRESS_FORM_SCREEN);
-                                setState(() {
-                                  getSavedAddress();
-                                });
+                              onTap: ()  {
+                                addNewAddressDialogView(
+                                    context: context,
+                                    onAddNewAddress: () {
+                                      setState(() {
+                                        getSavedAddress();
+                                      });
+                                    });
                               },
                             ),
-                            IconButton(
-                                icon: Icon(Icons.arrow_back_ios_rounded,
-                                    color: boring_green),
-                                iconSize: 25,
-                                onPressed: () async {
-                                  await Navigator.of(context)
-                                      .pushNamed(Routes.ADDRESS_FORM_SCREEN);
-                                  setState(() {
-                                    getSavedAddress();
-                                  });
-                                })
                           ],
                         ),
                       ],
@@ -362,9 +364,8 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
             dismissLoading();
           });
     }
-
-
   }
+
   showConfirmTransactionDialog() {
     showGeneralDialog(
         barrierColor: Colors.black.withOpacity(0.5),
@@ -380,11 +381,10 @@ class _SubmitTransactionScreenState extends State<SubmitTransactionScreen> {
                 color: Colors.white,
                 child: ConfirmDialogView(
                     transActionAddress:
-                    currentSelectedAddress ?? addressList?.first,
-                    onConfirm:(){
+                        currentSelectedAddress ?? addressList?.first,
+                    onConfirm: () {
                       submitTransaction();
-                    }
-                ),
+                    }),
               ),
             ),
           );

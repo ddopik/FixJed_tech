@@ -88,7 +88,7 @@
   "onGoing": "القادمه",
   "main": "الرئيسيه",
   "save": "حفظ",
-  "myAddresses": "عنواني",
+  "myAddresses": "عنوايني",
   "personalInfo": "بيانات شخصيه",
   "oldPassword": "كلمه السر القديمه",
   "newPassword": "كلمه السر القديمه",
@@ -100,5 +100,8 @@
   "deletePhoto": "احذف الصوره",
   "updated": "تم التعديل",
   "addNewPhone": "آضافه رقم جديد",
-  "editPhone": "تعديل رقم الهاتف"
+  "editPhone": "تعديل رقم الهاتف",
+  "addNewService": "اضف خدمة اخري ",
+  "cancel": "الغاء",
+  "cancelOrderNote": " يمكنك إلغاء ملف الطلب في غضون ساعتين"
 }

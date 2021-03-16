@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:intl/intl.dart';
 
 import 'model/fix_jed_notification.dart';
 
@@ -17,7 +18,7 @@ class NotificationItemView extends StatelessWidget {
       ),
       elevation: 2.0,
       child: Container(
-        padding: EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(18.0),
         width: MediaQuery.of(context).size.width * .8,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,6 +41,17 @@ class NotificationItemView extends StatelessWidget {
                     fontFamily: "Tajawal",
                     fontStyle: FontStyle.normal,
                     fontSize: 16.0)),
+            SizedBox(height: 16,),
+            Text(
+              DateFormat.yMMMMd()
+                  .format(DateTime.parse(notification.createdDate)),
+              style: const TextStyle(
+                  color: const Color(0xff646363),
+                  fontWeight: FontWeight.w400,
+                  fontFamily: "Tajawal",
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.0),
+            ),
           ],
         ),
       ),

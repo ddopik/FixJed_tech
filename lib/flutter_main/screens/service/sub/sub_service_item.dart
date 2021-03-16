@@ -30,8 +30,8 @@ class TotalAddedServicesState extends State<SubServiceItem> {
         elevation: 2.0,
         child: Container(
           width: MediaQuery.of(context).size.width * .8,
-          height: MediaQuery.of(context).size.height * .22,
-          padding: EdgeInsets.all(18.0),
+          height: MediaQuery.of(context).size.height * .17,
+          padding: EdgeInsets.only(top: 8.0, bottom: 8, left: 26, right: 32),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -62,7 +62,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                       style: TextStyle(
                           color: Color(0xff646363),
                           fontWeight: FontWeight.w400,
-                           fontFamily: "Tajawal",
+                          fontFamily: "Tajawal",
                           fontStyle: FontStyle.normal,
                           fontSize: 14.0),
                     ),

@@ -26,9 +26,9 @@ class TransactionItemView extends StatelessWidget {
         elevation: 2.0,
         child: Container(
             width: MediaQuery.of(context).size.width * .8,
-            height: MediaQuery.of(context).size.height * .178,
+            height: MediaQuery.of(context).size.height * .19,
             child: Padding(
-                padding: EdgeInsets.all(18),
+                padding: EdgeInsets.only(top: 18, left: 18, right: 18),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
@@ -45,7 +45,7 @@ class TransactionItemView extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(20)),
                               color: getTransactionStateColor())),
                       SizedBox(
-                        width: 14,
+                        width: 12,
                       ),
                       Text(
                         transaction.categoriesNames.join(","),
@@ -101,22 +101,41 @@ class TransactionItemView extends StatelessWidget {
                             ),
                             Row(
                               mainAxisAlignment: (transactionItemType ==
-                                      TransactionItemType.PENDING)
+                                          TransactionItemType.PENDING &&
+                                      timeAllowed(transaction.createdDate))
                                   ? MainAxisAlignment.spaceAround
                                   : MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  DateFormat.yMMMMd().format(
-                                      DateTime.parse(transaction.createdDate)),
-                                  style: const TextStyle(
-                                      color: const Color(0xff646363),
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: "Tajawal",
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 16.0),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      DateFormat.yMMMMd().format(DateTime.parse(
+                                          transaction.createdDate)),
+                                      style: const TextStyle(
+                                          color: const Color(0xff646363),
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: "Tajawal",
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.0),
+                                    ),
+                                    Text(
+                                        (transactionItemType ==
+                                                TransactionItemType.PENDING)
+                                            ? S.current.cancelOrderNote
+                                            : '',
+                                        style: const TextStyle(
+                                            color: const Color(0x70646363),
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "Tajawal",
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 9.7),
+                                        textAlign: TextAlign.left)
+                                  ],
                                 ),
                                 (transactionItemType ==
-                                        TransactionItemType.PENDING)
+                                            TransactionItemType.PENDING &&
+                                        timeAllowed(transaction.createdDate))
                                     ? Expanded(
                                         child: Row(
                                         mainAxisAlignment:
@@ -124,8 +143,8 @@ class TransactionItemView extends StatelessWidget {
                                         children: [
                                           InkWell(
                                             child: Container(
-                                              width: 95,
-                                              height: 30,
+                                              width: 100,
+                                              height: 32,
                                               alignment: Alignment.center,
                                               decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.all(
@@ -133,9 +152,14 @@ class TransactionItemView extends StatelessWidget {
                                                 color: Colors.red,
                                               ),
                                               child: Text(
-                                                "Cancel",
+                                                S.current.cancel,
                                                 style: TextStyle(
-                                                    color: Colors.white),
+                                                    color:
+                                                        const Color(0xffffffff),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontFamily: "Tajawal",
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 12.0),
                                               ),
                                             ),
                                             onTap: () {
@@ -197,8 +221,18 @@ class TransactionItemView extends StatelessWidget {
         break;
     }
   }
+
+  bool timeAllowed(String currentDate) {
+    DateTime parsedDate = DateTime.parse(transaction.createdDate);
+    DateTime now = new DateTime.now();
+    DateTime subDateTime =
+        now.subtract(Duration(days: parsedDate.day, hours: parsedDate.hour));
+    if (subDateTime.hour < 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
-// DateFormat.yMMMMd().format(now)
-// DateTime.parse(transaction.createdDate).month,
 enum TransactionItemType { ALL, PENDING, CANCELED, CONFIRMED, DELIVERED }

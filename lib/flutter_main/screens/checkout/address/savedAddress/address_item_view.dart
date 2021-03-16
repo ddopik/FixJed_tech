@@ -21,7 +21,7 @@ class AddressItemView extends StatelessWidget {
             elevation: 2.0,
             child: Container(
               width: MediaQuery.of(context).size.width * .8,
-              height: MediaQuery.of(context).size.height * .26,
+              height: MediaQuery.of(context).size.height * .20,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -100,6 +100,9 @@
   "CapturePhoto": "Capture photo",
   "deletePhoto": "Delete photo",
   "updated": "done",
-  "addNewPhone":"Add new phone",
-  "editPhone":"Edit phoneِ"
+  "addNewPhone": "Add new phone",
+  "editPhone": "Edit phoneِ",
+  "addNewService": "Add new Service",
+  "cancel": "Cancel",
+  "cancelOrderNote": "You can cancel the application file within two hours"
 }

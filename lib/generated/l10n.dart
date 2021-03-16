@@ -1064,6 +1064,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Add new Service`
+  String get addNewService {
+    return Intl.message(
+      'Add new Service',
+      name: 'addNewService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can cancel the application file within two hours`
+  String get cancelOrderNote {
+    return Intl.message(
+      'You can cancel the application file within two hours',
+      name: 'cancelOrderNote',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/navigation_app_back_icon.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 import 'addressListView.dart';
@@ -19,6 +20,12 @@ class _AddressListScreenState extends State<AddressListScreen> {
           title: Text(S.of(context).savedPlaces),
           elevation: 0.0,
           centerTitle: true,
+          leading: IconButton(
+            icon: Icon(getBackNavigationIcon(context), color: french_blue),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width,

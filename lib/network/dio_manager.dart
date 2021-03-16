@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_base_app/flutter_main/common/model/ErrorResponse.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
@@ -10,7 +11,12 @@ import 'package:flutter_base_app/generated/l10n.dart';
 class DIOManager {
   static final DIOManager _instance = DIOManager._dio();
 
-  factory DIOManager() => _instance;
+  factory DIOManager() {
+    _instance._dio.interceptors.add(DioCacheManager(
+            CacheConfig(baseUrl: "http://34.193.99.151:8080/fix-jed-back-end"))
+        .interceptor);
+    return _instance;
+  }
 
   DIOManager._dio();
 
@@ -248,8 +254,13 @@ class DIOManager {
           "lastName": lastName,
         });
   }
+
   changePassword(
-      {Function onSuccess, Function onError, password, newPassword,confirmPassword}) {
+      {Function onSuccess,
+      Function onError,
+      password,
+      newPassword,
+      confirmPassword}) {
     _sendPutRequest(
         onSuccess: onSuccess,
         onError: onError,
@@ -261,8 +272,7 @@ class DIOManager {
         });
   }
 
-  changePhone(
-      {Function onSuccess, Function onError, phone,secondPhone}) {
+  changePhone({Function onSuccess, Function onError, phone, secondPhone}) {
     _sendPutRequest(
         onSuccess: onSuccess,
         onError: onError,
@@ -270,10 +280,10 @@ class DIOManager {
         bodyParameters: {
           "phone": phone,
           "secondPhone": secondPhone,
-         });
+        });
   }
-  addNewPhone(
-      {Function onSuccess, Function onError, phone,secondPhone}) {
+
+  addNewPhone({Function onSuccess, Function onError, phone, secondPhone}) {
     _sendPutRequest(
         onSuccess: onSuccess,
         onError: onError,
@@ -281,7 +291,7 @@ class DIOManager {
         bodyParameters: {
           "phone": phone,
           "secondPhone": secondPhone,
-         });
+        });
   }
 
   subtractProductFromCart({Function onSuccess, Function onError, productId}) {

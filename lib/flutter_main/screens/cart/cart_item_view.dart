@@ -55,7 +55,7 @@ class TotalAddedServicesState extends State<CarItemView> {
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                       boxShadow: [
                         BoxShadow(
-                            color: const Color(0x29000000),
+                            color: Color(0x29000000),
                             offset: Offset(0, 3),
                             blurRadius: 6,
                             spreadRadius: 0)
@@ -76,7 +76,6 @@ class TotalAddedServicesState extends State<CarItemView> {
                                     width: 50,
                                     height: 60),
                               ),
-                              // غسالة
                               Text(
                                 widget.category.name,
                                 style: const TextStyle(
@@ -99,20 +98,24 @@ class TotalAddedServicesState extends State<CarItemView> {
                               })
                         ],
                       ),
-
                       SizedBox(
                         height: 10,
                       ),
                       for (Product product in widget.category.products)
                         getGroupedCardItemView(product),
-
                       SizedBox(
-                        height: 24,
+                        height: 10,
+                      ),
+                      getCalenderView(),
+                      SizedBox(
+                        height: 18,
                       ),
                       GestureDetector(
                         child: Container(
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              SizedBox(width: 14),
                               ClipOval(
                                 child: Container(
                                   width: 28,
@@ -131,10 +134,8 @@ class TotalAddedServicesState extends State<CarItemView> {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 10),
-
-                              // اضف خدمة اخري
-                              Text("اضف خدمة اخري ",
+                              SizedBox(width: 14),
+                              Text(S.current.addNewService,
                                   style: const TextStyle(
                                       color: const Color(0xffffffff),
                                       fontWeight: FontWeight.w700,
@@ -150,28 +151,24 @@ class TotalAddedServicesState extends State<CarItemView> {
                           widget.onAddNEwCategory(widget.category);
                         },
                       ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      getCalenderView(),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      // اجمالي
                       Container(
-                        margin: EdgeInsets.all(12),
+                        margin: EdgeInsets.only(
+                            bottom: 12, left: 12, right: 12, top: 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("اجمالي",
-                                style: const TextStyle(
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: "Tajawal",
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 16.0),
-                                textAlign: TextAlign.left),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 18),
+                              child: Text(S.current.total,
+                                  style: const TextStyle(
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "Tajawal",
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 18.0),
+                                  textAlign: TextAlign.left),
+                            ),
                             Text(
                               getPrice(context,
                                   widget.category.totalPrice.toString()),
@@ -180,7 +177,7 @@ class TotalAddedServicesState extends State<CarItemView> {
                                   fontWeight: FontWeight.w500,
                                   fontFamily: "Tajawal",
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 16.0),
+                                  fontSize: 18.0),
                             )
                           ],
                         ),
@@ -196,14 +193,14 @@ class TotalAddedServicesState extends State<CarItemView> {
 
   Widget getGroupedCardItemView(Product product) {
     return Card(
+        elevation: 2.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25.0),
         ),
-        elevation: 2.0,
         child: Container(
           width: MediaQuery.of(context).size.width * .9,
-          height: MediaQuery.of(context).size.height * .22,
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          height: MediaQuery.of(context).size.height * .18,
+          padding: EdgeInsets.symmetric(horizontal: 32.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -330,6 +327,7 @@ class TotalAddedServicesState extends State<CarItemView> {
           ),
         ));
   }
+
   Widget getCalenderView() {
     return Card(
         shape: RoundedRectangleBorder(
@@ -338,9 +336,12 @@ class TotalAddedServicesState extends State<CarItemView> {
         elevation: 2.0,
         child: Container(
           width: MediaQuery.of(context).size.width * .8,
-          child: CalenderView(onDateSelected: (DateTime date){
-            print("Current Selected Date is "+date.toString());
-          },),
+          padding: EdgeInsets.all(8),
+          child: CalenderView(
+            onDateSelected: (DateTime date) {
+              print("Current Selected Date is " + date.toString());
+            },
+          ),
         ));
   }
 }

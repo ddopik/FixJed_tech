@@ -25,7 +25,8 @@ class _SlideDialogState extends State<SlideDialog> {
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
-
+    final temp = (widget.heightRatio * 3.0) / 10;
+    print("temp ---> " + temp.toString());
     return AnimatedPadding(
       padding: MediaQuery.of(context).viewInsets +
           EdgeInsets.only(
@@ -42,7 +43,7 @@ class _SlideDialogState extends State<SlideDialog> {
           child: Center(
             child: Container(
               width: deviceWidth,
-              height: deviceHeight * .6,
+              height: deviceHeight * temp,
               child: Material(
                 color: widget.backgroundColor ??
                     Theme.of(context).dialogBackgroundColor,

@@ -10,6 +10,11 @@ import 'model/Address.dart';
 import 'model/city.dart';
 
 class AddressFormScreen extends StatefulWidget {
+  final Function onAddNewAddress;
+  Address currentAddress;
+
+  AddressFormScreen({Key key, this.onAddNewAddress, this.currentAddress});
+
   @override
   State createState() {
     return _AddressFormScreenState();
@@ -17,8 +22,6 @@ class AddressFormScreen extends StatefulWidget {
 }
 
 class _AddressFormScreenState extends State<AddressFormScreen> {
-  Address _currentAddress;
-
   AddressModel _addressModel;
 
   List<City> dropdownCityList;
@@ -45,8 +48,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _currentAddress = ModalRoute.of(context).settings.arguments;
-
+    return getAddressFormView();
     return Scaffold(
         appBar: AppBar(
           title: Text(S.of(context).addNewAddress),
@@ -76,296 +78,296 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
       child: Container(
         height: MediaQuery.of(context).size.height * .8,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 32,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * .85,
-                  height: 55,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(26)),
-                      boxShadow: [
-                        BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
-                            spreadRadius: 0)
-                      ],
-                      color: const Color(0xffffffff)),
-                  child: TextFormField(
-                    cursorColor: Colors.black,
-                    keyboardType: TextInputType.name,
-                    controller: addressNameController,
-                    decoration: new InputDecoration(
-                        errorStyle: TextStyle(height: 0),
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: (_currentAddress != null)
-                            ? _currentAddress.title
-                            : S.of(context).addressName,
-                        hintStyle: TextStyle(fontSize: 14)),
-                  ),
-                ),
-                SizedBox(
-                  height: 14,
-                ),
-                Container(
-                    width: MediaQuery.of(context).size.width * .85,
-                    height: 55,
-                    alignment: Alignment.centerRight,
-                    padding: EdgeInsets.symmetric(horizontal: 14),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(26)),
-                        boxShadow: [
-                          BoxShadow(
-                              color: const Color(0x29000000),
-                              offset: Offset(0, 3),
-                              blurRadius: 6,
-                              spreadRadius: 0)
-                        ],
-                        color: const Color(0xffffffff)),
-                    child: DropdownButton<City>(
-                      value: dropdownCityList?.first,
-                      underline: Container(
-                        height: 2,
-                      ),
-                      onChanged: (City newValue) {
-                        setState(() {
-                          _selectedDropdownCityValue = newValue;
-                        });
-                      },
-                      items: dropdownCityList
-                          ?.map<DropdownMenuItem<City>>((City value) {
-                        return DropdownMenuItem<City>(
-                          value: value,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * .7,
-                            child: Text(
-                              value.name,
-                              style: TextStyle(color: french_blue),
-                            ),
-                          ),
-                        );
-                      })?.toList(),
-                    )
-                ),
-                SizedBox(
-                  height: 14,
-                ),
-                Container(
-                    width: MediaQuery.of(context).size.width * .85,
-                    height: 55,
-                    alignment: Alignment.centerRight,
-                    padding: EdgeInsets.symmetric(horizontal: 14),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(26)),
-                        boxShadow: [
-                          BoxShadow(
-                              color: const Color(0x29000000),
-                              offset: Offset(0, 3),
-                              blurRadius: 6,
-                              spreadRadius: 0)
-                        ],
-                        color: const Color(0xffffffff)),
-                    child: DropdownButton<City>(
-                      value: dropdownCityRegionList?.singleWhere(
-                          (element) => element.id == _currentAddress?.id,
-                          orElse: () {
-                        return dropdownCityRegionList?.first;
-                      }),
-                      underline: Container(
-                        height: 2,
-                      ),
-                      onChanged: (City newValue) {
-                        setState(() {
-                          _selectedDropdownRegionValue = newValue;
-                        });
-                      },
-                      items: dropdownCityRegionList
-                          ?.map<DropdownMenuItem<City>>((City value) {
-                        return DropdownMenuItem<City>(
-                          value: value,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * .7,
-                            child: Text(
-                              value.name,
-                              style: TextStyle(color: french_blue),
-                            ),
-                          ),
-                        );
-                      })?.toList(),
-                    )),
-                SizedBox(
-                  height: 14,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * .85,
-                  height: 55,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(26)),
-                      boxShadow: [
-                        BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
-                            spreadRadius: 0)
-                      ],
-                      color: const Color(0xffffffff)),
-                  child: TextFormField(
-                    controller: addressStreetController,
-                    cursorColor: Colors.black,
-                    keyboardType: TextInputType.name,
-                    decoration: new InputDecoration(
-                        errorStyle: TextStyle(height: 0),
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: _currentAddress?.streetName ??
-                            S.of(context).addressStreet,
-                        hintStyle: TextStyle(fontSize: 14)),
-                  ),
-                ),
-                SizedBox(
-                  height: 14,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * .85,
-                  height: 55,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(26)),
-                      boxShadow: [
-                        BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
-                            spreadRadius: 0)
-                      ],
-                      color: const Color(0xffffffff)),
-                  child: TextFormField(
-                    controller: addressBuildingNumberController,
-                    cursorColor: Colors.black,
-                    keyboardType: TextInputType.name,
-                    decoration: new InputDecoration(
-                        errorStyle: TextStyle(height: 0),
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: _currentAddress?.buildingNumber ??
-                            S.of(context).addressBuildingNumber,
-                        hintStyle: TextStyle(fontSize: 14)),
-                  ),
-                ),
-                SizedBox(
-                  height: 14,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * .85,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          height: 45,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(24)),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: const Color(0x29000000),
-                                    offset: Offset(0, 3),
-                                    blurRadius: 6,
-                                    spreadRadius: 0)
-                              ],
-                              color: const Color(0xffffffff)),
-                          child: TextFormField(
-                            controller: addressFloorNumberController,
-                            cursorColor: Colors.black,
-                            keyboardType: TextInputType.number,
-                            decoration: new InputDecoration(
-                              errorStyle: TextStyle(height: 0),
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              contentPadding: EdgeInsets.only(
-                                  left: 15, bottom: 11, top: 11, right: 15),
-                              hintText: _currentAddress?.floorNumber ??
-                                  S.of(context).AddressFloorNumber,
-                              hintStyle: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 32.0),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * .20,
-                          height: 45,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(24)),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: const Color(0x29000000),
-                                    offset: Offset(0, 3),
-                                    blurRadius: 6,
-                                    spreadRadius: 0)
-                              ],
-                              color: const Color(0xffffffff)),
-                          child: TextFormField(
-                            controller: addressApartmentNumberController,
-                            keyboardType: TextInputType.number,
-                            decoration: new InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.only(
-                                    left: 15, bottom: 11, top: 11, right: 15),
-                                hintText: _currentAddress?.apartmentNumber ??
-                                    S.current.apartmentNumber),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: 32,
             ),
             Container(
+              width: MediaQuery.of(context).size.width * .85,
+              height: 55,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(26)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: const Color(0x29000000),
+                        offset: Offset(0, 3),
+                        blurRadius: 6,
+                        spreadRadius: 0)
+                  ],
+                  color: const Color(0xffffffff)),
+              child: TextFormField(
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.name,
+                controller: addressNameController,
+                decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 11, right: 15),
+                    hintText: (widget.currentAddress != null)
+                        ? widget.currentAddress.title
+                        : S.of(context).addressName,
+                    hintStyle: TextStyle(fontSize: 14)),
+              ),
+            ),
+            SizedBox(
+              height: 14,
+            ),
+            Container(
+                width: MediaQuery.of(context).size.width * .85,
+                height: 55,
+                alignment: Alignment.centerRight,
+                padding: EdgeInsets.symmetric(horizontal: 14),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(26)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: const Color(0x29000000),
+                          offset: Offset(0, 3),
+                          blurRadius: 6,
+                          spreadRadius: 0)
+                    ],
+                    color: const Color(0xffffffff)),
+                child: DropdownButton<City>(
+                  value: dropdownCityList?.first,
+                  underline: Container(
+                    height: 2,
+                  ),
+                  onChanged: (City newValue) {
+                    setState(() {
+                      _selectedDropdownCityValue = newValue;
+                    });
+                  },
+                  items: dropdownCityList
+                      ?.map<DropdownMenuItem<City>>((City value) {
+                    return DropdownMenuItem<City>(
+                      value: value,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .7,
+                        child: Text(
+                          value.name,
+                          style: TextStyle(color: french_blue),
+                        ),
+                      ),
+                    );
+                  })?.toList(),
+                )),
+            SizedBox(
+              height: 14,
+            ),
+            Container(
+                width: MediaQuery.of(context).size.width * .85,
+                height: 55,
+                alignment: Alignment.centerRight,
+                padding: EdgeInsets.symmetric(horizontal: 14),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(26)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: const Color(0x29000000),
+                          offset: Offset(0, 3),
+                          blurRadius: 6,
+                          spreadRadius: 0)
+                    ],
+                    color: const Color(0xffffffff)),
+                child: DropdownButton<City>(
+                  value: dropdownCityRegionList?.singleWhere(
+                      (element) => element.id == widget.currentAddress?.id,
+                      orElse: () {
+                    return dropdownCityRegionList?.first;
+                  }),
+                  underline: Container(
+                    height: 2,
+                  ),
+                  onChanged: (City newValue) {
+                    setState(() {
+                      _selectedDropdownRegionValue = newValue;
+                    });
+                  },
+                  items: dropdownCityRegionList
+                      ?.map<DropdownMenuItem<City>>((City value) {
+                    return DropdownMenuItem<City>(
+                      value: value,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .7,
+                        child: Text(
+                          value.name,
+                          style: TextStyle(color: french_blue),
+                        ),
+                      ),
+                    );
+                  })?.toList(),
+                )),
+            SizedBox(
+              height: 14,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * .85,
+              height: 55,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(26)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: const Color(0x29000000),
+                        offset: Offset(0, 3),
+                        blurRadius: 6,
+                        spreadRadius: 0)
+                  ],
+                  color: const Color(0xffffffff)),
+              child: TextFormField(
+                controller: addressStreetController,
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.name,
+                decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 11, right: 15),
+                    hintText: widget.currentAddress?.streetName ??
+                        S.of(context).addressStreet,
+                    hintStyle: TextStyle(fontSize: 14)),
+              ),
+            ),
+            SizedBox(
+              height: 14,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * .85,
+              height: 55,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(26)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: const Color(0x29000000),
+                        offset: Offset(0, 3),
+                        blurRadius: 6,
+                        spreadRadius: 0)
+                  ],
+                  color: const Color(0xffffffff)),
+              child: TextFormField(
+                controller: addressBuildingNumberController,
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.name,
+                decoration: new InputDecoration(
+                    errorStyle: TextStyle(height: 0),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 11, top: 11, right: 15),
+                    hintText: widget.currentAddress?.buildingNumber ??
+                        S.of(context).addressBuildingNumber,
+                    hintStyle: TextStyle(fontSize: 14)),
+              ),
+            ),
+            SizedBox(
+              height: 14,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * .85,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      height: 45,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          boxShadow: [
+                            BoxShadow(
+                                color: const Color(0x29000000),
+                                offset: Offset(0, 3),
+                                blurRadius: 6,
+                                spreadRadius: 0)
+                          ],
+                          color: const Color(0xffffffff)),
+                      child: TextFormField(
+                        controller: addressFloorNumberController,
+                        cursorColor: Colors.black,
+                        keyboardType: TextInputType.number,
+                        decoration: new InputDecoration(
+                          errorStyle: TextStyle(height: 0),
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          contentPadding: EdgeInsets.only(
+                              left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: widget.currentAddress?.floorNumber ??
+                              S.of(context).AddressFloorNumber,
+                          hintStyle: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 32.0),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * .20,
+                      height: 45,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          boxShadow: [
+                            BoxShadow(
+                                color: const Color(0x29000000),
+                                offset: Offset(0, 3),
+                                blurRadius: 6,
+                                spreadRadius: 0)
+                          ],
+                          color: const Color(0xffffffff)),
+                      child: TextFormField(
+                        controller: addressApartmentNumberController,
+                        keyboardType: TextInputType.number,
+                        decoration: new InputDecoration(
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: 15, bottom: 11, top: 11, right: 15),
+                            hintText: widget.currentAddress?.apartmentNumber ??
+                                S.current.apartmentNumber),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: 14.0),
+            Container(
+                width: MediaQuery.of(context).size.width * .85,
+                height: MediaQuery.of(context).size.width * .4,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    border: Border.all(color: boring_green, width: 0.5),
+                    color: const Color(0xffe7f5e8))),
+            SizedBox(height: 14.0),
+            Container(
               child: customActionButton(
-                  width: MediaQuery.of(context).size.width * .77,
+                  width: MediaQuery.of(context).size.width * .85,
                   height: 45,
                   btnColor: boring_green,
                   textColor: Color(0xffffffff),
                   btnText: S.current.apply,
                   onPressed: () {
-                    if (_currentAddress != null) {
+                    if (widget.currentAddress != null) {
                       updateNewAddress();
                     } else {
                       submitNewAddress();
@@ -421,7 +423,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
         apartmentNumber: addressApartmentNumberController.value.text,
         buildingNumber: addressBuildingNumberController.value.text,
         onSuccess: (response) {
-          showInfo(S.current.addressCreatedSuccessfully);
+          showSuccesses(context, S.current.addressCreatedSuccessfully);
           Navigator.of(context).pop();
         },
         onError: (errorResponse) {
@@ -434,28 +436,28 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
       print("addressNameController ---> is null");
     }
     _addressModel.editAddress(
-        id: _currentAddress.id,
+        id: widget.currentAddress.id,
         title: addressNameController.value.text.isNotEmpty
             ? addressNameController.value.text
-            : _currentAddress.title,
+            : widget.currentAddress.title,
         streetName: addressStreetController.value.text.isNotEmpty
             ? addressStreetController.value.text
-            : _currentAddress.streetName,
+            : widget.currentAddress.streetName,
         cityId: (_selectedDropdownCityValue != null)
             ? _selectedDropdownRegionValue.id
             : dropdownCityRegionList?.first?.id ?? 0,
         floor: addressFloorNumberController.value.text.isNotEmpty
             ? addressFloorNumberController.value.text
-            : _currentAddress.floorNumber.toString(),
+            : widget.currentAddress.floorNumber.toString(),
         apartmentNumber: addressApartmentNumberController.value.text.isNotEmpty
             ? addressApartmentNumberController.value.text
-            : _currentAddress.apartmentNumber.toString(),
+            : widget.currentAddress.apartmentNumber.toString(),
         buildingNumber: addressBuildingNumberController.value.text.isNotEmpty
             ? addressBuildingNumberController.value.text
-            : _currentAddress.buildingNumber,
+            : widget.currentAddress.buildingNumber,
         onSuccess: (response) {
-          showInfo(S.current.addressUpdatedSuccessfully);
-          Navigator.of(context).pop();
+          showSuccesses(context, S.current.addressUpdatedSuccessfully);
+          widget.onAddNewAddress();
         },
         onError: (errorResponse) {
           showError(errorResponse);
