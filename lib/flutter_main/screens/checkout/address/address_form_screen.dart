@@ -158,7 +158,8 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                           ),
                         );
                       })?.toList(),
-                    )),
+                    )
+                ),
                 SizedBox(
                   height: 14,
                 ),

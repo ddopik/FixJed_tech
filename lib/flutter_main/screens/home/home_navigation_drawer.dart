@@ -31,95 +31,167 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      child: Column(
         children: <Widget>[
           createDrawerHeader(),
-          GestureDetector(
-            child: Container(
-              margin: EdgeInsets.all(14.0),
-              child: Text(
-                S.of(context).main,
-                style:
-                    TextStyle(color: boring_green, fontWeight: FontWeight.w600),
-              ),
-              alignment: Alignment.center,
+          Expanded(
+              child: Container(
+            decoration: BoxDecoration(
+                color: Color(0xfff5f4f4),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(28.0),
+                    topLeft: Radius.circular(28.0))),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 8,
+                ),
+                GestureDetector(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: 14.0, bottom: 14.0, left: 34, right: 34),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      S.of(context).main,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: boring_green,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "Tajawal",
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16.7),
+                    ),
+                  ),
+                  onTap: () {
+                    widget.onNavigateClick(CurrentHomeSelection.HOME);
+                    Navigator.pop(context);
+                  },
+                ),
+                Divider(),
+                GestureDetector(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: 14.0, bottom: 14.0, left: 34, right: 34),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      S.of(context).myServices,
+                      style: TextStyle(
+                          color: boring_green,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "Tajawal",
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16.7),
+                    ),
+                  ),
+                  onTap: () {
+                    widget.onNavigateClick(CurrentHomeSelection.TRANSACTION);
+                    Navigator.pop(context);
+                  },
+                ),
+                Divider(),
+                GestureDetector(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: 14.0, bottom: 14.0, left: 34, right: 34),
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          S.of(context).notification,
+                          style: TextStyle(
+                              color: boring_green,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "Tajawal",
+                              fontStyle: FontStyle.normal,
+                              fontSize: 16.7),
+                        ),
+                      ),
+                      // Ellipse 16
+                      Row(
+                        children: [
+                          Container(
+                              width: 24,
+                              height: 24,
+                              padding: EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(24)),
+                              child: Center(
+                                child: // 2
+                                    Text("2",
+                                        style: const TextStyle(
+                                            color: const Color(0xffffffff),
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: "Futura",
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 12.0),
+                                        textAlign: TextAlign.left),
+                              )),
+                          SizedBox(
+                            width: 24,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  onTap: () {
+                    widget.onNavigateClick(CurrentHomeSelection.NOTIFICATION);
+                    Navigator.pop(context);
+                  },
+                ),
+                Divider(),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: 14.0, bottom: 14.0, left: 34, right: 34),
+                  alignment: Alignment.centerRight,
+                  child: Text(S.of(context).setting,
+                      style: TextStyle(
+                          color: boring_green, fontWeight: FontWeight.w600)),
+                ),
+                Divider(),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: 14.0, bottom: 14.0, left: 34, right: 34),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    S.of(context).help,
+                    style: const TextStyle(
+                        color: boring_green,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "Tajawal",
+                        fontStyle: FontStyle.normal,
+                        fontSize: 16.7),
+                  ),
+                ),
+                Divider(),
+                GestureDetector(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: 14.0, bottom: 14.0, left: 34, right: 34),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                        Provider.of<AppModel>(context).isUserLoggedIn()
+                            ? S.of(context).signOut
+                            : S.of(context).login,
+                        style: TextStyle(
+                            color: boring_green, fontWeight: FontWeight.w600)),
+                  ),
+                  onTap: () {
+                    if (Provider.of<AppModel>(context, listen: false)
+                        .isUserLoggedIn()) {
+                      Provider.of<AppModel>(context, listen: false)
+                          .logOutUser();
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          Routes.HOME, (route) => false);
+                    } else {
+                      Navigator.pushNamed(context, Routes.LOGIN);
+                    }
+                  },
+                ),
+              ],
             ),
-            onTap: () {
-              widget.onNavigateClick(CurrentHomeSelection.HOME);
-              Navigator.pop(context);
-            },
-          ),
-          Divider(),
-          GestureDetector(
-            child: Container(
-              margin: EdgeInsets.all(14.0),
-              child: Text(
-                S.of(context).myServices,
-                style:
-                    TextStyle(color: boring_green, fontWeight: FontWeight.w600),
-              ),
-              alignment: Alignment.center,
-            ),
-            onTap: () {
-              widget.onNavigateClick(CurrentHomeSelection.TRANSACTION);
-              Navigator.pop(context);
-            },
-          ),
-          Divider(),
-          GestureDetector(
-            child: Container(
-              margin: EdgeInsets.all(14.0),
-              child: Text(S.of(context).notification,
-                  style: TextStyle(
-                      color: boring_green, fontWeight: FontWeight.w600)),
-              alignment: Alignment.center,
-            ),
-            onTap: () {
-              widget.onNavigateClick(CurrentHomeSelection.NOTIFICATION);
-              Navigator.pop(context);
-            },
-          ),
-          Divider(),
-          Container(
-            margin: EdgeInsets.all(14.0),
-            child: Text(S.of(context).setting,
-                style: TextStyle(
-                    color: boring_green, fontWeight: FontWeight.w600)),
-            alignment: Alignment.center,
-          ),
-          Divider(),
-          Container(
-            margin: EdgeInsets.all(14.0),
-            child: Text(S.of(context).help,
-                style: TextStyle(
-                    color: boring_green, fontWeight: FontWeight.w600)),
-            alignment: Alignment.center,
-          ),
-          Divider(),
-          GestureDetector(
-            child: Container(
-              margin: EdgeInsets.all(14.0),
-              child: Text(
-                  Provider.of<AppModel>(context).isUserLoggedIn()
-                      ? S.of(context).signOut
-                      : S.of(context).login,
-                  style: TextStyle(
-                      color: boring_green, fontWeight: FontWeight.w600)),
-              alignment: Alignment.center,
-            ),
-            onTap: () {
-              if (Provider.of<AppModel>(context, listen: false)
-                  .isUserLoggedIn()) {
-                Provider.of<AppModel>(context, listen: false).logOutUser();
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(Routes.HOME, (route) => false);
-              } else {
-                Navigator.pushNamed(context, Routes.LOGIN);
-              }
-            },
-          ),
-          Divider(),
+          ))
         ],
       ),
     );
@@ -129,6 +201,10 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
     return DrawerHeader(
         margin: EdgeInsets.zero,
         padding: EdgeInsets.zero,
+        decoration: BoxDecoration(
+            border: Border.all(
+          color: Colors.white,
+        )),
         child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -157,10 +233,11 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                             child: Text(
                               Provider.of<AppModel>(context).getUserName(),
                               style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w900,
-                                fontStyle: FontStyle.normal,
+                                fontSize: 16,
+                                color: const Color(0xff403e3e),
+                                fontWeight: FontWeight.w700,
                                 fontFamily: "Tajawal",
+                                fontStyle: FontStyle.normal,
                               ),
                             ),
                           ),
@@ -207,22 +284,6 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                 width: 8.0,
               ),
             ]));
-  }
-
-  Widget createDrawerBodyItem(
-      {IconData icon, String text, GestureTapCallback onTap}) {
-    return ListTile(
-      title: Row(
-        children: <Widget>[
-          Icon(icon),
-          Padding(
-            padding: EdgeInsets.only(left: 8.0),
-            child: Text(text),
-          )
-        ],
-      ),
-      onTap: onTap,
-    );
   }
 }
 

@@ -46,18 +46,7 @@ class MainCategoryListViewState extends State<MainCategoryListView> {
       },
     );
 
-    // final newItems =
-    //     await widget.repository.getArticleListPage(number: pageKey, size: 8);
-    //
-    // /// todo get object contain list of items and if it is last page;
-    // final isLastPage = newPage.isLastPage(); // todo
-    //
-    // if (isLastPage) {
-    //   _pagingController.appendLastPage(newItems);
-    // } else {
-    //   final nextPageKey = pageKey + 1;
-    //   _pagingController.appendPage(newItems, nextPageKey);
-    // }
+
   }
 
   @override
@@ -96,28 +85,5 @@ class MainCategoryListViewState extends State<MainCategoryListView> {
       ),
     );
   }
-// @override
-// Widget build(BuildContext context) {
-//   return Padding(
-//       padding: const EdgeInsets.all(10.0),
-//       child: GridView.count(
-//           crossAxisCount: 3,
-//           childAspectRatio: .7,
-//           padding: const EdgeInsets.all(4.0),
-//           mainAxisSpacing: 0.0,
-//           crossAxisSpacing: 0.0,
-//           children: [
-//             ...MainCategoryModel().menuList.map((e) {
-//               return InkWell(
-//                 child: HomeCategoryItem(e),
-//                 onTap: () {
-//                   print("HomeCategoryItem OnTap ---> " +
-//                       e.serviceId.toString());
-//                   Navigator.of(context)
-//                       .pushNamed(Routes.SERVICE_FEATURES, arguments: e);
-//                 },
-//               );
-//             })
-//           ]));
-// }
+
 }

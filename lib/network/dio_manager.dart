@@ -17,7 +17,7 @@ class DIOManager {
   Dio get _dio {
     final Dio dio = Dio();
 
-    dio.options.baseUrl = "http://34.193.99.151:8080/fix-jed";
+    dio.options.baseUrl = "http://34.193.99.151:8080/fix-jed-back-end";
     dio.options.headers = {
       "Accept-Language": currentLanguage,
     };

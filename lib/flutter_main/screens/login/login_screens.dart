@@ -216,12 +216,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   validateUser() async {
     print("userMail --->" + _userNameController.value.text.trim());
+    _loginUser();
     if (_userNameController.value.text.isEmpty ||
         !isEmail(_userNameController.value.text.trim())) {
-      showToast(S.of(context).invalidEmail);
+      showError(S.of(context).invalidEmail);
     } else if (_passwordController.value.text == null ||
         _passwordController.value.text.length < 6) {
-      showToast(S.of(context).invalidPassword);
+      showError(S.of(context).invalidPassword);
     } else {
       _loginUser();
     }
@@ -264,7 +265,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.of(context).pushReplacementNamed(Routes.HOME);
       },
       onError: (response) {
-        showError(response);
+        showError("--" + response);
         dismissLoading();
       },
       userName: _userNameController.value.text.trim(),
