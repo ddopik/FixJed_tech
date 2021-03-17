@@ -215,6 +215,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   validateUser() async {
+
+
     print("userMail --->" + _userNameController.value.text.trim());
     _loginUser();
     if (_userNameController.value.text.isEmpty ||

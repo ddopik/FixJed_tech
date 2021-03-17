@@ -27,7 +27,6 @@ class TotalAddedServicesState extends State<SubServiceItem> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25.0),
         ),
-        elevation: 2.0,
         child: Container(
           width: MediaQuery.of(context).size.width * .8,
           height: MediaQuery.of(context).size.height * .17,

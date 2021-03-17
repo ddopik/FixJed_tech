@@ -78,7 +78,7 @@ class MainCategoryListViewState extends State<MainCategoryListView> {
         padding: const EdgeInsets.all(16),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          childAspectRatio: .7,
+          childAspectRatio: .90,
           mainAxisSpacing: 0.0,
           crossAxisSpacing: 0.0,
         ),

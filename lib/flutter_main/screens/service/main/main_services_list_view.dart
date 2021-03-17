@@ -8,7 +8,7 @@ import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
- import 'service_feature_item_view.dart';
+import 'service_feature_item_view.dart';
 
 // ignore: must_be_immutable
 class MainServicesListView extends StatefulWidget {
@@ -91,11 +91,10 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * .9,
-                  height: MediaQuery.of(context).size.height * .15,
+                  height: MediaQuery.of(context).size.height * .12,
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -158,8 +157,9 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
   }
 
   renderServiceList() {
-    return PagedListView.separated(
-      itemExtent: 300.0,
+    return Container(
+        child: PagedListView.separated(
+
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<FixJedCategory>(
         itemBuilder: (context, service, index) {
@@ -182,10 +182,10 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
         ),
         noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
       ),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 16),
       separatorBuilder: (context, index) => const SizedBox(
         height: 16,
       ),
-    );
+    ));
   }
 }

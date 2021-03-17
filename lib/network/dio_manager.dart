@@ -12,9 +12,7 @@ class DIOManager {
   static final DIOManager _instance = DIOManager._dio();
 
   factory DIOManager() {
-    _instance._dio.interceptors.add(DioCacheManager(
-            CacheConfig(baseUrl: "http://34.193.99.151:8080/fix-jed-back-end"))
-        .interceptor);
+
     return _instance;
   }
 
@@ -27,6 +25,10 @@ class DIOManager {
     dio.options.headers = {
       "Accept-Language": currentLanguage,
     };
+    // _instance._dio.interceptors.add(DioCacheManager(
+    //     CacheConfig(baseUrl: "http://34.193.99.151:8080/fix-jed-back-end/"))
+    //     .interceptor);
+
     print("Header AcceptedLanguage --- >" + currentLanguage.toString());
     if (PrefManager().getUserToken() != null) {
       dio.options.headers = {

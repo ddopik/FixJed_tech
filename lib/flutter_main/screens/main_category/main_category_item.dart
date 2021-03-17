@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
@@ -11,10 +12,10 @@ class HomeCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10.0),
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Card(
             shape: RoundedRectangleBorder(
@@ -26,13 +27,13 @@ class HomeCategoryItem extends StatelessWidget {
                 child: CustomImageLoader.image(
                     url: _fixJidCategory.imageUrl,
                     width: 80,
-                    height: 65,
+                    height: 80,
                     fit: BoxFit.contain),
               ),
             ),
           ),
           Container(
-            child: Text(
+            child: AutoSizeText(
               _fixJidCategory.name,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

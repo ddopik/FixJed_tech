@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           centerTitle: true,
           title: Container(
             alignment: Alignment.center,
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -91,8 +92,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Container(
               margin: EdgeInsets.only(top: 2.0),
               decoration: BoxDecoration(
+                  color: Color(0xFFF5F4F4),
                   image: DecorationImage(
                       image: AssetImage("assets/images/background_2.png"),
+
                       fit: BoxFit.cover),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(24.0),
