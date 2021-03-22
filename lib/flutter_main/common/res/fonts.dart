@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 /// Google fonts constant setting: https://fonts.google.com/
 TextTheme kTextTheme(theme, String language) {
   switch (language) {
-    case 'vi':
+    case 'en':
       return GoogleFonts.montserratTextTheme(theme);
     case 'ar':
       return GoogleFonts.ralewayTextTheme(theme);
@@ -15,7 +15,7 @@ TextTheme kTextTheme(theme, String language) {
 
 TextTheme kHeadlineTheme(theme, [language = 'en']) {
   switch (language) {
-    case 'vi':
+    case 'en':
       return GoogleFonts.montserratTextTheme(theme);
     case 'ar':
       return GoogleFonts.ralewayTextTheme(theme);

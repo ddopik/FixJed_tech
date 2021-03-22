@@ -21,7 +21,6 @@ class ServiceFeaturesScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-
         decoration: BoxDecoration(
             color: Color(0xFFF5F4F4),
             image: DecorationImage(

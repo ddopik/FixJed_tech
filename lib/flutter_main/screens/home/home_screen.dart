@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
+import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/main_category_list_view.dart';
 import 'package:flutter_base_app/flutter_main/screens/notification/notification_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_screen.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 
 import 'home_navigation_drawer.dart';
 
@@ -37,33 +40,29 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0.0,
           centerTitle: true,
           title: Container(
-            alignment: Alignment.center,
-
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Opacity(
-                  opacity: 0.800000011920929,
-                  child: Text("Delivering to",
+              alignment: Alignment.bottomCenter,
+              child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(children: [
+                    TextSpan(
+                        style: TextStyle(
+                            color: boring_green,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Raleway",
+                            fontStyle: FontStyle.normal,
+                            fontSize: text_size_1),
+                        text: S.current.deliveringTo),
+                    TextSpan(text: " \n "),
+                    TextSpan(
                       style: const TextStyle(
-                        color: boring_green,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Raleway",
-                        fontStyle: FontStyle.normal,
-                      ),
-                      textAlign: TextAlign.left),
-                ),
-                Text("5th settlements",
-                    style: const TextStyle(
-                      color: french_blue,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: "Raleway",
-                      fontStyle: FontStyle.normal,
-                    ),
-                    textAlign: TextAlign.left)
-              ],
-            ),
-          ),
+                          color: french_blue,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Raleway",
+                          fontStyle: FontStyle.normal,
+                          fontSize: text_size_1),
+                      text: S.current.fixedAddressOne,
+                    )
+                  ]))),
           actions: <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -90,12 +89,13 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Container(
           color: Colors.white,
           child: Container(
-              margin: EdgeInsets.only(top: 2.0),
+              margin: EdgeInsets.only(top: form_field_space),
+              padding:
+                  EdgeInsets.symmetric(horizontal: outer_boundary_field_space),
               decoration: BoxDecoration(
                   color: Color(0xFFF5F4F4),
                   image: DecorationImage(
                       image: AssetImage("assets/images/background_2.png"),
-
                       fit: BoxFit.cover),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(24.0),
@@ -122,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
       default:
         {
-          return MainCategoryListView();
+          return TransactionScreen();
         }
     }
   }

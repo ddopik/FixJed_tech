@@ -23,16 +23,17 @@ class HomeCategoryItem extends StatelessWidget {
             elevation: 5,
             child: ClipOval(
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(14.0),
                 child: CustomImageLoader.image(
                     url: _fixJidCategory.imageUrl,
-                    width: 80,
-                    height: 80,
+                    width: 75,
+                    height: 75,
                     fit: BoxFit.contain),
               ),
             ),
           ),
           Container(
+
             child: AutoSizeText(
               _fixJidCategory.name,
               overflow: TextOverflow.ellipsis,

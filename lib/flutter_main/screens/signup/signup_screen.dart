@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/model/ErrorResponse.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
@@ -155,7 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: form_field_space),
                 //
                 Container(
                   width: mainButtonsWidth,
@@ -194,7 +195,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: form_field_space),
                 //
                 Container(
                   width: mainButtonsWidth,
@@ -233,7 +234,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: form_field_space),
                 //
                 Container(
                   width: mainButtonsWidth,
@@ -272,7 +273,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: form_field_space),
                 Container(
                   width: mainButtonsWidth,
                   height: 45,
@@ -312,7 +313,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return null;
                       }),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: form_field_space),
                 //
 
                 Row(
@@ -359,7 +360,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             return null;
                           }),
                     ),
-                    SizedBox(width: 12.0),
+                    SizedBox(width: form_field_space),
                     Container(
                       width: MediaQuery.of(context).size.width * .20,
                       height: 45,
@@ -513,8 +514,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     } else if (_passwordController.value.text.length < 6) {
       showError(S.of(context).passwordErrorLength);
       return false;
-    }
-    else if (_passwordController.value.text.contains(" ")) {
+    } else if (_passwordController.value.text.contains(" ")) {
       showError(S.of(context).passwordSpaceError);
       return false;
     }

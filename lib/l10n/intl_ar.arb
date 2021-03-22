@@ -19,8 +19,8 @@
   "cartService": "خدمه للعربه",
   "email": "البريد الااكتروني",
   "password": "كلمه المرور",
-  "forgotPassword": "نسيت كلمه المرور",
-  "doNotHaveAccount": "لا تملك حساب ؟",
+  "forgotPassword": "نسيت كلمه المرور؟",
+  "doNotHaveAccount": "لا تملك حساب؟",
   "alreadyHaveAccount": "لديك حساب بالفعل ؟ ",
   "invalidPassword": "كلمه مرور غير صحيحه",
   "invalidEmail": "بريد الكتروني غير صحيح",
@@ -39,7 +39,7 @@
   "egp": "جنيه مصري",
   "youHaveRemoved": "لقد قمت بآزاله",
   "createNewAccount": "انشاء حساب جديد",
-  "createAccount": "انشئ حساب",
+  "createAccount": "انشئ حساب جديد",
   "invalidUserName": "اسم مستخدم غير صحيح",
   "invalidFirstName": "الاسم الاول غير صحيح",
   "invalidLastName": "الاسم الاخير غير صحيح",
@@ -103,5 +103,9 @@
   "editPhone": "تعديل رقم الهاتف",
   "addNewService": "اضف خدمة اخري ",
   "cancel": "الغاء",
-  "cancelOrderNote": " يمكنك إلغاء ملف الطلب في غضون ساعتين"
+  "cancelOrderNote": " يمكنك إلغاء ملف الطلب في غضون ساعتين",
+  "services": "الخدمات",
+  "fixedAddressOne": "التجمع الخامس",
+  "deliveringTo": "ارسال الي",
+  "homeTitleDesc":"اطلب الخدمات التي تريدها لتصل إلى منزلك في اسرع وقت"
 }

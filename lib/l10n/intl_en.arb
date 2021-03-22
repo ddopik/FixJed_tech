@@ -104,5 +104,9 @@
   "editPhone": "Edit phoneِ",
   "addNewService": "Add new Service",
   "cancel": "Cancel",
-  "cancelOrderNote": "You can cancel the application file within two hours"
+  "cancelOrderNote": "You can cancel the application file within two hours",
+  "services": "services",
+  "fixedAddressOne": "5th settlements",
+  "deliveringTo": "Delivering to",
+  "homeTitleDesc": "Request the services you want to reach your home in the fastest time"
 }

@@ -3,6 +3,8 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
+import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
 import 'package:flutter_base_app/flutter_main/screens/main_category/model/fixjid_category.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/provider/product_model.dart';
@@ -69,12 +71,6 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
   }
 
   @override
-  void dispose() {
-    _pagingController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     // print("MainFeaturesListView ---> build() " + widget.category.name.toString() + "   " + widget.category.id.toString());
     return RefreshIndicator(
@@ -87,7 +83,7 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.all(12.0),
+            margin: EdgeInsets.all(inner_boundary_field_space),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,9 +94,6 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      SizedBox(
-                        width: 28,
-                      ),
                       Container(
                         child: CustomImageLoader.image(
                             url: widget.fixJidCategory.imageUrl,
@@ -109,16 +102,13 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                             height: MediaQuery.of(context).size.height * .3),
                       ),
                       SizedBox(
-                        width: 24,
+                        width: form_field_space,
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            height: 12.0,
-                          ),
                           Text(
                             widget.fixJidCategory.name,
                             style: TextStyle(
@@ -126,25 +116,27 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                                 fontWeight: FontWeight.w700,
                                 fontFamily: "Tajawal",
                                 fontStyle: FontStyle.normal,
-                                fontSize: 16.0),
+                                fontSize: text_head_size_1),
                           ),
                           SizedBox(
-                            height: 12.0,
+                            height: form_field_space_min,
                           ),
                           Text(
-                            "description here",
+                            widget.fixJidCategory.description ??
+                                "description here",
                             style: TextStyle(
                                 color: Color(0xd9275597),
                                 fontWeight: FontWeight.w400,
                                 fontFamily: "Tajawal",
                                 fontStyle: FontStyle.normal,
-                                fontSize: 14.0),
+                                fontSize: text_size_1),
                           )
                         ],
                       )
                     ],
                   ),
                 ),
+                SizedBox(height: form_field_space),
                 LimitedBox(
                     maxHeight: MediaQuery.of(context).size.height * .67,
                     child: renderServiceList()),
@@ -159,7 +151,6 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
   renderServiceList() {
     return Container(
         child: PagedListView.separated(
-
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<FixJedCategory>(
         itemBuilder: (context, service, index) {
@@ -182,10 +173,15 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
         ),
         noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
       ),
-      padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 16),
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 16,
+      separatorBuilder: (context, index) => SizedBox(
+        height: list_separator_space,
       ),
     ));
+  }
+
+  @override
+  void dispose() {
+    _pagingController.dispose();
+    super.dispose();
   }
 }

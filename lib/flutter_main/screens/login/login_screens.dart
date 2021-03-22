@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -102,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           //
-          SizedBox(height: 16.0),
+          SizedBox(height: form_field_space),
           Container(
             width: MediaQuery.of(context).size.width * .70,
             height: 45,
@@ -134,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           //
-          SizedBox(height: 16.0),
+          SizedBox(height: form_field_space),
           // Rectangle 85
           ////////////////////
           InkWell(
@@ -166,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
 ////////////////////////////////
           // forgot password
-          SizedBox(height: 6.0),
+          SizedBox(height: 28.0),
           GestureDetector(
             child: Text(S.of(context).forgotPassword,
                 style: const TextStyle(
@@ -188,13 +189,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                      style: const TextStyle(
-                          color: const Color(0xffffffff),
+                      style:  TextStyle(
+                          color:  Color(0xffffffff),
                           fontWeight: FontWeight.w400,
                           fontFamily: "Raleway",
                           fontStyle: FontStyle.normal,
                           fontSize: 16),
                       text: S.of(context).doNotHaveAccount),
+                  TextSpan(text: "   "),
                   TextSpan(
                     style: const TextStyle(
                         color: boring_green,
@@ -203,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontStyle: FontStyle.normal,
                         decoration: TextDecoration.underline,
                         fontSize: 18),
-                    text: "  " + S.of(context).signUp,
+                    text: S.of(context).signUp,
                   )
                 ])),
               ),
@@ -215,8 +217,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   validateUser() async {
-
-
     print("userMail --->" + _userNameController.value.text.trim());
     _loginUser();
     if (_userNameController.value.text.isEmpty ||

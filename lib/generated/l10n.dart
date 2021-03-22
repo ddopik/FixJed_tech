@@ -1094,6 +1094,46 @@ class S {
       args: [],
     );
   }
+
+  /// `services`
+  String get services {
+    return Intl.message(
+      'services',
+      name: 'services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5th settlements`
+  String get fixedAddressOne {
+    return Intl.message(
+      '5th settlements',
+      name: 'fixedAddressOne',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivering to`
+  String get deliveringTo {
+    return Intl.message(
+      'Delivering to',
+      name: 'deliveringTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request the services you want to reach your home in the fastest time`
+  String get homeTitleDesc {
+    return Intl.message(
+      'Request the services you want to reach your home in the fastest time',
+      name: 'homeTitleDesc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

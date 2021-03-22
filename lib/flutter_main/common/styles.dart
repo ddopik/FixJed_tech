@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
-import 'fonts.dart';
+import 'res/fonts.dart';
 
 
 const kProductTitleStyleLarge =

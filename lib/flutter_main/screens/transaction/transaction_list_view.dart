@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/screens/transaction/provider/transaction_model.dart';
 import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_item_view.dart';
@@ -117,7 +118,7 @@ class _TransactionListViewState extends State<TransactionListView> {
       ),
       padding: const EdgeInsets.all(16),
       separatorBuilder: (context, index) => const SizedBox(
-        height: 16,
+        height: list_separator_space,
       ),
     );
   }
