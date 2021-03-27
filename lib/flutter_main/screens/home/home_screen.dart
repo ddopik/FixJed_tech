@@ -39,30 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           elevation: 0.0,
           centerTitle: true,
-          title: Container(
-              alignment: Alignment.bottomCenter,
-              child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(children: [
-                    TextSpan(
-                        style: TextStyle(
-                            color: boring_green,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Raleway",
-                            fontStyle: FontStyle.normal,
-                            fontSize: text_size_1),
-                        text: S.current.deliveringTo),
-                    TextSpan(text: " \n "),
-                    TextSpan(
-                      style: const TextStyle(
-                          color: french_blue,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Raleway",
-                          fontStyle: FontStyle.normal,
-                          fontSize: text_size_1),
-                      text: S.current.fixedAddressOne,
-                    )
-                  ]))),
+          title: getTitle(),
           actions: <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -89,7 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Container(
           color: Colors.white,
           child: Container(
-              margin: EdgeInsets.only(top: form_field_space),
               padding:
                   EdgeInsets.symmetric(horizontal: outer_boundary_field_space),
               decoration: BoxDecoration(
@@ -122,8 +98,85 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
       default:
         {
-          return TransactionScreen();
+          return MainCategoryListView();
         }
     }
+  }
+
+  Widget getTitle() {
+    switch (_currentDrawerSelection) {
+      case CurrentHomeSelection.HOME:
+        return Container(
+            alignment: Alignment.bottomCenter,
+            child: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(children: [
+                  TextSpan(
+                      style: TextStyle(
+                          color: boring_green,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Raleway",
+                          fontStyle: FontStyle.normal,
+                          fontSize: text_size_1),
+                      text: S.current.deliveringTo),
+                  TextSpan(text: " \n "),
+                  TextSpan(
+                    style: const TextStyle(
+                        color: french_blue,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "Raleway",
+                        fontStyle: FontStyle.normal,
+                        fontSize: text_size_1),
+                    text: S.current.fixedAddressOne,
+                  )
+                ])));
+      case CurrentHomeSelection.TRANSACTION:
+        return titleView(S.current.myServices);
+        break;
+      case CurrentHomeSelection.NOTIFICATION:
+        return titleView(S.current.notification);
+        break;
+      case CurrentHomeSelection.PROFILE:
+        return titleView(S.current.profile);
+        break;
+      default:
+        {
+          return Container(
+              alignment: Alignment.bottomCenter,
+              child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(children: [
+                    TextSpan(
+                        style: TextStyle(
+                            color: boring_green,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Raleway",
+                            fontStyle: FontStyle.normal,
+                            fontSize: text_size_1),
+                        text: S.current.deliveringTo),
+                    TextSpan(text: " \n "),
+                    TextSpan(
+                      style: const TextStyle(
+                          color: french_blue,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Raleway",
+                          fontStyle: FontStyle.normal,
+                          fontSize: text_size_1),
+                      text: S.current.fixedAddressOne,
+                    )
+                  ])));
+        }
+    }
+  }
+
+  titleView(txt) {
+    return new Text(txt,
+        style: TextStyle(
+          fontFamily: 'Tajawal',
+          color: Color(0xd9275597),
+          fontSize: 22,
+          fontWeight: FontWeight.w700,
+          fontStyle: FontStyle.normal,
+        ));
   }
 }

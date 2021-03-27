@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_image_loader.dart';
 import 'package:flutter_base_app/flutter_main/screens/profile/model/user_profile_response.dart';
@@ -72,33 +73,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(
                   height: 32,
                 ),
-                InkWell(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * .85,
-                    height: 45,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(24)),
-                        boxShadow: [
-                          BoxShadow(
-                              color: const Color(0x29000000),
-                              offset: Offset(0, 3),
-                              blurRadius: 6,
-                              spreadRadius: 0)
-                        ],
-                        color: boring_green),
-                    child: InkWell(
-                      child: Text(
-                        S.of(context).save,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                  // onTap: () => updateUserData(),
-                ),
+                // InkWell(
+                //   child: Container(
+                //     width: MediaQuery.of(context).size.width * .85,
+                //     height: 45,
+                //     alignment: Alignment.center,
+                //     decoration: BoxDecoration(
+                //         borderRadius: BorderRadius.all(Radius.circular(24)),
+                //         boxShadow: [
+                //           BoxShadow(
+                //               color: const Color(0x29000000),
+                //               offset: Offset(0, 3),
+                //               blurRadius: 6,
+                //               spreadRadius: 0)
+                //         ],
+                //         color: boring_green),
+                //     child: InkWell(
+                //       child: Text(
+                //         S.of(context).save,
+                //           style: TextStyle(
+                //             fontFamily: 'Tajawal',
+                //             color: Color(0xffffffff),
+                //             fontSize: 18,
+                //             fontWeight: FontWeight.w700,
+                //             fontStyle: FontStyle.normal,
+                //
+                //
+                //           )
+                //       ),
+                //     ),
+                //   ),
+                //   // onTap: () => updateUserData(),
+                // ),
                 SizedBox(
                   height: 32,
                 ),
@@ -126,12 +132,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Expanded(
                   child: Text(S.of(context).personalInfo,
-                      style: const TextStyle(
-                          color: french_blue,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: "Raleway",
-                          fontStyle: FontStyle.normal,
-                          fontSize: 24.0),
+                      style: TextStyle(
+                        fontFamily: 'Tajawal',
+                        color: french_blue,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+
+
+                      ),
                       textAlign: TextAlign.start),
                 )
               ],
@@ -145,7 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // Create an Account
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       border: Border.all(color: boring_green, width: 0.5),
@@ -181,11 +190,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
 
-                SizedBox(height: 16.0),
+                SizedBox(height: form_field_sepereator_space),
                 //
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       border: Border.all(color: boring_green, width: 0.5),
@@ -216,11 +225,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: 16.0),
+                SizedBox(height: form_field_sepereator_space),
                 //
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
                         Radius.circular(24),
@@ -253,11 +262,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: 16.0),
+                SizedBox(height: form_field_sepereator_space),
                 //
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       border: Border.all(color: boring_green, width: 0.5),
@@ -290,7 +299,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     obscureText: true,
                   ),
                 ),
-                SizedBox(height: 16.0),
+                SizedBox(height: form_field_sepereator_space),
 
                 //
 
@@ -300,7 +309,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Container(
                       width: mainButtonsWidth,
-                      height: 45,
+                      height: input_form_height,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(24)),
                           border: Border.all(color: boring_green, width: 0.5),
@@ -340,10 +349,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(width: 12.0),
                   ],
                 ),
-                SizedBox(height: 16.0),
+                SizedBox(height: form_field_sepereator_space),
                 Container(
                   width: MediaQuery.of(context).size.width * .95,
-                  height: 45,
+                  height: input_form_height,
                   child: Row(
                     children: [
                       IconButton(
@@ -371,10 +380,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 16.0),
+                SizedBox(height: form_field_sepereator_space),
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       border: Border.all(color: boring_green, width: 0.5),

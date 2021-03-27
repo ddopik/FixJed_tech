@@ -5,6 +5,7 @@ import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/payment/add_address_dialog_view.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/log_in_dialog_screen.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -30,6 +31,9 @@ class _AddressListViewState extends State<AddressListView> {
     _pagingController.addPageRequestListener((pageKey) {
       _fetchPage(pageKey);
     });
+
+
+
     super.initState();
   }
 

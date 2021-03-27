@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/navigation_app_back_icon.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/log_in_dialog_screen.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 import 'addressListView.dart';
@@ -15,6 +16,7 @@ class AddressListScreen extends StatefulWidget {
 class _AddressListScreenState extends State<AddressListScreen> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           title: Text(S.of(context).savedPlaces),

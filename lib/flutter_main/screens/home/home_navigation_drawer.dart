@@ -53,14 +53,14 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                     alignment: Alignment.centerRight,
                     child: Text(
                       S.of(context).main,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
                           color: boring_green,
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
-                          fontFamily: "Tajawal",
                           fontStyle: FontStyle.normal,
-                          fontSize: 16.7),
-                    ),
+                        )),
                   ),
                   onTap: () {
                     widget.onNavigateClick(CurrentHomeSelection.HOME);
@@ -74,14 +74,14 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                         top: 14.0, bottom: 14.0, left: 34, right: 34),
                     alignment: Alignment.centerRight,
                     child: Text(
-                      S.of(context).myServices,
-                      style: TextStyle(
+                        S.of(context).myServices,
+                        style: TextStyle(
+                          fontFamily: 'Tajawal',
                           color: boring_green,
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
-                          fontFamily: "Tajawal",
                           fontStyle: FontStyle.normal,
-                          fontSize: 16.7),
-                    ),
+                        )),
                   ),
                   onTap: () {
                     widget.onNavigateClick(CurrentHomeSelection.TRANSACTION);
@@ -98,14 +98,14 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                             top: 14.0, bottom: 14.0, left: 34, right: 34),
                         alignment: Alignment.centerRight,
                         child: Text(
-                          S.of(context).notification,
-                          style: TextStyle(
+                            S.of(context).notification,
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
                               color: boring_green,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              fontFamily: "Tajawal",
                               fontStyle: FontStyle.normal,
-                              fontSize: 16.7),
-                        ),
+                            )),
                       ),
                       // Ellipse 16
                       Row(
@@ -119,14 +119,14 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                                   borderRadius: BorderRadius.circular(24)),
                               child: Center(
                                 child: // 2
-                                    Text("2",
-                                        style: const TextStyle(
-                                            color: const Color(0xffffffff),
-                                            fontWeight: FontWeight.w700,
-                                            fontFamily: "Futura",
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 12.0),
-                                        textAlign: TextAlign.left),
+                                    new Text("2",
+                                        style: TextStyle(
+                                          fontFamily: 'Futura',
+                                          color: Color(0xffffffff),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                        )),
                               )),
                           SizedBox(
                             width: 24,
@@ -147,7 +147,12 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                   alignment: Alignment.centerRight,
                   child: Text(S.of(context).setting,
                       style: TextStyle(
-                          color: boring_green, fontWeight: FontWeight.w600)),
+                        fontFamily: 'Tajawal',
+                        color: boring_green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      )),
                 ),
                 Divider(),
                 Container(
@@ -155,14 +160,14 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                       top: 14.0, bottom: 14.0, left: 34, right: 34),
                   alignment: Alignment.centerRight,
                   child: Text(
-                    S.of(context).help,
-                    style: const TextStyle(
+                      S.of(context).help,
+                      style: TextStyle(
+                        fontFamily: 'Tajawal',
                         color: boring_green,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
-                        fontFamily: "Tajawal",
                         fontStyle: FontStyle.normal,
-                        fontSize: 16.7),
-                  ),
+                      )),
                 ),
                 Divider(),
                 GestureDetector(
@@ -175,7 +180,12 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                             ? S.of(context).signOut
                             : S.of(context).login,
                         style: TextStyle(
-                            color: boring_green, fontWeight: FontWeight.w600)),
+                          fontFamily: 'Tajawal',
+                          color: boring_green,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                        )),
                   ),
                   onTap: () {
                     if (Provider.of<AppModel>(context, listen: false)
@@ -265,10 +275,13 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                             child: Text(
                               S.of(navigatorKey.currentContext).edit_profile,
                               style: TextStyle(
-                                color: const Color(0xffffffff),
-                                fontFamily: "Raleway",
+                                fontFamily: 'Tajawal',
+                                color: Color(0xffffffff),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
                                 fontStyle: FontStyle.normal,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                           onTap: () {

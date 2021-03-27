@@ -35,7 +35,7 @@ addNewPhoneDialogView<T>(
             opacity: animation1.value,
             child: SingleChildScrollView(
               child: SlideDialog(
-                  heightRatio: 2.3,
+                  heightRatio: 1.5,
                   pillColor: pillColor ?? Colors.blueGrey[200],
                   backgroundColor:
                       backgroundColor ?? Theme.of(context).canvasColor,

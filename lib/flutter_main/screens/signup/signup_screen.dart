@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
-import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/model/ErrorResponse.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
@@ -67,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     fontSize: 24.0),
                 textAlign: TextAlign.center),
             // Rectangle 85
-            SizedBox(height: 42.0),
+         
             Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width * .40,
-                      height: 45,
+                      height: input_form_height,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(24)),
                           boxShadow: [
@@ -119,7 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(width: 12.0),
                     Container(
                       width: MediaQuery.of(context).size.width * .40,
-                      height: 45,
+                      height: input_form_height,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(24)),
                           boxShadow: [
@@ -156,11 +156,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: form_field_space),
+                SizedBox(height: form_field_sepereator_space),
                 //
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       boxShadow: [
@@ -195,11 +195,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: form_field_space),
+                SizedBox(height: form_field_sepereator_space),
                 //
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       boxShadow: [
@@ -234,11 +234,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: form_field_space),
+                SizedBox(height: form_field_sepereator_space),
                 //
                 Container(
                   width: mainButtonsWidth,
-                  height: 45,
+                  height: input_form_height,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(24)),
                       boxShadow: [
@@ -273,7 +273,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // }
                   ),
                 ),
-                SizedBox(height: form_field_space),
+                SizedBox(height: form_field_sepereator_space),
                 Container(
                   width: mainButtonsWidth,
                   height: 45,
@@ -313,7 +313,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return null;
                       }),
                 ),
-                SizedBox(height: form_field_space),
+                SizedBox(height: form_field_sepereator_space),
                 //
 
                 Row(
@@ -360,10 +360,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             return null;
                           }),
                     ),
-                    SizedBox(width: form_field_space),
+                    SizedBox(width: form_field_sepereator_space),
                     Container(
                       width: MediaQuery.of(context).size.width * .20,
-                      height: 45,
+                      height: input_form_height,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(24)),
                           boxShadow: [
@@ -403,7 +403,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 InkWell(
                   child: Container(
                     width: MediaQuery.of(context).size.width * .85,
-                    height: 45,
+                    height: input_form_height,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(24)),

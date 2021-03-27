@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/slide_dialog.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -42,6 +44,7 @@ loginDialogScreen<T>(
             opacity: animation1.value,
             child: SingleChildScrollView(
               child: SlideDialog(
+                  heightRatio: 2.0,
                   pillColor: pillColor ?? Colors.blueGrey[200],
                   backgroundColor:
                       backgroundColor ?? Theme.of(context).canvasColor,
@@ -61,83 +64,44 @@ renderLoginForm(BuildContext context) {
   print("renderLoginForm  --> called");
   bool _obscureText = true;
 
-  _loginUser() async {
-    showLoading(context);
-    DIOManager().sendLoginRequest(
-      onSuccess: (response) async {
-        LoginResponse loginResponse = response;
-        dismissLoading();
-        Provider.of<AppModel>(context, listen: false)
-            .setUserToken(loginResponse.token.toString());
-
-        Provider.of<AppModel>(context, listen: false)
-            .setUserId(loginResponse.id.toString);
-
-        Provider.of<AppModel>(context, listen: false)
-            .setUserMail(loginResponse.email.toString());
-
-        Provider.of<AppModel>(context, listen: false).setIsUserLoggedIn(true);
-
-        Navigator.of(context).pop();
-      },
-      onError: (response) {
-        showError(S.of(context).invalidLogin);
-        dismissLoading();
-      },
-      userName: _userNameController.value.text.trim(),
-      password: _passwordController.value.text.trim(),
-    );
-  }
-
-  validateUser() async {
-    print("userMail --->" +
-        _userNameController.value.text.trim() +"----isEmpty---"+  _userNameController.value.text.isNotEmpty.toString() +
-        " \\\\--->is valid" +
-        " "+isEmail(_userNameController.value.text.trim()).toString());
-
-
-
-    if (_userNameController.value.text.isEmpty || !isEmail(_userNameController.value.text.trim())) {
-      showToast(S.of(context).invalidEmail);
-    } else if (_passwordController.value.text.isEmpty ||
-        _passwordController.value.text.length < 6) {
-      showToast(S.of(context).invalidPassword);
-    } else {
-      _loginUser();
-    }
-  }
 
   return Form(
     child: Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        // Create an Account
-        Text(
-          S.of(context).login,
-          style: const TextStyle(
-              color: french_blue,
-              fontWeight: FontWeight.w700,
-              fontFamily: "Raleway",
-              fontStyle: FontStyle.normal,
-              fontSize: 18.0),
-          textAlign: TextAlign.center,
+        Column(
+          children: [
+            Text(
+              S.of(context).login,
+              style: const TextStyle(
+                  color: french_blue,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Raleway",
+                  fontStyle: FontStyle.normal,
+                  fontSize: 18.0),
+              textAlign: TextAlign.center,
+            ),
+            new Text(S.current.pleaseCompeteRegistrationForm,
+                style: TextStyle(
+                  fontFamily: 'Tajawal',
+                  color: french_blue,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.normal,
+                ))
+          ],
         ),
+
         // Rectangle 85
-        SizedBox(height: 12.0),
+        SizedBox(height: form_field_sepereator_space),
         Container(
           width: MediaQuery.of(context).size.width * .70,
           height: 45,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              boxShadow: [
-                BoxShadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                    spreadRadius: 0)
-              ],
-              color: const Color(0xffffffff)),
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: boring_green, width: 0.5),
+              color: const Color(0xffe7f5e8)),
           child: TextFormField(
             enableSuggestions: false,
             controller: _userNameController,
@@ -156,24 +120,17 @@ renderLoginForm(BuildContext context) {
           ),
         ),
         //
-        SizedBox(height: 16.0),
+        SizedBox(height: form_field_sepereator_space),
         Container(
           width: MediaQuery.of(context).size.width * .70,
           height: 45,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              boxShadow: [
-                BoxShadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                    spreadRadius: 0)
-              ],
-              color: const Color(0xffffffff)),
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: boring_green, width: 0.5),
+              color: const Color(0xffe7f5e8)),
           child: TextFormField(
             controller: _passwordController,
             cursorColor: Colors.black,
-
             keyboardType: TextInputType.name,
             decoration: new InputDecoration(
                 errorStyle: TextStyle(height: 0),
@@ -189,39 +146,21 @@ renderLoginForm(BuildContext context) {
           ),
         ),
         //
-        SizedBox(height: 16.0),
+        SizedBox(height: form_field_sepereator_space),
         // Rectangle 85
         ////////////////////
-        InkWell(
-          child: Container(
-            width: MediaQuery.of(context).size.width * .70,
-            height: 45,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(24)),
-                boxShadow: [
-                  BoxShadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(0, 3),
-                      blurRadius: 6,
-                      spreadRadius: 0)
-                ],
-                color: boring_green),
-            child: Text(
-              S.of(context).login,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w600),
-            ),
-          ),
-          onTap: () {
-            validateUser();
+        customActionButton(
+          width: MediaQuery.of(context).size.width * .70,
+          height: 45,
+          btnText: S.of(context).login,
+          btnColor: boring_green,
+          onPressed: () {
+            validateUser(context);
           },
         ),
 ////////////////////////////////
         // forgot password
-        SizedBox(height: 6.0),
+        SizedBox(height: form_field_sepereator_space),
         GestureDetector(
           child: Text(S.of(context).forgotPassword,
               style: const TextStyle(
@@ -239,6 +178,54 @@ renderLoginForm(BuildContext context) {
       ],
     ),
   );
+}
+
+_loginUser(BuildContext context) async {
+  showLoading(context);
+  DIOManager().sendLoginRequest(
+    onSuccess: (response) async {
+      LoginResponse loginResponse = response;
+      dismissLoading();
+      Provider.of<AppModel>(context, listen: false)
+          .setUserToken(loginResponse.token.toString());
+
+      Provider.of<AppModel>(context, listen: false)
+          .setUserId(loginResponse.id.toString);
+
+      Provider.of<AppModel>(context, listen: false)
+          .setUserMail(loginResponse.email.toString());
+
+      Provider.of<AppModel>(context, listen: false).setIsUserLoggedIn(true);
+
+      Navigator.of(context).pop();
+    },
+    onError: (response) {
+      showError(S.of(context).invalidLogin);
+      dismissLoading();
+    },
+    userName: _userNameController.value.text.trim(),
+    password: _passwordController.value.text.trim(),
+  );
+}
+
+validateUser(BuildContext context) async {
+  print("userMail --->" +
+      _userNameController.value.text.trim() +
+      "----isEmpty---" +
+      _userNameController.value.text.isNotEmpty.toString() +
+      " \\\\--->is valid" +
+      " " +
+      isEmail(_userNameController.value.text.trim()).toString());
+
+  if (_userNameController.value.text.isEmpty ||
+      !isEmail(_userNameController.value.text.trim())) {
+    showError(S.of(context).invalidEmail);
+  } else if (_passwordController.value.text.isEmpty ||
+      _passwordController.value.text.length < 6) {
+    showError(S.of(context).invalidPassword);
+  } else {
+    _loginUser(context);
+  }
 }
 
 renderSignUpForm(BuildContext context) {

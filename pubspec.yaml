@@ -128,7 +128,16 @@ flutter:
   assets:
      - assets/
      - assets/images/
-  #   - images/a_dot_ham.jpeg
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Tajawal-Black.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
+        - asset: assets/fonts/Tajawal-ExtraBold.ttf
+        - asset: assets/fonts/Tajawal-ExtraLight.ttf
+        - asset: assets/fonts/Tajawal-Light.ttf
+        - asset: assets/fonts/Tajawal-Medium.ttf
+        - asset: assets/fonts/Tajawal-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

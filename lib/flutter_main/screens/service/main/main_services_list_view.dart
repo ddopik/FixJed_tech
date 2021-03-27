@@ -102,7 +102,7 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                             height: MediaQuery.of(context).size.height * .3),
                       ),
                       SizedBox(
-                        width: form_field_space,
+                        width: form_field_sepereator_space,
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.max,
@@ -136,7 +136,7 @@ class _PagedServiceListViewState extends State<MainServicesListView> {
                     ],
                   ),
                 ),
-                SizedBox(height: form_field_space),
+                SizedBox(height: form_field_sepereator_space),
                 LimitedBox(
                     maxHeight: MediaQuery.of(context).size.height * .67,
                     child: renderServiceList()),

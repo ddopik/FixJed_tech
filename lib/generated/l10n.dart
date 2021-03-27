@@ -1134,6 +1134,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Please complete registration form`
+  String get pleaseCompeteRegistrationForm {
+    return Intl.message(
+      'Please complete registration form',
+      name: 'pleaseCompeteRegistrationForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الملف الشخصي`
+  String get profile {
+    return Intl.message(
+      'الملف الشخصي',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

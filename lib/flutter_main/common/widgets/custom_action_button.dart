@@ -33,15 +33,20 @@ Widget customActionButton({
     ),
     child: Container(
       width: width ?? 225,
-      height: height ?? 40,
+      height: height ?? 45,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
       ),
       alignment: Alignment.center,
-      padding: EdgeInsets.fromLTRB(24, 12, 24, 12),
       child: Text(
         btnText,
-        style: TextStyle(fontSize: fontSize ?? 15),
+        style: TextStyle(
+          fontFamily: 'Tajawal',
+          color: Color(0xffffffff),
+          fontSize: fontSize ?? 18,
+          fontWeight: FontWeight.w700,
+          fontStyle: FontStyle.normal,
+        ),
         textAlign: TextAlign.center,
       ),
     ),

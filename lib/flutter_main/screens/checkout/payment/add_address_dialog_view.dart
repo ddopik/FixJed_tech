@@ -38,7 +38,7 @@ addNewAddressDialogView<T>(
             opacity: animation1.value,
             child: SingleChildScrollView(
               child: SlideDialog(
-                  heightRatio: 2.9,
+                  heightRatio: 3.0,
                   pillColor: pillColor ?? Colors.blueGrey[200],
                   backgroundColor:
                       backgroundColor ?? Theme.of(context).canvasColor,

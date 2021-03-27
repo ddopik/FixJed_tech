@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/screens/checkout/address/provider/AddressProvider.dart';
+import 'package:flutter_base_app/flutter_main/screens/login/log_in_dialog_screen.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
 import 'model/Address.dart';
@@ -49,28 +51,6 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   @override
   Widget build(BuildContext context) {
     return getAddressFormView();
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(S.of(context).addNewAddress),
-          elevation: 0.0,
-          centerTitle: true,
-        ),
-        body: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            alignment: Alignment.topCenter,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/background_2.png"),
-                    fit: BoxFit.cover),
-                border: Border.all(
-                  color: kBackgroundWhite,
-                  width: 1.0,
-                ),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(28.0),
-                    topRight: Radius.circular(28.0))),
-            child: getAddressFormView()));
   }
 
   Widget getAddressFormView() {
@@ -79,23 +59,27 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
         height: MediaQuery.of(context).size.height * .8,
         child: Column(
           children: [
+
+            new Text(S.current.addNewAddress,
+                style: TextStyle(
+                  fontFamily: 'Tajawal',
+                  color: french_blue,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.normal,
+                )
+            ),
             SizedBox(
-              height: 32,
+              height: form_field_sepereator_space,
             ),
             Container(
               width: MediaQuery.of(context).size.width * .85,
-              height: 55,
+              height: input_form_height,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(26)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                        spreadRadius: 0)
-                  ],
-                  color: const Color(0xffffffff)),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: boring_green, width: 0.5),
+                  color: const Color(0xffe7f5e8)),
               child: TextFormField(
                 cursorColor: Colors.black,
                 keyboardType: TextInputType.name,
@@ -116,23 +100,17 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               ),
             ),
             SizedBox(
-              height: 14,
+              height: form_field_sepereator_space,
             ),
             Container(
                 width: MediaQuery.of(context).size.width * .85,
-                height: 55,
+                height: input_form_height,
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.symmetric(horizontal: 14),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(26)),
-                    boxShadow: [
-                      BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                          spreadRadius: 0)
-                    ],
-                    color: const Color(0xffffffff)),
+                    borderRadius: BorderRadius.circular(24),
+                    border: Border.all(color: boring_green, width: 0.5),
+                    color: const Color(0xffe7f5e8)),
                 child: DropdownButton<City>(
                   value: dropdownCityList?.first,
                   underline: Container(
@@ -158,23 +136,17 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                   })?.toList(),
                 )),
             SizedBox(
-              height: 14,
+              height: form_field_sepereator_space,
             ),
             Container(
                 width: MediaQuery.of(context).size.width * .85,
-                height: 55,
+                height: input_form_height,
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.symmetric(horizontal: 14),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(26)),
-                    boxShadow: [
-                      BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                          spreadRadius: 0)
-                    ],
-                    color: const Color(0xffffffff)),
+                    borderRadius: BorderRadius.circular(24),
+                    border: Border.all(color: boring_green, width: 0.5),
+                    color: const Color(0xffe7f5e8)),
                 child: DropdownButton<City>(
                   value: dropdownCityRegionList?.singleWhere(
                       (element) => element.id == widget.currentAddress?.id,
@@ -204,22 +176,16 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                   })?.toList(),
                 )),
             SizedBox(
-              height: 14,
+              height: form_field_sepereator_space,
             ),
             Container(
               width: MediaQuery.of(context).size.width * .85,
-              height: 55,
+              height: input_form_height,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(26)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                        spreadRadius: 0)
-                  ],
-                  color: const Color(0xffffffff)),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: boring_green, width: 0.5),
+                  color: const Color(0xffe7f5e8)),
               child: TextFormField(
                 controller: addressStreetController,
                 cursorColor: Colors.black,
@@ -239,22 +205,16 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               ),
             ),
             SizedBox(
-              height: 14,
+              height: form_field_sepereator_space,
             ),
             Container(
               width: MediaQuery.of(context).size.width * .85,
-              height: 55,
+              height: input_form_height,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(26)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                        spreadRadius: 0)
-                  ],
-                  color: const Color(0xffffffff)),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: boring_green, width: 0.5),
+                  color: const Color(0xffe7f5e8)),
               child: TextFormField(
                 controller: addressBuildingNumberController,
                 cursorColor: Colors.black,
@@ -274,7 +234,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               ),
             ),
             SizedBox(
-              height: 14,
+              height: form_field_sepereator_space,
             ),
             Container(
               width: MediaQuery.of(context).size.width * .85,
@@ -284,17 +244,11 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 45,
+                      height: input_form_height,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(24)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: const Color(0x29000000),
-                                offset: Offset(0, 3),
-                                blurRadius: 6,
-                                spreadRadius: 0)
-                          ],
-                          color: const Color(0xffffffff)),
+                          borderRadius: BorderRadius.circular(24),
+                          border: Border.all(color: boring_green, width: 0.5),
+                          color: const Color(0xffe7f5e8)),
                       child: TextFormField(
                         controller: addressFloorNumberController,
                         cursorColor: Colors.black,
@@ -315,22 +269,16 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 32.0),
+                  SizedBox(width: form_field_sepereator_space),
                   Expanded(
                     flex: 1,
                     child: Container(
                       width: MediaQuery.of(context).size.width * .20,
-                      height: 45,
+                      height: input_form_height,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(24)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: const Color(0x29000000),
-                                offset: Offset(0, 3),
-                                blurRadius: 6,
-                                spreadRadius: 0)
-                          ],
-                          color: const Color(0xffffffff)),
+                          borderRadius: BorderRadius.circular(24),
+                          border: Border.all(color: boring_green, width: 0.5),
+                          color: const Color(0xffe7f5e8)),
                       child: TextFormField(
                         controller: addressApartmentNumberController,
                         keyboardType: TextInputType.number,
@@ -350,19 +298,20 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 14.0),
+            SizedBox(height: form_field_sepereator_space),
             Container(
                 width: MediaQuery.of(context).size.width * .85,
-                height: MediaQuery.of(context).size.width * .4,
+                height: MediaQuery.of(context).size.height * .14,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
                     border: Border.all(color: boring_green, width: 0.5),
-                    color: const Color(0xffe7f5e8))),
-            SizedBox(height: 14.0),
+                    color: const Color(0xffe7f5e8))
+            ),
+            SizedBox(height: form_field_sepereator_space),
             Container(
               child: customActionButton(
                   width: MediaQuery.of(context).size.width * .85,
-                  height: 45,
+                  height: input_form_height,
                   btnColor: boring_green,
                   textColor: Color(0xffffffff),
                   btnText: S.current.apply,
@@ -373,15 +322,6 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                       submitNewAddress();
                     }
                   }),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(0, 3),
-                      blurRadius: 6,
-                      spreadRadius: 0)
-                ],
-              ),
             )
           ],
         ),
@@ -432,6 +372,8 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   }
 
   updateNewAddress() {
+
+
     if (addressNameController.value.text == null) {
       print("addressNameController ---> is null");
     }

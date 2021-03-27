@@ -107,5 +107,7 @@
   "services": "الخدمات",
   "fixedAddressOne": "التجمع الخامس",
   "deliveringTo": "ارسال الي",
-  "homeTitleDesc":"اطلب الخدمات التي تريدها لتصل إلى منزلك في اسرع وقت"
+  "homeTitleDesc":"اطلب الخدمات التي تريدها لتصل إلى منزلك في اسرع وقت",
+  "pleaseCompeteRegistrationForm": "الرجاء إكمال نموذج التسجيل",
+  "profile": "الملف الشخصي"
 }

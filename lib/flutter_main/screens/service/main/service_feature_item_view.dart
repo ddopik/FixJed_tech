@@ -41,7 +41,7 @@ class ServiceFeatureItemView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: form_field_space,
+                height: form_field_sepereator_space,
               ),
               Text(
                 service.name,
@@ -53,7 +53,7 @@ class ServiceFeatureItemView extends StatelessWidget {
                     fontSize: text_head_size_1),
               ),
               SizedBox(
-                height: form_field_space,
+                height: form_field_sepereator_space,
               ),
               Container(
                 width: MediaQuery.of(context).size.width * .47,

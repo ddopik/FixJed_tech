@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           //
-          SizedBox(height: form_field_space),
+          SizedBox(height: form_field_sepereator_space),
           Container(
             width: MediaQuery.of(context).size.width * .70,
             height: 45,
@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           //
-          SizedBox(height: form_field_space),
+          SizedBox(height: form_field_sepereator_space),
           // Rectangle 85
           ////////////////////
           InkWell(

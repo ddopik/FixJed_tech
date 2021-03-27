@@ -108,5 +108,7 @@
   "services": "services",
   "fixedAddressOne": "5th settlements",
   "deliveringTo": "Delivering to",
-  "homeTitleDesc": "Request the services you want to reach your home in the fastest time"
+  "homeTitleDesc": "Request the services you want to reach your home in the fastest time",
+  "pleaseCompeteRegistrationForm": "Please complete registration form",
+  "profile": "الملف الشخصي"
 }
