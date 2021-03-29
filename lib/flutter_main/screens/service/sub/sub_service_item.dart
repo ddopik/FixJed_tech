@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/screens/service/model/product.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
@@ -29,8 +30,8 @@ class TotalAddedServicesState extends State<SubServiceItem> {
         ),
         child: Container(
           width: MediaQuery.of(context).size.width * .8,
-          height: MediaQuery.of(context).size.height * .17,
-          padding: EdgeInsets.only(top: 8.0, bottom: 8, left: 26, right: 32),
+          height: MediaQuery.of(context).size.height * .20,
+          padding: EdgeInsets.all(inner_boundary_field_space),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -70,7 +71,7 @@ class TotalAddedServicesState extends State<SubServiceItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(
+                      Texgitt(
                           widget.product.price.toString() +
                               " " +
                               S.of(context).egp,
