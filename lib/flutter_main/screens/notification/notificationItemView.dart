@@ -26,7 +26,7 @@ class NotificationItemView extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
-            Text(notification.title,
+            Text(notification.subject,
                 style: const TextStyle(
                     color: french_blue,
                     fontWeight: FontWeight.w600,
@@ -34,7 +34,7 @@ class NotificationItemView extends StatelessWidget {
                     fontStyle: FontStyle.normal,
                     fontSize: 18.0),
                 textAlign: TextAlign.start),
-            Text(notification.description,
+            Text(notification.content,
                 style: const TextStyle(
                     color: const Color(0xff646363),
                     fontWeight: FontWeight.w400,

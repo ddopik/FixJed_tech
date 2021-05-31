@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
-import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
@@ -63,7 +62,6 @@ loginDialogScreen<T>(
 renderLoginForm(BuildContext context) {
   print("renderLoginForm  --> called");
   bool _obscureText = true;
-
 
   return Form(
     child: Column(
@@ -152,7 +150,17 @@ renderLoginForm(BuildContext context) {
         customActionButton(
           width: MediaQuery.of(context).size.width * .70,
           height: 45,
-          btnText: S.of(context).login,
+          btnText: Text(
+            S.of(context).login,
+            style: TextStyle(
+              fontFamily: 'Tajawal',
+              color: Color(0xffffffff),
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              fontStyle: FontStyle.normal,
+            ),
+            textAlign: TextAlign.center,
+          ),
           btnColor: boring_green,
           onPressed: () {
             validateUser(context);
@@ -171,9 +179,7 @@ renderLoginForm(BuildContext context) {
                   decoration: TextDecoration.underline,
                   fontSize: 18),
               textAlign: TextAlign.center),
-          onTap: () {
-            Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD);
-          },
+          onTap: () {},
         ),
       ],
     ),
@@ -185,7 +191,7 @@ _loginUser(BuildContext context) async {
   DIOManager().sendLoginRequest(
     onSuccess: (response) async {
       LoginResponse loginResponse = response;
-      dismissLoading();
+      hideLoading();
       Provider.of<AppModel>(context, listen: false)
           .setUserToken(loginResponse.token.toString());
 
@@ -201,7 +207,7 @@ _loginUser(BuildContext context) async {
     },
     onError: (response) {
       showError(S.of(context).invalidLogin);
-      dismissLoading();
+      hideLoading();
     },
     userName: _userNameController.value.text.trim(),
     password: _passwordController.value.text.trim(),
@@ -283,29 +289,6 @@ renderSignUpForm(BuildContext context) {
     }
 
     return true;
-  }
-
-  _signUpUser() {
-    if (validateSignUpForm()) {
-      showLoading(context);
-      DIOManager().createUser(
-          onSuccess: (response) {
-            dismissLoading();
-            Navigator.of(context).pushReplacementNamed(Routes.SIGN_UP_SUCCESS);
-          },
-          onError: (message) {
-            dismissLoading();
-            showError(message);
-          },
-          firstName: _firstNameController.value.text,
-          userName: _userNameController.value.text,
-          lastName: _lastNameController.value.text,
-          mail: _emailController.value.text,
-          phone: _phoneNumberController.value.text,
-          password: _passwordController.value.text);
-    }
-
-    logger.d('Failed to validate SignUpForm');
   }
 
   return Form(
@@ -676,9 +659,7 @@ renderSignUpForm(BuildContext context) {
                 ),
               ),
             ),
-            onTap: () {
-              _signUpUser();
-            },
+            onTap: () {},
           ),
         ],
       ),

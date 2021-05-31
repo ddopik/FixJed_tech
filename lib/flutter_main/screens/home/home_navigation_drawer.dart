@@ -42,6 +42,7 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                     topRight: Radius.circular(28.0),
                     topLeft: Radius.circular(28.0))),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                   height: 8,
@@ -50,17 +51,20 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                   child: Container(
                     margin: EdgeInsets.only(
                         top: 14.0, bottom: 14.0, left: 34, right: 34),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      S.of(context).main,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          color: boring_green,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(S.of(context).main,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              color: boring_green,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ))
+                      ],
+                    ),
                   ),
                   onTap: () {
                     widget.onNavigateClick(CurrentHomeSelection.HOME);
@@ -72,16 +76,19 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                   child: Container(
                     margin: EdgeInsets.only(
                         top: 14.0, bottom: 14.0, left: 34, right: 34),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                        S.of(context).myServices,
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          color: boring_green,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(S.of(context).myServices,
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              color: boring_green,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ))
+                      ],
+                    ),
                   ),
                   onTap: () {
                     widget.onNavigateClick(CurrentHomeSelection.TRANSACTION);
@@ -96,16 +103,19 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                       Container(
                         margin: EdgeInsets.only(
                             top: 14.0, bottom: 14.0, left: 34, right: 34),
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                            S.of(context).notification,
-                            style: TextStyle(
-                              fontFamily: 'Tajawal',
-                              color: boring_green,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              fontStyle: FontStyle.normal,
-                            )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(S.of(context).notification,
+                                style: TextStyle(
+                                  fontFamily: 'Tajawal',
+                                  color: boring_green,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.normal,
+                                ))
+                          ],
+                        ),
                       ),
                       // Ellipse 16
                       Row(
@@ -119,14 +129,14 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                                   borderRadius: BorderRadius.circular(24)),
                               child: Center(
                                 child: // 2
-                                    new Text("2",
-                                        style: TextStyle(
-                                          fontFamily: 'Futura',
-                                          color: Color(0xffffffff),
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                          fontStyle: FontStyle.normal,
-                                        )),
+                                new Text("2",
+                                    style: TextStyle(
+                                      fontFamily: 'Futura',
+                                      color: Color(0xffffffff),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      fontStyle: FontStyle.normal,
+                                    )),
                               )),
                           SizedBox(
                             width: 24,
@@ -141,51 +151,68 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                   },
                 ),
                 Divider(),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: 14.0, bottom: 14.0, left: 34, right: 34),
-                  alignment: Alignment.centerRight,
-                  child: Text(S.of(context).setting,
-                      style: TextStyle(
-                        fontFamily: 'Tajawal',
-                        color: boring_green,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.normal,
-                      )),
+                GestureDetector(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: 14.0, bottom: 14.0, left: 34, right: 34),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(S.of(context).setting,
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              color: boring_green,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ))
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    widget.onNavigateClick(CurrentHomeSelection.SETTING);
+                    Navigator.pop(context);
+                  },
                 ),
                 Divider(),
                 Container(
                   margin: EdgeInsets.only(
                       top: 14.0, bottom: 14.0, left: 34, right: 34),
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                      S.of(context).help,
-                      style: TextStyle(
-                        fontFamily: 'Tajawal',
-                        color: boring_green,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.normal,
-                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(S.of(context).help,
+                          style: TextStyle(
+                            fontFamily: 'Tajawal',
+                            color: boring_green,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                          ))
+                    ],
+                  ),
                 ),
                 Divider(),
                 GestureDetector(
                   child: Container(
                     margin: EdgeInsets.only(
                         top: 14.0, bottom: 14.0, left: 34, right: 34),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                        Provider.of<AppModel>(context).isUserLoggedIn()
-                            ? S.of(context).signOut
-                            : S.of(context).login,
-                        style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          color: boring_green,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                            Provider.of<AppModel>(context).isUserLoggedIn()
+                                ? S.of(context).signOut
+                                : S.of(context).login,
+                            style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              color: boring_green,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ))
+                      ],
+                    ),
                   ),
                   onTap: () {
                     if (Provider.of<AppModel>(context, listen: false)
@@ -300,4 +327,4 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
   }
 }
 
-enum CurrentHomeSelection { HOME, TRANSACTION, NOTIFICATION, PROFILE }
+enum CurrentHomeSelection { HOME, TRANSACTION, NOTIFICATION, PROFILE, SETTING }

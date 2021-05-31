@@ -27,7 +27,7 @@ void showLoading(context) {
   EasyLoading.show(status: S.of(navigatorKey.currentContext).loading);
 }
 
-void dismissLoading() {
+void hideLoading() {
   EasyLoading.dismiss();
 }
 

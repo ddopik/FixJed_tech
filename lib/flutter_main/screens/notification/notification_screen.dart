@@ -16,8 +16,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height * .8,
-            alignment: Alignment.center, child: NotificationListView()),
+            height: MediaQuery.of(context).size.height * .8,
+            alignment: Alignment.center,
+            child: NotificationListView()),
       ),
     );
   }

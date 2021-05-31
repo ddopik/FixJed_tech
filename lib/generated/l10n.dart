@@ -1145,11 +1145,91 @@ class S {
     );
   }
 
-  /// `الملف الشخصي`
+  /// `Profile`
   String get profile {
     return Intl.message(
-      'الملف الشخصي',
+      'Profile',
       name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message(
+      'Arabic',
+      name: 'arabic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Orders`
+  String get orders {
+    return Intl.message(
+      'Orders',
+      name: 'orders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Request`
+  String get startRequest {
+    return Intl.message(
+      'Start Request',
+      name: 'startRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Request`
+  String get cancelRequest {
+    return Intl.message(
+      'Cancel Request',
+      name: 'cancelRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect Operator`
+  String get connectOperator {
+    return Intl.message(
+      'Connect Operator',
+      name: 'connectOperator',
       desc: '',
       args: [],
     );

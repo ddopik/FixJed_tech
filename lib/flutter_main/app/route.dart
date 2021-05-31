@@ -1,55 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/flutter_main/screens/cart/cart_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/address/address_form_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/address/savedAddress/address_list_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/payment/submit_transaction_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/payment/transaction_submitted_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
-import 'package:flutter_base_app/flutter_main/screens/onboarding/on_boarding.dart';
 import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
- import 'package:flutter_base_app/flutter_main/screens/service/main/service_features_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/service/sub/sub_service_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/signup/SignUpSuccessScreen.dart';
-import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_list/view/RequestsListScreen.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_screen/request_card_screen.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> getAll() => _routes;
 
-  static const ON_BOARDING = "/OnBoardingScreen";
-  static const SIGN_UP = "/SignUpScreen";
-  static const SIGN_UP_SUCCESS = "/sign_up_success";
   static const LOGIN = "/loginScreen";
-  static const FORGOT_PASSWORD = "/forgot_password";
   static const HOME = "/home_screen";
+  static const ALL_REQUESTS = "/all_requests";
+  static const REQUEST_CARD = "/request_card";
   static const SERVICE_FEATURES = "/service_features";
   static const SUB_SERVICE_FEATURES = "/sub_service_features";
   static const CART = "/cart";
-  static const ADDRESS_FORM_SCREEN = "/address_form_screen";
-  static const ADDRESS_LIST_SCREEN = "/address_list_screen";
-  static const PAYMENT_SCREEN = "/payment_screen";
-  static const TRANSACTION_SUBMIT_SCREEN = "/transaction_submit_screen";
-  static const TRANSACTION_SCREEN = "/transaction_screen";
+
   static const PROFILE_SCREEN = "/profile_screen";
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
-    SIGN_UP: (context) => SignUpScreen(),
-    SIGN_UP_SUCCESS: (context) => SignUpSuccessScreen(),
-    FORGOT_PASSWORD: (context) => ForgotPasswordScreen(),
     LOGIN: (context) => LoginScreen(),
-    ON_BOARDING: (context) => OnBoardingScreen(),
-    SERVICE_FEATURES: (context) => ServiceFeaturesScreen(),
-    SUB_SERVICE_FEATURES: (context) => SubServicesFeaturesScreen(),
-    CART: (context) => CartScreen(),
-    ADDRESS_FORM_SCREEN: (context) => AddressFormScreen(),
-    ADDRESS_LIST_SCREEN: (context) => AddressListScreen(),
-    PAYMENT_SCREEN: (context) => SubmitTransactionScreen(),
-    TRANSACTION_SUBMIT_SCREEN: (context) => TransactionSubmittedScreen(),
-    TRANSACTION_SCREEN: (context) => TransactionScreen(),
     PROFILE_SCREEN: (context) => ProfileScreen(),
+    ALL_REQUESTS: (context) => RequestsListScreen(),
+    REQUEST_CARD: (context) =>
+        RequestCardScreen(arguments: ModalRoute.of(context).settings.arguments),
   };
 
 // todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget

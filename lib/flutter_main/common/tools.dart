@@ -30,7 +30,7 @@ var logger = Logger(
 );
 
 String get currentLanguage {
-  return isRTL ? "ar" : "en";
+  return isRTL ? "AR" : "EN";
 }
 
 bool get isRTL {

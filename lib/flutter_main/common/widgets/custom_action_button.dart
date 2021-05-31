@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-Widget customActionButton({
-  String btnText,
-  Function onPressed,
-  double width,
-  double height,
-  double fontSize,
-  Color textColor,
-  Color btnColor,
-  bool enable = true,
-}) {
+Widget customActionButton(
+    {Text btnText,
+    Function onPressed,
+    double width,
+    double height,
+    double fontSize,
+    Color btnColor,
+    bool enable = true,
+    btnRadius = 24.0}) {
   Color getButtonColorState() {
     if (enable) {
       return btnColor ?? btnColor;
@@ -25,11 +24,10 @@ Widget customActionButton({
     onPressed: () {
       enable ? onPressed() : null;
     },
-    textColor: textColor ?? Colors.white,
     color: getButtonColorState(),
     padding: EdgeInsets.all(0),
     shape: RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(24.0),
+      borderRadius: new BorderRadius.circular(btnRadius),
     ),
     child: Container(
       width: width ?? 225,
@@ -38,17 +36,7 @@ Widget customActionButton({
         borderRadius: BorderRadius.circular(24),
       ),
       alignment: Alignment.center,
-      child: Text(
-        btnText,
-        style: TextStyle(
-          fontFamily: 'Tajawal',
-          color: Color(0xffffffff),
-          fontSize: fontSize ?? 18,
-          fontWeight: FontWeight.w700,
-          fontStyle: FontStyle.normal,
-        ),
-        textAlign: TextAlign.center,
-      ),
+      child: btnText,
     ),
   );
 }

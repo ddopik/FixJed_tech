@@ -110,5 +110,13 @@
   "deliveringTo": "Delivering to",
   "homeTitleDesc": "Request the services you want to reach your home in the fastest time",
   "pleaseCompeteRegistrationForm": "Please complete registration form",
-  "profile": "الملف الشخصي"
+  "profile": "Profile",
+  "language": "Language",
+  "arabic": "Arabic",
+  "english": "English",
+  "back": "Back",
+  "orders": "Orders",
+  "startRequest": "Start Request",
+  "cancelRequest": "Cancel Request",
+  "connectOperator": "Connect Operator"
 }

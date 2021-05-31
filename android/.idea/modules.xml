@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-429732901/android.flutter_keyboard_visibility.iml" filepath="$PROJECT_DIR$/.idea/modules/-429732901/android.flutter_keyboard_visibility.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-247395593/android.gallery_saver.iml" filepath="$PROJECT_DIR$/.idea/modules/-247395593/android.gallery_saver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1716246052/android.notification_permissions.iml" filepath="$PROJECT_DIR$/.idea/modules/-1716246052/android.notification_permissions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1119862938/android.path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/1119862938/android.path_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1657644395/android.permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1657644395/android.permission_handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1253772307/android.shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/1253772307/android.shared_preferences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-977609361/android.sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-977609361/android.sqflite.iml" />
+    </modules>
+  </component>
+</project>

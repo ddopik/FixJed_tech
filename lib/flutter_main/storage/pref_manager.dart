@@ -145,7 +145,7 @@ class PrefManager {
   }
 
   String getLang() {
-    String lang = _prefs.getString(_appLanguage);
+    String lang = _prefs.getString(_appLanguage) ?? "en";
     return lang;
   }
 }

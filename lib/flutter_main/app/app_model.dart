@@ -7,7 +7,7 @@ import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 /// */
 class AppModel extends ChangeNotifier {
   bool darkTheme = false;
-  Locale locale = Locale.fromSubtags(languageCode: 'ar');
+  Locale _locale;
 
   Future<bool> setUpConfig() async {
 // try {
@@ -27,12 +27,23 @@ class AppModel extends ChangeNotifier {
   /// update AppMain consumer with this <local> value
   changeLanguage(String local, BuildContext context) async {
     if (local == "ar") {
-      locale = Locale.fromSubtags(languageCode: 'ar');
+      _locale = Locale.fromSubtags(languageCode: 'ar');
     } else {
-      locale = Locale.fromSubtags(languageCode: 'en');
+      _locale = Locale.fromSubtags(languageCode: 'en');
     }
     PrefManager().setLang(local);
     notifyListeners();
+  }
+
+  set local(Locale local) {
+    _locale = local;
+    PrefManager().setLang(local.languageCode);
+    notifyListeners();
+  }
+
+  Locale get local {
+    _locale = Locale.fromSubtags(languageCode: PrefManager().getLang());
+    return _locale;
   }
 
   setAppFirstSeen(bool state) {

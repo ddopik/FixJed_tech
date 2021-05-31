@@ -42,15 +42,17 @@ import 'no_connection_indicator.dart';
 /// Based on the received error, displays either a [NoConnectionIndicator] or
 /// a [GenericErrorIndicator].
 class ErrorIndicator extends StatelessWidget {
-  const ErrorIndicator({
+   ErrorIndicator({
     @required this.error,
     this.onTryAgain,
+    this.title,
     Key key,
   })  : assert(error != null),
         super(key: key);
 
   final dynamic error;
   final VoidCallback onTryAgain;
+  var title;
 
   @override
   Widget build(BuildContext context) => error is SocketException
@@ -59,6 +61,7 @@ class ErrorIndicator extends StatelessWidget {
         )
       : GenericErrorIndicator(
           error: error,
+          title: title,
           onTryAgain: onTryAgain,
         );
 }

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
@@ -14,10 +15,9 @@ class TransactionItemView extends StatelessWidget {
   final Function onCancelTransactionClick;
   var dateFormat = new DateFormat('yyyy-MM-dd');
 
-  TransactionItemView(
-      {this.transaction,
-      this.transactionItemType,
-      this.onCancelTransactionClick});
+  TransactionItemView({this.transaction,
+    this.transactionItemType,
+    this.onCancelTransactionClick});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,21 @@ class TransactionItemView extends StatelessWidget {
         ),
         child: Container(
             width: MediaQuery.of(context).size.width * listWidthRation,
-            height: MediaQuery.of(context).size.height * .28,
-            padding: EdgeInsets.all(inner_boundary_field_space),
+            height: (transactionItemType == TransactionItemType.PENDING &&
+                    timeAllowed(transaction.createdDate))
+                ? MediaQuery.of(context).size.height * .28
+                : null,
+            alignment: Alignment.center,
+            padding: EdgeInsets.only(
+                top: inner_boundary_field_space_wide,
+                left: inner_boundary_field_space_wide,
+                right: inner_boundary_field_space_wide),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Row(children: [
+                Row(mainAxisSize: MainAxisSize.max, children: [
                   // Ellipse 20
                   Container(
                       width: 22,
@@ -46,125 +54,130 @@ class TransactionItemView extends StatelessWidget {
                   SizedBox(
                     width: 12,
                   ),
-                  Text(
+                  Expanded(
+                      child: AutoSizeText(
                     transaction.categoriesNames.join(","),
-                    style: const TextStyle(
-                        color: french_blue,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Tajawal",
-                        fontStyle: FontStyle.normal,
-                        fontSize: text_size_1),
-                  )
+                    minFontSize: text_size_1,
+                    style: TextStyle(
+                      color: french_blue,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "Tajawal",
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ))
                 ]),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        "الطلب المقدم",
-                        style: const TextStyle(
-                          color: const Color(0xff646363),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Tajawal",
-                          fontStyle: FontStyle.normal,
-                          fontSize: 16.0,
+                Container(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 4,
                         ),
-                      ),
-                      Text(
-                        transaction.addressName,
-                        style: const TextStyle(
+                        Text(
+                          "الطلب المقدم",
+                          style: const TextStyle(
                             color: const Color(0xff646363),
                             fontWeight: FontWeight.w400,
                             fontFamily: "Tajawal",
                             fontStyle: FontStyle.normal,
-                            fontSize: 16.0),
-                      ),
-                      Text(
-                        S.current.total +
-                            " : " +
-                            transaction.totalPrice.toString() +
-                            " " +
-                            S.current.egpPrice,
-                        style: const TextStyle(
-                            color: const Color(0xff646363),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Tajawal",
-                            fontStyle: FontStyle.normal,
-                            fontSize: 16.0),
-                      ),
-                      Row(
-                        mainAxisAlignment: (transactionItemType ==
-                            TransactionItemType.PENDING &&
-                            timeAllowed(transaction.createdDate))
-                            ? MainAxisAlignment.spaceAround
-                            : MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                DateFormat.yMMMMd().format(
-                                    DateTime.parse(transaction.createdDate)),
-                                style: const TextStyle(
-                                    color: const Color(0xff646363),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Tajawal",
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 14.0),
-                              ),
-                              Text(
-                                  (transactionItemType ==
-                                      TransactionItemType.PENDING)
-                                      ? S.current.cancelOrderNote
-                                      : '',
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        Text(
+                          transaction.addressName,
+                          style: const TextStyle(
+                              color: const Color(0xff646363),
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "Tajawal",
+                              fontStyle: FontStyle.normal,
+                              fontSize: 16.0),
+                        ),
+                        Text(
+                          S.current.total +
+                              " : " +
+                              transaction.totalPrice.toString() +
+                              " " +
+                              S.current.egpPrice,
+                          style: const TextStyle(
+                              color: const Color(0xff646363),
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "Tajawal",
+                              fontStyle: FontStyle.normal,
+                              fontSize: 16.0),
+                        ),
+                        Row(
+                          mainAxisAlignment: (transactionItemType ==
+                                      TransactionItemType.PENDING &&
+                                  timeAllowed(transaction.createdDate))
+                              ? MainAxisAlignment.spaceAround
+                              : MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  DateFormat.yMMMMd().format(
+                                      DateTime.parse(transaction.createdDate)),
                                   style: const TextStyle(
-                                      color: const Color(0x70646363),
+                                      color: const Color(0xff646363),
                                       fontWeight: FontWeight.w400,
                                       fontFamily: "Tajawal",
                                       fontStyle: FontStyle.normal,
-                                      fontSize: 9.7),
-                                  textAlign: TextAlign.left)
-                            ],
-                          ),
-                          (transactionItemType ==
-                              TransactionItemType.PENDING &&
-                              timeAllowed(transaction.createdDate))
-                              ? Expanded(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  InkWell(
-                                    child: Container(
-                                      width: 100,
-                                      height: 32,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(22)),
-                                        color: Colors.red,
+                                      fontSize: 14.0),
+                                ),
+                                Text(
+                                    (transactionItemType ==
+                                            TransactionItemType.PENDING)
+                                        ? S.current.cancelOrderNote
+                                        : '',
+                                    style: const TextStyle(
+                                        color: const Color(0x70646363),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "Tajawal",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 9.7),
+                                    textAlign: TextAlign.left)
+                              ],
+                            ),
+                            (transactionItemType ==
+                                        TransactionItemType.PENDING &&
+                                    timeAllowed(transaction.createdDate))
+                                ? Expanded(
+                                    child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      InkWell(
+                                        child: Container(
+                                          width: 100,
+                                          height: 32,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(22)),
+                                            color: Colors.red,
+                                          ),
+                                          child: Text(
+                                            S.current.cancel,
+                                            style: TextStyle(
+                                                color: const Color(0xffffffff),
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: "Tajawal",
+                                                fontStyle: FontStyle.normal,
+                                                fontSize: 12.0),
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          onCancelTransactionClick(transaction);
+                                        },
                                       ),
-                                      child: Text(
-                                        S.current.cancel,
-                                        style: TextStyle(
-                                            color: const Color(0xffffffff),
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: "Tajawal",
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 12.0),
-                                      ),
-                                    ),
-                                    onTap: () {
-                                      onCancelTransactionClick(transaction);
-                                    },
-                                  ),
-                                ],
-                              ))
-                              : Container()
-                        ],
-                      )
-                    ]),
+                                    ],
+                                  ))
+                                : Container()
+                          ],
+                        )
+                      ]),
+                )
                 // Rectangle 46
               ],
             )));
@@ -216,7 +229,7 @@ class TransactionItemView extends StatelessWidget {
     DateTime parsedDate = DateTime.parse(transaction.createdDate);
     DateTime now = new DateTime.now();
     DateTime subDateTime =
-        now.subtract(Duration(days: parsedDate.day, hours: parsedDate.hour));
+    now.subtract(Duration(days: parsedDate.day, hours: parsedDate.hour));
     if (subDateTime.hour < 2) {
       return true;
     } else {

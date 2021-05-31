@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/app_model.dart';
-import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
@@ -406,10 +405,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Icons.arrow_forward_ios,
                           color: Colors.green,
                         )),
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushNamed(Routes.ADDRESS_LIST_SCREEN);
-                    },
+                    onTap: () {},
                   ),
                 ),
               ],
@@ -491,12 +487,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         lastName: l_name,
         onSuccess: () {
           showSuccesses(context, S.current.updated);
-          dismissLoading();
+          hideLoading();
           getUserData();
         },
         onError: (error) {
           showError(error.toString());
-          dismissLoading();
+          hideLoading();
         });
   }
 
@@ -509,13 +505,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         newPassword: newPassword,
         onSuccess: () {
           showSuccesses(context, S.current.updated);
-          dismissLoading();
+          hideLoading();
           getUserData();
           Navigator.of(context).pop();
         },
         onError: (error) {
           showError(error.toString());
-          dismissLoading();
+          hideLoading();
         });
   }
 
@@ -528,13 +524,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         phone_2: "",
         onSuccess: () {
           showSuccesses(context, S.current.updated);
-          dismissLoading();
+          hideLoading();
           getUserData();
           Navigator.of(context).pop();
         },
         onError: (error) {
           showError(error.toString());
-          dismissLoading();
+          hideLoading();
         });
   }
 
@@ -548,13 +544,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         phone_2: phoneNumber,
         onSuccess: () {
           showSuccesses(context, S.current.updated);
-          dismissLoading();
+          hideLoading();
           getUserData();
           Navigator.of(context).pop();
         },
         onError: (error) {
           showError(error.toString());
-          dismissLoading();
+          hideLoading();
         });
   }
 }

@@ -178,24 +178,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: TextDecoration.underline,
                     fontSize: 18),
                 textAlign: TextAlign.center),
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.FORGOT_PASSWORD);
-            },
+            onTap: () {},
           ),
           // doesnt have an account
-          GestureDetector(
-              child: Container(
-                height: 25,
-                child: RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      style:  TextStyle(
-                          color:  Color(0xffffffff),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Raleway",
-                          fontStyle: FontStyle.normal,
-                          fontSize: 16),
-                      text: S.of(context).doNotHaveAccount),
+          Container(
+            height: 25,
+            child: RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                  style: TextStyle(
+                      color: Color(0xffffffff),
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "Raleway",
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16),
+                  text: S.of(context).doNotHaveAccount),
                   TextSpan(text: "   "),
                   TextSpan(
                     style: const TextStyle(
@@ -209,7 +206,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   )
                 ])),
               ),
-              onTap: () => Navigator.of(context).pushNamed(Routes.SIGN_UP))
         ],
       ),
       key: _loginFormState,
@@ -236,7 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
     DIOManager().sendLoginRequest(
       onSuccess: (response) async {
         LoginResponse loginResponse = response;
-        dismissLoading();
+        hideLoading();
 
         Provider.of<AppModel>(context, listen: false)
             .setUserToken(loginResponse.token.toString());
@@ -268,7 +264,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       onError: (response) {
         showError("--" + response);
-        dismissLoading();
+        hideLoading();
       },
       userName: _userNameController.value.text.trim(),
       password: _passwordController.value.text.trim(),

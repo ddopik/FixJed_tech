@@ -1,4 +1,3 @@
-import 'package:flutter_base_app/flutter_main/screens/checkout/address/model/Address.dart';
 
 class UserProfileResponse {
   int _id;
@@ -9,7 +8,7 @@ class UserProfileResponse {
   String _phone;
   dynamic _secondPhone;
   dynamic _imageUrl;
-  List<Address> _addresses;
+
   dynamic _errors;
 
   int get id => _id;
@@ -28,7 +27,6 @@ class UserProfileResponse {
 
   dynamic get imageUrl => _imageUrl;
 
-  List<Address> get addresses => _addresses;
 
   dynamic get errors => _errors;
 
@@ -41,7 +39,6 @@ class UserProfileResponse {
       String phone,
       dynamic secondPhone,
       dynamic imageUrl,
-      List<Address> addresses,
       dynamic errors}) {
     _id = id;
     _username = username;
@@ -51,7 +48,7 @@ class UserProfileResponse {
     _phone = phone;
     _secondPhone = secondPhone;
     _imageUrl = imageUrl;
-    _addresses = addresses;
+
     _errors = errors;
   }
 
@@ -64,12 +61,7 @@ class UserProfileResponse {
     _phone = json["phone"];
     _secondPhone = json["secondPhone"];
     _imageUrl = json["imageUrl"];
-    if (json["addresses"] != null) {
-      _addresses = [];
-      json["addresses"].forEach((v) {
-        _addresses.add(Address.fromJson(v));
-      });
-    }
+
     _errors = json["errors"];
   }
 }

@@ -5,17 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
-import 'package:flutter_base_app/flutter_main/common/styles.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
-import 'package:flutter_base_app/flutter_main/screens/checkout/address/savedAddress/address_list_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
-import 'package:flutter_base_app/flutter_main/screens/signup/signup_screen.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 import 'app_model.dart';
@@ -36,39 +31,61 @@ class AppState extends State<App> {
   }
 
   /// Build the App Theme
-  ThemeData getTheme(currentLocal, AppModel appModel) {
-    Logger(printer: SimplePrinter(colors: true)).v("[AppState] build Theme");
-
-    bool isDarkTheme = appModel.darkTheme ?? false;
-
-    if (isDarkTheme) {
-      return buildDarkTheme(currentLocal).copyWith(
-        primaryColor: Color(int.parse("4282476961")),
-      );
-    }
-
-    //
-    return buildLightTheme(currentLocal).copyWith(
-      appBarTheme: AppBarTheme(
-          textTheme: TextTheme(
-              headline6: TextStyle(
-                  color: const Color(0xd9275597),
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "Tajawal",
-                  fontStyle: FontStyle.normal,
-                  fontSize: 18.0)),
-          iconTheme: IconThemeData(color: french_blue)),
-      scaffoldBackgroundColor: Colors.white,
-    );
+  ThemeData getTheme() {
+    return ThemeData.light().copyWith(
+        brightness: Brightness.dark,
+        primaryColor: french_blue,
+        accentColor: Color(0xff27ae60),
+        appBarTheme: AppBarTheme(
+            titleTextStyle: TextStyle(
+              fontFamily: 'Montserrat',
+              color: Color(0xffffffff),
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              fontStyle: FontStyle.normal,
+            ),
+            iconTheme: IconThemeData(color: Colors.white)),
+        scaffoldBackgroundColor: french_blue,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(
+            fontFamily: 'Montserrat',
+            color: Color(0xff000000),
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          headline3: TextStyle(
+            fontFamily: 'Montserrat',
+            color: Color(0xffffffff),
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.normal,
+          ),
+          headline4: TextStyle(
+            fontFamily: 'Montserrat',
+            color: Color(0xffffffff),
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.normal,
+          ),
+          headline5: TextStyle(
+            fontFamily: 'Montserrat',
+            color: Color(0xffffffff),
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.normal,
+          ),
+        ));
   }
 
   @override
   Widget build(BuildContext appContext) {
+    // print("Current App Local ---> "+Provider.of<AppModel>(context,listen: false).local.languageCode.toString() );
     return FutureBuilder(
         future: PrefManager().setupSharedPreferences(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            dismissLoading();
+            hideLoading();
             return ChangeNotifierProvider<AppModel>.value(
               value: _app,
               child: Consumer<AppModel>(
@@ -84,7 +101,7 @@ class AppState extends State<App> {
                       ///todo include MaterialApp to new <consumer> decedent of AppLanguageModel
                       debugShowCheckedModeBanner: false,
                       supportedLocales: S.delegate.supportedLocales,
-                      locale: Provider.of<AppModel>(context).locale,
+                      locale: Provider.of<AppModel>(context).local,
                       localizationsDelegates: const [
                         S.delegate,
                         GlobalMaterialLocalizations.delegate,
@@ -93,13 +110,8 @@ class AppState extends State<App> {
                         DefaultCupertinoLocalizations.delegate,
                       ],
                       builder: EasyLoading.init(),
-                      theme: getTheme("ar", value),
-                      home: Directionality(
-                        child: Scaffold(
-                          body: getNextScreen(),
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
+                      theme: getTheme(),
+                      home: getNextScreen(),
                       routes: Routes.getAll(),
                     ),
                   );
@@ -120,8 +132,6 @@ class AppState extends State<App> {
     return HomeScreen();
     if (PrefManager().getUserToken() != null) {
       return HomeScreen();
-    } else {
-      return SignUpScreen();
-    }
+    } else {}
   }
 }

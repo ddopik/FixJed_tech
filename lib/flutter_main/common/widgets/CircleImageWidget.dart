@@ -21,7 +21,7 @@ class CircleImageWidget extends StatelessWidget {
     Key key,
     this.width = 65,
     this.height = 65,
-    this.placeholder = "assets/avatar_girl.png",
+    this.placeholder = "assets/img_profile.jpeg",
     @required this.url,
     this.radius = 65 / 2,
     this.backgroundColor = Colors.white,

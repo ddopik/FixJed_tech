@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:dio_http_cache/dio_http_cache.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_base_app/flutter_main/common/model/ErrorResponse.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
@@ -12,7 +10,6 @@ class DIOManager {
   static final DIOManager _instance = DIOManager._dio();
 
   factory DIOManager() {
-
     return _instance;
   }
 
@@ -24,7 +21,10 @@ class DIOManager {
     dio.options.baseUrl = "http://34.193.99.151:8080/fix-jed-back-end";
     dio.options.headers = {
       "Accept-Language": currentLanguage,
+      "Authorization":
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5tb2hhbWVkQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJUZWNobmljaWFuIFJvbGUifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5VcGNvbWluZ0NhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5Ijoic3RhcnRUZWNobmljaWFuVHJhbnNhY3Rpb24ifSx7ImF1dGhvcml0eSI6ImNoYW5nZVRvVGVjaG5pY2lhbkRlbGl2ZXJlZFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiZmluZEJ5VGVjaG5pY2lhblRyYW5zYWN0aW9uSWQifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuRGVsaXZlcmVkU3RhdHVzIn1dLCJpYXQiOjE2MjM2NzgyNzgsImV4cCI6MTYyNDgzODQwMH0.kkycwNvwn613J74mQHJpMr5X6_2Ug2WFcVaMprGI9-o1Ud7qGvn5HgI5pMs89KXY7U7S9vRdNkTDp0VpngaYCQ",
     };
+
     // _instance._dio.interceptors.add(DioCacheManager(
     //     CacheConfig(baseUrl: "http://34.193.99.151:8080/fix-jed-back-end/"))
     //     .interceptor);
@@ -32,7 +32,7 @@ class DIOManager {
     print("Header AcceptedLanguage --- >" + currentLanguage.toString());
     if (PrefManager().getUserToken() != null) {
       dio.options.headers = {
-        "Authorization": "${PrefManager().getUserToken()}",
+        // "Authorization": "${PrefManager().getUserToken()}",
         "email": "${PrefManager().getUserMail()}",
       };
     }
@@ -43,11 +43,11 @@ class DIOManager {
   static const ERROR_CODE_UN_REACHABLE = "4";
 
   static const String _USER_LOGIN = "/auth/login";
-  static const String _USER_FORGOT_PASSWORD_MAIL = "/auth/reset-password";
-  static const String _USER_SIGN_UP_MAIL = "/auth/register";
-  static const String _GET_MAIN_CATEGORY = "/category/find-all-parents";
+
+  static const String _GET_APPROVED_REQUESTS =
+      "/technicians/find-all-confirmed-status";
   static const String _GET_SUB_CATEGORY = "/category/find-all-by-parent-id";
-  static const String _GET_PRODUCT = "/product/find-all-by-category-id";
+  static const String _GET_REQUEST_INFO = "/technicians";
   static const String _GET_CART_PRODUCT = "/cart/find-all-product-in-cart";
   static const String _ADD_PRODUCT_TO_CART = "/cart/increase-product-to-cart";
   static const String _SUBTRACT_PRODUCT_FROM_CART =
@@ -117,63 +117,20 @@ class DIOManager {
     // _sendPostRequest(onSuccess: onSuccess,onError: onError, url: _USER_LOGIN,bodyParameters: bodyParameter);
   }
 
-  sendForgotPasswordMailRequest(
-      {Function onSuccess, Function onError, type, String userName}) {
-    print("sendForgotPasswordMailRequest ---> $userName");
-    var bodyParameter = {"email": userName};
+  getApprovedRequests({Function onSuccess, Function onError}) {
     _sendGetRequest(
         onSuccess: onSuccess,
         onError: onError,
-        url: _USER_FORGOT_PASSWORD_MAIL,
-        queryParameters: bodyParameter);
-  }
-
-  createUser(
-      {Function onSuccess,
-      Function onError,
-      type,
-      @required String firstName,
-      @required String lastName,
-      @required String password,
-      @required String userName,
-      @required String mail,
-      String phone}) {
-    var bodyParameter;
-    var url;
-
-    url = _USER_SIGN_UP_MAIL;
-
-    bodyParameter = {
-      "username": userName,
-      "firstName": firstName,
-      "lastName": lastName,
-      "password": password,
-      "confirmPassword": password,
-      "phone": phone,
-      "email": mail
-    };
-    _sendPostRequest(
-      onSuccess: onSuccess,
-      onError: onError,
-      url: url,
-      bodyParameters: bodyParameter,
-    );
-  }
-
-  getMainCategory({Function onSuccess, Function onError}) {
-    _sendGetRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: _GET_MAIN_CATEGORY,
+        url: _GET_APPROVED_REQUESTS,
         queryParameters: null);
   }
 
-  getServiceProduct({Function onSuccess, Function onError, serviceId}) {
+  getRequestInfo({Function onSuccess, Function onError, serviceId}) {
     _sendGetRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: _GET_PRODUCT,
-        queryParameters: {"category-id": serviceId});
+      onSuccess: onSuccess,
+      onError: onError,
+      url: _GET_REQUEST_INFO + "/" + serviceId,
+    );
   }
 
   getSubCategory({Function onSuccess, Function onError, categoryId}) {
@@ -503,6 +460,7 @@ class DIOManager {
       queryParameters,
       bodyParameters}) async {
     print("submitNewAddress ----> " + bodyParameters.toString());
+
     try {
       Response response;
       if (queryParameters != null && bodyParameters == null) {

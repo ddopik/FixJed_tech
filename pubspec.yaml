@@ -64,16 +64,12 @@ dependencies:
   ##scrollable_positioned_list: ^0.1.8
   ## A widget that detects the visibility of its child and notifies a callback.
   ##visibility_detector: ^0.1.5
-#  video_player: ^0.10.12+2
   ## A collection of loading indicators animated with
 #  flutter_spinkit: 4.1.2+1
   ## display progress widgets based on percentage
 #  percent_indicator: 2.1.5
   ##text animations.
   ##animated_text_kit: 2.2.0
-#  pin_code_fields: 3.1.2
-#  flutter_facebook_login: 3.0.0
-#  webview_flutter: 0.3.22+1
   ##Rubber is an elastic bottom sheet widget with the customizable material spring animation.
   rubber: 0.4.0
   flutter_localizations:
@@ -92,9 +88,6 @@ dependencies:
   slide_popup_dialog: ^0.0.2
   ##This is a BottomSheet with a draggable height like the Google Maps App on Android.
   expandable_bottom_sheet: ^0.2.1+1
-#  file_picker: ^2.0.12
-#  camera: ^0.5.8+11
-#  path_provider: ^1.6.24
   gallery_saver: ^2.0.1
   ## nice Log View
   logger: ^0.9.4
@@ -104,8 +97,8 @@ dependencies:
   flutter_easyloading: ^2.2.1
   flutter_calendar_carousel: ^1.5.2
   intl: ^0.17.0
-  firebase_crashlytics: ^0.4.0+1
   dio_http_cache:
+  firebase_messaging: ^7.0.3
 
 
 dev_dependencies:
