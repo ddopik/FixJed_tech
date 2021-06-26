@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:intl/intl.dart' show DateFormat;
+import 'package:provider/provider.dart';
 
 class CalenderView extends StatefulWidget {
   final Function(DateTime date) onDateSelected;
 
-   CalenderView({this.onDateSelected});
+  CalenderView({this.onDateSelected});
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -23,9 +25,15 @@ class _MyHomePageState extends State<CalenderView> {
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
   CalendarCarousel _calendarCarouselNoHeader;
+  EventList<Event> events = EventList();
 
   @override
   void initState() {
+    events.add(
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
+        Event(
+            date: DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day)));
     super.initState();
   }
 
@@ -36,16 +44,15 @@ class _MyHomePageState extends State<CalenderView> {
         this.setState(() => _currentSelectedDate = date);
         widget.onDateSelected(_currentSelectedDate);
       },
-      // dayButtonColor: Colors.amber,
+      // dayButtonColor: boring_green,
       // markedDateIconBorderColor: Colors.blue,
       todayButtonColor: Colors.transparent,
       daysHaveCircularBorder: true,
       showOnlyCurrentMonthDate: false,
       showWeekDays: true,
       firstDayOfWeek: 5,
-//       markedDatesMap: _markedDateMap,
+      markedDatesMap: Provider.of<TransactionModel>(context).allEventRequest,
       height: MediaQuery.of(context).size.height * .34,
-
       selectedDateTime: _currentSelectedDate,
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),

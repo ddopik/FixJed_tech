@@ -3,14 +3,16 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/empty_list_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
+import 'package:flutter_base_app/flutter_main/common/exception_indicators/no_connection_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/requests_group.dart';
-import 'package:flutter_base_app/flutter_main/screens/request_list/provider/ReuqestsModel.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 
-import 'home_reqests_list_view_item.dart';
+import 'reqests_list_view_item.dart';
 
 class RequestsListView extends StatefulWidget {
   @override
@@ -26,26 +28,7 @@ class RequestsListViewState extends State<RequestsListView> {
 
   @override
   void initState() {
-    RequestsModel().getRequests(
-      onSuccess: (response) {
-        var responseKeys = (response as Map).keys.toList();
-        List<Request> dataResponse;
-        List<RequestsGroup> requestsGroupList = [];
-        for (String key in responseKeys) {
-          dataResponse = (response[key] as List)
-              .map((model) => Request.fromJson(model))
-              .toList();
-          requestsGroupList.add(RequestsGroup(key, dataResponse));
-        }
-
-        print("Break Point");
-        _pagingController.appendLastPage(requestsGroupList);
-        // _pagingController.appendPage(features, nextPageKey);
-      },
-      onError: (error) {
-        _pagingController.error = error;
-      },
-    );
+    getRequests();
 
     // _pagingController.addPageRequestListener((pageKey) {
     //   _fetchPage(pageKey);
@@ -55,13 +38,9 @@ class RequestsListViewState extends State<RequestsListView> {
 
   Future<void> _fetchPage(int pageKey) async {
     final nextPageKey = pageKey + 1;
-    RequestsModel().getRequests(
+    Provider.of<TransactionModel>(context, listen: false)
+        .getConfirmedTransactions(
       onSuccess: (response) {
-        List<Request> data = (response[0] as List)
-            .map((model) => Request.fromJson(model))
-            .toList();
-
-        print("_fetchPage called");
         // if ((response as List).length > 0) {}
         _pagingController.appendLastPage(response);
         // _pagingController.appendPage(features, nextPageKey);
@@ -89,7 +68,10 @@ class RequestsListViewState extends State<RequestsListView> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () => Future.sync(
-        () => _pagingController.refresh(),
+        () {
+          _pagingController.refresh();
+          getRequests();
+        },
       ),
       child: Stack(
         alignment: Alignment.topCenter,
@@ -117,15 +99,15 @@ class RequestsListViewState extends State<RequestsListView> {
       child: PagedListView(
         pagingController: _pagingController,
         builderDelegate: PagedChildBuilderDelegate<RequestsGroup>(
-          itemBuilder: (context, requestsGroup, index) {
-            return getGroupView(requestsGroup);
-          },
-          firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
-            error: _pagingController.error,
-            onTryAgain: () => _pagingController.refresh(),
-          ),
-          noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
-        ),
+            itemBuilder: (context, requestsGroup, index) {
+              return getGroupView(requestsGroup);
+            },
+            firstPageErrorIndicatorBuilder: (context) =>
+                getError(_pagingController.error),
+            noItemsFoundIndicatorBuilder: (context) => EmptyListIndicator(),
+            newPageErrorIndicatorBuilder: (context) {
+              return getError(_pagingController.error);
+            }),
         // padding: const EdgeInsets.all(16),
         // separatorBuilder: (context, index) => const SizedBox(
         //   height: 16,
@@ -150,23 +132,25 @@ class RequestsListViewState extends State<RequestsListView> {
                 new Text(
                     requestsGroup.requestList.length.toString() +
                         " " +
-                        S.current.orders,
+                        S.current.events,
                     style: Theme.of(context).textTheme.bodyText1.copyWith(
-                          color: Color(0xffffffff),
+                          color: Color(0xffe5e5e5).withOpacity(.3),
                         ))
               ],
             ),
           ),
-          getSubView(requestsGroup.requestList, (request) {
-            Navigator.pushNamed(context, Routes.REQUEST_CARD,
+          getSubView(requestsGroup.requestList, (request) async {
+            await Navigator.pushNamed(context, Routes.REQUEST_CARD,
                 arguments: request);
+            _pagingController.refresh();
+            getRequests();
           })
         ],
       ),
     );
   }
 
-  Widget getSubView(List<Request> requestList, Function onClick) {
+  Widget getSubView(List<Transaction> requestList, Function onClick) {
     return Column(
       children: List.generate(requestList.length, (index) {
         if (index == 0 && requestList.length > 1) {
@@ -207,5 +191,36 @@ class RequestsListViewState extends State<RequestsListView> {
         );
       }),
     );
+  }
+
+  getRequests() {
+    Provider.of<TransactionModel>(context, listen: false)
+        .getConfirmedTransactions(
+      onSuccess: (requestsGroupList) {
+        _pagingController.appendLastPage(requestsGroupList);
+        // _pagingController.appendPage(features, nextPageKey);
+      },
+      onError: (error) {
+        _pagingController.error = error;
+        print("getRequests ---- > ${error.toString()}");
+      },
+    );
+  }
+
+  Widget getError(String error) {
+    if (error == "Connection failed") {
+      return NoConnectionIndicator(onTryAgain: () {
+        _pagingController.refresh();
+        getRequests();
+      });
+    } else {
+      return ErrorIndicator(
+        error: _pagingController.error,
+        onTryAgain: () {
+          _pagingController.refresh();
+          getRequests();
+        },
+      );
+    }
   }
 }

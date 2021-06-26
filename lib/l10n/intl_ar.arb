@@ -117,5 +117,16 @@
   "orders": "طلب",
   "startRequest": "بدآ",
   "cancelRequest": "الغاء",
-  "connectOperator": "تواصل مع الاداره"
+  "connectOperator": "تواصل مع الاداره",
+  "signIn": "تسجيل الدخول",
+  "accept": "قبول",
+  "decline": "رفض",
+  "success": "تم",
+  "rejectionReason": "سبب الرفض",
+  "submit": "ارسال",
+  "endRequest": "انهاء الطلب",
+  "events": "طلب",
+  "submitOrder": "ارسال الطلب",
+  "writeYourRejectionReason": "سبب الرفض",
+  "pleaseSelectDeclineReason": "من فضلك اختر سبب الرفض"
 }

@@ -30,6 +30,7 @@ class PrefManager {
     // _prefs = await SharedPreferences.getInstance();
 
     _instance._prefs = await SharedPreferences.getInstance();
+    print("setupSharedPreferences called");
     return true;
   }
 

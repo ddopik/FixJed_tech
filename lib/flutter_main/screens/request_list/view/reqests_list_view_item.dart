@@ -1,28 +1,28 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
-import 'package:intl/intl.dart';
 
 class RequestListViewItem extends StatefulWidget {
   LabelDirection labelDirection;
-  Request request;
+  Transaction request;
   Function onClick;
 
   RequestListViewItem({this.labelDirection, this.request, this.onClick});
 
   @override
   State<StatefulWidget> createState() {
-    return RequestListViewItemState();
+    return _RequestListViewItemState();
   }
 }
 
-class RequestListViewItemState extends State<RequestListViewItem> {
+class _RequestListViewItemState extends State<RequestListViewItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * .11,
+          height: MediaQuery.of(context).size.height * .1,
           padding: EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
@@ -38,17 +38,23 @@ class RequestListViewItemState extends State<RequestListViewItem> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    new AutoSizeText(parseTime(widget.request.assigneeDate),
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
-                              color: Color(0xffffffff),
-                            )),
+                    Container(
+                      width: MediaQuery.of(context).size.width * .1,
+                      child: AutoSizeText(
+                          parseTimeToHour(widget.request.assigneeDate),
+                          style: Theme.of(context).textTheme.bodyText1.copyWith(
+                                color: Color(0xffffffff),
+                              )),
+                    ),
+
                     SizedBox(
                       height: 8,
                     ),
-                    AutoSizeText(parseTime(widget.request.transactionDate),
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
-                              color: Color(0xffffffff),
-                            ))
+
+                    // AutoSizeText(parseTimeToHour(widget.request.transactionDate),
+                    //     style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    //           color: Color(0xffffffff),
+                    //         ))
                   ],
                 ),
                 Padding(
@@ -160,7 +166,7 @@ class RequestListViewItemState extends State<RequestListViewItem> {
   Widget getDotView() {
     return widget.labelDirection != LabelDirection.MID
         ? Positioned(
-            bottom: MediaQuery.of(context).size.height * .060,
+        bottom: MediaQuery.of(context).size.height * .052,
             width: 8,
             height: 8,
             child: Container(
@@ -190,7 +196,7 @@ class RequestListViewItemState extends State<RequestListViewItem> {
                   ),
                 ))
             : Positioned(
-                top: MediaQuery.of(context).size.height * .060,
+        top: MediaQuery.of(context).size.height * .035,
                 width: 16,
                 height: 16,
                 child: Container(
@@ -212,21 +218,23 @@ class RequestListViewItemState extends State<RequestListViewItem> {
 
   getDescView() {
     return Container(
+      alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          new Text(widget.request.customerName,
+          Text(widget.request.customerName,
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.headline3),
           SizedBox(
-            height: 12,
+            height: MediaQuery.of(context).size.height * .01,
           ),
           Container(
             width: MediaQuery.of(context).size.width * .5,
             height: MediaQuery.of(context).size.height * .05,
             child: AutoSizeText(widget.request.transactionAddress,
                 textAlign: TextAlign.start,
+                maxLines: 2,
                 style: Theme.of(context).textTheme.headline3.copyWith(
                       fontWeight: FontWeight.w400,
                     )),
@@ -234,14 +242,6 @@ class RequestListViewItemState extends State<RequestListViewItem> {
         ],
       ),
     );
-  }
-
-  String parseTime(String timeVal) {
-    String datetime = timeVal;
-    // String offset = data["utc_offset"].substring(1, 3);
-    DateTime now = DateTime.parse(datetime);
-    // now = now.add(Duration(hours: int.parse(offset)));
-    return DateFormat("hh:mm ").format(now);
   }
 }
 

@@ -43,13 +43,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   getUserData() {
     _userProfileModel = UserProfileModel();
-    _userProfileModel.getUserProfileData(onSuccess: (response) {
-      setState(() {
-        _userProfileResponse = response;
-      });
-    }, onError: (error) {
-      showError(error);
-    });
+    // _userProfileModel.getUserProfileData(onSuccess: (response) {
+    //   setState(() {
+    //     _userProfileResponse = response;
+    //   });
+    // }, onError: (error) {
+    //   showError(error);
+    // });
   }
 
   @override
@@ -482,56 +482,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
       l_name = lastName;
     }
     print("first name :$f_name --- lastName : $l_name");
-    UserProfileModel().editUserFirstNameAndLastName(
-        firstName: f_name,
-        lastName: l_name,
-        onSuccess: () {
-          showSuccesses(context, S.current.updated);
-          hideLoading();
-          getUserData();
-        },
-        onError: (error) {
-          showError(error.toString());
-          hideLoading();
-        });
+    // UserProfileModel().editUserFirstNameAndLastName(
+    //     firstName: f_name,
+    //     lastName: l_name,
+    //     onSuccess: () {
+    //       showSuccesses(context, S.current.updated);
+    //       hideLoading();
+    //       getUserData();
+    //     },
+    //     onError: (error) {
+    //       showError(error.toString());
+    //       hideLoading();
+    //     });
   }
 
   changeUserPassword(String oldPassword, String newPassword) {
     showLoading(context);
     print("oldPassword : $oldPassword ---- newPassword : $newPassword");
-    UserProfileModel().changeUserPassword(
-        password: oldPassword,
-        confirmPassword: newPassword,
-        newPassword: newPassword,
-        onSuccess: () {
-          showSuccesses(context, S.current.updated);
-          hideLoading();
-          getUserData();
-          Navigator.of(context).pop();
-        },
-        onError: (error) {
-          showError(error.toString());
-          hideLoading();
-        });
+    // UserProfileModel().changeUserPassword(
+    //     password: oldPassword,
+    //     confirmPassword: newPassword,
+    //     newPassword: newPassword,
+    //     onSuccess: () {
+    //       showSuccesses(context, S.current.updated);
+    //       hideLoading();
+    //       getUserData();
+    //       Navigator.of(context).pop();
+    //     },
+    //     onError: (error) {
+    //       showError(error.toString());
+    //       hideLoading();
+    //     });
   }
 
   changeUserPhone(String phoneNumber) {
     return;
     showLoading(context);
     print("changeUserPhone  $phoneNumber");
-    UserProfileModel().changeUserPhone(
-        phone_1: phoneNumber,
-        phone_2: "",
-        onSuccess: () {
-          showSuccesses(context, S.current.updated);
-          hideLoading();
-          getUserData();
-          Navigator.of(context).pop();
-        },
-        onError: (error) {
-          showError(error.toString());
-          hideLoading();
-        });
+    // UserProfileModel().changeUserPhone(
+    //     phone_1: phoneNumber,
+    //     phone_2: "",
+    //     onSuccess: () {
+    //       showSuccesses(context, S.current.updated);
+    //       hideLoading();
+    //       getUserData();
+    //       Navigator.of(context).pop();
+    //     },
+    //     onError: (error) {
+    //       showError(error.toString());
+    //       hideLoading();
+    //     });
   }
 
   addPhoneNumber(String phoneNumber) {
@@ -539,18 +539,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     showLoading(context);
 
-    UserProfileModel().addNewPhone(
-        phone_1: Provider.of<AppModel>(context, listen: false).getUserPhone(),
-        phone_2: phoneNumber,
-        onSuccess: () {
-          showSuccesses(context, S.current.updated);
-          hideLoading();
-          getUserData();
-          Navigator.of(context).pop();
-        },
-        onError: (error) {
-          showError(error.toString());
-          hideLoading();
-        });
+    // UserProfileModel().addNewPhone(
+    //     phone_1: Provider.of<AppModel>(context, listen: false).getUserPhone(),
+    //     phone_2: phoneNumber,
+    //     onSuccess: () {
+    //       showSuccesses(context, S.current.updated);
+    //       hideLoading();
+    //       getUserData();
+    //       Navigator.of(context).pop();
+    //     },
+    //     onError: (error) {
+    //       showError(error.toString());
+    //       hideLoading();
+    //     });
   }
 }

@@ -118,5 +118,16 @@
   "orders": "Orders",
   "startRequest": "Start Request",
   "cancelRequest": "Cancel Request",
-  "connectOperator": "Connect Operator"
+  "connectOperator": "Connect Operator",
+  "signIn": "Sign in",
+  "accept": "accept",
+  "decline": "Decline",
+  "success": "success",
+  "rejectionReason": "Rejection Reason",
+  "submit": "Submit",
+  "endRequest": "End Request",
+  "events": "Events",
+  "submitOrder": "SUBMIT ORDER",
+  "writeYourRejectionReason": "Write you rejection reason",
+  "pleaseSelectDeclineReason": "Please select Decline Reason"
 }

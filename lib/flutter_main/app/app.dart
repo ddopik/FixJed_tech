@@ -3,10 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
-import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/res/style.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -24,58 +25,11 @@ class App extends StatefulWidget {
 
 class AppState extends State<App> {
   final _app = AppModel();
+  final _transactionModel = TransactionModel();
 
   @override
   void initState() {
     super.initState();
-  }
-
-  /// Build the App Theme
-  ThemeData getTheme() {
-    return ThemeData.light().copyWith(
-        brightness: Brightness.dark,
-        primaryColor: french_blue,
-        accentColor: Color(0xff27ae60),
-        appBarTheme: AppBarTheme(
-            titleTextStyle: TextStyle(
-              fontFamily: 'Montserrat',
-              color: Color(0xffffffff),
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              fontStyle: FontStyle.normal,
-            ),
-            iconTheme: IconThemeData(color: Colors.white)),
-        scaffoldBackgroundColor: french_blue,
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
-            fontFamily: 'Montserrat',
-            color: Color(0xff000000),
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          headline3: TextStyle(
-            fontFamily: 'Montserrat',
-            color: Color(0xffffffff),
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-            fontStyle: FontStyle.normal,
-          ),
-          headline4: TextStyle(
-            fontFamily: 'Montserrat',
-            color: Color(0xffffffff),
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            fontStyle: FontStyle.normal,
-          ),
-          headline5: TextStyle(
-            fontFamily: 'Montserrat',
-            color: Color(0xffffffff),
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            fontStyle: FontStyle.normal,
-          ),
-        ));
   }
 
   @override
@@ -84,7 +38,8 @@ class AppState extends State<App> {
     return FutureBuilder(
         future: PrefManager().setupSharedPreferences(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.done &&
+              snapshot.data == true) {
             hideLoading();
             return ChangeNotifierProvider<AppModel>.value(
               value: _app,
@@ -94,6 +49,7 @@ class AppState extends State<App> {
                     providers: [
                       // Provider<AppModel>.value(value: widget._app),
                       ChangeNotifierProvider.value(value: _app),
+                      ChangeNotifierProvider.value(value: _transactionModel),
                     ],
                     child: MaterialApp(
                       navigatorKey: navigatorKey,

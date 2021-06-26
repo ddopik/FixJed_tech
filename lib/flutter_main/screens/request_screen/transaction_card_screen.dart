@@ -1,9 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
+import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/no_connection_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
+import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/CircleImageWidget.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/app_bar_back_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
@@ -13,22 +16,23 @@ import 'package:flutter_base_app/generated/l10n.dart';
 
 import 'call_operator_slide_dialog_view.dart';
 
-class RequestCardScreen extends StatefulWidget {
+class TransactionCardScreen extends StatefulWidget {
   final arguments;
 
-  RequestCardScreen({this.arguments});
+  TransactionCardScreen({this.arguments});
 
   @override
   State<StatefulWidget> createState() {
-    return RequestCardScreenState();
+    return TransactionCardScreenState();
   }
 }
 
-class RequestCardScreenState extends State<RequestCardScreen> {
+class TransactionCardScreenState extends State<TransactionCardScreen> {
   final requestCardProvider = RequestCardProvider();
-  Request _request;
+  Transaction _request;
   bool _isLoading = true;
   bool _showErrorState = false;
+  var _currentMainError = '';
 
   @override
   void initState() {
@@ -49,8 +53,6 @@ class RequestCardScreenState extends State<RequestCardScreen> {
   }
 
   Widget _getView() {
-    print("_getView ---> _isLoading " + _isLoading.toString());
-    print("_getView ---> _showErrorState " + _showErrorState.toString());
     if (_isLoading) return Container();
     if (_showErrorState) return getErrorView();
 
@@ -65,7 +67,8 @@ class RequestCardScreenState extends State<RequestCardScreen> {
         children: [
           Padding(
             padding: EdgeInsets.all(inner_boundary_field_space_wide),
-            child: Text("Today",
+            child: Text(
+                parseTimeToMonthDate(_request.transactionDate), // current date
                 style: Theme.of(context).textTheme.bodyText1.copyWith(
                       color: Color(0xffffffff),
                     )),
@@ -125,7 +128,8 @@ class RequestCardScreenState extends State<RequestCardScreen> {
                             SizedBox(
                               height: 12,
                             ),
-                            Text("09:00",
+                            Text(parseTimeToHour(_request.transactionDate),
+                                // set hour here
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText1
@@ -160,8 +164,8 @@ class RequestCardScreenState extends State<RequestCardScreen> {
                                             .textTheme
                                             .headline3
                                             .copyWith(
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.6)),
+                                              fontWeight: FontWeight.w400,
+                                            )),
                                   ),
                                   new Text(_request?.customerPhone ?? "",
                                       style: TextStyle(
@@ -217,9 +221,11 @@ class RequestCardScreenState extends State<RequestCardScreen> {
   }
 
   getRequestButton() {
+    print(
+        "getRequestButton ---> " + _request.technicianTransactionId.toString());
     return Column(
       children: [
-        _request.cancelButtonActive == true
+        _request.startButtonActive == true && _request.startDate == null
             ? customActionButton(
                 btnText: Text(
                   S.current.startRequest,
@@ -228,42 +234,51 @@ class RequestCardScreenState extends State<RequestCardScreen> {
                       .headline5
                       .copyWith(color: Colors.white, fontSize: text_size_1),
                 ),
-                width: MediaQuery.of(context).size.width * .9,
-                btnColor: Color(0xff61ba66),
-                btnRadius: 7.0,
-                onPressed: () {
-                  callOperatorDialogView(
-                      context: context,
-                      barrierColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      pillColor: Colors.transparent);
+            width: MediaQuery.of(context).size.width * .9,
+            btnColor: Color(0xff61ba66),
+            btnRadius: 7.0,
+            onPressed: () {
+                  RequestCardProvider().acceptTransaction(
+                      id: widget.arguments.technicianTransactionId.toString(),
+                      onSuccess: () async {
+                        await Navigator.of(context)
+                            .pushNamed(Routes.COUNTER_SCREEN);
+                        Navigator.of(context).pop();
+                      },
+                      onError: (error) {
+                        showError(error);
+                      });
                 })
             : Container(),
         SizedBox(
           height: list_separator_space,
         ),
-        _request?.cancelButtonActive == true
+        _request?.cancelButtonActive == true && _request.startDate == null
             ? customActionButton(
-                btnText: Text(
-                  S.current.cancelRequest,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      .copyWith(color: Colors.white, fontSize: text_size_1),
-                ),
-                width: MediaQuery.of(context).size.width * .9,
-                btnColor: Color(0xfff41a1a),
-                btnRadius: 7.0,
-                onPressed: () {
-                  callOperatorDialogView(
-                      context: context,
-                      barrierColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      pillColor: Colors.transparent);
+            btnText: Text(
+              S.current.cancelRequest,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5
+                  .copyWith(color: Colors.white, fontSize: text_size_1),
+            ),
+            width: MediaQuery.of(context).size.width * .9,
+            btnColor: Color(0xfff41a1a),
+            btnRadius: 7.0,
+            onPressed: () {
+                  RequestCardProvider().cancelTransaction(
+                      id: widget.arguments.technicianTransactionId.toString(),
+                      onSuccess: () {
+                        Navigator.of(context).pop();
+                      },
+                      onError: (error) {
+                        showError(error);
+                      });
                 })
             : Container(),
-        _request?.cancelButtonActive == false &&
-                _request?.cancelButtonActive == false
+        _request?.startButtonActive == false &&
+                _request?.cancelButtonActive == false &&
+                _request.startDate == null
             ? customActionButton(
                 btnText: Text(
                   S.current.connectOperator,
@@ -275,13 +290,13 @@ class RequestCardScreenState extends State<RequestCardScreen> {
                 width: MediaQuery.of(context).size.width * .9,
                 btnColor: Color(0xFFF49D1A),
                 btnRadius: 7.0,
-                onPressed: () {
-                  callOperatorDialogView(
-                      context: context,
-                      barrierColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      pillColor: Colors.transparent);
-                })
+            onPressed: () {
+              callOperatorDialogView(
+                  context: context,
+                  barrierColor: Colors.transparent,
+                  backgroundColor: Colors.transparent,
+                  pillColor: Colors.transparent);
+            })
             : Container()
       ],
     );
@@ -297,9 +312,14 @@ class RequestCardScreenState extends State<RequestCardScreen> {
           _showErrorState = false;
           print("getRequests ----> " + request.toString());
           _request = request;
+          if (_request.startButtonActive == true &&
+              _request.startDate != null) {
+            Navigator.of(context).pushReplacementNamed(Routes.COUNTER_SCREEN);
+          }
           setState(() {});
         },
         onError: (error) {
+          _currentMainError = error;
           hideLoading();
           _isLoading = false;
           _showErrorState = true;
@@ -307,11 +327,18 @@ class RequestCardScreenState extends State<RequestCardScreen> {
         });
   }
 
-  getErrorView() {
-    return NoConnectionIndicator(
-      onTryAgain: () {
+  Widget getErrorView() {
+    if (_currentMainError == "Connection failed") {
+      return NoConnectionIndicator(onTryAgain: () {
         getRequestInfo();
-      },
-    );
+      });
+    } else {
+      return ErrorIndicator(
+        error: _currentMainError,
+        onTryAgain: () {
+          getRequestInfo();
+        },
+      );
+    }
   }
 }

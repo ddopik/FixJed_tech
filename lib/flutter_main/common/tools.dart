@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
@@ -79,6 +79,14 @@ String trimAll(String str) {
   return value;
 }
 
-getPrice(context, price) {
-  return price.toString() + " " + S.of(context).egpPrice;
+String parseTimeToMonthDate(String timeVal) {
+  String datetime = timeVal;
+  DateTime now = DateTime.parse(datetime);
+  return DateFormat("dd/MM/yyyy").format(now);
+}
+
+String parseTimeToHour(String timeVal) {
+  String datetime = timeVal;
+  DateTime now = DateTime.parse(datetime);
+  return DateFormat("HH:MM").format(now);
 }

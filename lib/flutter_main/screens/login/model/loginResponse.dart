@@ -6,10 +6,10 @@ class LoginResponse {
     this.lastName,
     this.email,
     this.phone,
-    this.userType,
+    // this.userType,
     this.addresses,
     this.imageUrl,
-    this.roles,
+    // this.roles,
   });
 
   int id;
@@ -20,9 +20,11 @@ class LoginResponse {
   String lastName;
   String email;
   String phone;
-  UserType userType;
+
+  // UserType userType;
   List<dynamic> addresses;
-  List<Role> roles;
+
+  // List<Role> roles;
   List<Role> imageUrl;
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
@@ -33,9 +35,9 @@ class LoginResponse {
         email: json["email"],
         phone: json["phone"],
         imageUrl: json["imageUrl"],
-        userType: UserType.fromJson(json["userType"]),
+    // userType: UserType.fromJson(json["userType"]),
         addresses: List<dynamic>.from(json["addresses"].map((x) => x)),
-        roles: List<Role>.from(json["roles"].map((x) => Role.fromJson(x))),
+    // roles: List<Role>.from(json["roles"].map((x) => Role.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,9 +47,9 @@ class LoginResponse {
         "lastName": lastName,
         "email": email,
         "phone": phone,
-        "userType": userType.toJson(),
+    // "userType": userType.toJson(),
         "addresses": List<dynamic>.from(addresses.map((x) => x)),
-        "roles": List<dynamic>.from(roles.map((x) => x.toJson())),
+    // "roles": List<dynamic>.from(roles.map((x) => x.toJson())),
       };
 }
 

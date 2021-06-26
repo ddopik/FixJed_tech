@@ -11,6 +11,7 @@ import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:flutter_base_app/network/dio_manager.dart';
 import 'package:provider/provider.dart';
 
+import 'login_slide_view.dart';
 import 'model/loginResponse.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -38,12 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          alignment: Alignment.topCenter,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/background_init.png"),
-                fit: BoxFit.fill),
-          ),
+          alignment: Alignment.center,
+          color: french_blue,
           child: SingleChildScrollView(
             child: renderLoginForm(),
           )),
@@ -54,29 +51,22 @@ class _LoginScreenState extends State<LoginScreen> {
     return Form(
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // Create an Account
           SizedBox(
-            height: MediaQuery.of(context).size.height * .18,
+            height: 20,
           ),
-          Text(
-            S.of(context).login,
-            style: const TextStyle(
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w600,
-                fontFamily: "Raleway",
-                fontStyle: FontStyle.normal,
-                fontSize: 22.0),
-            textAlign: TextAlign.center,
+          Container(
+            child: LoginSlideView(),
           ),
           // Rectangle 85
-          SizedBox(height: 22.0),
+          SizedBox(height: MediaQuery.of(context).size.height * .12),
           Container(
             width: MediaQuery.of(context).size.width * .70,
             height: 45,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(24)),
+                borderRadius: BorderRadius.all(Radius.circular(8)),
                 boxShadow: [
                   BoxShadow(
                       color: const Color(0x29000000),
@@ -84,22 +74,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       blurRadius: 6,
                       spreadRadius: 0)
                 ],
-                color: const Color(0xffffffff)),
+                color: const Color(0xFFE7F5E8)),
             child: TextFormField(
               controller: _userNameController,
               autocorrect: false,
               enableSuggestions: false,
+              style: TextStyle(color: french_blue),
               decoration: new InputDecoration(
-                  errorStyle: TextStyle(height: 0),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                  hintText: S.of(context).email,
-                  hintStyle: TextStyle(fontSize: 14)),
+                hintText: S.of(context).email,
+              ),
             ),
           ),
           //
@@ -108,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
             width: MediaQuery.of(context).size.width * .70,
             height: 45,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(24)),
+                borderRadius: BorderRadius.all(Radius.circular(8)),
                 boxShadow: [
                   BoxShadow(
                       color: const Color(0x29000000),
@@ -116,35 +99,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       blurRadius: 6,
                       spreadRadius: 0)
                 ],
-                color: const Color(0xffffffff)),
+                color: const Color(0xFFE7F5E8)),
             child: TextFormField(
               controller: _passwordController,
               cursorColor: Colors.black,
               keyboardType: TextInputType.name,
+              style: TextStyle(color: french_blue),
               decoration: new InputDecoration(
-                  errorStyle: TextStyle(height: 0),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                  hintText: S.of(context).password,
-                  hintStyle: TextStyle(fontSize: 14)),
+                hintText: S.of(context).password,
+              ),
               obscureText: true,
             ),
           ),
           //
           SizedBox(height: form_field_sepereator_space),
-          // Rectangle 85
-          ////////////////////
+
           InkWell(
             child: Container(
               width: MediaQuery.of(context).size.width * .70,
               height: 45,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(24)),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                   boxShadow: [
                     BoxShadow(
                         color: const Color(0x29000000),
@@ -154,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                   color: boring_green),
               child: Text(
-                S.of(context).login,
+                S.of(context).signIn,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -165,47 +141,6 @@ class _LoginScreenState extends State<LoginScreen> {
               validateUser();
             },
           ),
-////////////////////////////////
-          // forgot password
-          SizedBox(height: 28.0),
-          GestureDetector(
-            child: Text(S.of(context).forgotPassword,
-                style: const TextStyle(
-                    color: boring_green,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Raleway",
-                    fontStyle: FontStyle.normal,
-                    decoration: TextDecoration.underline,
-                    fontSize: 18),
-                textAlign: TextAlign.center),
-            onTap: () {},
-          ),
-          // doesnt have an account
-          Container(
-            height: 25,
-            child: RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                  style: TextStyle(
-                      color: Color(0xffffffff),
-                      fontWeight: FontWeight.w400,
-                      fontFamily: "Raleway",
-                      fontStyle: FontStyle.normal,
-                      fontSize: 16),
-                  text: S.of(context).doNotHaveAccount),
-                  TextSpan(text: "   "),
-                  TextSpan(
-                    style: const TextStyle(
-                        color: boring_green,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: "Raleway",
-                        fontStyle: FontStyle.normal,
-                        decoration: TextDecoration.underline,
-                        fontSize: 18),
-                    text: S.of(context).signUp,
-                  )
-                ])),
-              ),
         ],
       ),
       key: _loginFormState,

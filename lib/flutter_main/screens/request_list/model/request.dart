@@ -1,4 +1,4 @@
-class Request {
+class Transaction {
   int _technicianTransactionId;
   String _assigneeDate;
   String _customerName;
@@ -48,7 +48,7 @@ class Request {
 
   bool get startButtonActive => _startButtonActive;
 
-  Request(
+  Transaction(
       {int technicianTransactionId,
       String assigneeDate,
       String customerName,
@@ -83,7 +83,7 @@ class Request {
     _startButtonActive = startButtonActive;
   }
 
-  Request.fromJson(dynamic json) {
+  Transaction.fromJson(dynamic json) {
     _technicianTransactionId = json["technicianTransactionId"];
     _assigneeDate = json["assigneeDate"];
     _customerName = json["customerName"];

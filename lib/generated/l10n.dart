@@ -1234,6 +1234,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Sign in`
+  String get signIn {
+    return Intl.message(
+      'Sign in',
+      name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `accept`
+  String get accept {
+    return Intl.message(
+      'accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decline`
+  String get decline {
+    return Intl.message(
+      'Decline',
+      name: 'decline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `success`
+  String get success {
+    return Intl.message(
+      'success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejection Reason`
+  String get rejectionReason {
+    return Intl.message(
+      'Rejection Reason',
+      name: 'rejectionReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End Request`
+  String get endRequest {
+    return Intl.message(
+      'End Request',
+      name: 'endRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Events`
+  String get events {
+    return Intl.message(
+      'Events',
+      name: 'events',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SUBMIT ORDER`
+  String get submitOrder {
+    return Intl.message(
+      'SUBMIT ORDER',
+      name: 'submitOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write you rejection reason`
+  String get writeYourRejectionReason {
+    return Intl.message(
+      'Write you rejection reason',
+      name: 'writeYourRejectionReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select Decline Reason`
+  String get pleaseSelectDeclineReason {
+    return Intl.message(
+      'Please select Decline Reason',
+      name: 'pleaseSelectDeclineReason',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

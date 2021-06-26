@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/common/widgets/skeleton.dart';
 
 class CircleImageWidget extends StatelessWidget {
   final double width;
@@ -52,9 +53,8 @@ class CircleImageWidget extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(radius)),
         child: imageFile == null && icon == null
             ? CachedNetworkImage(
-                imageUrl: url,
-                placeholder: (context, url) =>
-                    Image(image: AssetImage(placeholder), fit: fit),
+          imageUrl: url,
+                placeholder: (context, url) => Skeleton(),
                 imageBuilder: (ctx, imageProvider) => Image(
                   image: imageProvider,
                   fit: fit,
