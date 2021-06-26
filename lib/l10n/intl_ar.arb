@@ -127,7 +127,7 @@
   "events": "طلب",
   "submitOrder": "ارسال الطلب",
   "writeYourRejectionReason": "سبب الرفض",
-  "pleaseSelectDeclineReason": "من فضلك اختر سبب الرفض"
+  "pleaseSelectDeclineReason": "من فضلك اختر سبب الرفض",
   "connectOperator": "تواصل مع الاداره",
   "customerWasntAthome": "العميل ليس بالمنزل",
   "customerDidn'tAnswer": "العميل لا يرد على المكالمات",

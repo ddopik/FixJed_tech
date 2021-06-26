@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1340,6 +1341,56 @@ class S {
     return Intl.message(
       'Please select Decline Reason',
       name: 'pleaseSelectDeclineReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer wasnt at home`
+  String get customerWasntAthome {
+    return Intl.message(
+      'Customer wasnt at home',
+      name: 'customerWasntAthome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer didnt answer my calls`
+  String get customerDidntAnswer {
+    return Intl.message(
+      'Customer didnt answer my calls',
+      name: 'customerDidntAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer asked me to cancel`
+  String get customerAskedToCancel {
+    return Intl.message(
+      'Customer asked me to cancel',
+      name: 'customerAskedToCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer is rude`
+  String get customerIsRude {
+    return Intl.message(
+      'Customer is rude',
+      name: 'customerIsRude',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Others and i need one of operations to contact me`
+  String get othersAndIneedOneofOperationstoContactMe {
+    return Intl.message(
+      'Others and i need one of operations to contact me',
+      name: 'othersAndIneedOneofOperationstoContactMe',
       desc: '',
       args: [],
     );

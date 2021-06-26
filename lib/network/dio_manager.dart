@@ -204,7 +204,7 @@ class DIOManager {
     _sendPostRequest(
         onSuccess: onSuccess,
         onError: onError,
-        url: _ADD_PRODUCT_TO_CART,
+        url: "_ADD_PRODUCT_TO_CART",
         bodyParameters: reasonId);
   }
   getNotification({Function onSuccess, Function onError}) {
