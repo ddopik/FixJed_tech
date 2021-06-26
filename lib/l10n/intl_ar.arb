@@ -117,7 +117,6 @@
   "orders": "طلب",
   "startRequest": "بدآ",
   "cancelRequest": "الغاء",
-  "connectOperator": "تواصل مع الاداره",
   "signIn": "تسجيل الدخول",
   "accept": "قبول",
   "decline": "رفض",
@@ -129,4 +128,10 @@
   "submitOrder": "ارسال الطلب",
   "writeYourRejectionReason": "سبب الرفض",
   "pleaseSelectDeclineReason": "من فضلك اختر سبب الرفض"
+  "connectOperator": "تواصل مع الاداره",
+  "customerWasntAthome": "العميل ليس بالمنزل",
+  "customerDidn'tAnswer": "العميل لا يرد على المكالمات",
+  "customerAskedToCancel": "العميل أراد ان يلغي",
+  "customerIsRude": "العميل وقح",
+  "othersAndIneedOneofOperationstoContactMe": "أخرى و اريد ان أتحدث الي العاملين"
 }

@@ -199,7 +199,14 @@ class DIOManager {
         url: _ACCEPT_INCOMING_TRANSACTION + "/$transactionId",
         queryParameters: null);
   }
-
+  submitId({Function onSuccess, Function onError, reasonId, transactionId}) {
+    print(reasonId);
+    _sendPostRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: _ADD_PRODUCT_TO_CART,
+        bodyParameters: reasonId);
+  }
   getNotification({Function onSuccess, Function onError}) {
     _sendGetRequest(
       onSuccess: onSuccess,
