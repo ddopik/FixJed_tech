@@ -9,6 +9,7 @@ import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/app_bar_back_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,11 +19,27 @@ import 'add_photo_slide_dialog.dart';
 
 class TransactionSubmitScreen extends StatefulWidget {
   final arguments;
+  DateTime elsabiTime;
+  String currentElsabedinHour;
+  String currentElsabedinMinutes;
 
   TransactionSubmitScreen({this.arguments});
 
   @override
   State<StatefulWidget> createState() {
+    var reDate = (arguments as Transaction).startDate;
+    DateTime startDate = DateTime.parse(reDate);
+    DateTime dateNow = new DateTime.now();
+    elsabiTime =
+        dateNow.subtract(Duration(microseconds: startDate.microsecond));
+    print("elsabiTime ---> " + elsabiTime.toString());
+
+    currentElsabedinHour = elsabiTime.hour.toString() + " " + S.current.hour;
+
+    currentElsabedinMinutes = elsabiTime.toString().split(":")[1].toString() +
+        " " +
+        S.current.minutes;
+
     return _OrderSubmitScreen();
   }
 }
@@ -61,7 +78,7 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "ORDER \nSUBMISSION",
+                  S.current.submitOrder,
                   style: Theme.of(context)
                       .textTheme
                       .headline5
@@ -111,7 +128,7 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                new Text("Comment",
+                new Text(S.current.comment,
                     style: Theme.of(context)
                         .textTheme
                         .headline6
@@ -172,7 +189,7 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                new Text("Request time",
+                new Text(S.current.requestTime,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Color(0xffffffff),
@@ -180,7 +197,10 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.normal,
                     )),
-                new Text("30 minutes",
+                new Text(
+                    widget.currentElsabedinHour +
+                        " " +
+                        widget.currentElsabedinMinutes,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Color(0xffffffff),
@@ -193,7 +213,7 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                new Text("Total",
+                new Text(S.current.total,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Color(0xffffffff),
@@ -201,7 +221,7 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.normal,
                     )),
-                new Text("200 EGP",
+                new Text(widget.arguments.totalCost ?? " 0 " + S.current.egp,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Color(0xffffffff),

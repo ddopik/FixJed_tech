@@ -42,7 +42,8 @@ class AppModel extends ChangeNotifier {
   }
 
   Locale get local {
-    _locale = Locale.fromSubtags(languageCode: PrefManager().getLang());
+    _locale =
+        Locale.fromSubtags(languageCode: PrefManager()?.getLang() ?? "ar");
     return _locale;
   }
 

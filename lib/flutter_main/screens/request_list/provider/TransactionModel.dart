@@ -31,8 +31,7 @@ class TransactionModel extends ChangeNotifier {
         allConfirmedRequest.addAll(dataResponse);
         requestsGroupList.add(RequestsGroup(key, dataResponse));
       }
-      print("getConfirmedTransactions  allConfirmedRequest----> " +
-          allConfirmedRequest.length.toString());
+
       onSuccess(requestsGroupList);
       notifyListeners();
     }, onError: (error) {
@@ -83,6 +82,19 @@ class TransactionModel extends ChangeNotifier {
         onError: (error) {
           onError(error);
         });
+  }
+
+  submitCancelTransactionReason(
+      {Function onSuccess, Function onError, transactionId, reasonId}) {
+    DIOManager().submitCancelTransactionReason(
+        onSuccess: (response) {
+          onSuccess(response);
+        },
+        onError: (response) {
+          onError(response);
+        },
+        reasonId: reasonId,
+        transactionId: transactionId);
   }
 
   endRequest({String id, onSuccess, onError}) async {

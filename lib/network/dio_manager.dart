@@ -20,8 +20,8 @@ class DIOManager {
 
     dio.options.baseUrl = "http://34.193.99.151:8080/fix-jed-back-end";
     dio.options.headers = {
-      "Authorization":
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5tb2hhbWVkQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJUZWNobmljaWFuIFJvbGUifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5VcGNvbWluZ0NhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5Ijoic3RhcnRUZWNobmljaWFuVHJhbnNhY3Rpb24ifSx7ImF1dGhvcml0eSI6ImNoYW5nZVRvVGVjaG5pY2lhbkRlbGl2ZXJlZFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiZmluZEJ5VGVjaG5pY2lhblRyYW5zYWN0aW9uSWQifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuSGlzdG9yeSJ9LHsiYXV0aG9yaXR5IjoiZmluZEFsbE5vdGlmaWNhdGlvbnMifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxQZW5kaW5nVGVjaG5pY2lhblRyYW5zYWN0aW9ucyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5Bc3NpZ25lZENhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuRGVsaXZlcmVkQ2FuY2VsU3RhdHVzIn1dLCJpYXQiOjE2MjQ1MzYzMzcsImV4cCI6MTYyNTcwMjQwMH0.XY1moyp_MkkydnbGR7GIqdSFRaAlPqKGJTiLhasQghzjValC-H-jTjpBvJUADhZeOJFn9lo54VKxOcjauCD37A",
+      // "Authorization":
+      //     "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5tb2hhbWVkQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJUZWNobmljaWFuIFJvbGUifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5VcGNvbWluZ0NhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5Ijoic3RhcnRUZWNobmljaWFuVHJhbnNhY3Rpb24ifSx7ImF1dGhvcml0eSI6ImNoYW5nZVRvVGVjaG5pY2lhbkRlbGl2ZXJlZFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiZmluZEJ5VGVjaG5pY2lhblRyYW5zYWN0aW9uSWQifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuSGlzdG9yeSJ9LHsiYXV0aG9yaXR5IjoiZmluZEFsbE5vdGlmaWNhdGlvbnMifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxQZW5kaW5nVGVjaG5pY2lhblRyYW5zYWN0aW9ucyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5Bc3NpZ25lZENhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuRGVsaXZlcmVkQ2FuY2VsU3RhdHVzIn1dLCJpYXQiOjE2MjQ1MzYzMzcsImV4cCI6MTYyNTcwMjQwMH0.XY1moyp_MkkydnbGR7GIqdSFRaAlPqKGJTiLhasQghzjValC-H-jTjpBvJUADhZeOJFn9lo54VKxOcjauCD37A",
       "Accept-Language": currentLanguage,
     };
 
@@ -56,6 +56,9 @@ class DIOManager {
 
   static const String _CANCEL_TRANSACTION =
       "/technicians/change-to-upcoming-cancel-status";
+
+  static const String SUBMIT_CANCEL_TRANSACTION_REASON =
+      "/technicians/change-to-delivered_cancel-status";
 
   static const String _GET_APPROVED_TRANSACTION =
       "/technicians/find-all-confirmed-status";
@@ -199,14 +202,19 @@ class DIOManager {
         url: _ACCEPT_INCOMING_TRANSACTION + "/$transactionId",
         queryParameters: null);
   }
-  submitId({Function onSuccess, Function onError, reasonId, transactionId}) {
-    print(reasonId);
-    _sendPostRequest(
+
+  submitCancelTransactionReason(
+      {Function onSuccess, Function onError, reasonId, transactionId}) {
+    _sendPatchRequest(
         onSuccess: onSuccess,
         onError: onError,
-        url: "_ADD_PRODUCT_TO_CART",
-        bodyParameters: reasonId);
+        url: SUBMIT_CANCEL_TRANSACTION_REASON + "/$transactionId",
+        bodyParameters: {
+          "deliveredCancelReason": reasonId,
+          "rejectionDescription": ""
+        });
   }
+
   getNotification({Function onSuccess, Function onError}) {
     _sendGetRequest(
       onSuccess: onSuccess,

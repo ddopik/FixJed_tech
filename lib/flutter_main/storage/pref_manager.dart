@@ -27,10 +27,13 @@ class PrefManager {
   SharedPreferences _prefs;
 
   Future<bool> setupSharedPreferences() async {
-    // _prefs = await SharedPreferences.getInstance();
+    try {
+      _instance._prefs = await SharedPreferences.getInstance();
+      print("PrefManager setupSharedPreferences called");
+    } catch (err) {
+      print("  setupSharedPreferences Error called ---- >" + err.toString());
+    }
 
-    _instance._prefs = await SharedPreferences.getInstance();
-    print("setupSharedPreferences called");
     return true;
   }
 
@@ -49,7 +52,7 @@ class PrefManager {
   }
 
   String getUserToken() {
-    return _prefs.getString(_TOKEN) ?? null;
+    return _prefs?.getString(_TOKEN) ?? null;
   }
 
   void setUserId(
@@ -101,8 +104,9 @@ class PrefManager {
   String getUserMail() {
     return _prefs.getString(_USER_MAIL) ?? '';
   }
-   getUserImage() {
-    return _prefs.getString(_USER_IMAGE)??'';
+
+  getUserImage() {
+    return _prefs.getString(_USER_IMAGE) ?? '';
   }
 
   String getUserName() {
@@ -146,7 +150,7 @@ class PrefManager {
   }
 
   String getLang() {
-    String lang = _prefs.getString(_appLanguage) ?? "en";
+    String lang = _prefs?.getString(_appLanguage) ?? "ar";
     return lang;
   }
 }

@@ -58,8 +58,9 @@ class CounterScreenState extends State<CounterScreen> {
             btnColor: Color(0xfff41a1a),
             btnRadius: 7.0,
             onPressed: () {
-              //todo move to cancel Reasons screen
-              // Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(
+                  Routes.CANCEL_TRANSACTION_REASONS_SCREEN,
+                  arguments: widget.arguments);
             }),
         SizedBox(
           height: list_separator_space,

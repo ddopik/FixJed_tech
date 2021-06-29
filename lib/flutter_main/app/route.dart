@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/screens/cancel_request/cancel_request_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/counter_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
@@ -23,6 +24,8 @@ class Routes {
   static const PROFILE_SCREEN = "/profile_screen";
   static const NOTIFICATION_SCREEN = "/notification_screen";
   static const TRANSACTION_SUBMIT_SCREEN = "/transaction_submit_screen";
+  static const CANCEL_TRANSACTION_REASONS_SCREEN =
+      "/cancel_transaction_reason_screen";
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
@@ -35,6 +38,8 @@ class Routes {
         CounterScreen(arguments: ModalRoute.of(context).settings.arguments),
     NOTIFICATION_SCREEN: (context) => NotificationScreen(),
     TRANSACTION_SUBMIT_SCREEN: (context) => TransactionSubmitScreen(
+        arguments: ModalRoute.of(context).settings.arguments),
+    CANCEL_TRANSACTION_REASONS_SCREEN: (context) => CancelRequestScreen(
         arguments: ModalRoute.of(context).settings.arguments),
   };
 

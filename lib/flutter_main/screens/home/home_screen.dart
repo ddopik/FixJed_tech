@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/view/RequestsListView.dart';
+import 'package:flutter_base_app/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 import 'In_coming_order_dialog.dart';
@@ -51,13 +53,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Welcome, abdo "),
+                    Text(S.current.welcome +
+                            " " +
+                            Provider.of<AppModel>(context).getUserName() ??
+                        ""),
                     Row(
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.repeat_one_outlined),
-                          onPressed: () {},
-                        ),
+                        Image.asset("assets/images/ic_history.png"),
                         IconButton(
                           icon: Icon(Icons.settings),
                           onPressed: () {},
@@ -158,16 +160,19 @@ class _HomeScreenState extends State<HomeScreen> {
       await showInComingOrderDialog(context, transaction);
     }
 
-    Provider.of<TransactionModel>(context, listen: false)
-        .getInComingTransactions(onSuccess: () {}, onError: (err) {});
+    /// this block run to refresh  ComingTransactions to make sure if user have admitted all transaction
+    if (newrequestList.isNotEmpty)
+      Provider.of<TransactionModel>(context, listen: false)
+          .getInComingTransactions(onSuccess: () {}, onError: (err) {});
   }
 
   Transaction getRunningTransaction(List<Transaction> transactionList) {
     for (Transaction transaction in transactionList) {
-      print("Condition is true");
       if (transaction.startDate != null &&
           transaction.endDate == null &&
           transaction.technicianStatus == "CONFIRMED") {
+        print("Condition is true + " +
+            transaction.technicianTransactionId.toString());
         return transaction;
       }
     }

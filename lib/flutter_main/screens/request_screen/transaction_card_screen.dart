@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/app_model.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/error_indicator.dart';
 import 'package:flutter_base_app/flutter_main/common/exception_indicators/no_connection_indicator.dart';
@@ -13,6 +14,7 @@ import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_butto
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_screen/provider/RequestCarfdProvider.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:provider/provider.dart';
 
 import 'call_operator_slide_dialog_view.dart';
 
@@ -141,20 +143,18 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(
-                                    height: 12,
-                                  ),
-                                  new Text(_request?.customerName ?? "",
+                                  Text(_request?.customerName ?? "",
                                       textAlign: TextAlign.start,
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline3),
                                   SizedBox(
-                                    height: 12,
+                                    height: MediaQuery.of(context).size.height *
+                                        .008,
                                   ),
                                   Container(
                                     width:
-                                        MediaQuery.of(context).size.width * .58,
+                                        MediaQuery.of(context).size.width * .55,
                                     height: MediaQuery.of(context).size.height *
                                         .16,
                                     child: AutoSizeText(
@@ -167,7 +167,7 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
                                               fontWeight: FontWeight.w400,
                                             )),
                                   ),
-                                  new Text(_request?.customerPhone ?? "",
+                                  AutoSizeText(_request?.customerPhone ?? "",
                                       style: TextStyle(
                                         fontFamily: 'Montserrat',
                                         color: Color(0xffffffff),
@@ -195,7 +195,9 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
   getProfileImage() {
     return Container(
       child: Stack(
-        alignment: Alignment.topRight,
+        alignment: Provider.of<AppModel>(context).local.countryCode == "en"
+            ? Alignment.topRight
+            : Alignment.topLeft,
         children: [
           CircleImageWidget(
             url: _request?.customerImageUrl ?? default_profile_img,
@@ -221,23 +223,21 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
   }
 
   getRequestButton() {
-    print(
-        "getRequestButton ---> " + _request.technicianTransactionId.toString());
     return Column(
       children: [
         _request.startButtonActive == true && _request.startDate == null
             ? customActionButton(
-                btnText: Text(
+            btnText: Text(
                   S.current.startRequest,
                   style: Theme.of(context)
                       .textTheme
                       .headline5
                       .copyWith(color: Colors.white, fontSize: text_size_1),
                 ),
-            width: MediaQuery.of(context).size.width * .9,
-            btnColor: Color(0xff61ba66),
-            btnRadius: 7.0,
-            onPressed: () {
+                width: MediaQuery.of(context).size.width * .9,
+                btnColor: Color(0xff61ba66),
+                btnRadius: 7.0,
+                onPressed: () {
                   RequestCardProvider().acceptTransaction(
                       id: widget.arguments.technicianTransactionId.toString(),
                       onSuccess: () async {
@@ -255,17 +255,17 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
         ),
         _request?.cancelButtonActive == true && _request.startDate == null
             ? customActionButton(
-            btnText: Text(
-              S.current.cancelRequest,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  .copyWith(color: Colors.white, fontSize: text_size_1),
-            ),
-            width: MediaQuery.of(context).size.width * .9,
-            btnColor: Color(0xfff41a1a),
-            btnRadius: 7.0,
-            onPressed: () {
+                btnText: Text(
+                  S.current.cancelRequest,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      .copyWith(color: Colors.white, fontSize: text_size_1),
+                ),
+                width: MediaQuery.of(context).size.width * .9,
+                btnColor: Color(0xfff41a1a),
+                btnRadius: 7.0,
+                onPressed: () {
                   RequestCardProvider().cancelTransaction(
                       id: widget.arguments.technicianTransactionId.toString(),
                       onSuccess: () {
@@ -290,13 +290,13 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
                 width: MediaQuery.of(context).size.width * .9,
                 btnColor: Color(0xFFF49D1A),
                 btnRadius: 7.0,
-            onPressed: () {
-              callOperatorDialogView(
-                  context: context,
-                  barrierColor: Colors.transparent,
-                  backgroundColor: Colors.transparent,
-                  pillColor: Colors.transparent);
-            })
+                onPressed: () {
+                  callOperatorDialogView(
+                      context: context,
+                      barrierColor: Colors.transparent,
+                      backgroundColor: Colors.transparent,
+                      pillColor: Colors.transparent);
+                })
             : Container()
       ],
     );
@@ -310,7 +310,8 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
           hideLoading();
           _isLoading = false;
           _showErrorState = false;
-          print("getRequests ----> " + request.toString());
+          print("getRequests ----> " +
+              request.technicianTransactionId.toString());
           _request = request;
           if (_request.startButtonActive == true &&
               _request.startDate != null) {

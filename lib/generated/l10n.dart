@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1391,6 +1390,76 @@ class S {
     return Intl.message(
       'Others and i need one of operations to contact me',
       name: 'othersAndIneedOneofOperationstoContactMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome`
+  String get welcome {
+    return Intl.message(
+      'Welcome',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ORDER \n SUBMISSION`
+  String get orderSubmission {
+    return Intl.message(
+      'ORDER \n SUBMISSION',
+      name: 'orderSubmission',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment`
+  String get comment {
+    return Intl.message(
+      'Comment',
+      name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request time`
+  String get requestTime {
+    return Intl.message(
+      'Request time',
+      name: 'requestTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `M`
+  String get minutes {
+    return Intl.message(
+      'M',
+      name: 'minutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `H`
+  String get hour {
+    return Intl.message(
+      'H',
+      name: 'hour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CANCELLATION REASON`
+  String get cancelReason {
+    return Intl.message(
+      'CANCELLATION REASON',
+      name: 'cancelReason',
       desc: '',
       args: [],
     );

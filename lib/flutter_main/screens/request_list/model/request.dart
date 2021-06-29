@@ -15,8 +15,14 @@ class Transaction {
   dynamic _ratingNumber;
   bool _cancelButtonActive;
   bool _startButtonActive;
+  String _categoryJobType;
+  int _totalCost;
 
   int get technicianTransactionId => _technicianTransactionId;
+
+  String get categoryJobType => _categoryJobType;
+
+  int get totalCost => _totalCost;
 
   String get assigneeDate => _assigneeDate;
 
@@ -64,7 +70,9 @@ class Transaction {
       dynamic endDate,
       dynamic ratingNumber,
       bool cancelButtonActive,
-      bool startButtonActive}) {
+      bool startButtonActive,
+      String categoryJobType,
+      int totalCost}) {
     _technicianTransactionId = technicianTransactionId;
     _assigneeDate = assigneeDate;
     _customerName = customerName;
@@ -81,6 +89,8 @@ class Transaction {
     _ratingNumber = ratingNumber;
     _cancelButtonActive = cancelButtonActive;
     _startButtonActive = startButtonActive;
+    _categoryJobType = categoryJobType;
+    _totalCost = totalCost;
   }
 
   Transaction.fromJson(dynamic json) {
@@ -100,6 +110,8 @@ class Transaction {
     _ratingNumber = json["ratingNumber"];
     _cancelButtonActive = json["cancelButtonActive"];
     _startButtonActive = json["startButtonActive"];
+    _categoryJobType = json["categoryJobType"];
+    _totalCost = json["totalCost"];
   }
 
   Map<String, dynamic> toJson() {

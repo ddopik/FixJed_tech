@@ -28,6 +28,7 @@ class RequestsListViewState extends State<RequestsListView> {
 
   @override
   void initState() {
+    print("RequestsListView init called");
     getRequests();
 
     // _pagingController.addPageRequestListener((pageKey) {

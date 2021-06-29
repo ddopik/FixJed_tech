@@ -24,10 +24,7 @@ class RequestsListScreenState extends State<RequestsListScreen> {
             children: [
               Row(
                 children: [
-                  IconButton(
-                    icon: Icon(Icons.repeat_one_outlined),
-                    onPressed: () {},
-                  ),
+                  Image.asset("assets/images/ic_history.png"),
                   IconButton(
                     icon: Icon(Icons.settings),
                     onPressed: () {},

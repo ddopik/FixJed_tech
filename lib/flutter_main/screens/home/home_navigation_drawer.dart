@@ -214,9 +214,11 @@ class _HomeNavigationDrawer extends State<HomeNavigationDrawer> {
                       ],
                     ),
                   ),
-                  onTap: () {
-                    if (Provider.of<AppModel>(context, listen: false)
-                        .isUserLoggedIn()) {
+                  onTap: () async {
+                    var state =
+                        await Provider.of<AppModel>(context, listen: false)
+                            .isUserLoggedIn();
+                    if (state) {
                       Provider.of<AppModel>(context, listen: false)
                           .logOutUser();
                       Navigator.of(context).pushNamedAndRemoveUntil(

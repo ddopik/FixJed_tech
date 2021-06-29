@@ -134,5 +134,12 @@
   "customerDidntAnswer": "Customer didnt answer my calls",
   "customerAskedToCancel": "Customer asked me to cancel",
   "customerIsRude": "Customer is rude",
-  "othersAndIneedOneofOperationstoContactMe": "Others and i need one of operations to contact me"
+  "othersAndIneedOneofOperationstoContactMe": "Others and i need one of operations to contact me",
+  "welcome": "Welcome",
+  "orderSubmission": "ORDER \n SUBMISSION",
+  "comment": "Comment",
+  "requestTime": "Request time",
+  "minutes": "M",
+  "hour": "H",
+  "cancelReason": "CANCELLATION REASON"
 }

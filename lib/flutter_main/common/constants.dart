@@ -1,3 +1,5 @@
+import 'package:flutter_base_app/generated/l10n.dart';
+
 import 'model/DeclineReason.dart';
 
 const APP_CURRENCY = "EGP";
@@ -28,6 +30,25 @@ class Constants {
       declineReasonList.add(declineReason);
     }
     return declineReasonList;
+  }
+
+  static cancelingReasonsList() {
+    return [
+      {'reason': S.current.customerWasntAthome, 'id': ' CUSTOMER_NOT_AT_HOME'},
+      {
+        'reason': S.current.customerDidntAnswer,
+        'id': ' CUSTOMER_NOT_ANSWER_CALLS'
+      },
+      {
+        'reason': S.current.customerAskedToCancel,
+        'id': 'CUSTOMER_ASKED_ME_TO_CANCEL'
+      },
+      {'reason': S.current.customerIsRude, 'id': 'CUSTOMER_IS_RUDE'},
+      {
+        'reason': S.current.othersAndIneedOneofOperationstoContactMe,
+        'id': ' OTHER_OPERATIONS_TO_CONTACT_ME'
+      },
+    ];
   }
 }
 
