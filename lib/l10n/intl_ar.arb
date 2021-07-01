@@ -140,5 +140,8 @@
   "requestTime": "وقت التنفيذ",
   "hour": "س",
   "minutes": "د",
-  "cancelReason": "سبب الالغاء"
+  "cancelReason": "سبب الالغاء",
+  "confirmPayment": "تآكيد الدفع",
+  "havingProblemText_1": "هل تواجه مشكلة في الحصول على المال؟ الاتصال بالاداره",
+  "ofText": "من"
 }

@@ -13,8 +13,9 @@ class TransactionModel extends ChangeNotifier {
   List<Transaction> allInComingRequest = [];
 
   getConfirmedTransactions({onSuccess, onError}) async {
+    allConfirmedRequest.clear();
+    allEventRequest.clear();
     DIOManager().getApprovedTransaction(onSuccess: (response) {
-      allConfirmedRequest.clear();
       var responseKeys = (response as Map).keys.toList();
 
       List<RequestsGroup> requestsGroupList = [];
@@ -22,9 +23,18 @@ class TransactionModel extends ChangeNotifier {
       for (String key in responseKeys) {
         List<Transaction> dataResponse = (response[key] as List).map((model) {
           Transaction request = Transaction.fromJson(model);
-          Event event =
-              Event(date: DateTime.parse(request.transactionDate), title: "");
-          allEventRequest.add(DateTime.parse(request.transactionDate), event);
+          Event event = Event(
+              date: DateTime(
+                  DateTime.parse(request.transactionDate).year,
+                  DateTime.parse(request.transactionDate).month,
+                  DateTime.parse(request.transactionDate).day),
+              title: "");
+          var eventTime = DateTime(
+              DateTime.parse(request.transactionDate).year,
+              DateTime.parse(request.transactionDate).month,
+              DateTime.parse(request.transactionDate).day);
+
+          allEventRequest.add(eventTime, event);
 
           return request;
         }).toList();

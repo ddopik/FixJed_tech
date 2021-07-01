@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1460,6 +1461,36 @@ class S {
     return Intl.message(
       'CANCELLATION REASON',
       name: 'cancelReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Payment`
+  String get confirmPayment {
+    return Intl.message(
+      'Confirm Payment',
+      name: 'confirmPayment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Having a problem getting money? CONTACT OPERATOR`
+  String get havingProblemText_1 {
+    return Intl.message(
+      'Having a problem getting money? CONTACT OPERATOR',
+      name: 'havingProblemText_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `of`
+  String get ofText {
+    return Intl.message(
+      'of',
+      name: 'ofText',
       desc: '',
       args: [],
     );

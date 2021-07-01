@@ -22,7 +22,7 @@ class _RequestListViewItemState extends State<RequestListViewItem> {
     return GestureDetector(
       child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * .1,
+          height: MediaQuery.of(context).size.height * .12,
           padding: EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
@@ -231,7 +231,7 @@ class _RequestListViewItemState extends State<RequestListViewItem> {
           ),
           Container(
             width: MediaQuery.of(context).size.width * .5,
-            height: MediaQuery.of(context).size.height * .05,
+            height: MediaQuery.of(context).size.height * .06,
             child: AutoSizeText(widget.request.transactionAddress,
                 textAlign: TextAlign.start,
                 maxLines: 2,

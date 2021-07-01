@@ -141,5 +141,8 @@
   "requestTime": "Request time",
   "minutes": "M",
   "hour": "H",
-  "cancelReason": "CANCELLATION REASON"
+  "cancelReason": "CANCELLATION REASON",
+  "confirmPayment": "Confirm Payment",
+  "havingProblemText_1": "Having a problem getting money? CONTACT OPERATOR",
+  "ofText": "of"
 }

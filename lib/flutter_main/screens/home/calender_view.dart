@@ -29,20 +29,20 @@ class _MyHomePageState extends State<CalenderView> {
 
   @override
   void initState() {
-    events.add(
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
-        Event(
-            date: DateTime(DateTime.now().year, DateTime.now().month,
-                DateTime.now().day)));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print("allEventRequest ---> " +
+        Provider.of<TransactionModel>(context)
+            .allEventRequest
+            .events
+            .toString());
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
       onDayPressed: (DateTime date, List<Event> events) {
-        this.setState(() => _currentSelectedDate = date);
-        widget.onDateSelected(_currentSelectedDate);
+        // this.setState(() => _currentSelectedDate = date);
+        // widget.onDateSelected(_currentSelectedDate);
       },
       // dayButtonColor: boring_green,
       // markedDateIconBorderColor: Colors.blue,
@@ -57,18 +57,26 @@ class _MyHomePageState extends State<CalenderView> {
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       showHeader: false,
+
       todayTextStyle: TextStyle(
         color: french_blue,
       ),
-      minSelectedDate: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day),
-      maxSelectedDate: DateTime(
-              DateTime.now().year, DateTime.now().month, DateTime.now().day)
-          .add(Duration(days: 360)),
-
+      // minSelectedDate: DateTime(
+      //     DateTime.now().year, DateTime.now().month, DateTime.now().day ),
+      // maxSelectedDate: DateTime(
+      //         DateTime.now().year, DateTime.now().month, DateTime.now().day)
+      //     .add(Duration(days: 360)),
+      markedDateIconBorderColor: boring_green,
       selectedDayTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
             color: Colors.white,
           ),
+      markedDateWidget: ClipOval(
+        child: Container(
+          width: 5,
+          height: 5,
+          color: boring_green,
+        ),
+      ),
 
       daysTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
             color: Color(0xff000000),
@@ -81,11 +89,11 @@ class _MyHomePageState extends State<CalenderView> {
             color: Colors.grey,
           ),
       nextDaysTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-            color: Colors.grey,
-          ),
+        color: Colors.grey,
+      ),
       weekendTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-            color: french_blue,
-          ),
+        color: french_blue,
+      ),
       weekdayTextStyle: TextStyle(
         fontFamily: 'Montserrat',
         color: Color(0xff000000),
@@ -120,9 +128,9 @@ class _MyHomePageState extends State<CalenderView> {
                   padding: EdgeInsets.symmetric(horizontal: 32),
                   child: Text(_currentSelectedDate.day.toString(),
                       style: Theme.of(context).textTheme.headline3.copyWith(
-                            color: Color(0xff61ba66),
-                            fontSize: 36,
-                          ),
+                        color: Color(0xff61ba66),
+                        fontSize: 36,
+                      ),
                       textAlign: TextAlign.center),
                 ),
                 Container(
@@ -153,18 +161,18 @@ class _MyHomePageState extends State<CalenderView> {
                       ),
                       Container(
                           child: MaterialButton(
-                        child: Icon(
-                          Icons.arrow_forward_ios,
-                          color: boring_green,
-                          size: 15,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _targetDateTime = DateTime(_targetDateTime.year,
-                                _targetDateTime.month - 1);
-                          });
-                        },
-                      ))
+                            child: Icon(
+                              Icons.arrow_forward_ios,
+                              color: boring_green,
+                              size: 15,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _targetDateTime = DateTime(_targetDateTime.year,
+                                    _targetDateTime.month - 1);
+                              });
+                            },
+                          ))
                     ],
                   ),
                 )

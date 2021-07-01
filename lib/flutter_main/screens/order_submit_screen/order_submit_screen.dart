@@ -9,6 +9,7 @@ import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/app_bar_back_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
+import 'package:flutter_base_app/flutter_main/screens/order_submit_screen/submit_order_confirm_dialof.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -244,21 +245,23 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
                 btnColor: Color(0xff61ba66),
                 btnRadius: 8.0,
                 onPressed: () {
-                  showLoading(context);
-                  Provider.of<TransactionModel>(context, listen: false)
-                      .endRequest(
-                          id: widget.arguments.technicianTransactionId
-                              .toString(),
-                          onSuccess: () {
-                            hideLoading();
-                            showSuccesses(context, S.current.success);
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, Routes.HOME, (route) => false);
-                          },
-                          onError: (error) {
-                            hideLoading();
-                            showError(error);
-                          });
+                  submitOrderConfirmDialog(context, widget.arguments,
+                      onTransactionConfirmClick: () {
+                    Provider.of<TransactionModel>(context, listen: false)
+                        .endRequest(
+                            id: widget.arguments.technicianTransactionId
+                                .toString(),
+                            onSuccess: () {
+                              hideLoading();
+                              showSuccesses(context, S.current.success);
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, Routes.HOME, (route) => false);
+                            },
+                            onError: (error) {
+                              hideLoading();
+                              showError(error);
+                            });
+                  });
                 })
           ],
         ));
