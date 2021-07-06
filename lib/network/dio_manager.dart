@@ -22,7 +22,7 @@ class DIOManager {
     dio.options.headers = {
       "Accept-Language": currentLanguage,
       "Authorization":
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5tb2hhbWVkQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJUZWNobmljaWFuIFJvbGUifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5VcGNvbWluZ0NhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5Ijoic3RhcnRUZWNobmljaWFuVHJhbnNhY3Rpb24ifSx7ImF1dGhvcml0eSI6ImNoYW5nZVRvVGVjaG5pY2lhbkRlbGl2ZXJlZFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiZmluZEJ5VGVjaG5pY2lhblRyYW5zYWN0aW9uSWQifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuRGVsaXZlcmVkU3RhdHVzIn1dLCJpYXQiOjE2MjM2NzgyNzgsImV4cCI6MTYyNDgzODQwMH0.kkycwNvwn613J74mQHJpMr5X6_2Ug2WFcVaMprGI9-o1Ud7qGvn5HgI5pMs89KXY7U7S9vRdNkTDp0VpngaYCQ",
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5tb2hhbWVkQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJUZWNobmljaWFuIFJvbGUifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5VcGNvbWluZ0NhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5Ijoic3RhcnRUZWNobmljaWFuVHJhbnNhY3Rpb24ifSx7ImF1dGhvcml0eSI6ImNoYW5nZVRvVGVjaG5pY2lhbkRlbGl2ZXJlZFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiZmluZEJ5VGVjaG5pY2lhblRyYW5zYWN0aW9uSWQifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuSGlzdG9yeSJ9LHsiYXV0aG9yaXR5IjoiZmluZEFsbE5vdGlmaWNhdGlvbnMifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxQZW5kaW5nVGVjaG5pY2lhblRyYW5zYWN0aW9ucyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5Bc3NpZ25lZENhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuRGVsaXZlcmVkQ2FuY2VsU3RhdHVzIn1dLCJpYXQiOjE2MjQ1MzYzMzcsImV4cCI6MTYyNTcwMjQwMH0.XY1moyp_MkkydnbGR7GIqdSFRaAlPqKGJTiLhasQghzjValC-H-jTjpBvJUADhZeOJFn9lo54VKxOcjauCD37A",
     };
 
     // _instance._dio.interceptors.add(DioCacheManager(
@@ -82,6 +82,7 @@ class DIOManager {
   static const String EDIT_USER_FIRST_LAST_NAME = "/profile/change-username";
   static const String CHANGE_PASSWORD = "/profile/change-password";
   static const String CHANGE_PHONE = "/profile/change-phone";
+  static const String GET_PAST_ORDERS = "/technicians/find-all-history";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -394,6 +395,14 @@ class DIOManager {
       onError: onError,
       bodyParameters: {"paymentId": paymentId, "addressId": addressId},
       url: SUBMIT_TRANSACTION,
+    );
+  }
+
+  getPastOrder({Function onSuccess, Function onError}) {
+    _sendGetRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      url: GET_PAST_ORDERS,
     );
   }
 

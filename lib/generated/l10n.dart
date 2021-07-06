@@ -1234,6 +1234,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Customer wasnt at home`
+  String get customerWasntAthome {
+    return Intl.message(
+      'Customer wasnt at home',
+      name: 'customerWasntAthome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer didnt answer my calls`
+  String get customerDidntAnswer {
+    return Intl.message(
+      'Customer didnt answer my calls',
+      name: 'customerDidntAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer asked me to cancel`
+  String get customerAskedToCancel {
+    return Intl.message(
+      'Customer asked me to cancel',
+      name: 'customerAskedToCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer is rude`
+  String get customerIsRude {
+    return Intl.message(
+      'Customer is rude',
+      name: 'customerIsRude',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Others and i need one of operations to contact me`
+  String get othersAndIneedOneofOperationstoContactMe {
+    return Intl.message(
+      'Others and i need one of operations to contact me',
+      name: 'othersAndIneedOneofOperationstoContactMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SUBMIT`
+  String get submit {
+    return Intl.message(
+      'SUBMIT',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please select reason`
+  String get pleaseSelectReason {
+    return Intl.message(
+      'please select reason',
+      name: 'pleaseSelectReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CANCELLATION REASON`
+  String get cancellationReason {
+    return Intl.message(
+      'CANCELLATION REASON',
+      name: 'cancellationReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order has \n completed successfully`
+  String get OrderHasCompletedSuccessfully {
+    return Intl.message(
+      'Order has \n completed successfully',
+      name: 'OrderHasCompletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

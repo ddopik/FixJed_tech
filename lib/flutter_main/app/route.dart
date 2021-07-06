@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
+import 'package:flutter_base_app/flutter_main/screens/order_submission_feedback/order_submission_feedback_Screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/view/RequestsListScreen.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_screen/request_card_screen.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const CART = "/cart";
 
   static const PROFILE_SCREEN = "/profile_screen";
+  static const ORDER_SUBMISSION_FEEDBACK = "/order_submission_feedback";
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
@@ -25,6 +27,7 @@ class Routes {
     ALL_REQUESTS: (context) => RequestsListScreen(),
     REQUEST_CARD: (context) =>
         RequestCardScreen(arguments: ModalRoute.of(context).settings.arguments),
+    ORDER_SUBMISSION_FEEDBACK: (context) => OrderSubmissionFeedback(),
   };
 
 // todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget

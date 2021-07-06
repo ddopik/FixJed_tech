@@ -18,19 +18,25 @@ class CancelRequestScreen extends StatefulWidget {
 
 class CancelRequestScreenState extends State<CancelRequestScreen> {
   List reasons = [
-    {'reason': S.current.customerWasntAthome, 'id': ' CUSTOMER_NOT_AT_HOME'},
+    {
+      'reason': S.current.customerWasntAthome,
+      'id': DeliveredCancelReason.CUSTOMER_NOT_AT_HOME
+    },
     {
       'reason': S.current.customerDidntAnswer,
-      'id': ' CUSTOMER_NOT_ANSWER_CALLS'
+      'id': DeliveredCancelReason.CUSTOMER_NOT_ANSWER_CALLS
     },
     {
       'reason': S.current.customerAskedToCancel,
-      'id': 'CUSTOMER_ASKED_ME_TO_CANCEL'
+      'id': DeliveredCancelReason.CUSTOMER_ASKED_ME_TO_CANCEL
     },
-    {'reason': S.current.customerIsRude, 'id': 'CUSTOMER_IS_RUDE'},
+    {
+      'reason': S.current.customerIsRude,
+      'id': DeliveredCancelReason.CUSTOMER_IS_RUDE
+    },
     {
       'reason': S.current.othersAndIneedOneofOperationstoContactMe,
-      'id': ' OTHER_OPERATIONS_TO_CONTACT_ME'
+      'id': DeliveredCancelReason.OTHER_OPERATIONS_TO_CONTACT_ME
     },
   ];
 
@@ -56,13 +62,13 @@ class CancelRequestScreenState extends State<CancelRequestScreen> {
               Container(
                   width: MediaQuery.of(context).size.width * .62,
                   padding: EdgeInsets.all(inner_boundary_field_space_wide),
-                  child: Text("CANCELLATION REASON",
+                  child: AutoSizeText(S.current.cancellationReason,
                       style: Theme.of(context).textTheme.headline6.copyWith(
                             color: Color(0xffffffff),
                           ))),
               Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .30,
+                  height: MediaQuery.of(context).size.height * .5,
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(7),
@@ -95,7 +101,7 @@ class CancelRequestScreenState extends State<CancelRequestScreen> {
                         );
                       })),
               SizedBox(
-                height: MediaQuery.of(context).size.height * .4,
+                height: MediaQuery.of(context).size.height * .2,
               ),
               InkWell(
                 child: Container(
@@ -105,8 +111,8 @@ class CancelRequestScreenState extends State<CancelRequestScreen> {
                     decoration: BoxDecoration(
                         color: nasty_green,
                         borderRadius: BorderRadius.circular(8)),
-                    child: Text(
-                      'SUBMIT',
+                    child: AutoSizeText(
+                      S.current.submit,
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
@@ -114,14 +120,16 @@ class CancelRequestScreenState extends State<CancelRequestScreen> {
                     )),
                 onTap: () {
                   if (id == null) {
-                    showError('please select reason');
+                    showError(S.current.pleaseSelectReason);
                   } else {
                     submitReasonId(
                         reasonId: id,
                         onSuccess: (response) {
                           hideLoading();
-                          Navigator.of(context)
-                              .pushReplacementNamed(Routes.HOME);
+                          Future.delayed(Duration(seconds: 2), () {
+                            Navigator.of(context)
+                                .pushNamed(Routes.ORDER_SUBMISSION_FEEDBACK);
+                          });
                         },
                         onError: (response) {
                           hideLoading();
@@ -147,4 +155,11 @@ class CancelRequestScreenState extends State<CancelRequestScreen> {
         reasonId: reasonId,
         transactionId: 2);
   }
+}
+enum DeliveredCancelReason {
+  CUSTOMER_NOT_AT_HOME,
+  CUSTOMER_NOT_ANSWER_CALLS,
+  CUSTOMER_ASKED_ME_TO_CANCEL,
+  CUSTOMER_IS_RUDE,
+  OTHER_OPERATIONS_TO_CONTACT_ME
 }

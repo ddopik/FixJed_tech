@@ -122,5 +122,9 @@
   "customerDidn'tAnswer": "العميل لا يرد على المكالمات",
   "customerAskedToCancel": "العميل أراد ان يلغي",
   "customerIsRude": "العميل وقح",
-  "othersAndIneedOneofOperationstoContactMe": "أخرى و اريد ان أتحدث الي العاملين"
+  "othersAndIneedOneofOperationstoContactMe": "أخرى و اريد ان أتحدث الي العاملين",
+  "submit": "متابعة",
+  "pleaseSelectReason": "برجاء اختيار سبب",
+  "cancellationReason": "سبب الإلغاء",
+  "OrderHasCompletedSuccessfully": "لقد إكتمل\nالطلب بنجاح"
 }
