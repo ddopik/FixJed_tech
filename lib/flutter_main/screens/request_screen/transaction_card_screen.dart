@@ -112,9 +112,10 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
                           ],
                         ),
                         IconButton(
+                            padding: EdgeInsets.only(top: 12),
                             icon: Icon(
                               Icons.call,
-                              size: 34,
+                              size: 26,
                               color: Color(0xff61ba66),
                             ),
                             onPressed: () {})
@@ -130,7 +131,7 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
                             SizedBox(
                               height: 12,
                             ),
-                            Text(parseTimeToHour(_request.transactionDate),
+                            Text(parseTimeTo12Hour(_request.transactionDate),
                                 // set hour here
                                 style: Theme.of(context)
                                     .textTheme
@@ -156,7 +157,7 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
                                     width:
                                         MediaQuery.of(context).size.width * .55,
                                     height: MediaQuery.of(context).size.height *
-                                        .16,
+                                        .12,
                                     child: AutoSizeText(
                                         _request?.transactionAddress ?? "",
                                         textAlign: TextAlign.start,
@@ -167,14 +168,37 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
                                               fontWeight: FontWeight.w400,
                                             )),
                                   ),
-                                  AutoSizeText(_request?.customerPhone ?? "",
-                                      style: TextStyle(
-                                        fontFamily: 'Montserrat',
-                                        color: Color(0xffffffff),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                      ))
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        AutoSizeText(
+                                            _request?.categoryJobType ??
+                                                "Type is here",
+                                            style: TextStyle(
+                                              fontFamily: 'Montserrat',
+                                              color: Color(0xffffffff),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                            )),
+                                        SizedBox(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              .016,
+                                        ),
+                                        AutoSizeText(
+                                            _request?.customerPhone ?? "",
+                                            style: TextStyle(
+                                              fontFamily: 'Montserrat',
+                                              color: Color(0xffffffff),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                            ))
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
                             )
@@ -227,7 +251,7 @@ class TransactionCardScreenState extends State<TransactionCardScreen> {
       children: [
         _request.startButtonActive == true && _request.startDate == null
             ? customActionButton(
-            btnText: Text(
+                btnText: Text(
                   S.current.startRequest,
                   style: Theme.of(context)
                       .textTheme

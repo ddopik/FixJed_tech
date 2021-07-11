@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"ホームに戻る"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"前に戻る"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"その他のオプション"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"完了"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"すべて表示"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"アプリの選択"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"OFF"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"ON"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"Delete"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"Space"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"検索…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"検索キーワードを削除"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"検索キーワード"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"検索"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"検索キーワードを送信"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"音声検索"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"共有"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>と共有"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"折りたたむ"</string>
+    <string name="belvedere_dialog_camera">カメラ</string>
+    <string name="belvedere_dialog_gallery">ギャラリー</string>
+    <string name="belvedere_fam_desc_collapse_fam">「アクション」フローティングメニューを閉じる</string>
+    <string name="belvedere_fam_desc_expand_fam">「アクション」フローティングメニューを開く</string>
+    <string name="belvedere_fam_desc_open_gallery">ギャラリーからファイルをインポートします</string>
+    <string name="belvedere_fam_desc_open_google_photos">Googleフォトから画像をインポートします</string>
+    <string name="belvedere_image_stream_file_too_large">ファイルが大きすぎます</string>
+    <string name="belvedere_image_stream_title">写真ライブラリ</string>
+    <string name="belvedere_image_stream_unknown_app">不明</string>
+    <string name="belvedere_permissions_denied">権限がありません</string>
+    <string name="belvedere_stream_item_camera_tile_desc">カメラから画像をインポートします</string>
+    <string name="belvedere_stream_item_select_file_desc">ファイル%sを選択します</string>
+    <string name="belvedere_stream_item_select_image_desc">画像%sを選択します</string>
+    <string name="belvedere_stream_item_unselect_file_desc">ファイル%sの選択を解除します</string>
+    <string name="belvedere_stream_item_unselect_image_desc">画像%sの選択を解除します</string>
+    <string name="belvedere_toolbar_desc_collapse">画像ピッカーを閉じます</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"有効にする"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g>の実行には、Google Play開発者サービスの有効化が必要です。"</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Google Play開発者サービスの有効化"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"インストール"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"「<ns1:g id="APP_NAME">%1$s</ns1:g>」の実行には Google Play 開発者サービスが必要ですが、お使いの端末にはインストールされていません。"</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Google Play開発者サービスの入手"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Google Play 開発者サービスの利用"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Google Play開発者サービスのエラー"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"「<ns1:g id="APP_NAME">%1$s</ns1:g>」で Google Play 開発者サービスに問題が発生しています。もう一度お試しください。"</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"「<ns1:g id="APP_NAME">%1$s</ns1:g>」の実行には Google Play 開発者サービスが必要ですが、お使いの端末ではサポートされていません。"</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"更新"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g>の実行にはGoogle Play開発者サービスの更新が必要です。"</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Google Play開発者サービスの更新"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g>の実行にはGoogle Play開発者サービスが必要ですが、このサービスは現在更新中です。"</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"Google Play開発者サービスの新しいバージョンが必要です。まもなく自動更新されます。"</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"スマートフォンで開く"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"ログイン"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Googleにログイン"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"その他"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"検索"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="zch_chat_comment_acknowledgement">ご意見ありがとうございます。またチャット画面にお戻りいただけます。</string>
+    <string name="zch_chat_comment_composer_hint">コメントを入力...</string>
+    <string name="zch_chat_ended">チャット終了</string>
+    <string name="zch_chat_handover_message_selection">エージェントとチャットする</string>
+    <string name="zch_chat_rating_comment_action_label">新規コメントを追加</string>
+    <string name="zch_chat_rating_comment_prompt_message">貴重なご意見を歓迎いたします。よろしければ、コメントにて詳しくお知らせいただけないでしょうか。</string>
+    <string name="zch_chat_rating_label_bad">不満👎</string>
+    <string name="zch_chat_rating_label_good">満足👍</string>
+    <string name="zch_chat_rating_request_prompt">%sとのチャットを評価していただけませんか？</string>
+    <string name="zch_chat_transcript_email_prompt">会話ログの送信先のメールアドレスを入力してください。</string>
+    <string name="zch_chat_transcript_prompt">このチャットの会話ログをこのメールアドレスに送信しますか？</string>
+    <string name="zch_chat_transcript_request_confirmation">チャットが終了すると、会話ログが%1$sに送信されます。</string>
+    <string name="zch_chat_welcome_message_handover">承知しました。担当のものにおつなぎいたします。</string>
+    <string name="zch_end_chat">チャットを終了</string>
+    <string name="zch_member_join">%1$sがチャットに参加しました</string>
+    <string name="zch_member_leave">%1$sさんがチャットから退席しました</string>
+    <string name="zch_offline_form_completion_acknowledgement">メッセージを受け取りました。早急にご連絡を差し上げます。</string>
+    <string name="zch_offline_form_introduction_message">担当者が戻り次第ご連絡を差し上げますので、お名前とお電話番号を教えてください。</string>
+    <string name="zch_offline_form_message_field_prompt">オンラインになりましたらすぐに応対できますよう、お困りの件をお知らせいただけないでしょうか。</string>
+    <string name="zch_offline_form_welcome_message">お問い合わせありがとうございます。現在オンライン中のエージェントがおりません。</string>
+    <string name="zch_offline_message">現在オンライン中のエージェントがいません。後で確認してください。</string>
+    <string name="zch_pre_chat_department_field_message">どの部門におつなぎしたらよろしいでしょうか？</string>
+    <string name="zch_pre_chat_email_field_hint">メールアドレスを教えていただけますか？</string>
+    <string name="zch_pre_chat_email_field_invalid_message">メールアドレスの形式が間違っています。正しいメールアドレスを入力してください。</string>
+    <string name="zch_pre_chat_email_field_message">メールアドレスを教えていただけますか？</string>
+    <string name="zch_pre_chat_introduction_greeting">お問い合わせありがとうございます。</string>
+    <string name="zch_pre_chat_introduction_message">担当の者におつなぎしますので、お名前とお電話番号を教えてください。</string>
+    <string name="zch_pre_chat_message_acknowledgement">担当の者におつなぎしますので、お名前とお電話番号を教えてください。</string>
+    <string name="zch_pre_chat_name_field_hint">お名前を教えていただけますか？</string>
+    <string name="zch_pre_chat_name_field_message">お名前を教えていただけますか？</string>
+    <string name="zch_pre_chat_phone_field_hint">電話番号を教えていただけますか？</string>
+    <string name="zch_pre_chat_phone_field_message">電話番号を教えていただけますか？</string>
+    <string name="zch_pre_chat_response_accepted_message">ありがとうございます。</string>
+    <string name="zch_pre_chat_skip_button">スキップ</string>
+    <string name="zch_pre_chat_welcome_message">お問い合わせありがとうございます。何かお困りでしょうか？</string>
+    <string name="zch_queue_position">キュー内の順番: %1$d</string>
+    <string name="zch_request_transcript">会話ログをリクエスト</string>
+    <string name="zui_attachment_indicator_accessibility">添付ファイルを選択してください</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">%d個の添付ファイルが選択されています</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">添付ファイルが選択されていません</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">1個の添付ファイルが選択されています</string>
+    <string name="zui_bot_label">ボット</string>
+    <string name="zui_button_label_no">いいえ</string>
+    <string name="zui_button_label_yes">はい</string>
+    <string name="zui_cell_text_suggested_article_header">次の記事がお役に立つかもしれません:</string>
+    <string name="zui_cell_text_suggested_articles_header">次の記事がお役に立つかもしれません:</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">無効なメール</string>
+    <string name="zui_dialog_email_hint">メールアドレス</string>
+    <string name="zui_failed_message_copy">コピー</string>
+    <string name="zui_failed_message_delete">削除</string>
+    <string name="zui_failed_message_retry">再試行</string>
+    <string name="zui_hint_type_message">メッセージを入力...</string>
+    <string name="zui_label_connecting">接続中...</string>
+    <string name="zui_label_dialog_delete_btn">メッセージを削除</string>
+    <string name="zui_label_dialog_retry_btn">再送信</string>
+    <string name="zui_label_failed">エラー</string>
+    <string name="zui_label_reconnecting">再接続中...</string>
+    <string name="zui_label_reconnecting_failed">接続に失敗しました。</string>
+    <string name="zui_label_send">送信</string>
+    <string name="zui_label_sent">送信済み</string>
+    <string name="zui_label_tap_retry">タップして再送信</string>
+    <string name="zui_message_log_article_opened_formatter">%1$sが記事 \'%2$s\' を開きました</string>
+    <string name="zui_message_log_article_suggestion_message">これらの記事を見つけました:</string>
+    <string name="zui_message_log_attachment_sending_failed">添付ファイルを送信できませんでした</string>
+    <string name="zui_message_log_default_visitor_name">訪問者</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">添付ファイルの種類はサポートされていません</string>
+    <string name="zui_message_log_message_attachments_not_supported">サポートされていない添付ファイル</string>
+    <string name="zui_message_log_message_failed_to_send">[送信できませんでした]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">最大ファイルサイズ (%1$s) を超えています</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$sさんが%2$sを選択しました</string>
+    <string name="zui_retry_button_label">再試行</string>
+    <string name="zui_toolbar_title">お問い合わせ</string>
+    <string name="zui_unable_open_file">ファイルをオープンできません。</string>
+</resources>

@@ -4,6 +4,7 @@ import 'package:flutter_base_app/flutter_main/common/constants.dart';
 import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
+import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/CircleImageWidget.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/DashedLineVerticalPainter.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
@@ -101,7 +102,7 @@ Widget getView(BuildContext context, Transaction transaction) {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .01,
                 ),
-                AutoSizeText("Service type here",
+                AutoSizeText(transaction.categoryJobType ?? "categoryJobType",
                     textAlign: TextAlign.start,
                     style: Theme.of(context).textTheme.headline3.copyWith(
                           fontWeight: FontWeight.w400,
@@ -111,12 +112,12 @@ Widget getView(BuildContext context, Transaction transaction) {
                 ),
                 Row(
                   children: [
-                    AutoSizeText("25th of July 2021",
+                    AutoSizeText(parseDateFormat_1(transaction.transactionDate),
                         textAlign: TextAlign.start,
                         style: Theme.of(context).textTheme.headline3.copyWith(
                               fontWeight: FontWeight.w400,
                             )),
-                    AutoSizeText("12:00 PM",
+                    AutoSizeText(parseTimeTo12Hour(transaction.transactionDate),
                         textAlign: TextAlign.start,
                         style: Theme.of(context).textTheme.headline3.copyWith(
                               fontWeight: FontWeight.w400,

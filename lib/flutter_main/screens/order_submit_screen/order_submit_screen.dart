@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_app/flutter_main/app/route.dart';
+ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
@@ -33,15 +33,22 @@ class TransactionSubmitScreen extends StatefulWidget {
     DateTime dateNow = new DateTime.now();
     elsabiTime =
         dateNow.subtract(Duration(microseconds: startDate.microsecond));
-    print("elsabiTime ---> " + elsabiTime.toString());
 
-    currentElsabedinHour = elsabiTime.hour.toString() + " " + S.current.hour;
+    currentElsabedinHour =
+        diffInHours(dateNow, startDate).toString() + " " + S.current.hour;
 
     currentElsabedinMinutes = elsabiTime.toString().split(":")[1].toString() +
         " " +
         S.current.minutes;
 
     return _OrderSubmitScreen();
+  }
+
+  int diffInHours(DateTime date1, DateTime date2) {
+    return ((date1.difference(date2) -
+            Duration(hours: date1.hour) +
+            Duration(hours: date2.hour))
+        .inHours);
   }
 }
 
@@ -199,9 +206,9 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
                       fontStyle: FontStyle.normal,
                     )),
                 new Text(
-                    widget.currentElsabedinHour +
+                    widget.currentElsabedinHour.toString() +
                         " " +
-                        widget.currentElsabedinMinutes,
+                        widget.currentElsabedinMinutes.toString(),
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Color(0xffffffff),
@@ -222,7 +229,9 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.normal,
                     )),
-                new Text(widget.arguments.totalCost ?? " 0 " + S.current.egp,
+                new Text(
+                    widget.arguments.totalCost.toString() ??
+                        " 0 " + S.current.egp,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Color(0xffffffff),

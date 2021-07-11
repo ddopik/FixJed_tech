@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
@@ -43,6 +44,19 @@ class _MyHomePageState extends State<CalenderView> {
       onDayPressed: (DateTime date, List<Event> events) {
         // this.setState(() => _currentSelectedDate = date);
         // widget.onDateSelected(_currentSelectedDate);
+        var eventM = events.firstWhere((element) {
+          if (element.date == date) {
+            return true;
+          }
+          return false;
+        }, orElse: () {
+          return null;
+        });
+
+        if (eventM != null) {
+          print("Found one");
+          Navigator.of(context).pushNamed(Routes.ALL_REQUESTS);
+        }
       },
       // dayButtonColor: boring_green,
       // markedDateIconBorderColor: Colors.blue,
@@ -89,11 +103,11 @@ class _MyHomePageState extends State<CalenderView> {
             color: Colors.grey,
           ),
       nextDaysTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-        color: Colors.grey,
-      ),
+            color: Colors.grey,
+          ),
       weekendTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-        color: french_blue,
-      ),
+            color: french_blue,
+          ),
       weekdayTextStyle: TextStyle(
         fontFamily: 'Montserrat',
         color: Color(0xff000000),
@@ -128,9 +142,9 @@ class _MyHomePageState extends State<CalenderView> {
                   padding: EdgeInsets.symmetric(horizontal: 32),
                   child: Text(_currentSelectedDate.day.toString(),
                       style: Theme.of(context).textTheme.headline3.copyWith(
-                        color: Color(0xff61ba66),
-                        fontSize: 36,
-                      ),
+                            color: Color(0xff61ba66),
+                            fontSize: 36,
+                          ),
                       textAlign: TextAlign.center),
                 ),
                 Container(
@@ -161,18 +175,18 @@ class _MyHomePageState extends State<CalenderView> {
                       ),
                       Container(
                           child: MaterialButton(
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: boring_green,
-                              size: 15,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _targetDateTime = DateTime(_targetDateTime.year,
-                                    _targetDateTime.month - 1);
-                              });
-                            },
-                          ))
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          color: boring_green,
+                          size: 15,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _targetDateTime = DateTime(_targetDateTime.year,
+                                _targetDateTime.month - 1);
+                          });
+                        },
+                      ))
                     ],
                   ),
                 )

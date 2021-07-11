@@ -143,7 +143,7 @@ Widget getView(BuildContext context, Transaction transaction,
                                 fontWeight: FontWeight.w500,
                                 fontStyle: FontStyle.normal,
                               )),
-                          Text(transaction.totalCost ?? " 0 " + S.current.egp,
+                          Text(transaction.totalCost.toString() ?? " 0 " + S.current.egp,
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 color: Color(0xffffffff),

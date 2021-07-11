@@ -103,8 +103,14 @@ String getMonthName(String timeVal) {
   return DateFormat("MMM").format(time);
 }
 
-String parseTimeToHour(String timeVal) {
+String parseTimeTo24Hour(String timeVal) {
   String datetime = timeVal;
   DateTime now = DateTime.parse(datetime);
   return DateFormat("HH:MM").format(now);
+}
+
+String parseTimeTo12Hour(String timeVal) {
+  String datetime = timeVal;
+  DateTime now = DateTime.parse(datetime);
+  return DateFormat("h:mma").format(now);
 }

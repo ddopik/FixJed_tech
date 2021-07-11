@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/zui_view_input_box"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/zui_composer"
+    android:minHeight="@dimen/zui_input_box_collapsed_height"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp">
+
+    <EditText
+        android:id="@+id/input_box_input_text"
+        style="@style/ZendeskSdkTheme.Light.InputBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="@dimen/zui_input_box_collapsed_side_margin"
+        android:layout_marginLeft="@dimen/zui_input_box_collapsed_side_margin"
+        android:layout_marginTop="@dimen/zui_layout_margin_medium"
+        android:layout_marginEnd="@dimen/zui_input_box_collapsed_side_margin"
+        android:layout_marginRight="@dimen/zui_input_box_collapsed_side_margin"
+        android:layout_marginBottom="@dimen/zui_layout_margin_medium"
+        android:background="@color/zui_color_transparent"
+        android:gravity="bottom|start"
+        android:hint="@string/zui_hint_type_message"
+        android:textAlignment="viewStart"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine|textCapSentences"
+        android:maxLines="4"
+        android:scrollbars="vertical"
+        android:textColorHint="@color/zui_input_box_hint_color" />
+
+    <zendesk.messaging.ui.AttachmentsIndicator
+        android:id="@+id/input_box_attachments_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginTop="@dimen/zui_layout_margin_medium"
+        android:layout_marginBottom="@dimen/zui_layout_margin_medium"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/input_box_send_btn"
+        android:layout_width="@dimen/zui_input_box_button_width"
+        android:layout_height="@dimen/zui_input_box_button_height"
+        android:layout_gravity="bottom|end"
+        android:layout_marginTop="@dimen/zui_layout_margin_medium"
+        android:layout_marginBottom="@dimen/zui_layout_margin_medium"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/zui_label_send"
+        android:focusable="true"
+        android:paddingTop="@dimen/zui_input_box_send_button_padding"
+        android:paddingBottom="@dimen/zui_input_box_send_button_padding"
+        android:scaleX="@integer/zui_rtl_support_scale_x"
+        app:srcCompat="@drawable/zui_ic_send" />
+    
+</FrameLayout>

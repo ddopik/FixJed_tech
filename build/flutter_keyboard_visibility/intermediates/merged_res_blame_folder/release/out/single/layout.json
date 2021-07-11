@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/layout/custom_dialog.xml",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/layout/notification_action_tombstone.xml",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/layout/notification_action.xml",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/layout/notification_template_part_time.xml",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/layout/notification_template_icon_group.xml",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/layout/notification_template_part_chronometer.xml"
+    }
+]

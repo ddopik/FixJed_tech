@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"Siirry etusivulle"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"Siirry ylös"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"Lisäasetukset"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"Valmis"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"Näytä kaikki"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"Valitse sovellus"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"POIS PÄÄLTÄ"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"PÄÄLLÄ"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Fn+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Vaihto+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"välilyönti"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Valikko+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"Haku…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"Tyhjennä kysely"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"Hakukysely"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"Haku"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"Lähetä kysely"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"Puhehaku"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Jaa…"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Jaa: <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Tiivistä"</string>
+    <string name="belvedere_dialog_camera">Kamera</string>
+    <string name="belvedere_dialog_gallery">Galleria</string>
+    <string name="belvedere_fam_desc_collapse_fam">Sulje irrallinen toimintovalikko</string>
+    <string name="belvedere_fam_desc_expand_fam">Laajenna irrallinen toimintovalikko</string>
+    <string name="belvedere_fam_desc_open_gallery">Tuo tiedosto galleriasta</string>
+    <string name="belvedere_fam_desc_open_google_photos">Tuo kuva Google Photos -sovelluksesta</string>
+    <string name="belvedere_image_stream_file_too_large">Tiedosto on liian suuri</string>
+    <string name="belvedere_image_stream_title">Valokuvakirjasto</string>
+    <string name="belvedere_image_stream_unknown_app">Tuntematon</string>
+    <string name="belvedere_permissions_denied">Käyttöoikeudet estetty</string>
+    <string name="belvedere_stream_item_camera_tile_desc">Tuo kuva kamerasta</string>
+    <string name="belvedere_stream_item_select_file_desc">Valitse tiedosto %s</string>
+    <string name="belvedere_stream_item_select_image_desc">Valitse kuva %s</string>
+    <string name="belvedere_stream_item_unselect_file_desc">Poista valinta tiedostosta %s</string>
+    <string name="belvedere_stream_item_unselect_image_desc">Poista valinta kuvasta %s</string>
+    <string name="belvedere_toolbar_desc_collapse">Sulje kuvan valintatyökalu</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Ota käyttöön"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> ei toimi, ellet ota Google Play Palveluita käyttöön."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Ota Google Play Palvelut käyttöön"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"Asenna"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> ei toimi ilman Google Play Palveluita, jotka puuttuvat laitteeltasi."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Asenna Google Play Palvelut"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Google Play Palveluiden saatavuus"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Virhe Google Play -palveluissa"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"Sovelluksella <ns1:g id="APP_NAME">%1$s</ns1:g> on ongelmia Google Play Palveluiden kanssa. Yritä uudelleen."</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> ei toimi ilman Google Play Palveluita, joita laitteesi ei tue."</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"Päivitä"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> ei toimi, ellet päivitä Google Play Palveluita."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Päivitä Google Play Palvelut"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> ei toimi ilman Google Play Palveluita, joita päivitetään tällä hetkellä."</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"Uusi Google Play Palveluiden versio tarvitaan. Se päivittyy pian."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"Avaa puhelimessa"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"Kirjaudu sisään"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Kirjaudu Google-tilille"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Muut"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"Haku"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="zch_chat_comment_acknowledgement">Kiitos palautteestasi. Voit nyt palata chat-keskusteluusi.</string>
+    <string name="zch_chat_comment_composer_hint">Kirjoita kommenttisi…</string>
+    <string name="zch_chat_ended">Chatti päättyi</string>
+    <string name="zch_chat_handover_message_selection">Chattaa tukihenkilön kanssa</string>
+    <string name="zch_chat_rating_comment_action_label">Lisää kommentti</string>
+    <string name="zch_chat_rating_comment_prompt_message">Arvostamme palautettasi. Jos haluat, voit myös lisätä yksityiskohtaisemman kommentin.</string>
+    <string name="zch_chat_rating_label_bad">Huono 👎</string>
+    <string name="zch_chat_rating_label_good">Hyvä 👍</string>
+    <string name="zch_chat_rating_request_prompt">Hei, tulin tässä mukaan tarkistamaan, kuinka chattisi henkilön %s kanssa on sujunut?</string>
+    <string name="zch_chat_transcript_email_prompt">Mihin sähköpostiosoitteeseen tallenne pitäisi lähettää?</string>
+    <string name="zch_chat_transcript_prompt">Haluatko, että tästä chatista lähetetään tallenne sähköpostiosoitteeseesi?</string>
+    <string name="zch_chat_transcript_request_confirmation">Tallenne lähetetään osoitteeseen %1$s, kun chat-keskustelu päättyy.</string>
+    <string name="zch_chat_welcome_message_handover">OK. Etsin sinulle jonkun, joka voi auttaa sinua liittyen kyselyysi.</string>
+    <string name="zch_end_chat">Lopeta chatti</string>
+    <string name="zch_member_join">%1$s liittyi chat-keskusteluun</string>
+    <string name="zch_member_leave">%1$s poistui chat-keskustelusta</string>
+    <string name="zch_offline_form_completion_acknowledgement">Olemme vastaanottaneet viestisi ja otamme sinuun yhteyttä mahdollisimman pian.</string>
+    <string name="zch_offline_form_introduction_message">Jotta voimme ottaa sinuun yhteyttä, kun joku on saatavilla, tarvitsen hieman lisätietoja.</string>
+    <string name="zch_offline_form_message_field_prompt">Miten voimme auttaa sinua, kun olemme palanneet Online-tilaan?</string>
+    <string name="zch_offline_form_welcome_message">Hei! Valitettavasti ketään ei ole tällä hetkellä Online-tilassa.</string>
+    <string name="zch_offline_message">Valitettavasti ketään ei ole tällä hetkellä Online-tilassa. Tarkista myöhemmin uudelleen.</string>
+    <string name="zch_pre_chat_department_field_message">Mikä osasto pystyisi vastaamaan parhaiten kysymykseesi?</string>
+    <string name="zch_pre_chat_email_field_hint">Mikä on sähköpostiosoitteesi?</string>
+    <string name="zch_pre_chat_email_field_invalid_message">Antamasi sähköpostiosoite ei kelpaa. Anna kelvollinen sähköpostiosoite.</string>
+    <string name="zch_pre_chat_email_field_message">Mikä on sähköpostiosoitteesi?</string>
+    <string name="zch_pre_chat_introduction_greeting">Hei!</string>
+    <string name="zch_pre_chat_introduction_message">Etsin sinulle jonkun, joka voi auttaa sinua. Ensin tarvitsen sinulta muutaman tiedon.</string>
+    <string name="zch_pre_chat_message_acknowledgement">Etsin sinulle jonkun, joka voi auttaa sinua. Ensin tarvitsen hieman lisätietoja.</string>
+    <string name="zch_pre_chat_name_field_hint">Mikä on nimesi?</string>
+    <string name="zch_pre_chat_name_field_message">Mikä on nimesi?</string>
+    <string name="zch_pre_chat_phone_field_hint">Mikä on puhelinnumerosi?</string>
+    <string name="zch_pre_chat_phone_field_message">Mikä on puhelinnumerosi?</string>
+    <string name="zch_pre_chat_response_accepted_message">Kiitos!</string>
+    <string name="zch_pre_chat_skip_button">Ohita</string>
+    <string name="zch_pre_chat_welcome_message">Hei! Miten voimme auttaa sinua tänään?</string>
+    <string name="zch_queue_position">Sijainti jonossa: %1$d</string>
+    <string name="zch_request_transcript">Pyydä tallenne</string>
+    <string name="zui_attachment_indicator_accessibility">Valitse liitetiedosto</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">%d liitetiedostoa valittu</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">Yhtään liitetiedostoa ei ole valittu</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">Yksi liitetiedosto on valittu</string>
+    <string name="zui_bot_label">BOTTI</string>
+    <string name="zui_button_label_no">Ei</string>
+    <string name="zui_button_label_yes">Kyllä</string>
+    <string name="zui_cell_text_suggested_article_header">Tässä on artikkeli, josta voi olla apua:</string>
+    <string name="zui_cell_text_suggested_articles_header">Tässä on joitakin artikkeleja, joista voi olla apua:</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">Virheellinen sähköpostiosoite</string>
+    <string name="zui_dialog_email_hint">Sähköpostiosoite</string>
+    <string name="zui_failed_message_copy">Kopioi</string>
+    <string name="zui_failed_message_delete">Poista</string>
+    <string name="zui_failed_message_retry">Yritä uudelleen</string>
+    <string name="zui_hint_type_message">Kirjoita viesti…</string>
+    <string name="zui_label_connecting">Yhdistetään…</string>
+    <string name="zui_label_dialog_delete_btn">Poista viesti</string>
+    <string name="zui_label_dialog_retry_btn">Yritä lähettää uudelleen</string>
+    <string name="zui_label_failed">Epäonnistui</string>
+    <string name="zui_label_reconnecting">Yhteyttä luodaan uudelleen…</string>
+    <string name="zui_label_reconnecting_failed">Yhteys epäonnistui.</string>
+    <string name="zui_label_send">Lähetä</string>
+    <string name="zui_label_sent">Lähetetty</string>
+    <string name="zui_label_tap_retry">Yritä uudelleen napauttamalla</string>
+    <string name="zui_message_log_article_opened_formatter">%1$s avasi artikkelin \'%2$s\'</string>
+    <string name="zui_message_log_article_suggestion_message">Löysin nämä artikkelit:</string>
+    <string name="zui_message_log_attachment_sending_failed">Liitettä ei voitu lähettää</string>
+    <string name="zui_message_log_default_visitor_name">Vierailija</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">Liitteen tiedostotyyppiä ei tueta</string>
+    <string name="zui_message_log_message_attachments_not_supported">Liitetiedostoja ei tueta</string>
+    <string name="zui_message_log_message_failed_to_send">[Lähetys epäonnistui]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">Ylittää tiedoston maksimikoon (%1$s)</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$s valitsi seuraavan: %2$s</string>
+    <string name="zui_retry_button_label">Yritä uudelleen</string>
+    <string name="zui_toolbar_title">Ota yhteyttä</string>
+    <string name="zui_unable_open_file">Tiedostoa ei voida avata.</string>
+</resources>

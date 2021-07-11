@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:importantForAccessibility="no"
+    tools:orientation="horizontal"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <zendesk.messaging.ui.AvatarView
+        android:id="@+id/zui_agent_message_avatar"
+        android:layout_width="@dimen/zui_avatar_view_size"
+        android:layout_height="@dimen/zui_avatar_view_size"
+        android:layout_marginRight="@dimen/zui_avatar_spacing"
+        android:layout_marginEnd="@dimen/zui_avatar_spacing"
+        android:layout_gravity="bottom" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <include
+            android:id="@+id/zui_cell_status_view"
+            layout="@layout/zui_cell_agent_response_label" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/zui_background_agent_cell"
+            android:padding="@dimen/zui_layout_divider_size">
+
+            <TextView
+                android:id="@+id/zui_header_article_suggestions"
+                style="@style/ZendeskSdkTheme.Light.Cell.Text.Response"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:importantForAccessibility="no"
+                android:paddingStart="@dimen/zui_cell_text_field_padding_horizontal"
+                android:paddingLeft="@dimen/zui_cell_text_field_padding_horizontal"
+                android:paddingTop="@dimen/zui_cell_text_field_padding_vertical"
+                android:paddingEnd="@dimen/zui_cell_text_field_padding_horizontal"
+                android:paddingRight="@dimen/zui_cell_text_field_padding_horizontal"
+                android:paddingBottom="@dimen/zui_cell_text_field_padding_vertical"
+                android:textIsSelectable="false"
+                tools:text="Here are some articles that may help:" />
+
+            <FrameLayout
+                android:id="@+id/zui_first_article_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/zui_color_white_100">
+
+                <include layout="@layout/zui_view_article_suggestion" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/zui_second_article_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/zui_layout_divider_size"
+                android:background="@color/zui_color_white_100">
+
+                <include layout="@layout/zui_view_article_suggestion" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/zui_third_article_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/zui_layout_divider_size"
+                android:background="@color/zui_color_white_100">
+
+                <include layout="@layout/zui_view_article_suggestion" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</merge>

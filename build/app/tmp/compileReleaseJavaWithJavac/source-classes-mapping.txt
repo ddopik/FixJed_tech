@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/app/fixjedtechnician/BuildConfig.java
+ com.app.fixjedtechnician.BuildConfig

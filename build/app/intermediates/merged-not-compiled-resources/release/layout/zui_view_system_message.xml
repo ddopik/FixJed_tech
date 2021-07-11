@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="24dp"
+        android:layout_height="1dp"
+        android:background="@color/zui_color_black_13"
+        android:layout_gravity="center_vertical|start" />
+
+    <LinearLayout
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/zui_color_black_13"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/zui_system_message_text"
+            android:autoLink="web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/zui_color_black_38"
+            tools:text="Queue position: 8" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/zui_color_black_13"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="24dp"
+        android:layout_height="1dp"
+        android:background="@color/zui_color_black_13"
+        android:layout_gravity="center_vertical|end" />
+</FrameLayout>

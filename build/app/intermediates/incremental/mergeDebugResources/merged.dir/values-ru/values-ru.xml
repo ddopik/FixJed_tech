@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"Перейти на главный экран"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"Перейти вверх"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"Ещё"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"Готово"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"Показать все"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"Выберите приложение"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"ВЫКЛ"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"ВКЛ"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt +"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl +"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"Delete"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"Ввод"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Fn +"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta +"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift +"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"Пробел"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym +"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Меню +"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"Введите запрос"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"Удалить запрос"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"Поисковый запрос"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"Поиск"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"Отправить запрос"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"Голосовой поиск"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Поделиться с помощью"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Поделиться с помощью <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Свернуть"</string>
+    <string name="belvedere_dialog_camera">Камера</string>
+    <string name="belvedere_dialog_gallery">Галерея</string>
+    <string name="belvedere_fam_desc_collapse_fam">Свернуть плавающее меню действий</string>
+    <string name="belvedere_fam_desc_expand_fam">Развернуть плавающее меню действий</string>
+    <string name="belvedere_fam_desc_open_gallery">Импортировать файл из галереи</string>
+    <string name="belvedere_fam_desc_open_google_photos">Импортировать изображение из Google Photos</string>
+    <string name="belvedere_image_stream_file_too_large">Слишком большой файл</string>
+    <string name="belvedere_image_stream_title">Библиотека фото</string>
+    <string name="belvedere_image_stream_unknown_app">Неизвестно</string>
+    <string name="belvedere_permissions_denied">В доступе отказано</string>
+    <string name="belvedere_stream_item_camera_tile_desc">Импортировать изображение из камеры</string>
+    <string name="belvedere_stream_item_select_file_desc">Выбрать файл %s</string>
+    <string name="belvedere_stream_item_select_image_desc">Выбрать изображение %s</string>
+    <string name="belvedere_stream_item_unselect_file_desc">Отменить выбор файла %s</string>
+    <string name="belvedere_stream_item_unselect_image_desc">Отменить выбор изображения %s</string>
+    <string name="belvedere_toolbar_desc_collapse">Закрыть окно выбора изображения</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Включить"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"Для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуется включить сервисы Google Play."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Включите сервисы Google Play"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"Установить"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"Для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуется установить сервисы Google Play."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Установите сервисы Google Play"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Доступность сервисов Google Play"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Ошибка сервисов Google Play"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"Приложению \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" не удается подключиться к сервисам Google Play. Повторите попытку."</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"Для работы с приложением \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуются сервисы Google Play. Они не поддерживаются на вашем устройстве."</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"Обновить"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"Чтобы запустить приложение \"<ns1:g id="APP_NAME">%1$s</ns1:g>\", обновите сервисы Google Play."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Обновите сервисы Google Play"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"Сервисы Google Play, необходимые для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\", в настоящий момент обновляются."</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"Версия сервисов Google Play устарела. Они автоматически обновятся в ближайшее время."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"Открыть на телефоне"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"Войти"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Войти через аккаунт Google"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Другое"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"Поиск"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">">999"</string>
+    <string name="zch_chat_comment_acknowledgement">Благодарим вас за отзыв. Теперь вы можете вернуться в чат.</string>
+    <string name="zch_chat_comment_composer_hint">Введите комментарий...</string>
+    <string name="zch_chat_ended">Чат завершен</string>
+    <string name="zch_chat_handover_message_selection">Чат с агентом</string>
+    <string name="zch_chat_rating_comment_action_label">Добавить комментарий</string>
+    <string name="zch_chat_rating_comment_prompt_message">Мы высоко ценим ваши отзывы. Если хотите, можете оставить более подробный комментарий.</string>
+    <string name="zch_chat_rating_label_bad">Плохо 👎</string>
+    <string name="zch_chat_rating_label_good">Хорошо 👍</string>
+    <string name="zch_chat_rating_request_prompt">Ну, как проходит чат с агентом %s?</string>
+    <string name="zch_chat_transcript_email_prompt">На какой адрес электронной почты отправить расшифровку?</string>
+    <string name="zch_chat_transcript_prompt">Прислать расшифровку этого чата вам на почту?</string>
+    <string name="zch_chat_transcript_request_confirmation">По окончании чата расшифровка будет отправлена на адрес %1$s.</string>
+    <string name="zch_chat_welcome_message_handover">Хорошо. Я найду кого-нибудь, кто сможет вам помочь.</string>
+    <string name="zch_end_chat">Завершить чат</string>
+    <string name="zch_member_join">%1$s в чате</string>
+    <string name="zch_member_leave">%1$s больше не в чате</string>
+    <string name="zch_offline_form_completion_acknowledgement">Мы получили ваше сообщение и свяжемся с вами в ближайшее время.</string>
+    <string name="zch_offline_form_introduction_message">Чтобы свободный агент мог с вами связаться, нам нужно больше информации.</string>
+    <string name="zch_offline_form_message_field_prompt">Чем мы можем вам помочь, когда снова будем на связи?</string>
+    <string name="zch_offline_form_welcome_message">Здравствуйте! К сожалению, сейчас в онлайне никого нет.</string>
+    <string name="zch_offline_message">К сожалению, сейчас в онлайне никого нет. Вернитесь сюда чуть позже.</string>
+    <string name="zch_pre_chat_department_field_message">Какой отдел лучше всего сможет ответить на ваш вопрос?</string>
+    <string name="zch_pre_chat_email_field_hint">Какой у вас адрес электронной почты?</string>
+    <string name="zch_pre_chat_email_field_invalid_message">Введен неправильный адрес электронной почты. Введите действительный адрес электронной почты.</string>
+    <string name="zch_pre_chat_email_field_message">Какой у вас адрес электронной почты?</string>
+    <string name="zch_pre_chat_introduction_greeting">Здравствуйте!</string>
+    <string name="zch_pre_chat_introduction_message">Я найду кого-нибудь, кто сможет вам помочь. Но сначала мне нужно немного информации.</string>
+    <string name="zch_pre_chat_message_acknowledgement">Я найду кого-нибудь, кто сможет вам помочь. Но сначала мне нужно побольше информации.</string>
+    <string name="zch_pre_chat_name_field_hint">Как вас зовут?</string>
+    <string name="zch_pre_chat_name_field_message">Как вас зовут?</string>
+    <string name="zch_pre_chat_phone_field_hint">Какой у вас номер телефона?</string>
+    <string name="zch_pre_chat_phone_field_message">Какой у вас номер телефона?</string>
+    <string name="zch_pre_chat_response_accepted_message">Спасибо.</string>
+    <string name="zch_pre_chat_skip_button">Пропустить</string>
+    <string name="zch_pre_chat_welcome_message">Здравствуйте! Чем мы можем вам помочь сегодня?</string>
+    <string name="zch_queue_position">Позиция в очереди: %1$d</string>
+    <string name="zch_request_transcript">Запросить расшифровку</string>
+    <string name="zui_attachment_indicator_accessibility">Выбор прикрепленного файла</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">Выбрано прикрепленных файлов: %d</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">Не выбрано ни одного прикрепленного файла</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">Выбран один прикрепленный файл</string>
+    <string name="zui_bot_label">БОТ</string>
+    <string name="zui_button_label_no">Нет</string>
+    <string name="zui_button_label_yes">Да</string>
+    <string name="zui_cell_text_suggested_article_header">Вот статья, которая может вам помочь:</string>
+    <string name="zui_cell_text_suggested_articles_header">Вот несколько статей, которые могут вам помочь:</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">Недопустимый адрес эл. почты</string>
+    <string name="zui_dialog_email_hint">Адрес электронной почты</string>
+    <string name="zui_failed_message_copy">Копировать</string>
+    <string name="zui_failed_message_delete">Удалить</string>
+    <string name="zui_failed_message_retry">Повторить</string>
+    <string name="zui_hint_type_message">Введите сообщение…</string>
+    <string name="zui_label_connecting">Соединяется...</string>
+    <string name="zui_label_dialog_delete_btn">Удалить сообщение</string>
+    <string name="zui_label_dialog_retry_btn">Повторить отправку</string>
+    <string name="zui_label_failed">Ошибка</string>
+    <string name="zui_label_reconnecting">Восстановление подключения...</string>
+    <string name="zui_label_reconnecting_failed">Сбой подключения.</string>
+    <string name="zui_label_send">Отправить</string>
+    <string name="zui_label_sent">Отправлено</string>
+    <string name="zui_label_tap_retry">Нажмите, чтобы попробовать снова</string>
+    <string name="zui_message_log_article_opened_formatter">Пользователь %1$s открыл статью \«%2$s\»</string>
+    <string name="zui_message_log_article_suggestion_message">Найдены такие статьи:</string>
+    <string name="zui_message_log_attachment_sending_failed">Не удалось отправить прикрепленный файл</string>
+    <string name="zui_message_log_default_visitor_name">Посетитель</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">Тип файла не поддерживается</string>
+    <string name="zui_message_log_message_attachments_not_supported">Прикрепление файлов не поддерживается</string>
+    <string name="zui_message_log_message_failed_to_send">[Не удалось отправить]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">Превышен максимальный размер файла (%1$s)</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$s выбрал(а) %2$s</string>
+    <string name="zui_retry_button_label">Повторить</string>
+    <string name="zui_toolbar_title">Свяжитесь с нами</string>
+    <string name="zui_unable_open_file">Не удалось открыть файл.</string>
+</resources>

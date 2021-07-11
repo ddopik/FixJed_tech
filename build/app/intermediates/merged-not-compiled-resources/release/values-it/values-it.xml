@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"Portami a casa"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"Torna indietro"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"Altre opzioni"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"Fine"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"Mostra tutto"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"Scelta di un\'app"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"OFF"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"ON"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"ALT +"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"CTRL +"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"CANC"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"INVIO"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"FUNZIONE +"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"META +"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"MAIUSC +"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"SPAZIO"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"SYM +"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"MENU +"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"Cerca…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"Cancella query"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"Query di ricerca"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"Cerca"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"Invia query"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"Ricerca vocale"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Condividi con"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Condividi tramite <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Comprimi"</string>
+    <string name="belvedere_dialog_camera">Fotocamera</string>
+    <string name="belvedere_dialog_gallery">Raccolta</string>
+    <string name="belvedere_fam_desc_collapse_fam">Comprimi menu di azioni mobile</string>
+    <string name="belvedere_fam_desc_expand_fam">Espandi menu di azioni mobile</string>
+    <string name="belvedere_fam_desc_open_gallery">Importa file da raccolta</string>
+    <string name="belvedere_fam_desc_open_google_photos">Importa immagine da Google Foto</string>
+    <string name="belvedere_image_stream_file_too_large">File troppo grande</string>
+    <string name="belvedere_image_stream_title">Libreria foto</string>
+    <string name="belvedere_image_stream_unknown_app">Sconosciuto</string>
+    <string name="belvedere_permissions_denied">Autorizzazioni negate</string>
+    <string name="belvedere_stream_item_camera_tile_desc">Importa immagine da fotocamera</string>
+    <string name="belvedere_stream_item_select_file_desc">Seleziona file %s</string>
+    <string name="belvedere_stream_item_select_image_desc">Seleziona immagine %s</string>
+    <string name="belvedere_stream_item_unselect_file_desc">Deseleziona file %s</string>
+    <string name="belvedere_stream_item_unselect_image_desc">Deseleziona immagine %s</string>
+    <string name="belvedere_toolbar_desc_collapse">Chiudi strumento di selezione immagini</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Attiva"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> non funzionerà se non attivi Google Play Services."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Attiva Google Play Services"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"Installa"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"L\'app <ns1:g id="APP_NAME">%1$s</ns1:g> non funzionerà senza Google Play Services, non presente sul tuo dispositivo."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Installa Google Play Services"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Disponibilità di Google Play Services"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Errore Google Play Services"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g> sta riscontrando problemi con Google Play Services. Riprova."</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> non funzionerà senza Google Play Services, non supportati dal tuo dispositivo."</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"Aggiorna"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> non funzionerà se non aggiorni Google Play Services."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Aggiorna Google Play Services"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> non funzionerà senza Google Play Services, attualmente in fase di aggiornamento."</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"È richiesta una nuova versione di Google Play Services. L\'aggiornamento automatico verrà eseguito a breve."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"Apri sul telefono"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"Accedi"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Accedi con Google"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Varie"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"Cerca"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="zch_chat_comment_acknowledgement">Grazie del feedback. Ora puoi tornare a chattare.</string>
+    <string name="zch_chat_comment_composer_hint">Scrivi qui il tuo commento…</string>
+    <string name="zch_chat_ended">Chat terminata</string>
+    <string name="zch_chat_handover_message_selection">Chatta con un agente</string>
+    <string name="zch_chat_rating_comment_action_label">Aggiungi un commento</string>
+    <string name="zch_chat_rating_comment_prompt_message">Il tuo feedback è importante. Puoi anche aggiungere un commento con maggiori dettagli.</string>
+    <string name="zch_chat_rating_label_bad">Negativa 👎</string>
+    <string name="zch_chat_rating_label_good">Positiva 👍</string>
+    <string name="zch_chat_rating_request_prompt">Come sta andando la chat con %s? Saremmo interessati alla tua valutazione.</string>
+    <string name="zch_chat_transcript_email_prompt">A quale indirizzo email deve essere inviata la trascrizione?</string>
+    <string name="zch_chat_transcript_prompt">Vuoi che la trascrizione di questa chat venga inviata al tuo indirizzo email?</string>
+    <string name="zch_chat_transcript_request_confirmation">Al termine della chat, la trascrizione sarà inviata all’indirizzo %1$s.</string>
+    <string name="zch_chat_welcome_message_handover">Va bene, cercherò qualcuno in grado di rispondere.</string>
+    <string name="zch_end_chat">Termina chat</string>
+    <string name="zch_member_join">%1$s è entrato in chat</string>
+    <string name="zch_member_leave">%1$s ha lasciato la chat</string>
+    <string name="zch_offline_form_completion_acknowledgement">Abbiamo ricevuto il messaggio e risponderemo al più presto possibile.</string>
+    <string name="zch_offline_form_introduction_message">Per poterti contattare quando un agente si rende disponibile, ho bisogno di ulteriori informazioni.</string>
+    <string name="zch_offline_form_message_field_prompt">Come possiamo aiutarti non appena ritorniamo online?</string>
+    <string name="zch_offline_form_welcome_message">Salve. Purtroppo non c’è nessuno online al momento.</string>
+    <string name="zch_offline_message">Purtroppo non c’è nessuno online al momento. Ricontrolla più tardi.</string>
+    <string name="zch_pre_chat_department_field_message">Quale reparto è il più idoneo a rispondere a questa domanda?</string>
+    <string name="zch_pre_chat_email_field_hint">Qual è il tuo indirizzo email?</string>
+    <string name="zch_pre_chat_email_field_invalid_message">L’indirizzo email inserito non è corretto. Inserisci un indirizzo email valido.</string>
+    <string name="zch_pre_chat_email_field_message">Qual è il tuo indirizzo email?</string>
+    <string name="zch_pre_chat_introduction_greeting">Salve.</string>
+    <string name="zch_pre_chat_introduction_message">Prima di metterti in contatto con un agente, avrei bisogno di alcune informazioni.</string>
+    <string name="zch_pre_chat_message_acknowledgement">Ti metterò in contatto con un agente. Ma prima ho bisogno di ulteriori informazioni.</string>
+    <string name="zch_pre_chat_name_field_hint">Come ti chiami?</string>
+    <string name="zch_pre_chat_name_field_message">Come ti chiami?</string>
+    <string name="zch_pre_chat_phone_field_hint">Qual è il tuo numero di telefono?</string>
+    <string name="zch_pre_chat_phone_field_message">Qual è il tuo numero di telefono?</string>
+    <string name="zch_pre_chat_response_accepted_message">Grazie.</string>
+    <string name="zch_pre_chat_skip_button">Salta</string>
+    <string name="zch_pre_chat_welcome_message">Salve. Come possiamo aiutarti oggi?</string>
+    <string name="zch_queue_position">Posizione in coda: %1$d</string>
+    <string name="zch_request_transcript">Richiedi trascrizione</string>
+    <string name="zui_attachment_indicator_accessibility">Seleziona un allegato</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">Selezionati %d allegati</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">Nessun allegato selezionato</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">Selezionato un allegato</string>
+    <string name="zui_bot_label">BOT</string>
+    <string name="zui_button_label_no">No</string>
+    <string name="zui_button_label_yes">Sì</string>
+    <string name="zui_cell_text_suggested_article_header">Ecco un articolo che può aiutare:</string>
+    <string name="zui_cell_text_suggested_articles_header">Ecco alcuni articoli che possono aiutare:</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">Indirizzo email non valido.</string>
+    <string name="zui_dialog_email_hint">Indirizzo email</string>
+    <string name="zui_failed_message_copy">Copia</string>
+    <string name="zui_failed_message_delete">Elimina</string>
+    <string name="zui_failed_message_retry">Riprova</string>
+    <string name="zui_hint_type_message">Scrivi un messaggio…</string>
+    <string name="zui_label_connecting">Collegamento…</string>
+    <string name="zui_label_dialog_delete_btn">Elimina messaggio</string>
+    <string name="zui_label_dialog_retry_btn">Ritenta invio</string>
+    <string name="zui_label_failed">Invio non riuscito</string>
+    <string name="zui_label_reconnecting">Riconnessione…</string>
+    <string name="zui_label_reconnecting_failed">Connessione non riuscita.</string>
+    <string name="zui_label_send">Invia</string>
+    <string name="zui_label_sent">Inviato</string>
+    <string name="zui_label_tap_retry">Tocca per riprovare</string>
+    <string name="zui_message_log_article_opened_formatter">%1$s ha aperto l’articolo \“%2$s\”</string>
+    <string name="zui_message_log_article_suggestion_message">Ho trovato questi articoli:</string>
+    <string name="zui_message_log_attachment_sending_failed">Impossibile inviare l’allegato</string>
+    <string name="zui_message_log_default_visitor_name">Visitatore</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">Tipo di allegato non supportato</string>
+    <string name="zui_message_log_message_attachments_not_supported">Allegati non supportati</string>
+    <string name="zui_message_log_message_failed_to_send">[Invio non riuscito]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">Il file supera le dimensioni massime (%1$s)</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$s ha selezionato %2$s</string>
+    <string name="zui_retry_button_label">Riprova</string>
+    <string name="zui_toolbar_title">Contattaci</string>
+    <string name="zui_unable_open_file">Impossibile aprire il file.</string>
+</resources>

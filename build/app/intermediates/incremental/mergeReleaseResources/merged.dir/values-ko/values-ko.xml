@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"홈으로 이동"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"위로 이동"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"추가 옵션"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"완료"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"전체 보기"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"앱 선택"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"사용 중지"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"사용"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"Delete"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"스페이스바"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"검색..."</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"검색어 삭제"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"검색어"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"검색"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"검색어 보내기"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"음성 검색"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"공유 대상:"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>과(와) 공유"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"접기"</string>
+    <string name="belvedere_dialog_camera">카메라</string>
+    <string name="belvedere_dialog_gallery">갤러리</string>
+    <string name="belvedere_fam_desc_collapse_fam">부동 작업 메뉴 축소</string>
+    <string name="belvedere_fam_desc_expand_fam">부동 작업 메뉴 확대</string>
+    <string name="belvedere_fam_desc_open_gallery">갤러리에서 파일 가져오기</string>
+    <string name="belvedere_fam_desc_open_google_photos">Google 포토에서 이미지 가져오기</string>
+    <string name="belvedere_image_stream_file_too_large">파일이 너무 큽니다.</string>
+    <string name="belvedere_image_stream_title">사진 라이브러리</string>
+    <string name="belvedere_image_stream_unknown_app">알 수 없음</string>
+    <string name="belvedere_permissions_denied">권한이 거부되었습니다.</string>
+    <string name="belvedere_stream_item_camera_tile_desc">카메라에서 이미지 가져오기</string>
+    <string name="belvedere_stream_item_select_file_desc">%s 파일 선택</string>
+    <string name="belvedere_stream_item_select_image_desc">%s 이미지 선택</string>
+    <string name="belvedere_stream_item_unselect_file_desc">%s 파일 선택 취소</string>
+    <string name="belvedere_stream_item_unselect_image_desc">%s 이미지 선택 취소</string>
+    <string name="belvedere_toolbar_desc_collapse">이미지 선택기 닫기</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"사용 설정"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"Google Play 서비스를 사용하도록 설정해야 <ns1:g id="APP_NAME">%1$s</ns1:g>이(가) 작동합니다."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Google Play 서비스 사용"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"설치"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"기기에 Google Play 서비스가 설치되어 있어야 <ns1:g id="APP_NAME">%1$s</ns1:g>이(가) 실행됩니다."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Google Play 서비스 설치"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Google Play 서비스 사용 가능 여부"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Google Play 서비스 오류"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g>에서 Google Play 서비스를 사용하는 데 문제가 있습니다. 다시 시도하세요."</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g>은(는) Google Play 서비스 없이는 실행되지 않으나, 기기에서 Google Play 서비스를 지원하지 않습니다."</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"업데이트"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"Google Play 서비스를 업데이트해야 <ns1:g id="APP_NAME">%1$s</ns1:g>이(가) 실행됩니다."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Google Play 서비스 업데이트"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"현재 업데이트 중인 Google Play 서비스가 있어야 <ns1:g id="APP_NAME">%1$s</ns1:g>이(가) 실행됩니다."</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"새 버전의 Google Play 서비스가 필요합니다. 곧 자동으로 업데이트됩니다."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"스마트폰에서 열기"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"로그인"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Google 계정으로 로그인"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"기타"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"검색"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="zch_chat_comment_acknowledgement">피드백 주셔서 감사합니다. 이제 채팅으로 돌아갈 수 있습니다.</string>
+    <string name="zch_chat_comment_composer_hint">댓글을 입력하세요...</string>
+    <string name="zch_chat_ended">채팅 종료됨</string>
+    <string name="zch_chat_handover_message_selection">상담원과 채팅</string>
+    <string name="zch_chat_rating_comment_action_label">댓글 추가</string>
+    <string name="zch_chat_rating_comment_prompt_message">소중한 피드백을 주세요. 원하시면 댓글을 추가하여 더 자세히 설명하실 수도 있습니다.</string>
+    <string name="zch_chat_rating_label_bad">나쁨 👎</string>
+    <string name="zch_chat_rating_label_good">좋음 👍</string>
+    <string name="zch_chat_rating_request_prompt">%s님과의 채팅이 어땠나요?</string>
+    <string name="zch_chat_transcript_email_prompt">대화 내용을 어느 이메일 주소로 보내야 하나요?</string>
+    <string name="zch_chat_transcript_prompt">이 채팅의 대화 내용을 이메일로 받으시겠어요?</string>
+    <string name="zch_chat_transcript_request_confirmation">채팅이 종료되면 %1$s(으)로 대화 내용이 전송됩니다.</string>
+    <string name="zch_chat_welcome_message_handover">알겠습니다. 문의하신 내용에 대해 도움을 드릴 수 있는 사람을 찾아 드리겠습니다.</string>
+    <string name="zch_end_chat">채팅 종료</string>
+    <string name="zch_member_join">%1$s님이 채팅에 입장했습니다.</string>
+    <string name="zch_member_leave">%1$s님이 채팅에서 퇴장했습니다.</string>
+    <string name="zch_offline_form_completion_acknowledgement">고객님의 메시지를 잘 받았고 가능한 빨리 연락드리도록 하겠습니다.</string>
+    <string name="zch_offline_form_introduction_message">고객님께 연락을 드리기 위해 몇 가지 정보가 더 필요합니다.</string>
+    <string name="zch_offline_form_message_field_prompt">다시 온라인 상태가 되었을 때 어떻게 도와드릴까요?</string>
+    <string name="zch_offline_form_welcome_message">안녕하세요. 현재 온라인 상태인 사람이 아무도 없습니다.</string>
+    <string name="zch_offline_message">현재 온라인 상태인 사람이 아무도 없습니다. 나중에 다시 확인하세요.</string>
+    <string name="zch_pre_chat_department_field_message">질문에 답할 수 있는 가장 적합한 부서가 어디일까요?</string>
+    <string name="zch_pre_chat_email_field_hint">이메일 주소가 어떻게 되나요?</string>
+    <string name="zch_pre_chat_email_field_invalid_message">입력하신 이메일 주소가 올바르지 않습니다. 올바른 이메일 주소를 입력하세요.</string>
+    <string name="zch_pre_chat_email_field_message">이메일 주소가 어떻게 되나요?</string>
+    <string name="zch_pre_chat_introduction_greeting">안녕하세요!</string>
+    <string name="zch_pre_chat_introduction_message">도움이 될 수 있는 사람을 찾아 드리겠습니다. 먼저 몇 가지 정보가 필요합니다.</string>
+    <string name="zch_pre_chat_message_acknowledgement">도와드릴 사람을 찾아 드리겠습니다. 먼저 몇 가지 정보가 더 필요합니다.</string>
+    <string name="zch_pre_chat_name_field_hint">이름이 어떻게 되세요?</string>
+    <string name="zch_pre_chat_name_field_message">이름이 어떻게 되세요?</string>
+    <string name="zch_pre_chat_phone_field_hint">전화번호가 어떻게 되세요?</string>
+    <string name="zch_pre_chat_phone_field_message">전화번호가 어떻게 되세요?</string>
+    <string name="zch_pre_chat_response_accepted_message">감사합니다.</string>
+    <string name="zch_pre_chat_skip_button">건너뛰기</string>
+    <string name="zch_pre_chat_welcome_message">안녕하세요. 무엇을 도와드릴까요?</string>
+    <string name="zch_queue_position">대기열 위치: %1$d</string>
+    <string name="zch_request_transcript">대화 내용 요청</string>
+    <string name="zui_attachment_indicator_accessibility">첨부 파일 선택</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">%d개의 첨부 파일을 선택했습니다.</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">선택한 첨부 파일이 없습니다.</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">1개의 첨부 파일을 선택했습니다.</string>
+    <string name="zui_bot_label">봇</string>
+    <string name="zui_button_label_no">아니요</string>
+    <string name="zui_button_label_yes">예</string>
+    <string name="zui_cell_text_suggested_article_header">다음은 도움이 될 만한 문서입니다.</string>
+    <string name="zui_cell_text_suggested_articles_header">다음은 도움이 될 만한 몇 가지 문서입니다.</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">올바르지 않은 이메일</string>
+    <string name="zui_dialog_email_hint">이메일 주소</string>
+    <string name="zui_failed_message_copy">복사</string>
+    <string name="zui_failed_message_delete">삭제</string>
+    <string name="zui_failed_message_retry">다시 시도</string>
+    <string name="zui_hint_type_message">메시지 입력…</string>
+    <string name="zui_label_connecting">연결 중...</string>
+    <string name="zui_label_dialog_delete_btn">메시지 삭제</string>
+    <string name="zui_label_dialog_retry_btn">보내기 다시 시도</string>
+    <string name="zui_label_failed">실패</string>
+    <string name="zui_label_reconnecting">다시 연결 중…</string>
+    <string name="zui_label_reconnecting_failed">연결에 실패했습니다.</string>
+    <string name="zui_label_send">보내기</string>
+    <string name="zui_label_sent">보냄</string>
+    <string name="zui_label_tap_retry">다시 시도하려면 탭하세요.</string>
+    <string name="zui_message_log_article_opened_formatter">%1$s님이 \'%2$s\' 문서를 열었습니다.</string>
+    <string name="zui_message_log_article_suggestion_message">다음 문서를 찾았습니다.</string>
+    <string name="zui_message_log_attachment_sending_failed">첨부 파일을 보낼 수 없습니다.</string>
+    <string name="zui_message_log_default_visitor_name">방문자</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">지원되지 않는 첨부 파일 유형입니다.</string>
+    <string name="zui_message_log_message_attachments_not_supported">첨부 파일이 지원되지 않습니다.</string>
+    <string name="zui_message_log_message_failed_to_send">[보내지 못함]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">최대 파일 크기를 초과합니다(%1$s).</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$s님이 %2$s을(를) 선택함</string>
+    <string name="zui_retry_button_label">다시 시도</string>
+    <string name="zui_toolbar_title">문의하기</string>
+    <string name="zui_unable_open_file">파일을 열 수 없습니다.</string>
+</resources>

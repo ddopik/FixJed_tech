@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/zui_action_option_name"
+    style="@style/ZendeskSdkTheme.Light.Cell.Text.Response"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/zui_cell_option_background"
+    android:importantForAccessibility="no"
+    android:layout_marginTop="@dimen/zui_layout_divider_size"
+    android:paddingLeft="@dimen/zui_cell_transfer_option_margin"
+    android:paddingTop="@dimen/zui_cell_transfer_option_margin"
+    android:paddingRight="@dimen/zui_cell_transfer_option_margin"
+    android:paddingBottom="@dimen/zui_cell_transfer_option_margin"
+    android:textColor="@color/zui_action_option_text_color"
+    android:textIsSelectable="false"
+    tools:text="Leave a message" />

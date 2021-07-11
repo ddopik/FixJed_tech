@@ -41,7 +41,7 @@ class _RequestListViewItemState extends State<RequestListViewItem> {
                     Container(
                       width: MediaQuery.of(context).size.width * .1,
                       child: AutoSizeText(
-                          parseTimeToHour(widget.request.assigneeDate),
+                          parseTimeTo12Hour(widget.request.assigneeDate),
                           style: Theme.of(context).textTheme.bodyText1.copyWith(
                                 color: Color(0xffffffff),
                               )),
