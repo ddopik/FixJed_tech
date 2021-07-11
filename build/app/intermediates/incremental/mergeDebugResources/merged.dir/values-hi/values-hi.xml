@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"होम पेज पर जाएं"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"वापस जाएं"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"ज़्यादा विकल्प"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"हो गया"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"सभी देखें"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"कोई ऐप्लिकेशन चुनें"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"बंद"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"चालू"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"space"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"खोजें…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"क्‍वेरी हटाएं"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"सर्च क्वेरी"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"खोजें"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"क्वेरी सबमिट करें"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"बोलकर खोजें"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"इससे शेयर करें:"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g> से शेयर करें"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"छोटा करें"</string>
+    <string name="belvedere_dialog_camera">कैमरा</string>
+    <string name="belvedere_dialog_gallery">गैलरी</string>
+    <string name="belvedere_fam_desc_collapse_fam">फ़्लोटिंग क्रियाएं संक्षिप्त करें मेनू</string>
+    <string name="belvedere_fam_desc_expand_fam">फ़्लोटिंग क्रियाएं विस्तारित करें मेनू</string>
+    <string name="belvedere_fam_desc_open_gallery">गैलरी से फ़ाइल आयात करें</string>
+    <string name="belvedere_fam_desc_open_google_photos">छवि को Google फ़ोटो से आयात करें</string>
+    <string name="belvedere_image_stream_file_too_large">फ़ाइल बहुत बड़ी है</string>
+    <string name="belvedere_image_stream_title">फ़ोटो लाइब्रेरी</string>
+    <string name="belvedere_image_stream_unknown_app">अज्ञात</string>
+    <string name="belvedere_permissions_denied">अनुमतियां अस्वीकृत</string>
+    <string name="belvedere_stream_item_camera_tile_desc">कैमरा से छवि आयात करें</string>
+    <string name="belvedere_stream_item_select_file_desc">फ़ाइल %s चुनें</string>
+    <string name="belvedere_stream_item_select_image_desc">छवि %s चुनें</string>
+    <string name="belvedere_stream_item_unselect_file_desc">फ़ाइल %s का चयन रद्द करेंं</string>
+    <string name="belvedere_stream_item_unselect_image_desc">छवि %s का चयन रद्द करेंं</string>
+    <string name="belvedere_toolbar_desc_collapse">छवि पिकर बंद करें</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"चालू करें"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"जब तक आप Google Play सेवाएं चालू नहीं करते, <ns1:g id="APP_NAME">%1$s</ns1:g> काम नहीं करेगा."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Google Play सेवाएं चालू करें"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"इंस्टॉल करें"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> उन Google Play सेवाओं के बिना नहीं चलेगा जो आपके डिवाइस में उपलब्ध नहीं हैं."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Google Play सेवाएं इंस्टॉल करें"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Google Play सेवाएं उपलब्ध हैं"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Google Play सेवाओं से जुड़ी गड़बड़ी"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g> को Google Play सेवाओं के साथ समस्या आ रही है. कृपया फिर से कोशिश करें."</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> उन Google Play सेवाओं के बिना नहीं चलेगा, जो आपके डिवाइस पर काम नहीं करती हैं."</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"अपडेट करें"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> तब तक नहीं चलेगा जब तक आप Google Play सेवाओं को अपडेट नहीं करते."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Google Play सेवाओं को अपडेट करें"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> उन Google Play सेवाओं के बिना नहीं चलेगा जो अभी अपडेट हो रही हैं."</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"Google Play सेवाओं के नए वर्शन की ज़रूरत है. यह जल्द ही अपने आप अपडेट हो जाएगा."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"फ़ोन पर खोलें"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"साइन इन करें"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Google के ज़रिए साइन इन करें"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"अन्य"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"खोजें"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="zch_chat_comment_acknowledgement">प्रतिक्रिया के लिए धन्यवाद. अब आप अपनी चैट पर वापस लौट सकते हैं.</string>
+    <string name="zch_chat_comment_composer_hint">अपनी टिप्पणी टाइप करें...</string>
+    <string name="zch_chat_ended">चैट बंद हो चुका है</string>
+    <string name="zch_chat_handover_message_selection">एजेंट से चैट करें</string>
+    <string name="zch_chat_rating_comment_action_label">कोई टिप्पणी जोड़ें</string>
+    <string name="zch_chat_rating_comment_prompt_message">आपकी प्रतिक्रिया हमारे लिए महत्वपूर्ण है. अगर आप चाहें, तो ज़्यादा जानकारी के साथ टिप्पणी भी जोड़ सकते हैं.</string>
+    <string name="zch_chat_rating_label_bad">बुरा 👎</string>
+    <string name="zch_chat_rating_label_good">अच्छा 👍</string>
+    <string name="zch_chat_rating_request_prompt">नमस्कार, हम जानना चाहते थे कि %s के साथ चैट कैसी चल रही है?</string>
+    <string name="zch_chat_transcript_email_prompt">ट्रांसक्रिप्ट किस ईमेल पते पर भेजी जानी चाहिए?</string>
+    <string name="zch_chat_transcript_prompt">क्या आप अपने ईमेल पर इस चैट की ट्रांसक्रिप्ट पाना चाहेंगे?</string>
+    <string name="zch_chat_transcript_request_confirmation">जब चैट खत्म हो जाएगी, तब %1$s पर ट्रांसक्रिप्ट भेजी जाएगी</string>
+    <string name="zch_chat_welcome_message_handover">ठीक है. हम आपकी क्वेरी के संबंध में आपकी सहायता करने के लिए किसी को ढूँढते हैं.</string>
+    <string name="zch_end_chat">चैट समाप्त करें</string>
+    <string name="zch_member_join">%1$s चैट में शामिल हो गया/गई है</string>
+    <string name="zch_member_leave">%1$s ने चैट छोड़ दी है</string>
+    <string name="zch_offline_form_completion_acknowledgement">हमें आपका संदेश मिल गया है और हम जल्दी से जल्दी आपको जवाब देने की कोशिश करेंगे.</string>
+    <string name="zch_offline_form_introduction_message">जब कोई आपकी सहायता के लिए उपलब्ध हो जाएगा, तब आपसे संपर्क करने के लिए हमें कुछ और जानकारी चाहिए.</string>
+    <string name="zch_offline_form_message_field_prompt">वापस ऑनलाइन आने के बाद, हम आपकी किस तरह से सहायता कर सकते हैं?</string>
+    <string name="zch_offline_form_welcome_message">नमस्ते. दुर्भाग्य से, इस समय कोई भी ऑनलाइन नहीं है.</string>
+    <string name="zch_offline_message">दुर्भाग्य से, इस समय कोई भी ऑनलाइन नहीं है. बाद में देखें.</string>
+    <string name="zch_pre_chat_department_field_message">आपके प्रश्न का उत्तर देने के लिए कौन सा विभाग सबसे सही रहेगा?</string>
+    <string name="zch_pre_chat_email_field_hint">आपका ईमेल पता क्या है?</string>
+    <string name="zch_pre_chat_email_field_invalid_message">आपने जो ईमेल पता डाला है, वह गलत है. मान्य ईमेल पता डालें.</string>
+    <string name="zch_pre_chat_email_field_message">आपका ईमेल पता क्या है?</string>
+    <string name="zch_pre_chat_introduction_greeting">नमस्ते!</string>
+    <string name="zch_pre_chat_introduction_message">आपकी सहायता करने के लिए हम किसी को खोज रहे हैं. पहले हमें कुछ जानकारी चाहिए होगी.</string>
+    <string name="zch_pre_chat_message_acknowledgement">आपकी सहायता करने के लिए हम किसी को खोज रहे हैं. पहले हमें कुछ और जानकारी चाहिए.</string>
+    <string name="zch_pre_chat_name_field_hint">आपका नाम क्या है?</string>
+    <string name="zch_pre_chat_name_field_message">आपका नाम क्या है?</string>
+    <string name="zch_pre_chat_phone_field_hint">आपका फ़ोन नंबर क्या है?</string>
+    <string name="zch_pre_chat_phone_field_message">आपका फ़ोन नंबर क्या है?</string>
+    <string name="zch_pre_chat_response_accepted_message">धन्यवाद.</string>
+    <string name="zch_pre_chat_skip_button">छोड़ें</string>
+    <string name="zch_pre_chat_welcome_message">नमस्ते. आज हम आपकी क्या मदद कर सकते हैं?</string>
+    <string name="zch_queue_position">कतार स्थिति: %1$d</string>
+    <string name="zch_request_transcript">ट्रांसक्रिप्ट भेजने का अनुरोध करें</string>
+    <string name="zui_attachment_indicator_accessibility">कोई अनुलग्नक चुनें</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">%d अनुलग्नक चुने गए हैं</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">कोई अनुलग्नक नहीं चुना गया है</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">एक अनुलग्नक चुना गया है</string>
+    <string name="zui_bot_label">बॉट</string>
+    <string name="zui_button_label_no">नहीं</string>
+    <string name="zui_button_label_yes">हाँ</string>
+    <string name="zui_cell_text_suggested_article_header">यहां आलेख है, जिससे आपको सहायता मिल सकती है:</string>
+    <string name="zui_cell_text_suggested_articles_header">यहाँ कुछ ऐसे आलेख दिए गए हैं, जिनसे सहायता मिल सकती है:</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">अमान्य ईमेल</string>
+    <string name="zui_dialog_email_hint">ईमेल पता</string>
+    <string name="zui_failed_message_copy">कॉपी करें</string>
+    <string name="zui_failed_message_delete">हटाएं</string>
+    <string name="zui_failed_message_retry">दोबारा कोशिश करें</string>
+    <string name="zui_hint_type_message">एक संदेश टाइप करें...</string>
+    <string name="zui_label_connecting">कनेक्ट किया जा रहा है...</string>
+    <string name="zui_label_dialog_delete_btn">संदेश हटाएं</string>
+    <string name="zui_label_dialog_retry_btn">दोबारा भेजने की कोशिश करें</string>
+    <string name="zui_label_failed">विफल रहा</string>
+    <string name="zui_label_reconnecting">फिर से कनेक्ट हो रहा है...</string>
+    <string name="zui_label_reconnecting_failed">कनेक्शन नहीं हो सका.</string>
+    <string name="zui_label_send">भेजें</string>
+    <string name="zui_label_sent">भेजा गया</string>
+    <string name="zui_label_tap_retry">दुबारा कोशिश करने के लिए टैप करें</string>
+    <string name="zui_message_log_article_opened_formatter">%1$s खुला हुआ आलेख \'%2$s\'</string>
+    <string name="zui_message_log_article_suggestion_message">मुझे ये आलेख मिले:</string>
+    <string name="zui_message_log_attachment_sending_failed">अनुलग्नक नहीं भेजा जा सका</string>
+    <string name="zui_message_log_default_visitor_name">दर्शक</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">इस प्रकार का अनुलग्नक नहीं भेजा जा सकता</string>
+    <string name="zui_message_log_message_attachments_not_supported">अनुलग्नक की सुविधा नहीं है</string>
+    <string name="zui_message_log_message_failed_to_send">[भेजा नहीं जा सका]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">फ़ाइल का ज़्यादा से ज़्यादा आकार (%1$s) होना चाहिए और वह पार हो चुका है</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$s चुना गया %2$s</string>
+    <string name="zui_retry_button_label">दोबारा कोशिश करें</string>
+    <string name="zui_toolbar_title">हमसे संपर्क करें</string>
+    <string name="zui_unable_open_file">फ़ाइल नहीं खोल पा रहे.</string>
+</resources>

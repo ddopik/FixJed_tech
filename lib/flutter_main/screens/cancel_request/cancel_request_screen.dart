@@ -2,14 +2,20 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/common/constants.dart';
 import 'package:flutter_base_app/flutter_main/common/res/dimen_const.dart';
 import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/app_bar_back_button.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
-import 'package:flutter_base_app/network/dio_manager.dart';
+import 'package:provider/provider.dart';
 
 class CancelRequestScreen extends StatefulWidget {
+  final arguments;
+
+  CancelRequestScreen({this.arguments});
+
   @override
   State<StatefulWidget> createState() {
     return CancelRequestScreenState();
@@ -41,6 +47,7 @@ class CancelRequestScreenState extends State<CancelRequestScreen> {
   ];
 
   var id;
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="48dp"
+    android:animateLayoutChanges="true"
+    android:background="@color/zui_banner_lost_connection_background_color">
+
+    <TextView
+        android:id="@+id/zui_lost_connection_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@id/zui_lost_connection_button"
+        android:layout_toLeftOf="@id/zui_lost_connection_button"
+        android:text="@string/zui_label_reconnecting"
+        android:textColor="@color/zui_color_white_100" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/zui_lost_connection_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:theme="@style/Theme.MaterialComponents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:text="@string/zui_retry_button_label"
+        android:textColor="@color/zui_banner_lost_connection_text_color"
+        android:visibility="gone"
+        app:rippleColor="@color/zui_banner_lost_connection_text_color"
+        tools:visibility="visible" />
+
+</RelativeLayout>

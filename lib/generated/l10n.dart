@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1235,6 +1236,116 @@ class S {
     );
   }
 
+  /// `Sign in`
+  String get signIn {
+    return Intl.message(
+      'Sign in',
+      name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `accept`
+  String get accept {
+    return Intl.message(
+      'accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decline`
+  String get decline {
+    return Intl.message(
+      'Decline',
+      name: 'decline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `success`
+  String get success {
+    return Intl.message(
+      'success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejection Reason`
+  String get rejectionReason {
+    return Intl.message(
+      'Rejection Reason',
+      name: 'rejectionReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End Request`
+  String get endRequest {
+    return Intl.message(
+      'End Request',
+      name: 'endRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Events`
+  String get events {
+    return Intl.message(
+      'Events',
+      name: 'events',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SUBMIT ORDER`
+  String get submitOrder {
+    return Intl.message(
+      'SUBMIT ORDER',
+      name: 'submitOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write you rejection reason`
+  String get writeYourRejectionReason {
+    return Intl.message(
+      'Write you rejection reason',
+      name: 'writeYourRejectionReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select Decline Reason`
+  String get pleaseSelectDeclineReason {
+    return Intl.message(
+      'Please select Decline Reason',
+      name: 'pleaseSelectDeclineReason',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Customer wasnt at home`
   String get customerWasntAthome {
     return Intl.message(
@@ -1285,41 +1396,101 @@ class S {
     );
   }
 
-  /// `SUBMIT`
-  String get submit {
+  /// `Welcome`
+  String get welcome {
     return Intl.message(
-      'SUBMIT',
-      name: 'submit',
+      'Welcome',
+      name: 'welcome',
       desc: '',
       args: [],
     );
   }
 
-  /// `please select reason`
-  String get pleaseSelectReason {
+  /// `ORDER \n SUBMISSION`
+  String get orderSubmission {
     return Intl.message(
-      'please select reason',
-      name: 'pleaseSelectReason',
+      'ORDER \n SUBMISSION',
+      name: 'orderSubmission',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment`
+  String get comment {
+    return Intl.message(
+      'Comment',
+      name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request time`
+  String get requestTime {
+    return Intl.message(
+      'Request time',
+      name: 'requestTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `M`
+  String get minutes {
+    return Intl.message(
+      'M',
+      name: 'minutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `H`
+  String get hour {
+    return Intl.message(
+      'H',
+      name: 'hour',
       desc: '',
       args: [],
     );
   }
 
   /// `CANCELLATION REASON`
-  String get cancellationReason {
+  String get cancelReason {
     return Intl.message(
       'CANCELLATION REASON',
-      name: 'cancellationReason',
+      name: 'cancelReason',
       desc: '',
       args: [],
     );
   }
 
-  /// `Order has \n completed successfully`
-  String get OrderHasCompletedSuccessfully {
+  /// `Confirm Payment`
+  String get confirmPayment {
     return Intl.message(
-      'Order has \n completed successfully',
-      name: 'OrderHasCompletedSuccessfully',
+      'Confirm Payment',
+      name: 'confirmPayment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Having a problem getting money? CONTACT OPERATOR`
+  String get havingProblemText_1 {
+    return Intl.message(
+      'Having a problem getting money? CONTACT OPERATOR',
+      name: 'havingProblemText_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `of`
+  String get ofText {
+    return Intl.message(
+      'of',
+      name: 'ofText',
       desc: '',
       args: [],
     );

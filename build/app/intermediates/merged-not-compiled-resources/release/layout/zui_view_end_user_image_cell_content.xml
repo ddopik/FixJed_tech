@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:gravity="end"
+    tools:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|end"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/zui_image_cell_image"
+                android:layout_width="@dimen/zui_image_cell_width"
+                android:layout_height="@dimen/zui_image_cell_height"
+                android:importantForAccessibility="no"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <zendesk.messaging.ui.FileUploadProgressView
+                android:id="@+id/zui_cell_file_upload_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+        <zendesk.messaging.ui.MessageStatusView
+            android:id="@+id/zui_cell_status_view"
+            android:layout_width="@dimen/zui_cell_message_status_icon_size"
+            android:layout_height="@dimen/zui_cell_message_status_icon_size"
+            android:layout_marginStart="@dimen/zui_cell_supplementary_label_spacing"
+            android:layout_marginLeft="@dimen/zui_cell_supplementary_label_spacing"
+            android:visibility="visible"
+            tools:text="Delivered"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/zui_cell_label_message"
+        style="@style/ZendeskSdkTheme.Light.Cell.Caption.Error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</merge>

@@ -2,7 +2,7 @@ import 'package:flutter_base_app/flutter_main/screens/request_list/model/request
 
 class RequestsGroup {
   final String date;
-  final List<Request> requestList;
+  final List<Transaction> requestList;
 
   RequestsGroup(this.date, this.requestList);
 }

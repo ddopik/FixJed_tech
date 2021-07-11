@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/slide_dialog.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 callOperatorDialogView<T>(
     {@required BuildContext context,
@@ -62,17 +63,19 @@ renderView(BuildContext context, Function onChangePasswordClick) {
 
 getRequestButton_1(context) {
   return customActionButton(
-    btnText: Text(
-      "Call 0123243234",
-      style: Theme.of(context)
-          .textTheme
-          .headline5
-          .copyWith(color: Color(0xff61ba66)),
-    ),
-    width: MediaQuery.of(context).size.width * .9,
-    btnColor: Color(0xffe7f5e8),
-    btnRadius: 7.0,
-  );
+      btnText: Text(
+        "Call 0123243234",
+        style: Theme.of(context)
+            .textTheme
+            .headline5
+            .copyWith(color: Color(0xff61ba66)),
+      ),
+      width: MediaQuery.of(context).size.width * .9,
+      btnColor: Color(0xffe7f5e8),
+      btnRadius: 7.0,
+      onPressed: () {
+        launch("tel://0123243234");
+      });
 }
 
 getRequestButton_2(context) {
@@ -82,7 +85,7 @@ getRequestButton_2(context) {
       style: Theme.of(context)
           .textTheme
           .headline6
-          .copyWith(color: Color(0xffdd0807)),
+          .copyWith(color: Color(0xffdd0807), fontSize: 20),
     ),
     width: MediaQuery.of(context).size.width * .9,
     btnColor: Colors.white,

@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "map": [
+                {
+                    "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/22cec6759424c074e0e137cc27f11cb0/jetified-common-ui-4.0.1/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    }
+                }
+            ]
+        }
+    ]
+}

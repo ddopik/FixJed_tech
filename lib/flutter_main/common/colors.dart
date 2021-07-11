@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-
 /// basic colors
- const boring_green = const Color(0xff61ba66);
- const tea = const Color(0xff6ab784);
- const ugly_blue = const Color(0xff24747c);
- const greeny_blue = const Color(0xff36a6a9);
- const nasty_green = const Color(0xff74ae41);
- const aqua_marine = const Color(0xff50c5cc);
- const pale_teal = const Color(0xff89cfbb);
- const robin_s_egg_blue = const Color(0xffaddfe0);
- const french_blue = const Color(0xff4169a1);
- const red = const Color(0xffdd0807);
+const boring_green = const Color(0xff61ba66);
+const boring_green_light = const Color(0xFFE7F5E8);
+const tea = Color(0xff6ab784);
+const fontGreen = Color(0xFF61BA66);
+const ugly_blue = const Color(0xff24747c);
+const greeny_blue = const Color(0xff36a6a9);
+const nasty_green = const Color(0xff74ae41);
+const aqua_marine = const Color(0xff50c5cc);
+const pale_teal = const Color(0xff89cfbb);
+const robin_s_egg_blue = const Color(0xffaddfe0);
+const french_blue = const Color(0xff4169a1);
+const red = const Color(0xffdd0807);
+const grayWhite = Color(0xFFF1F1F1);
 
 const kDefaultBackgroundAvatar = '3FC1BE';
 const kDefaultTextColorAvatar = 'EEEEEE';
 const kDefaultAdminBackgroundAvatar = 'EEEEEE';
 const kDefaultAdminTextColorAvatar = '3FC1BE';
-
-
 
 /// color for theme
 const kLightPrimary = Color(0xfffcfcff);

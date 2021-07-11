@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"Navigați la ecranul de pornire"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"Navigați în sus"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"Mai multe opțiuni"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"Gata"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"Afișați tot"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"Alegeți o aplicație"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"DEZACTIVAT"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"ACTIVAT"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"space"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Meniu+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"Căutați…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"Ștergeți interogarea"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"Termen de căutare"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"Căutați"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"Trimiteți interogarea"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"Căutare vocală"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Trimiteți la"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Trimiteți folosind <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Restrângeți"</string>
+    <string name="belvedere_dialog_camera">Cameră</string>
+    <string name="belvedere_dialog_gallery">Galerie</string>
+    <string name="belvedere_fam_desc_collapse_fam">Restrângere meniu de acțiuni mobil</string>
+    <string name="belvedere_fam_desc_expand_fam">Extindere meniu de acțiuni mobil</string>
+    <string name="belvedere_fam_desc_open_gallery">Import fișier din galerie</string>
+    <string name="belvedere_fam_desc_open_google_photos">Import imagine din Google Photos</string>
+    <string name="belvedere_image_stream_file_too_large">Fișier prea mare</string>
+    <string name="belvedere_image_stream_title">Bibliotecă fotografii</string>
+    <string name="belvedere_image_stream_unknown_app">Necunoscut</string>
+    <string name="belvedere_permissions_denied">Permisiuni refuzate</string>
+    <string name="belvedere_stream_item_camera_tile_desc">Import imagine din cameră</string>
+    <string name="belvedere_stream_item_select_file_desc">Selectare fișier %s</string>
+    <string name="belvedere_stream_item_select_image_desc">Selectare imagine %s</string>
+    <string name="belvedere_stream_item_unselect_file_desc">Deselectare fișier %s</string>
+    <string name="belvedere_stream_item_unselect_image_desc">Deselectare imagine %s</string>
+    <string name="belvedere_toolbar_desc_collapse">Închidere selector imagini</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Activați"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> nu va funcționa decât dacă activați serviciile Google Play."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Activați serviciile Google Play"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"Instalați"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> nu va rula fără serviciile Google Play, care lipsesc de pe dispozitivul dvs."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Descărcați serviciile Google Play"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Disponibilitatea serviciilor Google Play"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Eroare a serviciilor Google Play"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g> întâmpină probleme privind serviciile Google Play. Încercați din nou."</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> nu va rula fără serviciile Google Play, care nu sunt acceptate de dispozitivul dvs."</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"Actualizați"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> nu va rula decât dacă actualizați serviciile Google Play."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Actualizați serviciile Google Play"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> nu va rula fără serviciile Google Play, care momentan se actualizează."</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"Este necesară o nouă versiune a serviciilor Google Play. Se vor actualiza automat în curând."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"Deschideți pe telefon"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"Conectați-vă"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Conectați-vă cu Google"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Diverse"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"Căutați"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="zch_chat_comment_acknowledgement">Vă mulțumim pentru feedback. Acum puteți să reveniți la chat-ul dumneavoastră.</string>
+    <string name="zch_chat_comment_composer_hint">Tastați comentariul…</string>
+    <string name="zch_chat_ended">Chat încheiat</string>
+    <string name="zch_chat_handover_message_selection">Conversați pe chat cu un agent</string>
+    <string name="zch_chat_rating_comment_action_label">Adăugați un comentariu</string>
+    <string name="zch_chat_rating_comment_prompt_message">Apreciem feedbackul dumneavoastră. Dacă doriți, puteți adăuga un comentariu mai detaliat.</string>
+    <string name="zch_chat_rating_label_bad">Slab 👎</string>
+    <string name="zch_chat_rating_label_good">Bun 👍</string>
+    <string name="zch_chat_rating_request_prompt">Bună ziua, doar voiam să vedem cum a mers până acum chat-ul dumneavoastră cu %s?</string>
+    <string name="zch_chat_transcript_email_prompt">La ce adresă de e-mail să fie trimisă transcrierea?</string>
+    <string name="zch_chat_transcript_prompt">Doriți ca transcrierea acestui chat să fie trimisă la adresa dumneavoastră de e-mail?</string>
+    <string name="zch_chat_transcript_request_confirmation">Transcrierea va fi trimisă la %1$s când conversația pe chat se încheie</string>
+    <string name="zch_chat_welcome_message_handover">OK. Voi găsi pe cineva care să vă ajute cu interogarea dumneavoastră.</string>
+    <string name="zch_end_chat">Încheiere chat</string>
+    <string name="zch_member_join">%1$s s-a alăturat conversației pe chat</string>
+    <string name="zch_member_leave">%1$s a părăsit conversația pe chat</string>
+    <string name="zch_offline_form_completion_acknowledgement">Am primit mesajul dumneavoastră și vom reveni cu un răspuns cât mai curând posibil.</string>
+    <string name="zch_offline_form_introduction_message">Pentru a vă contacta atunci când cineva va fi disponibil, am nevoie de câteva informații suplimentare.</string>
+    <string name="zch_offline_form_message_field_prompt">Cu ce vă putem ajuta atunci când revenim online?</string>
+    <string name="zch_offline_form_welcome_message">Bună ziua. Ne pare rău, nimeni nu este online în acest moment.</string>
+    <string name="zch_offline_message">Ne pare rău, nimeni nu este online în acest moment. Reveniți mai târziu.</string>
+    <string name="zch_pre_chat_department_field_message">Care departament ar fi cel mai potrivit să răspundă la întrebarea dumneavoastră?</string>
+    <string name="zch_pre_chat_email_field_hint">Care este adresa dumneavoastră de e-mail?</string>
+    <string name="zch_pre_chat_email_field_invalid_message">Adresa de e-mail pe care ați introdus-o este incorectă. Introduceți o adresă de e-mail validă.</string>
+    <string name="zch_pre_chat_email_field_message">Care este adresa dumneavoastră de e-mail?</string>
+    <string name="zch_pre_chat_introduction_greeting">Bună ziua!</string>
+    <string name="zch_pre_chat_introduction_message">Voi găsi pe cineva care să vă ajute. Mai întâi, am nevoie de câteva informații.</string>
+    <string name="zch_pre_chat_message_acknowledgement">Voi găsi pe cineva care să vă ajute. Mai întâi, am nevoie de câteva informații suplimentare.</string>
+    <string name="zch_pre_chat_name_field_hint">Care este numele dumneavoastră?</string>
+    <string name="zch_pre_chat_name_field_message">Care este numele dumneavoastră?</string>
+    <string name="zch_pre_chat_phone_field_hint">Care este numărul dumneavoastră de telefon?</string>
+    <string name="zch_pre_chat_phone_field_message">Care este numărul dumneavoastră de telefon?</string>
+    <string name="zch_pre_chat_response_accepted_message">Vă mulțumim.</string>
+    <string name="zch_pre_chat_skip_button">Omitere</string>
+    <string name="zch_pre_chat_welcome_message">Bună ziua. Cu ce vă putem ajuta astăzi?</string>
+    <string name="zch_queue_position">Poziție în coadă: %1$d</string>
+    <string name="zch_request_transcript">Solicitare transcriere</string>
+    <string name="zui_attachment_indicator_accessibility">Selectați un fișier atașat</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">Sunt selectate %d fișiere atașate</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">Nu sunt selectate fișiere atașate</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">Este selectat un fișier atașat</string>
+    <string name="zui_bot_label">BOT</string>
+    <string name="zui_button_label_no">Nu</string>
+    <string name="zui_button_label_yes">Da</string>
+    <string name="zui_cell_text_suggested_article_header">Iată un articol care vă poate ajuta:</string>
+    <string name="zui_cell_text_suggested_articles_header">Iată câteva articole care vă pot ajuta:</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">E-mail nevalid</string>
+    <string name="zui_dialog_email_hint">Adresa de e-mail</string>
+    <string name="zui_failed_message_copy">Copiere</string>
+    <string name="zui_failed_message_delete">Ștergere</string>
+    <string name="zui_failed_message_retry">Reîncercați</string>
+    <string name="zui_hint_type_message">Tastați un mesaj…</string>
+    <string name="zui_label_connecting">Se conectează…</string>
+    <string name="zui_label_dialog_delete_btn">Ștergere mesaj</string>
+    <string name="zui_label_dialog_retry_btn">Reîncercare retrimitere</string>
+    <string name="zui_label_failed">Eșuat</string>
+    <string name="zui_label_reconnecting">Se reconectează...</string>
+    <string name="zui_label_reconnecting_failed">Conexiunea a eșuat.</string>
+    <string name="zui_label_send">Trimitere</string>
+    <string name="zui_label_sent">Trimis</string>
+    <string name="zui_label_tap_retry">Atingeți pentru a reîncerca</string>
+    <string name="zui_message_log_article_opened_formatter">%1$s a deschis articolul \'%2$s\'</string>
+    <string name="zui_message_log_article_suggestion_message">Am găsit aceste articole:</string>
+    <string name="zui_message_log_attachment_sending_failed">Fișierul atașat nu a putut fi trimis</string>
+    <string name="zui_message_log_default_visitor_name">Vizitator</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">Tipul de fișier atașat nu este acceptat</string>
+    <string name="zui_message_log_message_attachments_not_supported">Fișierele atașate nu sunt acceptate</string>
+    <string name="zui_message_log_message_failed_to_send">[Trimiterea a eșuat]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">Depășește dimensiunea maximă a fișierului (%1$s)</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$s a selectat %2$s</string>
+    <string name="zui_retry_button_label">Reîncercați</string>
+    <string name="zui_toolbar_title">Contactați-ne</string>
+    <string name="zui_unable_open_file">Nu se poate deschide fișierul.</string>
+</resources>

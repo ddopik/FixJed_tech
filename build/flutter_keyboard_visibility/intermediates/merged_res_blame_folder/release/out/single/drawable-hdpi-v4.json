@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_normal.9.png",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal.9.png",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/Users/abdallamaged/AndroidStudioProjects/fixjedtechnician/build/flutter_keyboard_visibility/intermediates/res/merged/release/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
+        "source": "/Users/abdallamaged/.gradle/caches/transforms-2/files-2.1/857b9d92fc0eae3afa6d1ea9238e4e99/core-1.5.0-beta01/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    }
+]

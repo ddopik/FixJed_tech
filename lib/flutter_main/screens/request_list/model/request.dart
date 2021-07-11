@@ -1,4 +1,4 @@
-class Request {
+class Transaction {
   int _technicianTransactionId;
   String _assigneeDate;
   String _customerName;
@@ -15,8 +15,14 @@ class Request {
   dynamic _ratingNumber;
   bool _cancelButtonActive;
   bool _startButtonActive;
+  String _categoryJobType;
+  int _totalCost;
 
   int get technicianTransactionId => _technicianTransactionId;
+
+  String get categoryJobType => _categoryJobType;
+
+  int get totalCost => _totalCost;
 
   String get assigneeDate => _assigneeDate;
 
@@ -48,7 +54,7 @@ class Request {
 
   bool get startButtonActive => _startButtonActive;
 
-  Request(
+  Transaction(
       {int technicianTransactionId,
       String assigneeDate,
       String customerName,
@@ -64,7 +70,9 @@ class Request {
       dynamic endDate,
       dynamic ratingNumber,
       bool cancelButtonActive,
-      bool startButtonActive}) {
+      bool startButtonActive,
+      String categoryJobType,
+      int totalCost}) {
     _technicianTransactionId = technicianTransactionId;
     _assigneeDate = assigneeDate;
     _customerName = customerName;
@@ -81,9 +89,11 @@ class Request {
     _ratingNumber = ratingNumber;
     _cancelButtonActive = cancelButtonActive;
     _startButtonActive = startButtonActive;
+    _categoryJobType = categoryJobType;
+    _totalCost = totalCost;
   }
 
-  Request.fromJson(dynamic json) {
+  Transaction.fromJson(dynamic json) {
     _technicianTransactionId = json["technicianTransactionId"];
     _assigneeDate = json["assigneeDate"];
     _customerName = json["customerName"];
@@ -100,6 +110,8 @@ class Request {
     _ratingNumber = json["ratingNumber"];
     _cancelButtonActive = json["cancelButtonActive"];
     _startButtonActive = json["startButtonActive"];
+    _categoryJobType = json["categoryJobType"];
+    _totalCost = json["totalCost"];
   }
 
   Map<String, dynamic> toJson() {

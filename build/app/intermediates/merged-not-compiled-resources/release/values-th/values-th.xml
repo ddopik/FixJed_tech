@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"นำทางไปหน้าแรก"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"กลับ"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"ตัวเลือกอื่น"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"เสร็จ"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"ดูทั้งหมด"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"เลือกแอป"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"ปิด"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"เปิด"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"ลบ"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"Space"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"เมนู+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"ค้นหา…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"ล้างคำค้นหา"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"คำค้นหา"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"ค้นหา"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"ส่งคำค้นหา"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"ค้นหาด้วยเสียง"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"แชร์กับ"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"แชร์ทาง <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"ยุบ"</string>
+    <string name="belvedere_dialog_camera">กล้อง</string>
+    <string name="belvedere_dialog_gallery">แกลเลอรี</string>
+    <string name="belvedere_fam_desc_collapse_fam">ยุบเมนูการดำเนินการแบบลอย</string>
+    <string name="belvedere_fam_desc_expand_fam">ขยายเมนูการดำเนินการแบบลอย</string>
+    <string name="belvedere_fam_desc_open_gallery">อิมพอร์ตไฟล์จากแกลเลอรี</string>
+    <string name="belvedere_fam_desc_open_google_photos">อิมพอร์ตภาพจาก Google Photos</string>
+    <string name="belvedere_image_stream_file_too_large">ไฟล์ใหญ่เกินไป</string>
+    <string name="belvedere_image_stream_title">คลังภาพ</string>
+    <string name="belvedere_image_stream_unknown_app">ไม่ทราบ</string>
+    <string name="belvedere_permissions_denied">สิทธิ์การอนุญาตถูกปฏิเสธ</string>
+    <string name="belvedere_stream_item_camera_tile_desc">อิมพอร์ตภาพจากกล้อง</string>
+    <string name="belvedere_stream_item_select_file_desc">เลือกไฟล์ %s</string>
+    <string name="belvedere_stream_item_select_image_desc">เลือกภาพ %s</string>
+    <string name="belvedere_stream_item_unselect_file_desc">ยกเลิกเลือกไฟล์ %s</string>
+    <string name="belvedere_stream_item_unselect_image_desc">ยกเลิกเลือกภาพ %s</string>
+    <string name="belvedere_toolbar_desc_collapse">ปิดตัวเลือกภาพ</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"เปิดใช้"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> จะไม่ทำงานจนกว่าคุณจะเปิดใช้บริการ Google Play"</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"เปิดใช้บริการ Google Play"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"ติดตั้ง"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> จะไม่ทำงานหากไม่มีบริการ Google Play ซี่งไม่มีในอุปกรณ์ของคุณ"</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"ติดตั้งบริการ Google Play"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"ความพร้อมใช้งานของบริการ Google Play"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"ข้อผิดพลาดของบริการ Google Play"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g> มีปัญหาเกี่ยวกับบริการของ Google Play โปรดลองอีกครั้ง"</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งอุปกรณ์ของคุณไม่สนับสนุน"</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"อัปเดต"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> จะไม่ทำงานจนกว่าคุณจะอัปเดตบริการ Google Play"</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"อัปเดตบริการ Google Play"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งกำลังอัปเดตอยู่ในขณะนี้"</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"จำเป็นต้องใช้บริการ Google Play เวอร์ชันใหม่ ซึ่งจะอัปเดตอัตโนมัติในอีกไม่ช้า"</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"เปิดบนโทรศัพท์"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"ลงชื่อเข้าใช้"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"ลงชื่อเข้าใช้ด้วย Google"</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"เบ็ดเตล็ด"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"ค้นหา"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="zch_chat_comment_acknowledgement">ขอขอบคุณสำหรับฟีดแบ็ค คุณกลับไปที่แชทได้แล้วในขณะนี้</string>
+    <string name="zch_chat_comment_composer_hint">พิมพ์ข้อคิดเห็นของคุณ...</string>
+    <string name="zch_chat_ended">การแชทสิ้นสุดแล้ว</string>
+    <string name="zch_chat_handover_message_selection">แชทกับเจ้าหน้าที่</string>
+    <string name="zch_chat_rating_comment_action_label">เพิ่มข้อคิดเห็น</string>
+    <string name="zch_chat_rating_comment_prompt_message">เราต้องการทราบฟีดแบ็คของคุณ คุณยังเพิ่มข้อคิดเห็นที่มีรายละเอียดเพิ่มเติมได้อีกด้วยหากต้องการ</string>
+    <string name="zch_chat_rating_label_bad">ไม่ดี 👎</string>
+    <string name="zch_chat_rating_label_good">ดี 👍</string>
+    <string name="zch_chat_rating_request_prompt">สวัสดี เราแค่ต้องการดูว่าการแชทของคุณกับ %s เป็นอย่างไรบ้าง</string>
+    <string name="zch_chat_transcript_email_prompt">ควรส่งทรานสคริปต์ไปยังที่อยู่อีเมลใด</string>
+    <string name="zch_chat_transcript_prompt">ต้องการให้ทรานสคริปต์ของแชทนี้ส่งไปยังอีเมลของคุณหรือไม่</string>
+    <string name="zch_chat_transcript_request_confirmation">ทรานสคริปต์นี้จะส่งไปยัง %1$s เมื่อแชทสิ้นสุด</string>
+    <string name="zch_chat_welcome_message_handover">ตกลง ฉันจะหาคนที่ช่วยตอบคำถามของคุณได้</string>
+    <string name="zch_end_chat">สิ้นสุดการแชท</string>
+    <string name="zch_member_join">%1$s เข้าร่วมการแชทแล้ว</string>
+    <string name="zch_member_leave">%1$s ออกจากการแชทแล้ว</string>
+    <string name="zch_offline_form_completion_acknowledgement">เราได้รับข้อความของคุณแล้วและจะติดต่อกลับถึงคุณโดยเร็วที่สุด</string>
+    <string name="zch_offline_form_introduction_message">ฉันต้องการข้อมูลเพิ่มเติมในการติดต่อคุณเมื่อมีเจ้าหน้าที่พร้อมให้บริการ</string>
+    <string name="zch_offline_form_message_field_prompt">เมื่อเรากลับมาออนไลน์ คุณต้องการให้เราช่วยเหลืออย่างไรบ้าง</string>
+    <string name="zch_offline_form_welcome_message">สวัสดี ขออภัย ไม่มีผู้ที่ออนไลน์อยู่ในขณะนี้</string>
+    <string name="zch_offline_message">ขออภัย ไม่มีผู้ที่ออนไลน์อยู่ในขณะนี้ โปรดย้อนกลับมาดูอีกครั้งในภายหลัง</string>
+    <string name="zch_pre_chat_department_field_message">แผนกใดที่จะตอบคำถามของคุณได้ดีที่สุด</string>
+    <string name="zch_pre_chat_email_field_hint">ที่อยู่อีเมลของคุณคืออะไร</string>
+    <string name="zch_pre_chat_email_field_invalid_message">ที่อยู่อีเมลที่คุณป้อนไม่ถูกต้อง ป้อนที่อยู่อีเมลที่ถูกต้อง</string>
+    <string name="zch_pre_chat_email_field_message">ที่อยู่อีเมลของคุณคืออะไร</string>
+    <string name="zch_pre_chat_introduction_greeting">สวัสดี</string>
+    <string name="zch_pre_chat_introduction_message">เราจะให้เจ้าหน้าที่มาช่วยเหลือคุณ ก่อนอื่น เราต้องการข้อมูลเล็กน้อย</string>
+    <string name="zch_pre_chat_message_acknowledgement">ฉันจะให้เจ้าหน้าที่มาช่วยเหลือคุณ ก่อนอื่นฉันต้องการข้อมูลเพิ่มเติม</string>
+    <string name="zch_pre_chat_name_field_hint">คุณชื่ออะไร</string>
+    <string name="zch_pre_chat_name_field_message">คุณชื่ออะไร</string>
+    <string name="zch_pre_chat_phone_field_hint">หมายเลขโทรศัพท์ของคุณคืออะไร</string>
+    <string name="zch_pre_chat_phone_field_message">หมายเลขโทรศัพท์ของคุณคืออะไร</string>
+    <string name="zch_pre_chat_response_accepted_message">ขอบคุณ</string>
+    <string name="zch_pre_chat_skip_button">ข้าม</string>
+    <string name="zch_pre_chat_welcome_message">สวัสดี วันนี้คุณมีอะไรให้เราช่วยไหม</string>
+    <string name="zch_queue_position">ตำแหน่งของคิว: %1$d</string>
+    <string name="zch_request_transcript">ขอทรานสคริปต์</string>
+    <string name="zui_attachment_indicator_accessibility">เลือกไฟล์แนบ</string>
+    <string name="zui_attachment_indicator_n_attachments_selected_accessibility">มีไฟล์แนบที่เลือกไว้ %d ไฟล์</string>
+    <string name="zui_attachment_indicator_no_attachments_selected_accessibility">ไม่มีไฟล์แนบที่เลือกไว้</string>
+    <string name="zui_attachment_indicator_one_attachments_selected_accessibility">มีไฟล์แนบที่เลือกไว้หนึ่งไฟล์</string>
+    <string name="zui_bot_label">บอท</string>
+    <string name="zui_button_label_no">ไม่ใช่</string>
+    <string name="zui_button_label_yes">ใช่</string>
+    <string name="zui_cell_text_suggested_article_header">นี่คือบทความที่อาจช่วยคุณได้:</string>
+    <string name="zui_cell_text_suggested_articles_header">นี่คือบทความที่อาจช่วยคุณได้:</string>
+    <string name="zui_default_bot_name">Answer Bot</string>
+    <string name="zui_dialog_email_error">อีเมลไม่ถูกต้อง</string>
+    <string name="zui_dialog_email_hint">ที่อยู่อีเมล</string>
+    <string name="zui_failed_message_copy">สำเนา</string>
+    <string name="zui_failed_message_delete">ลบ</string>
+    <string name="zui_failed_message_retry">ลองอีกครั้ง</string>
+    <string name="zui_hint_type_message">พิมพ์ข้อความ...</string>
+    <string name="zui_label_connecting">กำลังเชื่อมต่อ...</string>
+    <string name="zui_label_dialog_delete_btn">ลบข้อความ</string>
+    <string name="zui_label_dialog_retry_btn">กำลังลองส่งใหม่</string>
+    <string name="zui_label_failed">ล้มเหลว</string>
+    <string name="zui_label_reconnecting">กำลังเชื่อมต่อใหม่...</string>
+    <string name="zui_label_reconnecting_failed">การเชื่อมต่อไม่สำเร็จ</string>
+    <string name="zui_label_send">ส่ง</string>
+    <string name="zui_label_sent">ส่งแล้ว</string>
+    <string name="zui_label_tap_retry">แตะเพื่อลองอีกครั้ง</string>
+    <string name="zui_message_log_article_opened_formatter">%1$s เปิดบทความ \'%2$s\'</string>
+    <string name="zui_message_log_article_suggestion_message">ฉันพบบทความเหล่านี้</string>
+    <string name="zui_message_log_attachment_sending_failed">ไม่สามารถส่งไฟล์แนบ</string>
+    <string name="zui_message_log_default_visitor_name">ผู้เยี่ยมชม</string>
+    <string name="zui_message_log_message_attachment_type_not_supported">ไม่รองรับประเภทไฟล์แนบ</string>
+    <string name="zui_message_log_message_attachments_not_supported">ไม่รองรับไฟล์แนบ</string>
+    <string name="zui_message_log_message_failed_to_send">[ส่งไม่สำเร็จ]</string>
+    <string name="zui_message_log_message_file_exceeds_max_size">เกินขนาดไฟล์สูงสุด (%1$s)</string>
+    <string name="zui_message_log_transfer_option_selection_formatter">%1$s เลือก %2$s</string>
+    <string name="zui_retry_button_label">ลองอีกครั้ง</string>
+    <string name="zui_toolbar_title">ติดต่อเรา</string>
+    <string name="zui_unable_open_file">เปิดไฟล์ไม่ได้</string>
+</resources>

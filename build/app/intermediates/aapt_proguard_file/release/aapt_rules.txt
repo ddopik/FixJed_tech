@@ -1,0 +1,147 @@
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+-keep class androidx.lifecycle.ProcessLifecycleOwnerInitializer { <init>(); }
+-keep class com.app.fixjedtechnician.MainActivity { <init>(); }
+-keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+-keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
+-keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(); }
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+-keep class com.squareup.picasso.PicassoProvider { <init>(); }
+-keep class io.flutter.app.FlutterApplication { <init>(); }
+-keep class io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService { <init>(); }
+-keep class io.flutter.plugins.imagepicker.ImagePickerFileProvider { <init>(); }
+-keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }
+-keep class zendesk.belvedere.BelvedereFileProvider { <init>(); }
+-keep class zendesk.messaging.MessagingActivity { <init>(); }
+-keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ActionMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ExpandedMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.view.menu.ListMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarContainer { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarContextView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionBarOverlayLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActionMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ActivityChooserView$InnerLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.AlertDialogLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ButtonBarLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ContentFrameLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.DialogTitle { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.FitWindowsFrameLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.FitWindowsLinearLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.SearchView$SearchAutoComplete { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.Toolbar { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.appcompat.widget.ViewStubCompat { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.coordinatorlayout.widget.CoordinatorLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.core.widget.NestedScrollView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class androidx.recyclerview.widget.RecyclerView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.appbar.AppBarLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.appbar.MaterialToolbar { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.button.MaterialButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.card.MaterialCardView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.chip.Chip { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.chip.ChipGroup { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.datepicker.MaterialCalendarGridView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.floatingactionbutton.FloatingActionButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.BaselineLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.CheckableImageButton { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.NavigationMenuItemView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.internal.NavigationMenuView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.snackbar.Snackbar$SnackbarLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.snackbar.SnackbarContentLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.textfield.TextInputEditText { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.textfield.TextInputLayout { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.google.android.material.textview.MaterialTextView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.belvedere.FixedWidthImageView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.belvedere.FloatingActionMenu { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.belvedere.SelectableView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.commonui.AlmostRealProgressBar { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.ActionOptionsView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.AgentFileCellView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.AgentImageCellView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.AgentMessageView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.ArticlesResponseView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.AttachmentsIndicator { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.AvatarView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.EndUserFileCellView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.EndUserImageCellView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.EndUserMessageView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.FileUploadProgressView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.InputBox { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.MessageStatusView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.MessagingView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.ResponseOptionSelectedView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.ResponseOptionView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.ResponseOptionsView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.StackedResponseOptionsView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.SystemMessageView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class zendesk.messaging.ui.TypingIndicatorView { <init>(android.content.Context, android.util.AttributeSet); }
+

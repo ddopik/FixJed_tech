@@ -85,7 +85,10 @@ class _NotificationListViewState extends State<NotificationListView> {
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<FixJedNotification>(
         itemBuilder: (context, notification, index) {
-          return NotificationItemView(notification: notification);
+          return GestureDetector(
+            child: NotificationItemView(notification: notification),
+            onTap: () {},
+          );
         },
         firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
           error: _pagingController.error,

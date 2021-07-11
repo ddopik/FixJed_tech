@@ -20,9 +20,9 @@ Widget customActionButton(
     }
   }
 
-  return RaisedButton(
+  return MaterialButton(
     onPressed: () {
-      enable ? onPressed() : null;
+      enable ? onPressed() : () {};
     },
     color: getButtonColorState(),
     padding: EdgeInsets.all(0),

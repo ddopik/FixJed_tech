@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_base_app/flutter_main/common/constants.dart';
 import 'package:flutter_base_app/flutter_main/common/model/ErrorResponse.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/model/loginResponse.dart';
-import 'package:flutter_base_app/flutter_main/screens/transaction/transaction_item_view.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
@@ -22,7 +22,7 @@ class DIOManager {
     dio.options.headers = {
       "Accept-Language": currentLanguage,
       "Authorization":
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5tb2hhbWVkQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJUZWNobmljaWFuIFJvbGUifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5VcGNvbWluZ0NhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5Ijoic3RhcnRUZWNobmljaWFuVHJhbnNhY3Rpb24ifSx7ImF1dGhvcml0eSI6ImNoYW5nZVRvVGVjaG5pY2lhbkRlbGl2ZXJlZFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiZmluZEJ5VGVjaG5pY2lhblRyYW5zYWN0aW9uSWQifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuSGlzdG9yeSJ9LHsiYXV0aG9yaXR5IjoiZmluZEFsbE5vdGlmaWNhdGlvbnMifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxQZW5kaW5nVGVjaG5pY2lhblRyYW5zYWN0aW9ucyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5Bc3NpZ25lZENhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiY2hhbmdlVG9UZWNobmljaWFuRGVsaXZlcmVkQ2FuY2VsU3RhdHVzIn1dLCJpYXQiOjE2MjQ1MzYzMzcsImV4cCI6MTYyNTcwMjQwMH0.XY1moyp_MkkydnbGR7GIqdSFRaAlPqKGJTiLhasQghzjValC-H-jTjpBvJUADhZeOJFn9lo54VKxOcjauCD37A",
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5tb2hhbWVkQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJUZWNobmljaWFuIFJvbGUifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuQ29uZmlybWVkU3RhdHVzIn0seyJhdXRob3JpdHkiOiJjaGFuZ2VUb1RlY2huaWNpYW5VcGNvbWluZ0NhbmNlbFN0YXR1cyJ9LHsiYXV0aG9yaXR5Ijoic3RhcnRUZWNobmljaWFuVHJhbnNhY3Rpb24ifSx7ImF1dGhvcml0eSI6ImNoYW5nZVRvVGVjaG5pY2lhbkRlbGl2ZXJlZFN0YXR1cyJ9LHsiYXV0aG9yaXR5IjoiZmluZEJ5VGVjaG5pY2lhblRyYW5zYWN0aW9uSWQifSx7ImF1dGhvcml0eSI6ImZpbmRBbGxUZWNobmljaWFuRGVsaXZlcmVkU3RhdHVzIn1dLCJpYXQiOjE2MjM2NzgyNzgsImV4cCI6MTYyNDgzODQwMH0.kkycwNvwn613J74mQHJpMr5X6_2Ug2WFcVaMprGI9-o1Ud7qGvn5HgI5pMs89KXY7U7S9vRdNkTDp0VpngaYCQ",
     };
 
     // _instance._dio.interceptors.add(DioCacheManager(
@@ -32,7 +32,7 @@ class DIOManager {
     print("Header AcceptedLanguage --- >" + currentLanguage.toString());
     if (PrefManager().getUserToken() != null) {
       dio.options.headers = {
-        // "Authorization": "${PrefManager().getUserToken()}",
+        "Authorization": "${PrefManager().getUserToken()}",
         "email": "${PrefManager().getUserMail()}",
       };
     }
@@ -43,46 +43,22 @@ class DIOManager {
   static const ERROR_CODE_UN_REACHABLE = "4";
 
   static const String _USER_LOGIN = "/auth/login";
+  static const String _GET_TRANSACTION_INFO = "/technicians/";
+  static const String _ACCEPT_TRANSACTION =
+      "/technicians/start-technician-transaction";
+
+  static const String _END_TRANSACTION =
+      "/technicians/change-to-delivered-status";
+  static const String _DECLINE_TRANSACTION =
+      "/technicians/change-to-assigned_cancel-status";
+  static const String _ACCEPT_INCOMING_TRANSACTION =
+      "/technicians/change-to-confirmed-status";
 
   static const String _GET_APPROVED_REQUESTS =
       "/technicians/find-all-confirmed-status";
-  static const String _GET_SUB_CATEGORY = "/category/find-all-by-parent-id";
-  static const String _GET_REQUEST_INFO = "/technicians";
-  static const String _GET_CART_PRODUCT = "/cart/find-all-product-in-cart";
-  static const String _ADD_PRODUCT_TO_CART = "/cart/increase-product-to-cart";
-  static const String _SUBTRACT_PRODUCT_FROM_CART =
-      "/cart/delete-product-from-cart";
-  static const String _REMOVE_PRODUCT_FROM_CART =
-      "/cart/delete-product-from-cart";
-  static const String _REMOVE_CATEGORY_FROM_CART =
-      "/cart/delete-category-from-cart";
-  static const String GET_SAVED_ADDRESS = "/address/find-all-addresses";
-  static const String GET_CITIES = "/city/find-all";
-  static const String GET_REGION = "/region/find-all-by-city-id";
-  static const String SUBMIT_NEW_ADDRESS = "/address/add-new-address";
-  static const String EDIT_ADDRESS = "/address/update-by-id";
-  static const String SUBMIT_TRANSACTION = "/transaction/add";
-
-  static const String GET_ALL_SUBMIT_TRANSACTION =
-      "/transaction/find-all-by-status?transaction-status=SUBMITTED";
-  static const String GET_ALL_CONFIRMED_TRANSACTION =
-      "/transaction/find-all-by-status?transaction-status=CONFIRMED";
-  static const String GET_ALL_CANCELED_TRANSACTION =
-      "/transaction/find-all-by-status?transaction-status=CANCELLED";
-  static const String GET_ALL_UPCOMING_TRANSACTION =
-      "/transaction/find-all-by-status?transaction-status=UPCOMING";
-  static const String GET_ALL_DELIVERED_TRANSACTION =
-      "/transaction/find-all-by-status?transaction-status=DELIVERED";
-
-  static const String GET_PROFILE_DATA = "/profile/find-user-data";
-
-  static const String CANCEL_TRANSACTION = "/transaction/cancel";
-
-  static const String GET_NOTIFICATION = "/notification/find-all";
-  static const String EDIT_USER_FIRST_LAST_NAME = "/profile/change-username";
-  static const String CHANGE_PASSWORD = "/profile/change-password";
-  static const String CHANGE_PHONE = "/profile/change-phone";
-  static const String GET_PAST_ORDERS = "/technicians/find-all-history";
+  static const String _GET_INCOMING_TRANSACTION =
+      "/technicians/find-all-pending-technician-transactions";
+  static const String GET_NOTIFICATION = "/notifications/find-all";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -118,265 +94,119 @@ class DIOManager {
     // _sendPostRequest(onSuccess: onSuccess,onError: onError, url: _USER_LOGIN,bodyParameters: bodyParameter);
   }
 
-  getApprovedRequests({Function onSuccess, Function onError}) {
+  getApprovedTransaction({Function onSuccess, Function onError}) {
     _sendGetRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      url: _GET_APPROVED_TRANSACTION,
+    );
+  }
+
+  getInComingTransaction({Function onSuccess, Function onError}) {
+    _sendGetRequest(
+      onSuccess: onSuccess,
+      onError: onError,
+      url: _GET_INCOMING_TRANSACTION,
+    );
+  }
+
+  acceptTransaction({transactionId, Function onSuccess, Function onError}) {
+    _sendPatchRequest(
         onSuccess: onSuccess,
         onError: onError,
-        url: _GET_APPROVED_REQUESTS,
+        url: _ACCEPT_TRANSACTION + "/$transactionId",
         queryParameters: null);
   }
 
-  getRequestInfo({Function onSuccess, Function onError, serviceId}) {
-    _sendGetRequest(
-      onSuccess: onSuccess,
-      onError: onError,
-      url: _GET_REQUEST_INFO + "/" + serviceId,
-    );
-  }
-
-  getSubCategory({Function onSuccess, Function onError, categoryId}) {
-    _sendGetRequest(
+  endTransaction({transactionId, Function onSuccess, Function onError}) {
+    _sendPatchRequest(
         onSuccess: onSuccess,
         onError: onError,
-        url: _GET_SUB_CATEGORY,
-        queryParameters: {"parent-id": categoryId});
+        url: _END_TRANSACTION + "/$transactionId",
+        queryParameters: null);
   }
 
-  addProductToCart({Function onSuccess, Function onError, productId}) {
-    _sendPostRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: _ADD_PRODUCT_TO_CART,
-        queryParameters: {"product-id": productId});
-  }
+  declineIncomingTransaction(
+      {transactionId,
+      reasonId,
+      String reasonDesc,
+      Function onSuccess,
+      Function onError}) {
+    String reasonIdVal;
 
-  submitId({Function onSuccess, Function onError, reasonId, transactionId}) {
-    print(reasonId);
-    _sendPostRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: _ADD_PRODUCT_TO_CART,
-        bodyParameters: reasonId);
-  }
-
-  submitNewAddress(
-      {Function onSuccess,
-      Function onError,
-      addressId,
-      title,
-      streetName,
-      apartmentNumber,
-      buildingNumber,
-      floorNumber,
-      regionId,
-      description}) {
-    _sendPostRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: SUBMIT_NEW_ADDRESS,
-        bodyParameters: {
-          "title": title,
-          "streetName": streetName,
-          "apartmentNumber": apartmentNumber,
-          "buildingNumber": buildingNumber,
-          "floorNumber": floorNumber,
-          "regionId": regionId,
-          "description": description,
-        });
-  }
-
-  editAddress(
-      {Function onSuccess,
-      Function onError,
-      addressId,
-      title,
-      streetName,
-      apartmentNumber,
-      buildingNumber,
-      floorNumber,
-      regionId,
-      description}) {
-    _sendPutRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: EDIT_ADDRESS,
-        bodyParameters: {
-          "id": addressId,
-          "title": title,
-          "streetName": streetName,
-          "apartmentNumber": apartmentNumber,
-          "buildingNumber": buildingNumber,
-          "floorNumber": floorNumber,
-          "regionId": regionId,
-          "description": description,
-        });
-  }
-
-  editUserFirstNameAndLastName(
-      {Function onSuccess, Function onError, firstName, lastName}) {
-    _sendPutRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: EDIT_USER_FIRST_LAST_NAME,
-        bodyParameters: {
-          "firstName": firstName,
-          "lastName": lastName,
-        });
-  }
-
-  changePassword(
-      {Function onSuccess,
-      Function onError,
-      password,
-      newPassword,
-      confirmPassword}) {
-    _sendPutRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: CHANGE_PASSWORD,
-        bodyParameters: {
-          "password": password,
-          "newPassword": newPassword,
-          "confirmPassword": confirmPassword,
-        });
-  }
-
-  changePhone({Function onSuccess, Function onError, phone, secondPhone}) {
-    _sendPutRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: CHANGE_PHONE,
-        bodyParameters: {
-          "phone": phone,
-          "secondPhone": secondPhone,
-        });
-  }
-
-  addNewPhone({Function onSuccess, Function onError, phone, secondPhone}) {
-    _sendPutRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: CHANGE_PHONE,
-        bodyParameters: {
-          "phone": phone,
-          "secondPhone": secondPhone,
-        });
-  }
-
-  subtractProductFromCart({Function onSuccess, Function onError, productId}) {
-    _sendDeleteRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: _SUBTRACT_PRODUCT_FROM_CART,
-        queryParameters: {"product-id": productId});
-  }
-
-  removeProductFromCart({Function onSuccess, Function onError, productId}) {
-    _sendDeleteRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: _REMOVE_PRODUCT_FROM_CART,
-        queryParameters: {"product-id": productId});
-  }
-
-  removeCategoryFromCart({Function onSuccess, Function onError, productId}) {
-    _sendDeleteRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: _REMOVE_CATEGORY_FROM_CART,
-        queryParameters: {"category-id": productId});
-  }
-
-  getCartProducts({Function onSuccess, Function onError}) {
-    _sendGetRequest(
-      onSuccess: onSuccess,
-      onError: onError,
-      url: _GET_CART_PRODUCT,
-    );
-  }
-
-  getSavedAddress({Function onSuccess, Function onError}) {
-    _sendGetRequest(
-      onSuccess: onSuccess,
-      onError: onError,
-      url: GET_SAVED_ADDRESS,
-    );
-  }
-
-  getCities({Function onSuccess, Function onError}) {
-    _sendGetRequest(
-      onSuccess: onSuccess,
-      onError: onError,
-      url: GET_CITIES,
-    );
-  }
-
-  getCitiesRegion({Function onSuccess, Function onError, cityId}) {
-    _sendGetRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: GET_REGION,
-        queryParameters: {"city-id": cityId});
-  }
-
-  getTransaction(
-      {Function onSuccess,
-      Function onError,
-      TransactionItemType transactionItemType}) {
-    switch (transactionItemType) {
-      case TransactionItemType.ALL:
-        _sendGetRequest(
-          onSuccess: onSuccess,
-          onError: onError,
-          url: GET_ALL_SUBMIT_TRANSACTION,
-        );
-        break;
-      case TransactionItemType.PENDING:
-        _sendGetRequest(
-          onSuccess: onSuccess,
-          onError: onError,
-          url: GET_ALL_UPCOMING_TRANSACTION,
-        );
-        break;
-      case TransactionItemType.CANCELED:
-        _sendGetRequest(
-          onSuccess: onSuccess,
-          onError: onError,
-          url: GET_ALL_CANCELED_TRANSACTION,
-        );
-        break;
-      case TransactionItemType.CONFIRMED:
-        _sendGetRequest(
-          onSuccess: onSuccess,
-          onError: onError,
-          url: GET_ALL_CONFIRMED_TRANSACTION,
-        );
-        break;
-      case TransactionItemType.DELIVERED:
-        _sendGetRequest(
-          onSuccess: onSuccess,
-          onError: onError,
-          url: GET_ALL_DELIVERED_TRANSACTION,
-        );
-        break;
+    switch (reasonId) {
+      case AssignedCancelReason.SHIFT_END:
+        {
+          reasonIdVal = "SHIFT_END";
+          break;
+        }
+      case AssignedCancelReason.INCORRECT_INFO:
+        {
+          reasonIdVal = "INCORRECT_INFO";
+          break;
+        }
+      case AssignedCancelReason.VACATION:
+        {
+          reasonIdVal = "VACATION";
+          break;
+        }
+      case AssignedCancelReason.ADDRESS_MISMATCH:
+        {
+          reasonIdVal = "ADDRESS_MISMATCH";
+          break;
+        }
+      case AssignedCancelReason.OUTDATED:
+        {
+          reasonIdVal = "OUTDATED";
+          break;
+        }
     }
+
+    _sendPatchRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: _DECLINE_TRANSACTION + "/$transactionId",
+        bodyParameters: {
+          "assignedCancelReason": reasonIdVal,
+          "rejectionDescription": reasonDesc
+        });
   }
 
-  cancelTransaction({Function onSuccess, Function onError, transactionId}) {
-    _sendPutRequest(
-      onSuccess: onSuccess,
-      onError: onError,
-      queryParameters: {"transaction-id": transactionId},
-      url: CANCEL_TRANSACTION,
-    );
+  cancelTransaction({transactionId, Function onSuccess, Function onError}) {
+    _sendPatchRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: _CANCEL_TRANSACTION + "/$transactionId",
+        queryParameters: null);
   }
 
-  getProfileData({Function onSuccess, Function onError}) {
+  getRequestInfo({transactionID, Function onSuccess, Function onError}) {
     _sendGetRequest(
       onSuccess: onSuccess,
       onError: onError,
-      url: GET_PROFILE_DATA,
+      url: _GET_TRANSACTION_INFO + "/$transactionID",
     );
+  }
+
+  acceptIncomingTransaction(
+      {transactionId, Function onSuccess, Function onError}) {
+    _sendPatchRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: _ACCEPT_INCOMING_TRANSACTION + "/$transactionId",
+        queryParameters: null);
+  }
+
+  submitCancelTransactionReason(
+      {Function onSuccess, Function onError, reasonId, transactionId}) {
+    _sendPatchRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: SUBMIT_CANCEL_TRANSACTION_REASON + "/$transactionId",
+        bodyParameters: {
+          "deliveredCancelReason": reasonId,
+          "rejectionDescription": ""
+        });
   }
 
   getNotification({Function onSuccess, Function onError}) {
@@ -387,16 +217,14 @@ class DIOManager {
     );
   }
 
-  submitTransaction(
-      {addressId, paymentId, Function onSuccess, Function onError}) {
-    // addressId = int.parse(addressId);
-    _sendPostRequest(
-      onSuccess: onSuccess,
-      onError: onError,
-      bodyParameters: {"paymentId": paymentId, "addressId": addressId},
-      url: SUBMIT_TRANSACTION,
-    );
-  }
+  //
+  // getNotification({Function onSuccess, Function onError}) {
+  //   _sendGetRequest(
+  //     onSuccess: onSuccess,
+  //     onError: onError,
+  //     url: GET_NOTIFICATION,
+  //   );
+  // }
 
   getPastOrder({Function onSuccess, Function onError}) {
     _sendGetRequest(
@@ -538,8 +366,43 @@ class DIOManager {
           onSuccess("Success");
         }
       } else {
-        logger.e(
-            "_sendPutRequest onError----> Of Url $url " + response.toString());
+        logger.e("statusCode onError----> Of Url $url " + response.toString());
+        onError(response);
+      }
+    } on DioError catch (e) {
+      handleDioErrorResponse(url, e, onError);
+    }
+  }
+
+  _sendPatchRequest(
+      {Function onSuccess(data),
+      Function onError(data),
+      String url,
+      queryParameters,
+      bodyParameters}) async {
+    print("bodyParameters --->" + bodyParameters.toString());
+    try {
+      Response response;
+      if (queryParameters != null && bodyParameters == null) {
+        response = await _dio.patch(url, queryParameters: queryParameters);
+      } else if (queryParameters != null && bodyParameters != null) {
+        response = await _dio.patch(url,
+            data: bodyParameters, queryParameters: queryParameters);
+      } else {
+        response = await _dio.patch(url, data: bodyParameters);
+      }
+
+      if (response.statusCode == 200) {
+        logger.e("_sendPatchRequest onSuccess----> Of Url $url " +
+            response.toString());
+        if (response.data != null) {
+          onSuccess(response.data);
+        } else {
+          onSuccess("Success");
+        }
+      } else {
+        logger.e("_sendPatchRequest onError----> Of Url $url " +
+            response.toString());
         onError(response);
       }
     } on DioError catch (e) {
@@ -548,7 +411,7 @@ class DIOManager {
   }
 
   handleDioErrorResponse(url, DioError e, onError) {
-    ErrorResponse errorResponse;
+    Error errorResponse;
     try {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx and is also not 304.
@@ -563,15 +426,15 @@ class DIOManager {
         if (e?.response?.statusCode == 500) {
           onError("Un Expected Error");
         } else if (e?.response?.statusCode == 406) {
-          errorResponse = ErrorResponse.fromJson(e.response.data);
-          onError(errorResponse.errors[0].message);
+          errorResponse = Error.fromJson(e.response.data);
+          onError(errorResponse.message);
         } else if (e?.response?.statusCode == 401) {
           onError(S.current.invalidLogin);
         } else {
           onError(S.current.noResultFound);
         }
       } else {
-        onError(e?.response ?? "UnExpected Error");
+        onError(e?.error?.message ?? "Un Expected Error");
       }
     } catch (e) {
       onError("Un Expected Error");

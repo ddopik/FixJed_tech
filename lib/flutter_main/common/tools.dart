@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
@@ -79,6 +80,37 @@ String trimAll(String str) {
   return value;
 }
 
-getPrice(context, price) {
-  return price.toString() + " " + S.of(context).egpPrice;
+String parseDateFormat_1(String timeVal) {
+  String datetime = timeVal;
+  DateTime time = DateTime.parse(datetime);
+  var monthInNumber = DateFormat("MM").format(time);
+  var monthInName = DateFormat("MMM").format(time);
+  var yestVal = DateFormat("yyy").format(time);
+  var format =
+      monthInNumber + " " + S.current.ofText + " " + monthInName + " $yestVal";
+  return format;
+}
+
+String parseTimeToMonthDate(String timeVal) {
+  String datetime = timeVal;
+  DateTime time = DateTime.parse(datetime);
+  return DateFormat("dd/MM/yyyy").format(time);
+}
+
+String getMonthName(String timeVal) {
+  String datetime = timeVal;
+  DateTime time = DateTime.parse(datetime);
+  return DateFormat("MMM").format(time);
+}
+
+String parseTimeTo24Hour(String timeVal) {
+  String datetime = timeVal;
+  DateTime now = DateTime.parse(datetime);
+  return DateFormat("HH:MM").format(now);
+}
+
+String parseTimeTo12Hour(String timeVal) {
+  String datetime = timeVal;
+  DateTime now = DateTime.parse(datetime);
+  return DateFormat("h:mma").format(now);
 }

@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
+import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:intl/intl.dart' show DateFormat;
+import 'package:provider/provider.dart';
 
 class CalenderView extends StatefulWidget {
   final Function(DateTime date) onDateSelected;
 
-   CalenderView({this.onDateSelected});
+  CalenderView({this.onDateSelected});
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -23,6 +26,7 @@ class _MyHomePageState extends State<CalenderView> {
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
   CalendarCarousel _calendarCarouselNoHeader;
+  EventList<Event> events = EventList();
 
   @override
   void initState() {
@@ -31,37 +35,62 @@ class _MyHomePageState extends State<CalenderView> {
 
   @override
   Widget build(BuildContext context) {
+    print("allEventRequest ---> " +
+        Provider.of<TransactionModel>(context)
+            .allEventRequest
+            .events
+            .toString());
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
       onDayPressed: (DateTime date, List<Event> events) {
-        this.setState(() => _currentSelectedDate = date);
-        widget.onDateSelected(_currentSelectedDate);
+        // this.setState(() => _currentSelectedDate = date);
+        // widget.onDateSelected(_currentSelectedDate);
+        var eventM = events.firstWhere((element) {
+          if (element.date == date) {
+            return true;
+          }
+          return false;
+        }, orElse: () {
+          return null;
+        });
+
+        if (eventM != null) {
+          print("Found one");
+          Navigator.of(context).pushNamed(Routes.ALL_REQUESTS);
+        }
       },
-      // dayButtonColor: Colors.amber,
+      // dayButtonColor: boring_green,
       // markedDateIconBorderColor: Colors.blue,
       todayButtonColor: Colors.transparent,
       daysHaveCircularBorder: true,
       showOnlyCurrentMonthDate: false,
       showWeekDays: true,
       firstDayOfWeek: 5,
-//       markedDatesMap: _markedDateMap,
+      markedDatesMap: Provider.of<TransactionModel>(context).allEventRequest,
       height: MediaQuery.of(context).size.height * .34,
-
       selectedDateTime: _currentSelectedDate,
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       showHeader: false,
+
       todayTextStyle: TextStyle(
         color: french_blue,
       ),
-      minSelectedDate: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day),
-      maxSelectedDate: DateTime(
-              DateTime.now().year, DateTime.now().month, DateTime.now().day)
-          .add(Duration(days: 360)),
-
+      // minSelectedDate: DateTime(
+      //     DateTime.now().year, DateTime.now().month, DateTime.now().day ),
+      // maxSelectedDate: DateTime(
+      //         DateTime.now().year, DateTime.now().month, DateTime.now().day)
+      //     .add(Duration(days: 360)),
+      markedDateIconBorderColor: boring_green,
       selectedDayTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
             color: Colors.white,
           ),
+      markedDateWidget: ClipOval(
+        child: Container(
+          width: 5,
+          height: 5,
+          color: boring_green,
+        ),
+      ),
 
       daysTextStyle: Theme.of(context).textTheme.bodyText1.copyWith(
             color: Color(0xff000000),

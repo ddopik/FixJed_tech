@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/zui_input_box_button_width"
+    android:layout_height="@dimen/zui_input_box_button_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/attachments_indicator_counter"
+        style="@style/TextAppearance.Design.Counter"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:elevation="2dp"
+        android:background="@drawable/zui_background_attachments_indicator_counter"
+        android:layout_gravity="top|end"
+        android:visibility="invisible"
+        android:textColor="@color/zui_color_white_100"
+        tools:visibility="visible"
+        android:importantForAccessibility="no"
+        tools:text="2"
+        tools:ignore="SmallSp"
+        tools:targetApi="lollipop" />
+
+    <ImageView
+        android:id="@+id/attachments_indicator_icon"
+        android:layout_width="@dimen/zui_input_box_button_icon_size"
+        android:layout_height="@dimen/zui_input_box_button_icon_size"
+        android:layout_marginLeft="@dimen/zui_input_box_button_margin_side"
+        android:layout_marginStart="@dimen/zui_input_box_button_margin_side"
+        android:layout_gravity="start|center_vertical"
+        android:scaleX="@integer/zui_rtl_support_scale_x"
+        app:srcCompat="@drawable/zui_ic_attach_file"
+        android:tint="@color/zui_attachment_indicator_color_inactive"
+        android:importantForAccessibility="no"/>
+
+    <View
+        android:id="@+id/attachments_indicator_bottom_border"
+        android:layout_width="@dimen/zui_attachment_indicator_bottom_border_width"
+        android:layout_height="@dimen/zui_attachment_indicator_bottom_border_height"
+        android:layout_marginLeft="@dimen/zui_input_box_button_margin_side"
+        android:layout_marginStart="@dimen/zui_input_box_button_margin_side"
+        android:layout_gravity="bottom|start"
+        android:background="?attr/colorPrimary"
+        android:visibility="invisible"
+        tools:background="@color/zui_color_black_100"
+        tools:visibility="visible"
+        android:importantForAccessibility="no"/>
+
+</FrameLayout>

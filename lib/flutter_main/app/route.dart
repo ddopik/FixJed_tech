@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/screens/cancel_request/cancel_request_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/home/counter_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
+import 'package:flutter_base_app/flutter_main/screens/notification/notification_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/order_submit_screen/order_submit_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/order_submission_feedback/order_submission_feedback_Screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/view/RequestsListScreen.dart';
@@ -13,20 +17,32 @@ class Routes {
   static const HOME = "/home_screen";
   static const ALL_REQUESTS = "/all_requests";
   static const REQUEST_CARD = "/request_card";
+  static const COUNTER_SCREEN = "/counter_screen";
   static const SERVICE_FEATURES = "/service_features";
   static const SUB_SERVICE_FEATURES = "/sub_service_features";
   static const CART = "/cart";
 
   static const PROFILE_SCREEN = "/profile_screen";
   static const ORDER_SUBMISSION_FEEDBACK = "/order_submission_feedback";
+  static const NOTIFICATION_SCREEN = "/notification_screen";
+  static const TRANSACTION_SUBMIT_SCREEN = "/transaction_submit_screen";
+  static const CANCEL_TRANSACTION_REASONS_SCREEN =
+      "/cancel_transaction_reason_screen";
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
     LOGIN: (context) => LoginScreen(),
     PROFILE_SCREEN: (context) => ProfileScreen(),
     ALL_REQUESTS: (context) => RequestsListScreen(),
-    REQUEST_CARD: (context) =>
-        RequestCardScreen(arguments: ModalRoute.of(context).settings.arguments),
+    REQUEST_CARD: (context) => TransactionCardScreen(
+        arguments: ModalRoute.of(context).settings.arguments),
+    COUNTER_SCREEN: (context) =>
+        CounterScreen(arguments: ModalRoute.of(context).settings.arguments),
+    NOTIFICATION_SCREEN: (context) => NotificationScreen(),
+    TRANSACTION_SUBMIT_SCREEN: (context) => TransactionSubmitScreen(
+        arguments: ModalRoute.of(context).settings.arguments),
+    CANCEL_TRANSACTION_REASONS_SCREEN: (context) => CancelRequestScreen(
+        arguments: ModalRoute.of(context).settings.arguments),
     ORDER_SUBMISSION_FEEDBACK: (context) => OrderSubmissionFeedback(),
   };
 
