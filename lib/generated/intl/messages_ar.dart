@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نسيت كلمه المرو"),
         "OrderHasCompletedSuccessfully":
             MessageLookupByLibrary.simpleMessage("لقد إكتمل\nالطلب بنجاح"),
+        "accept": MessageLookupByLibrary.simpleMessage("قبول"),
         "accountCreated":
             MessageLookupByLibrary.simpleMessage("لقد تم انشاء الحساب بنجاح"),
         "addNewAddress": MessageLookupByLibrary.simpleMessage("أضف عنوان جديد"),
@@ -57,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "cancelOrderNote": MessageLookupByLibrary.simpleMessage(
             " يمكنك إلغاء ملف الطلب في غضون ساعتين"),
+        "cancelReason": MessageLookupByLibrary.simpleMessage("سبب الالغاء"),
         "cancelRequest": MessageLookupByLibrary.simpleMessage("الغاء"),
         "canceled": MessageLookupByLibrary.simpleMessage("تم الالغاء"),
         "cancellationReason":
@@ -75,9 +77,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "chooseDate": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
         "choosePhoto": MessageLookupByLibrary.simpleMessage("اختر من الصور"),
         "close": MessageLookupByLibrary.simpleMessage("اغلاق"),
+        "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
         "confirm": MessageLookupByLibrary.simpleMessage("تآكيد"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تآكيد كلمه المرور"),
+        "confirmPayment": MessageLookupByLibrary.simpleMessage("تآكيد الدفع"),
         "confirmed": MessageLookupByLibrary.simpleMessage("تم التآكيد"),
         "connectOperator":
             MessageLookupByLibrary.simpleMessage("تواصل مع الاداره"),
@@ -90,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "customerIsRude": MessageLookupByLibrary.simpleMessage("العميل وقح"),
         "customerWasntAthome":
             MessageLookupByLibrary.simpleMessage("العميل ليس بالمنزل"),
+        "decline": MessageLookupByLibrary.simpleMessage("رفض"),
         "deletePhoto": MessageLookupByLibrary.simpleMessage("احذف الصوره"),
         "delivered": MessageLookupByLibrary.simpleMessage("تم التوصيل"),
         "deliveringTo": MessageLookupByLibrary.simpleMessage("ارسال الي"),
@@ -103,15 +108,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("البريد الااكتروني"),
         "emptyListMessage": MessageLookupByLibrary.simpleMessage(
             "لم نتمكن من العثور على أي نتائج"),
+        "endRequest": MessageLookupByLibrary.simpleMessage("انهاء الطلب"),
         "english": MessageLookupByLibrary.simpleMessage("الانجليزيه"),
+        "events": MessageLookupByLibrary.simpleMessage("طلب"),
         "firstName": MessageLookupByLibrary.simpleMessage("الاسم الاول"),
         "fixedAddressOne":
             MessageLookupByLibrary.simpleMessage("التجمع الخامس"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمه المرور؟"),
+        "havingProblemText_1": MessageLookupByLibrary.simpleMessage(
+            "هل تواجه مشكلة في الحصول على المال؟ الاتصال بالاداره"),
         "help": MessageLookupByLibrary.simpleMessage("مساعده"),
         "homeTitleDesc": MessageLookupByLibrary.simpleMessage(
             "اطلب الخدمات التي تريدها لتصل إلى منزلك في اسرع وقت"),
+        "hour": MessageLookupByLibrary.simpleMessage("س"),
         "invalid": MessageLookupByLibrary.simpleMessage("غير صحيح"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("بريد الكتروني غير صحيح"),
@@ -121,7 +131,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الاسم الاول غير صحيح"),
         "invalidLastName":
             MessageLookupByLibrary.simpleMessage("الاسم الاخير غير صحيح"),
-        "invalidLogin" : MessageLookupByLibrary.simpleMessage("خطأ في بريد المستخدم أو كلمة مرور"),
+        "invalidLogin": MessageLookupByLibrary.simpleMessage(
+            "خطأ في بريد المستخدم أو كلمة مرور"),
         "invalidPassword":
             MessageLookupByLibrary.simpleMessage("كلمه مرور غير صحيحه"),
         "invalidUserName":
@@ -131,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loading": MessageLookupByLibrary.simpleMessage("تحميل"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "main": MessageLookupByLibrary.simpleMessage("الرئيسيه"),
+        "minutes": MessageLookupByLibrary.simpleMessage("د"),
         "myAddresses": MessageLookupByLibrary.simpleMessage("عنوايني"),
         "myServices": MessageLookupByLibrary.simpleMessage("خدماتي"),
         "newPassword":
@@ -143,11 +155,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "notMatchedPassword":
             MessageLookupByLibrary.simpleMessage("كلمه المرور غير متطابقه"),
         "notification": MessageLookupByLibrary.simpleMessage("الاشعارات"),
+        "ofText": MessageLookupByLibrary.simpleMessage("من"),
         "oldPassword":
             MessageLookupByLibrary.simpleMessage("كلمه السر القديمه"),
         "onGoing": MessageLookupByLibrary.simpleMessage("القادمه"),
         "onTryAgainMessage": MessageLookupByLibrary.simpleMessage(
             "يرجى التحقق من اتصال الإنترنت وحاول مرة أخرى."),
+        "orderSubmission":
+            MessageLookupByLibrary.simpleMessage("تقديم \n الطلب"),
         "orders": MessageLookupByLibrary.simpleMessage("طلب"),
         "othersAndIneedOneofOperationstoContactMe":
             MessageLookupByLibrary.simpleMessage(
@@ -173,11 +188,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يجب اضافه عنوان للمتابعه"),
         "pleaseCompeteRegistrationForm":
             MessageLookupByLibrary.simpleMessage("الرجاء إكمال نموذج التسجيل"),
+        "pleaseSelectDeclineReason":
+            MessageLookupByLibrary.simpleMessage("من فضلك اختر سبب الرفض"),
         "pleaseSelectReason":
             MessageLookupByLibrary.simpleMessage("برجاء اختيار سبب"),
         "policyHint": MessageLookupByLibrary.simpleMessage(
             "بإنشاء حساب ، فإنك توافق على \n شروط الخدمات وسياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "rejectionReason": MessageLookupByLibrary.simpleMessage("سبب الرفض"),
+        "requestTime": MessageLookupByLibrary.simpleMessage("وقت التنفيذ"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
@@ -186,11 +205,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ارسل الرابط"),
         "services": MessageLookupByLibrary.simpleMessage("الخدمات"),
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+        "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "someThingWrong": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
         "startRequest": MessageLookupByLibrary.simpleMessage("بدآ"),
-        "submit": MessageLookupByLibrary.simpleMessage("متابعة"),
+        "submit": MessageLookupByLibrary.simpleMessage("ارسال"),
+        "submitOrder": MessageLookupByLibrary.simpleMessage("ارسال الطلب"),
+        "success": MessageLookupByLibrary.simpleMessage("تم"),
         "total": MessageLookupByLibrary.simpleMessage("اجمالي"),
         "transactionSubmitted":
             MessageLookupByLibrary.simpleMessage("لقد تم ارسال طلبك !"),
@@ -199,6 +221,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "tryAgain": MessageLookupByLibrary.simpleMessage("آعاده المحاوله"),
         "updated": MessageLookupByLibrary.simpleMessage("تم التعديل"),
         "userName": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+        "welcome": MessageLookupByLibrary.simpleMessage("اهلا"),
+        "writeYourRejectionReason":
+            MessageLookupByLibrary.simpleMessage("سبب الرفض"),
         "yes": MessageLookupByLibrary.simpleMessage("نعم"),
         "youHaveAdded": MessageLookupByLibrary.simpleMessage("لقد اضفت عدد"),
         "youHaveRemoved": MessageLookupByLibrary.simpleMessage("لقد قمت بآزاله")

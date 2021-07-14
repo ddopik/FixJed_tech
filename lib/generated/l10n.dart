@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1391,6 +1390,36 @@ class S {
     return Intl.message(
       'Others and i need one of operations to contact me',
       name: 'othersAndIneedOneofOperationstoContactMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please select reason`
+  String get pleaseSelectReason {
+    return Intl.message(
+      'please select reason',
+      name: 'pleaseSelectReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CANCELLATION REASON`
+  String get cancellationReason {
+    return Intl.message(
+      'CANCELLATION REASON',
+      name: 'cancellationReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order has \n completed successfully`
+  String get OrderHasCompletedSuccessfully {
+    return Intl.message(
+      'Order has \n completed successfully',
+      name: 'OrderHasCompletedSuccessfully',
       desc: '',
       args: [],
     );
