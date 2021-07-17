@@ -20,9 +20,15 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
+
   static _notInlinedMessages(_) => <String, Function>{
+        "ASSETS": MessageLookupByLibrary.simpleMessage("ASSETS"),
         "AddressFloorNumber":
             MessageLookupByLibrary.simpleMessage("Floor number"),
+        "Assetname": MessageLookupByLibrary.simpleMessage("Asset name"),
+        "Assetsrequesthassuccessfullysent":
+            MessageLookupByLibrary.simpleMessage(
+                "Assets request has successfully sent"),
         "CapturePhoto": MessageLookupByLibrary.simpleMessage("Capture photo"),
         "DoNotHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account ?"),
@@ -30,6 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "OrderHasCompletedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Order has \n completed successfully"),
+        "ProfileSetting":
+            MessageLookupByLibrary.simpleMessage("PROFILE SETTINGS"),
+        "REQUESTASSET": MessageLookupByLibrary.simpleMessage(" REQUEST ASSET"),
         "accept": MessageLookupByLibrary.simpleMessage("accept"),
         "accountCreated": MessageLookupByLibrary.simpleMessage(
             "Account created successfully"),
@@ -45,9 +54,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Address submitted Successfully"),
         "addressName": MessageLookupByLibrary.simpleMessage("Address name"),
         "addressStreet": MessageLookupByLibrary.simpleMessage("Address street"),
-        "addressUpdatedSuccessfully" : MessageLookupByLibrary.simpleMessage("Address updated Successfully"),
-    "all" : MessageLookupByLibrary.simpleMessage("All"),
-    "alreadyHaveAccount" : MessageLookupByLibrary.simpleMessage("Already have an account"),
+        "addressUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Address updated Successfully"),
+        "all": MessageLookupByLibrary.simpleMessage("All"),
+        "alreadyHaveAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account"),
         "apartmentNumber":
             MessageLookupByLibrary.simpleMessage("Apartment number"),
         "applicationError": MessageLookupByLibrary.simpleMessage(
@@ -210,18 +221,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Send link"),
         "services": MessageLookupByLibrary.simpleMessage("services"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
-        "signIn" : MessageLookupByLibrary.simpleMessage("Sign in"),
-    "signOut" : MessageLookupByLibrary.simpleMessage("Sign Out"),
-    "signUp" : MessageLookupByLibrary.simpleMessage("Sign Up"),
-    "someThingWrong" : MessageLookupByLibrary.simpleMessage("Something went wrong"),
-    "startRequest" : MessageLookupByLibrary.simpleMessage("Start Request"),
-    "submit" : MessageLookupByLibrary.simpleMessage("Submit"),
-    "submitOrder" : MessageLookupByLibrary.simpleMessage("SUBMIT ORDER"),
-    "success" : MessageLookupByLibrary.simpleMessage("success"),
-    "total" : MessageLookupByLibrary.simpleMessage("Total"),
-    "transactionSubmitted" : MessageLookupByLibrary.simpleMessage("you order has been sent !"),
-    "transactionSubmittedDesc" : MessageLookupByLibrary.simpleMessage("You will receive a call from our representatives to confirm your appointment  You can track your order from"),
-    "tryAgain" : MessageLookupByLibrary.simpleMessage("Try again"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "someThingWrong":
+            MessageLookupByLibrary.simpleMessage("Something went wrong"),
+        "startRequest": MessageLookupByLibrary.simpleMessage("Start Request"),
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "submitOrder": MessageLookupByLibrary.simpleMessage("SUBMIT ORDER"),
+        "success": MessageLookupByLibrary.simpleMessage("success"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
+        "transactionSubmitted":
+            MessageLookupByLibrary.simpleMessage("you order has been sent !"),
+        "transactionSubmittedDesc": MessageLookupByLibrary.simpleMessage(
+            "You will receive a call from our representatives to confirm your appointment  You can track your order from"),
+        "tryAgain" : MessageLookupByLibrary.simpleMessage("Try again"),
     "updated" : MessageLookupByLibrary.simpleMessage("done"),
     "userName" : MessageLookupByLibrary.simpleMessage("User name"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome"),

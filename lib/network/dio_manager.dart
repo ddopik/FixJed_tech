@@ -59,6 +59,7 @@ class DIOManager {
   static const String _GET_INCOMING_TRANSACTION =
       "/technicians/find-all-pending-technician-transactions";
   static const String GET_NOTIFICATION = "/notifications/find-all";
+  static const String GET_PAST_ORDERS = "/technicians/find-all-history";
 
   sendLoginRequest(
       {Function onSuccess,
@@ -98,7 +99,7 @@ class DIOManager {
     _sendGetRequest(
       onSuccess: onSuccess,
       onError: onError,
-      url: _GET_APPROVED_TRANSACTION,
+      // url: _GET_APPROVED_TRANSACTION,
     );
   }
 
@@ -176,7 +177,7 @@ class DIOManager {
     _sendPatchRequest(
         onSuccess: onSuccess,
         onError: onError,
-        url: _CANCEL_TRANSACTION + "/$transactionId",
+        // url: _CANCEL_TRANSACTION + "/$transactionId",
         queryParameters: null);
   }
 
@@ -199,14 +200,21 @@ class DIOManager {
 
   submitCancelTransactionReason(
       {Function onSuccess, Function onError, reasonId, transactionId}) {
-    _sendPatchRequest(
-        onSuccess: onSuccess,
-        onError: onError,
-        url: SUBMIT_CANCEL_TRANSACTION_REASON + "/$transactionId",
+    _sendPatchRequest(onSuccess: onSuccess, onError: onError,
+        //  url: SUBMIT_CANCEL_TRANSACTION_REASON + "/$transactionId",
         bodyParameters: {
           "deliveredCancelReason": reasonId,
           "rejectionDescription": ""
         });
+  }
+
+  submitId({Function onSuccess, Function onError, reasonId, transactionId}) {
+    print(reasonId);
+    _sendPostRequest(
+        onSuccess: onSuccess,
+        onError: onError,
+        url: "_ADD_PRODUCT_TO_CART",
+        bodyParameters: reasonId);
   }
 
   getNotification({Function onSuccess, Function onError}) {

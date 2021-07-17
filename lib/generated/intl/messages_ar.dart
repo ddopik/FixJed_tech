@@ -22,8 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
 
   static _notInlinedMessages(_) => <String, Function>{
+        "ASSETS": MessageLookupByLibrary.simpleMessage("قطع الغيار"),
         "AddressFloorNumber":
             MessageLookupByLibrary.simpleMessage("رقم الطابق"),
+        "Assetname": MessageLookupByLibrary.simpleMessage("اسم قطع الغيار"),
+        "Assetsrequesthassuccessfullysent":
+            MessageLookupByLibrary.simpleMessage("تم إرسال قطع الغيار بنجاح"),
         "CapturePhoto": MessageLookupByLibrary.simpleMessage("التقط صوره"),
         "DoNotHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("لا تملك حساب ؟"),
@@ -31,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نسيت كلمه المرو"),
         "OrderHasCompletedSuccessfully":
             MessageLookupByLibrary.simpleMessage("لقد إكتمل\nالطلب بنجاح"),
+        "ProfileSetting":
+            MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
+        "REQUESTASSET": MessageLookupByLibrary.simpleMessage("طلب قطع الغيار"),
         "accept": MessageLookupByLibrary.simpleMessage("قبول"),
         "accountCreated":
             MessageLookupByLibrary.simpleMessage("لقد تم انشاء الحساب بنجاح"),

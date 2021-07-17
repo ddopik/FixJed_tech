@@ -6,10 +6,13 @@ import 'package:flutter_base_app/flutter_main/app/route.dart';
 import 'package:flutter_base_app/flutter_main/common/res/style.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/tools.dart';
+import 'package:flutter_base_app/flutter_main/screens/add_assets/add_assets.dart';
 import 'package:flutter_base_app/flutter_main/screens/cancel_request/cancel_request_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
 import 'package:flutter_base_app/flutter_main/screens/order_submission_feedback/order_submission_feedback_Screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/profile_settings/profile_setting_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/flutter_main/storage/pref_manager.dart';
@@ -87,13 +90,22 @@ class AppState extends State<App> {
         });
   }
 
-  getNextScreen() {
-    if (PrefManager().getUserToken() != null) {
-      return OrderSubmissionFeedback();
-    } else {
-      print("PrefManager().getUserToken ---->" +
-          PrefManager().getUserToken().toString());
-      return LoginScreen();
-    }
+// getNextScreen() {
+//
+//   return AddAssetsScreen();
+//   if (PrefManager().getUserToken() != null) {
+//     return HomeScreen();
+//   } else {
+//     return LoginScreen();
+//   }
+}
+
+getNextScreen() {
+  return ProfileSettingScreen();
+  if (PrefManager().getUserToken() != null) {
+  } else {
+    print("PrefManager().getUserToken ---->" +
+        PrefManager().getUserToken().toString());
+    return LoginScreen();
   }
 }

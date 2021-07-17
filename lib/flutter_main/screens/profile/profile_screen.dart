@@ -137,8 +137,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                         fontStyle: FontStyle.normal,
-
-
                       ),
                       textAlign: TextAlign.start),
                 )

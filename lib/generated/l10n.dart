@@ -1524,6 +1524,56 @@ class S {
       args: [],
     );
   }
+
+  /// ` REQUEST ASSET`
+  String get REQUESTASSET {
+    return Intl.message(
+      ' REQUEST ASSET',
+      name: 'REQUESTASSET',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assets request has successfully sent`
+  String get Assetsrequesthassuccessfullysent {
+    return Intl.message(
+      'Assets request has successfully sent',
+      name: 'Assetsrequesthassuccessfullysent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asset name`
+  String get Assetname {
+    return Intl.message(
+      'Asset name',
+      name: 'Assetname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ASSETS`
+  String get ASSETS {
+    return Intl.message(
+      'ASSETS',
+      name: 'ASSETS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PROFILE SETTINGS`
+  String get ProfileSetting {
+    return Intl.message(
+      'PROFILE SETTINGS',
+      name: 'ProfileSetting',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

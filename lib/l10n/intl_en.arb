@@ -139,7 +139,7 @@
   "pleaseSelectReason": "please select reason",
   "cancellationReason": "CANCELLATION REASON",
   "OrderHasCompletedSuccessfully": "Order has \n completed successfully",
-   "welcome": "Welcome",
+  "welcome": "Welcome",
   "orderSubmission": "ORDER \n SUBMISSION",
   "comment": "Comment",
   "requestTime": "Request time",
@@ -148,5 +148,10 @@
   "cancelReason": "CANCELLATION REASON",
   "confirmPayment": "Confirm Payment",
   "havingProblemText_1": "Having a problem getting money? CONTACT OPERATOR",
-  "ofText": "of"
+  "ofText": "of",
+  "REQUESTASSET": " REQUEST ASSET",
+  "Assetsrequesthassuccessfullysent": "Assets request has successfully sent",
+  "Assetname": "Asset name",
+  "ASSETS": "ASSETS",
+  "ProfileSetting": "PROFILE SETTINGS"
 }

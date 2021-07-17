@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_base_app/flutter_main/common/colors.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
 
@@ -23,10 +24,16 @@ class OrderSubmissionFeedback extends StatelessWidget {
           color: french_blue,
         ),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.offline_bolt,
-            color: nasty_green,
-            size: 156,
+          Container(
+            margin: EdgeInsets.all(5.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              child: Image.asset(
+                'assets/images/check.png',
+                fit: BoxFit.contain,
+                width: 1000.0,
+              ),
+            ),
           ),
           Container(
               width: MediaQuery.of(context).size.width * .8,

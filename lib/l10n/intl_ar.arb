@@ -144,8 +144,12 @@
   "confirmPayment": "تآكيد الدفع",
   "havingProblemText_1": "هل تواجه مشكلة في الحصول على المال؟ الاتصال بالاداره",
   "ofText": "من",
-
   "pleaseSelectReason": "برجاء اختيار سبب",
   "cancellationReason": "سبب الإلغاء",
-  "OrderHasCompletedSuccessfully": "لقد إكتمل\nالطلب بنجاح"
+  "OrderHasCompletedSuccessfully": "لقد إكتمل\nالطلب بنجاح",
+  "REQUESTASSET": "طلب قطع الغيار",
+  "Assetsrequesthassuccessfullysent": "تم إرسال قطع الغيار بنجاح",
+  "Assetname": "اسم قطع الغيار",
+  "ASSETS": "قطع الغيار",
+  "ProfileSetting": "إعدادات الحساب"
 }
