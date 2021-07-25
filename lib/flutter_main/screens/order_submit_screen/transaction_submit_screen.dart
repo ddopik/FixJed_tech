@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
  import 'package:flutter_base_app/flutter_main/app/route.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_base_app/flutter_main/common/res/font_const.dart';
 import 'package:flutter_base_app/flutter_main/common/stats_widgets.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/app_bar_back_button.dart';
 import 'package:flutter_base_app/flutter_main/common/widgets/custom_action_button.dart';
-import 'package:flutter_base_app/flutter_main/screens/order_submit_screen/submit_order_confirm_dialof.dart';
+import 'package:flutter_base_app/flutter_main/screens/order_submit_screen/submit_order_confirm_dialog.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/model/request.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/provider/TransactionModel.dart';
 import 'package:flutter_base_app/generated/l10n.dart';
@@ -28,7 +29,7 @@ class TransactionSubmitScreen extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    var reDate = (arguments as Transaction).startDate;
+    var reDate = "2021-07-15T01:35:10.987+00:00";
     DateTime startDate = DateTime.parse(reDate);
     DateTime dateNow = new DateTime.now();
     elsabiTime =
@@ -194,6 +195,30 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height * .03,
             ),
+            InkWell(
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.add_circle,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 5),
+                  AutoSizeText(
+                    S.current.AddAssets,
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      color: Color(0xffffffff),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  )
+                ],
+              ),
+              onTap: () {
+                toAddAssets(context);
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -230,7 +255,7 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
                       fontStyle: FontStyle.normal,
                     )),
                 new Text(
-                    widget.arguments.totalCost.toString() ??
+                    widget.arguments?.totalCost.toString() ??
                         " 0 " + S.current.egp,
                     style: TextStyle(
                       fontFamily: 'Montserrat',
@@ -274,5 +299,9 @@ class _OrderSubmitScreen extends State<TransactionSubmitScreen> {
                 })
           ],
         ));
+  }
+
+  void toAddAssets(BuildContext context) async {
+    await Navigator.pushNamed(context, Routes.ADD_ASSETS_SCREEN);
   }
 }

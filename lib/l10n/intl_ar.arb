@@ -151,5 +151,8 @@
   "Assetsrequesthassuccessfullysent": "تم إرسال قطع الغيار بنجاح",
   "Assetname": "اسم قطع الغيار",
   "ASSETS": "قطع الغيار",
-  "ProfileSetting": "إعدادات الحساب"
+  "ProfileSetting": "إعدادات الحساب",
+  "EditYourPersonalInfo": "تعديل معلوماتك الشخصية",
+  "SaveChanges": "حفظ التعديلات",
+  "AddAssets": "إضافة قطع غيار"
 }

@@ -1574,6 +1574,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit your personal info`
+  String get EditYourPersonalInfo {
+    return Intl.message(
+      'Edit your personal info',
+      name: 'EditYourPersonalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SAVE CHANGES`
+  String get SaveChanges {
+    return Intl.message(
+      'SAVE CHANGES',
+      name: 'SaveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add assets`
+  String get AddAssets {
+    return Intl.message(
+      'Add assets',
+      name: 'AddAssets',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

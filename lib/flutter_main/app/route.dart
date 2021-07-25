@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_app/flutter_main/screens/add_assets/add_assets_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/cancel_request/cancel_request_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/counter_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/home/home_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/login/login_screens.dart';
 import 'package:flutter_base_app/flutter_main/screens/notification/notification_screen.dart';
-import 'package:flutter_base_app/flutter_main/screens/order_submit_screen/order_submit_screen.dart';
+import 'package:flutter_base_app/flutter_main/screens/order_submit_screen/transaction_submit_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/order_submission_feedback/order_submission_feedback_Screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/profile/profile_screen.dart';
 import 'package:flutter_base_app/flutter_main/screens/request_list/view/RequestsListScreen.dart';
@@ -30,6 +31,7 @@ class Routes {
   static const TRANSACTION_SUBMIT_SCREEN = "/transaction_submit_screen";
   static const CANCEL_TRANSACTION_REASONS_SCREEN =
       "/cancel_transaction_reason_screen";
+  static const ADD_ASSETS_SCREEN = "/add_assets_screen";
 
   static final Map<String, WidgetBuilder> _routes = {
     HOME: (context) => HomeScreen(),
@@ -46,6 +48,7 @@ class Routes {
     CANCEL_TRANSACTION_REASONS_SCREEN: (context) => CancelRequestScreen(
         arguments: ModalRoute.of(context).settings.arguments),
     ORDER_SUBMISSION_FEEDBACK: (context) => OrderSubmissionFeedback(),
+    ADD_ASSETS_SCREEN: (context) => AddAssetsScreen()
   };
 
 // todo add this attribute to main Appwidget  ---> onGenerateRoute: Routes.getRouteGenerate, of Main app widget

@@ -153,5 +153,8 @@
   "Assetsrequesthassuccessfullysent": "Assets request has successfully sent",
   "Assetname": "Asset name",
   "ASSETS": "ASSETS",
-  "ProfileSetting": "PROFILE SETTINGS"
+  "ProfileSetting": "PROFILE SETTINGS",
+  "EditYourPersonalInfo": "Edit your personal info",
+  "SaveChanges": "SAVE CHANGES",
+  "AddAssets": "Add assets"
 }

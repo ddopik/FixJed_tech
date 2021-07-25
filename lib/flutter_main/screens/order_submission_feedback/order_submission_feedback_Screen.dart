@@ -31,16 +31,17 @@ class OrderSubmissionFeedback extends StatelessWidget {
               child: Image.asset(
                 'assets/images/check.png',
                 fit: BoxFit.contain,
-                width: 1000.0,
+                width: 150.0,
               ),
             ),
           ),
           Container(
-              width: MediaQuery.of(context).size.width * .8,
-              height: MediaQuery.of(context).size.height * .06,
-              child: AutoSizeText(S.current.OrderHasCompletedSuccessfully,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6))
+            width: MediaQuery.of(context).size.width * .8,
+            // height: MediaQuery.of(context).size.height * .06,
+            child: AutoSizeText(S.current.OrderHasCompletedSuccessfully,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline5),
+          )
         ]),
       ),
     );
